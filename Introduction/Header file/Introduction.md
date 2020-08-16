@@ -1,4 +1,4 @@
-### In CPP
+### Function defined in Header files
 
 ``header.h``
 
@@ -6,7 +6,7 @@
 #include <iostream>
 using namespace std; // this line is optional
 
-void helloworld();
+void displayString();
 ```
 
 ``header.cpp``
@@ -16,7 +16,7 @@ void helloworld();
 #include "header.h"
 using namespace std; // this line is optional
 
-void helloworld(){
+void displayString(){
 	cout << "Hello, World!" << endl;
 }
 ```
@@ -30,6 +30,6 @@ void helloworld(){
 using namespace std;
 
 int main(){
-	helloworld(); //Hello, World!
+	displayString(); //Hello, World!
 }
 ```

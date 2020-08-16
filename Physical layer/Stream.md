@@ -1,4 +1,4 @@
-### Print out string
+### Stream out
 
 ```cpp
 #include <iostream>
@@ -12,7 +12,9 @@ main(){
 
 ``\n`` and ``endl`` is the same. ``endl: endline``
 
-### Type in - print out
+### Stream in
+
+Get data from Stream in with ``cin`` then print out.
 
 ```cpp
 #include <iostream>
@@ -27,7 +29,7 @@ main(){
 }
 ```
 
-### Type in: Many arguments
+Get multiple data from ``cin`` then print out.
 
 ```cpp
 #include <iostream>
@@ -42,7 +44,7 @@ main(){
 }
 ```
 
-### string
+Get string from ``cin``
 
 ```cpp
 #include <iostream>
@@ -56,7 +58,7 @@ main(){
 }
 ```
 
-### display the whole string
+### getline()
 
 ```cpp
 #include <iostream>
@@ -65,13 +67,13 @@ using namespace std;
 
 main(){
 	string sentence;
-	cout<< "what is your sentence ? \n";
+	cout << "what is your sentence ? \n";
 	getline(cin, sentence);
 	cout << "The whole sentence is: " << sentence;
 }
 ```
 
-### Problem with getline()
+Problem with ``getline()``
 
 ```cpp
 #include <iostream>
@@ -110,20 +112,6 @@ main(){
 }
 ```
 
-### Simple dealing with input value
-
-```cpp
-#include <iostream>
-
-using namespace std;
-int age;
-main(){
-cout << "Your age ";
-cin >> age;
-cout << "The next 10 years: " << age + 10 <<"\n";
-}
-```
-
 ### cin.getline()
 
 ``cin.getline()`` allows you to enter a string which has white spaces too. 
@@ -150,9 +138,9 @@ using namespace std;
 main() {
 	cout << "Day  		Money \n"
 	<< 	"---------------------------------\n";
-	cout << 1 <<setw(18) << 1 << "\n";
-	cout << 1 <<setw(18) << 1 << "\n";
-	cout << 1987 <<setw(18) << 1977 << "\n";
+	cout << 1 << setw(18) << 1 << "\n";
+	cout << 1 << setw(18) << 1 << "\n";
+	cout << 1987 << setw(18) << 1977 << "\n";
 }
 ```
 
