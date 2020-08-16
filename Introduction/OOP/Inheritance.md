@@ -1,46 +1,39 @@
-### **protect** method
+### protect method
 
-``protected`` method are used for other class that inherited from main class.
+``protected`` access modifier is similar to ``private`` access modifiers, the difference is that the class member declared as ``protected`` are inaccessible outside the class but they can be accessed by any subclass(derived class) of that class.
 
 ### Example
 
-Class **cloneNumberProcess** inherit from class **numberProcess**.
+Change value of protected variable ``addValue`` in inherited class.
 
 ```cpp
 #include <iostream>
 using namespace std;
 
-class numberProcess{
-public:
-	int addNumber(int a){
-		addValue = a + 4;
-		return addValue;
-	}
-
-protected: 
-	int addValue;
+class changeNumber{
+	protected: 
+		int addValue;
 };
 
-class cloneNumberProcess: public numberProcess{
-public:
-	int addNumber(int a){
-		addValue = a+30;
-		return addValue;
-	}
-private: int addValue;
+class changeNumberInherit: public changeNumber{
+    public:
+		changeNumberInherit(){
+            cout << "addValue before: " << addValue << endl;
+            addValue = 10;
+            cout << "addValue after: " << addValue << endl;
+		}
 };
 
 int main (){
-	cloneNumberProcess classObject;
-
- 	cout << "Result from inherited class is " << classObject.addNumber(90);
+	changeNumberInherit object;
 }
 ```
 
 **Result**
 
 ```
-Result from inherited class is 120
+addValue before: -1604079712
+addValue after: 10
 ```
 
 ### Header files with class and public method
