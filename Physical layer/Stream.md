@@ -12,49 +12,77 @@ main(){
 
 ``\n`` and ``endl`` is the same. ``endl: endline``
 
-### Stream in
+### Get entered int value from Stream in
 
-Get data from Stream in with ``cin`` then print out.
+Get entered int value from ``Stream in`` with ``cin`` then print out:
 
 ```cpp
 #include <iostream>
 
 using namespace std;
 
-main(){
-	int age;
-	cout << " how old are you ? \n";
-	cin >> age;
-	cout << age << endl;
+int main(){
+	int number;
+	cout << "Enter an int number: ";
+	cin >> number;
+	cout << "You have entered: " << number << endl;
 }
 ```
 
-Get multiple data from ``cin`` then print out.
+**Input**: ``11`` **Output**: ``11``
+
+**Input**: ``11abc`` **Output**: ``11``
+
+**Input**: ``Hello, World !`` **Output**: ``0``
+
+Get multiple data from ``cin`` then print out:
 
 ```cpp
 #include <iostream>
 
 using namespace std;
 
-main(){
-	int age, year, day, month;
-	cout << " how old are you ? \n";
-	cin >> age >> day >> year >> month;
-	cout << age << " " << day << " " << year << " " << month << " " << endl;
+int main(){
+	int number1, number2, number3;
+	cout << "Enter three int numbers: \n";
+	cin >> number1 >> number2 >> number3;
+	cout << "You have entered: " << number1 << " " << number2 << " " << number3 << endl;
 }
 ```
 
-Get string from ``cin``
+### Get an entered string from Stream in
+
+Get an entered string with ``cin``
 
 ```cpp
 #include <iostream>
 
 using namespace std;
 
-main(){
-	string sentence;
+string sentence;
+
+int main(){
+	cout << "Enter string: ";
 	cin >> sentence;
-	cout << "The whole sentence is: " << sentence;
+	cout << "The entered string is: " << sentence;
+}
+```
+
+**Input**: ``Hello, World !`` **Output**: ``Hello,``
+
+A proper word entering can be solved with ``fgets()``:
+
+```c
+#include <iostream>
+
+using namespace std;
+
+char displayString[100];
+
+int main(){
+	cout << "Enter string: ";
+	fgets(displayString, 20, stdin);
+	cout << displayString;
 }
 ```
 
