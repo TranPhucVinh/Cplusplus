@@ -17,7 +17,7 @@ main() {
 	ofstream myFile;
 	myFile.open("text.txt");
 
-	myFile << "Hello, World";
+	myFile << "Hello, World"; //Write data to file
 	myFile.close();
 }
 ```
@@ -75,15 +75,26 @@ main() {
 }
 ```
 
-### Read data from txt file
+### Read data from a file
 
-We have ``file.txt``
+**Read all data from a file with getline()**
+
+```cpp
+string data;
+ifstream myFile("file.txt");
+getline(myFile, data);
+cout << data;
+```
+
+**Read seperated data from a file**
+
+``file.txt``
 
 ```
-124 ertyewew 5666
+string_1 string_2 string_3
 ```
 
-File ``file.txt`` has 3 word; we create 3 variable word1, word2, word3 correspondingly to these 3 word
+As file ``file.txt`` has 3 word, we create 3 variable ``word1``, ``word2``, ``word3`` correspondingly to these 3 words.
 
 ```cpp
 #include <iostream>
@@ -91,42 +102,20 @@ File ``file.txt`` has 3 word; we create 3 variable word1, word2, word3 correspon
 
 using namespace std;
 
+string word1, word2, word3;
+
 main() {
 	ifstream myFile("file.txt");
-	int word1;
-	string word2;
-	int word3;
+
 	myFile >> word1 >> word2 >> word3;
 	cout << word1 << " " <<  word2 << " " << word3;
 	myFile.close();
 }
 ```
 
-**Result**
+**Read seperated data from a file with multiple lines**
 
-```
-124 ertyewew 5666
-```
-
-**Other way**
-
-```cpp
-string data;
-ifstream myFile("file.txt");
-getline(myFile, data)
-cout << data;
-```
-(from file.txt above)	
-
-**Result**
-
-```
-124 ertyewew 5666
-```
-
-### print out
-
-we have ``file.txt``
+``file.txt``
 
 ```
 124 ertyewew 5666
@@ -152,8 +141,6 @@ main() {
 	myFile.close();
 }
 ```
-
-**Result**: The content of ``file.txt``
 
 ### Cursor in fstream
 
