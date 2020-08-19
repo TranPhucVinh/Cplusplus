@@ -1,10 +1,11 @@
+Library ``fstream``
+
+* ``ofstream``: output file streams
+* ``ifstream``: input file streams
+
 ### Create new file
 
-``ofstream``: Outputting data to stream;
-
-``ifstream``: input data from a file, means reading data from a file
-
-Create a file and add data to this file:
+Create and write data to a file
 
 ```cpp
 #include <iostream>
@@ -21,31 +22,27 @@ main() {
 }
 ```
 
-One line of code
+Or: ``ofstream myFile("text.txt");``
 
-```c
-ofstream myFile("file.txt");
-```
+### Check file open status
 
 Check status: ``is_open()``
 
 ```cpp
-include <iostream>
+#include <iostream>
 #include <fstream>
 
 using namespace std;
 
 main() {
-	ofstream myFile("erin.txt");
+	ofstream myFile("text.txt");
 	myFile << "Hello, World";
-	if (myFile.is_open()){
-		cout << "The file is open" << endl;
-	}
+	if (myFile.is_open()) cout << "The file is open" << endl;
 	else cout <<"File is close !! \n";
 	myFile.close();
-	if (myFile.is_open()){
-		cout << "The file is open" << endl;
-	}
+
+	//After closing, check open status again
+	if (myFile.is_open()) cout << "The file is open" << endl;
 	else cout <<"File is close !! \n";
 }
 ```
@@ -57,7 +54,7 @@ The file is open
 File is close !! 
 ```
 
-### Entering data to txt file
+### Write data to file
 
 ```cpp
 #include <iostream>
@@ -65,14 +62,15 @@ File is close !!
 
 using namespace std;
 
+int id;
+string name;
+double money;
+
 main() {
 	ofstream myFile("file.txt");
-	cout << "Enter ID, Name, Money \n";
-	int id;
-	string name;
-	double money;
+	cout << "Enter ID, Name, Salary \n";
 	cin >> id >> name >> money;
-	myFile << id << " " <<name << " " << money << endl;
+	myFile << id << " " << name << " " << money << endl;
 	myFile.close();
 }
 ```

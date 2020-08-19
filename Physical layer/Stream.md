@@ -70,7 +70,9 @@ int main(){
 
 **Input**: ``Hello, World !`` **Output**: ``Hello,``
 
-A proper word entering can be solved with ``fgets()``:
+### Get the whole entered string (include space)
+
+With ``fgets()``
 
 ```c
 #include <iostream>
@@ -86,7 +88,7 @@ int main(){
 }
 ```
 
-### getline()
+With ``getline()``
 
 ```cpp
 #include <iostream>
@@ -101,59 +103,63 @@ main(){
 }
 ```
 
-Problem with ``getline()``
+With ``cin.getline()``: ``getline(char_type* __s, streamsize __n)``
 
 ```cpp
-#include <iostream>
-
-using namespace std;
-
-main(){
-	int age;
-	cout << "enter age: ";
-	cin >> age;
-	cout << age;
-	string sentence;
-	cout<< "what is your sentence ? \n";
-	getline(cin, sentence);
-	cout << "The whole sentence is: " << sentence;
-}
-```
-
-After entering the value of ``age`` and press enter, ``age`` value will appear then the programm stop as after entering "ENTER", this will be in buffer then getline will stop as knowing that ENTER has been pressed.
-
-```cpp
-#include <iostream>
-
-using namespace std;
-
-main(){
-	int age;
-	cout << "enter age: ";
-	cin >> age;
-	cout << age;
-	string sentence;
-	cout << "what is your sentence ? \n";
-	cin.ignore(1); //ignore the last entering character, in this case is "ENTER"
-	getline(cin, sentence);
-	cout << "The whole sentence is: " << sentence;
-}
-```
-
-### cin.getline()
-
-``cin.getline()`` allows you to enter a string which has white spaces too. 
-
-Its syntax is as follows: ``cin.getline(name of string , size of the string);``
-
-**Enter a string to a file**
-
-```cpp
-ofstream myFile("file.txt");
-char data[111];
+char data[11];
 cin.getline(data, 100);
-myFile << data;
-myFile.close();
+cout << data;
+```
+
+### Problem with ``getline()``
+
+```cpp
+#include <iostream>
+
+using namespace std;
+
+int number;
+string sentence;
+
+int main(){
+	cout << "Enter int number: ";
+	cin >> number;
+	cout << "Enter your sentence: ";
+	getline(cin, sentence);
+
+	cout << "Entered numer: " << number << endl;
+	cout << "The whole sentence is: " << sentence << endl;
+}
+```
+
+After entering the int ``number`` and press enter, ``age`` value will appear then the programm stop as after entering ``ENTER``. This happens because ``getline()`` stops executing as knowing that ``ENTER`` has been pressed.
+
+**Problem solved**
+
+Using ``cin.ignore(1)``: Ignore the last entering character, in this case is ``ENTER``
+
+```cpp
+cout << "Enter age: ";
+cin >> age;
+cout << "Enter your sentence: ";
+cin.ignore(1); 
+getline(cin, sentence);
+
+cout << "Entered numer: " << age << endl;
+cout << "The whole sentence is: " << sentence << endl;
+```
+
+Using ``cin >> ws``: ``cin >> ws`` after ``cin`` statement tells the compiler to ignore buffer and also to discard all the whitespaces before the actual content of string or character array.
+
+```cpp
+cout << "Enter age: ";
+cin >> age;
+cout << "Enter your sentence: ";
+cin >> ws;
+getline(cin, sentence);
+
+cout << "Entered numer: " << age << endl;
+cout << "The whole sentence is: " << sentence << endl;
 ```
 
 ### setw()
