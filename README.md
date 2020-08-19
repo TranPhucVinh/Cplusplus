@@ -1,8 +1,10 @@
 # Cplusplus
 
-C++ document
+### G++ compiler
 
-### Compile cpp file with GCC
+``g++ main.cpp``
+
+### GCC comp
 
 ``gcc test.cpp``: This will give **linking error** because of missing linker
 
