@@ -142,6 +142,18 @@ main() {
 }
 ```
 
+### Unable to handle in/out at the same time
+
+You can't open input and output file stream at the same time, this will not give compilation error but result in failure when run
+
+```c
+//Wrong
+ifstream fileStreamIn("text.txt");
+ofstream fileStreamOut("text.txt");
+```
+
+So it means that you can't edit the content of a single line belong to an opening a file to read.
+
 ### Cursor in fstream
 
 ``fstream::tellg()`` tells the positon of the current cursor in ``get``
