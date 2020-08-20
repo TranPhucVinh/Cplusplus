@@ -14,15 +14,15 @@ Create and write data to a file
 using namespace std;
 
 main() {
-	ofstream myFile;
-	myFile.open("text.txt");
+	ofstream fileStreamOut;
+	fileStreamOut.open("text.txt");
 
-	myFile << "Hello, World"; //Write data to file
-	myFile.close();
+	fileStreamOut << "Hello, World !"; //Write data to file
+	fileStreamOut.close();
 }
 ```
 
-Or: ``ofstream myFile("text.txt");``
+Or: ``ofstream fileStreamOut("text.txt");``
 
 ### Check file open status
 
@@ -35,14 +35,14 @@ Check status: ``is_open()``
 using namespace std;
 
 main() {
-	ofstream myFile("text.txt");
-	myFile << "Hello, World";
-	if (myFile.is_open()) cout << "The file is open" << endl;
+	ofstream fileStreamOut("text.txt");
+	fileStreamOut << "Hello, World";
+	if (fileStreamOut.is_open()) cout << "The file is open" << endl;
 	else cout <<"File is close !! \n";
-	myFile.close();
+	fileStreamOut.close();
 
 	//After closing, check open status again
-	if (myFile.is_open()) cout << "The file is open" << endl;
+	if (fileStreamOut.is_open()) cout << "The file is open" << endl;
 	else cout <<"File is close !! \n";
 }
 ```
@@ -67,11 +67,11 @@ string name;
 double money;
 
 main() {
-	ofstream myFile("file.txt");
+	ofstream fileStreamOut("file.txt");
 	cout << "Enter ID, Name, Salary \n";
 	cin >> id >> name >> money;
-	myFile << id << " " << name << " " << money << endl;
-	myFile.close();
+	fileStreamOut << id << " " << name << " " << money << endl;
+	fileStreamOut.close();
 }
 ```
 
@@ -81,8 +81,8 @@ main() {
 
 ```cpp
 string data;
-ifstream myFile("file.txt");
-getline(myFile, data);
+ifstream fileStreamIn("file.txt");
+getline(fileStreamIn, data);
 cout << data;
 ```
 
@@ -105,11 +105,11 @@ using namespace std;
 string word1, word2, word3;
 
 main() {
-	ifstream myFile("file.txt");
+	ifstream fileStreamIn("file.txt");
 
-	myFile >> word1 >> word2 >> word3;
+	fileStreamIn >> word1 >> word2 >> word3;
 	cout << word1 << " " <<  word2 << " " << word3;
-	myFile.close();
+	fileStreamIn.close();
 }
 ```
 
@@ -118,9 +118,9 @@ main() {
 ``file.txt``
 
 ```
-124 ertyewew 5666
-1243 errtyewew 56666
-12 edrtyewew 5666
+1 user_1 10
+2 user_2 20
+3 user_3 30
 ```
 
 ```cpp
@@ -130,15 +130,15 @@ main() {
 using namespace std;
 
 main() {
-	ifstream myFile("file.txt");
+	ifstream fileStreamIn("file.txt");
 	int word1;
 	string word2;
 	int word3;
-	while (myFile >> word1 >> word2 >> word3)
+	while (fileStreamIn >> word1 >> word2 >> word3)
 	{
 		cout << word1 << " " <<  word2 << " " << word3 << endl;
 	}
-	myFile.close();
+	fileStreamIn.close();
 }
 ```
 

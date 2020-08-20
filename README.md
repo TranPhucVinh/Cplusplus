@@ -12,7 +12,7 @@
 gcc test.cpp -lstdc++
 ```
 
-This will normally compile a ``cpp`` file with ``.c`` syntax:
+This will normally compile a ``CPP`` file with ``C`` syntax:
 
 **Example**: ``test.cpp``
 

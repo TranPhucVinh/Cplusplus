@@ -1,4 +1,4 @@
-### CPP function overloading
+### Function overloading
 
 ```cpp
 #include <iostream>
