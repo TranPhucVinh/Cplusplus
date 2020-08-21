@@ -1,8 +1,3 @@
-Library ``fstream``
-
-* ``ofstream``: output file streams
-* ``ifstream``: input file streams
-
 ### Create new file
 
 Create and write data to a file
@@ -86,6 +81,18 @@ getline(fileStreamIn, data);
 cout << data;
 ```
 
+However, this can just read only one line of data in a file. To read all lines of data in the file:
+
+```cpp
+string data;
+ifstream fileStreamIn("text.txt");
+
+while (!fileStreamIn.eof()){
+	getline(fileStreamIn, data);
+	cout << data << endl;
+}
+```
+
 **Read seperated data from a file**
 
 ``file.txt``
@@ -142,7 +149,7 @@ main() {
 }
 ```
 
-### Unable to handle in/out at the same time
+### Unable to handle in/out at the same time with ``ifstream`` and ``ofstream``
 
 You can't open input and output file stream at the same time, this will not give compilation error but result in failure when run
 
@@ -153,118 +160,3 @@ ofstream fileStreamOut("text.txt");
 ```
 
 So it means that you can't edit the content of a single line belong to an opening a file to read.
-
-### Cursor in fstream
-
-``fstream::tellg()`` tells the positon of the current cursor in ``get``
-
-e.g
-
-we have a file name ``file.txt``
-
-```
-12123123 werwtwergfd
-```
-
-**main.c**
-
-```c
-ifstream myFile("file.txt");
-cout << myFile.tellg() << endl; //Result: 0
-```
-
-``0`` as at the beginning of the file
-
-``fstream::seekg(2)``: start the cursor from character 3
-
-```cpp
-string data;
-ifstream myFile("file.txt");
-myFile.seekg(2);
-getline(myFile, data);
-cout << data;
-```
-
-**Result**: The content of ``file.txt``
-
-``fstream::seekg(2)`` only reading in one line.
-
-### Searching information
-
-file.txt
-
-```
-121
-1231 345425444
-12 1
-```
-
-We want searching in line 2 and line 3
-
-```cpp
-string data;
-int findID, id, id0;
-ifstream myFile("file.txt");
-myFile.seekg(3);
-cout << "Enter employee's ID: ";
-cin >> findID;
-while(myFile >> id >> id0){
-	if (findID == id){
-		cout << "Name" << ' ' << "Age"  << endl;
-		cout << id << " " <<  id0 << endl;
-	}
-}
-```
-
-**Result**
-
-```
-Enter employee's ID: 12
-Name Age
-12 1
-```
-
-**One more example**
-
-file.txt
-
-```
-ID abs
-1   2
-2   2
-```
-
-```c
-string data;
-	int findID, id, id0;
-	ifstream myFile("file.txt");
-	myFile.seekg(7);
-	cout << "Enter employee's ID: ";
-	cin >> findID;
-	while(myFile >> id >> id0)
-	{
-	if (findID == id){
-	cout << id  << " "<< id0 << endl;
-```
-
-**Result**
-
-```
-Enter employee's ID: 1
-1 2
-```
-
-if ``myFilfe.seekg(6)`` then 
-
-```
-Enter employee's ID: 1
-1 2
-```
-
-if ``myFilfe.seekg(8)`` then
-
-``Enter employee's ID: 1`` will return nothing as the cursor is in the wrong postion to read.
-
-``myFile.seekg(5)`` then
-
-``Enter employee's ID: 1`` will return nothing as the cursor is in the wrong postion to read.
