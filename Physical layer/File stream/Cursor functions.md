@@ -1,112 +1,63 @@
 ### tellg()
 
-``fstream::tellg()`` tells the positon of the current cursor in ``get``
+``tellg()`` tells the positon of the current cursor
 
 ``file.txt``
 
 ```
-12123123 werwtwergfd
+123 Hello, World !
 ```
 
 ``main.c``
 
 ```c
-ifstream myFile("file.txt");
-cout << myFile.tellg() << endl; //Result: 0
+ifstream fileStreamIn("text.txt");
+cout << fileStreamIn.tellg() << endl; //0
 ```
 
 ``0`` as at the beginning of the file
 
-``fstream::seekg(2)``: start the cursor from character 3
+### seekg()
+
+``fstream::seekg(n)``: start the cursor from character ``n+1`` of the current reading line
 
 ```cpp
 string data;
-ifstream myFile("file.txt");
-myFile.seekg(2);
-getline(myFile, data);
-cout << data;
+ifstream fileStreamIn("text.txt");
+fileStreamIn.seekg(2);
+getline(fileStreamIn, data);
+cout << data; //3 Hello, World !
 ```
-
-**Result**: The content of ``file.txt``
 
 ``fstream::seekg(2)`` only reading in one line.
 
-### Searching information
+### Searching information with seekg()
 
-file.txt
+``text.txt``
 
 ```
-121
-1231 345425444
-12 1
+123 Hello1, World !
+456 Hello2, World !
+126 Hello3, World !
 ```
-
-We want searching in line 2 and line 3
 
 ```cpp
-string data;
-int findID, id, id0;
-ifstream myFile("file.txt");
-myFile.seekg(3);
-cout << "Enter employee's ID: ";
-cin >> findID;
-while(myFile >> id >> id0){
-	if (findID == id){
-		cout << "Name" << ' ' << "Age"  << endl;
-		cout << id << " " <<  id0 << endl;
-	}
+ifstream fileStreamIn("text.txt");
+fileStreamIn.seekg(2);
+
+while (!fileStreamIn.eof())
+{
+	string data;	
+	getline(fileStreamIn, data);
+	cout << data << endl;
 }
 ```
-
-**Result**
-
-```
-Enter employee's ID: 12
-Name Age
-12 1
-```
-
-**One more example**
-
-file.txt
+**Output**
 
 ```
-ID abs
-1   2
-2   2
+3 Hello1, World !
+456 Hello2, World !
+126 Hello3, World !
 ```
 
-```c
-string data;
-	int findID, id, id0;
-	ifstream myFile("file.txt");
-	myFile.seekg(7);
-	cout << "Enter employee's ID: ";
-	cin >> findID;
-	while(myFile >> id >> id0)
-	{
-	if (findID == id){
-	cout << id  << " "<< id0 << endl;
-```
-
-**Result**
-
-```
-Enter employee's ID: 1
-1 2
-```
-
-if ``myFilfe.seekg(6)`` then 
-
-```
-Enter employee's ID: 1
-1 2
-```
-
-if ``myFilfe.seekg(8)`` then
-
-``Enter employee's ID: 1`` will return nothing as the cursor is in the wrong postion to read.
-
-``myFile.seekg(5)`` then
-
-``Enter employee's ID: 1`` will return nothing as the cursor is in the wrong postion to read.
+If the cursor is set wrong in ``seekg()``, it will return nothing when searching.
