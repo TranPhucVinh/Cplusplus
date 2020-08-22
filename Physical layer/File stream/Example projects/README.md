@@ -1,0 +1,5 @@
+### Features with txt file
+
+* As using ``txt`` file to store database, we have no choice but to use ``fileStreamIn.seekg(42)``.
+* **For searching feature**: As using ``txt`` file to store data, for proper content searching, the entered name should not include space.
+* **For editing feature**: As the data is stored in a file, you can't edit the content of a single line belong to an opening a file to read. For more information, refer to ``Unable to handle in/out at the same time with ifstream and ofstream`` in ``File stream/ofstream and ifstream.md``.

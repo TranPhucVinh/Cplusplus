@@ -122,7 +122,7 @@ void searchName(){
 
 	if (!nameFound){
 		cout <<  endl << "--" << setw(20) << "--" << setw(20) << "--\n";
-		cout << "Sorry, we can't find the user with your entered ID \n";
+		cout << "Sorry, we can't find the user with your entered name \n";
 	}
 	fileStreamIn.close();
 }
@@ -150,7 +150,7 @@ void searchSalary(){
 
 	if (!salaryFound){
 		cout <<  endl << "--" << setw(20) << "--" << setw(20) << "--\n";
-		cout << "Sorry, we can't find the user with your entered ID \n";
+		cout << "Sorry, we can't find the user with your entered salary \n";
 	}
 
 	fileStreamIn.close();
