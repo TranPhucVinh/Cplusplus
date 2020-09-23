@@ -4,7 +4,7 @@
 
 ``g++ main.cpp``
 
-### GCC comp
+### GCC compiler
 
 ``gcc test.cpp``: This will give **linking error** because of missing linker
 
