@@ -12,6 +12,20 @@ main(){
 
 ``\n`` and ``endl`` is the same. ``endl: endline``
 
+Stream out with ``printf()``
+
+```cpp
+#include <iostream>
+#include <stdio.h> //For printf
+
+using namespace std;
+
+main(){
+	cout << "Hello, World!" << endl;
+    printf("Hello, World!\n");
+}
+```
+
 ### Get entered int value from Stream in
 
 Get entered int value from ``Stream in`` with ``cin`` then print out:
