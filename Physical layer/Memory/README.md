@@ -1,0 +1,1 @@
+All memory functions are included in ``cstring``.
