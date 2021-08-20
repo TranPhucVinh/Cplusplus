@@ -12,6 +12,16 @@ main(){
 
 ``\n`` and ``endl`` is the same. ``endl: endline``
 
+Or define:
+
+```cpp
+#include <iostream>
+
+main(){
+	std::cout << "Hello, World!" << std::endl;
+}
+```
+
 Stream out with ``printf()``
 
 ```cpp
