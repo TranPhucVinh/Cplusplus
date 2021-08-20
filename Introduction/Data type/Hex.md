@@ -2,12 +2,19 @@ Print out a hex value
 
 ```c
 #include <iostream>
-#include <sstream>
 
 using namespace std;
-std::stringstream ss;
 
+int a = 11;
 int main() {
-    cout << std::hex << 10;//a
+    cout << hex << 10 << endl;//a
+    cout << hex << a << endl;//b
 }
 ```
+Or define:
+
+```cpp
+cout << std::hex << 10 << endl;
+```
+
+If define ``int hex = 100``, then there will be error: ``"hex" is ambiguous C/C++(266)``.
