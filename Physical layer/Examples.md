@@ -1,4 +1,6 @@
-**Example 1**: Enter multiple string with ``getline()``
+### Example 1
+
+Enter multiple string with ``getline()``
 
 ```c
 #include <iostream>
@@ -9,13 +11,13 @@ int number;
 string sentence1, sentence2, sentence3;
 
 int main(){
-	cout << "Enter sentence1: ";
+	cout << "Enter sentence 1: ";
 	getline(cin, sentence1);
 	
-	cout << "Enter sentence2: ";
+	cout << "Enter sentence 2: ";
 	getline(cin, sentence2);
 
-	cout << "Enter sentence3: ";
+	cout << "Enter sentence 3: ";
 	getline(cin, sentence3);
 
 	cout << "The whole sentence is: " << sentence1 << endl;
@@ -23,7 +25,9 @@ int main(){
 	cout << "The whole sentence is: " << sentence3 << endl;
 }
 ```
-**Example 2**: Problem with ``getline()``
+### Example 2
+
+Problem with ``getline()``
 
 ```cpp
 #include <iostream>
@@ -74,7 +78,9 @@ cout << "Entered numer: " << age << endl;
 cout << "The whole sentence is: " << sentence << endl;
 ```
 
-**Example 3**: ``cin`` in foor loop
+### Example 3
+
+``cin`` in foor loop
 
 ```c
 #include <iostream>
