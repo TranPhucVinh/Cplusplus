@@ -1,5 +1,3 @@
-
-
 #include "employee.h"
 
 void add();
