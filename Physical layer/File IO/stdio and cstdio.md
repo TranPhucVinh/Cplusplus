@@ -1,3 +1,5 @@
+### stdio.h
+
 Stream out with ``printf()``
 
 ```cpp
@@ -26,5 +28,21 @@ int main(){
 	cout << "Enter string: ";
 	fgets(displayString, 20, stdin);
 	cout << displayString;
+}
+```
+
+### cstdio
+
+All functions of ``stdio.h`` existed in ``cstdio``.
+
+```c
+#include <iostream>
+#include <cstdio> //For printf
+
+using namespace std;
+
+main(){
+	cout << "Hello, World!" << endl;
+    printf("Hello, World!\n");
 }
 ```
