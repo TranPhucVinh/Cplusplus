@@ -22,20 +22,6 @@ main(){
 }
 ```
 
-Stream out with ``printf()``
-
-```cpp
-#include <iostream>
-#include <stdio.h> //For printf
-
-using namespace std;
-
-main(){
-	cout << "Hello, World!" << endl;
-    printf("Hello, World!\n");
-}
-```
-
 ### Get entered int value from Stream in
 
 Get entered int value from ``Stream in`` with ``cin`` then print out:
@@ -95,22 +81,6 @@ int main(){
 **Input**: ``Hello, World !`` **Output**: ``Hello,``
 
 ### Get the whole entered string (include space)
-
-With ``fgets()``
-
-```c
-#include <iostream>
-
-using namespace std;
-
-char displayString[100];
-
-int main(){
-	cout << "Enter string: ";
-	fgets(displayString, 20, stdin);
-	cout << displayString;
-}
-```
 
 With ``getline()``: Get line from ``stream`` into ``string``
 
