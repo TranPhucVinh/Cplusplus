@@ -1,12 +1,28 @@
 # Cplusplus
 
-### G++ compiler
+## G++ compiler
 
 ``g++ main.cpp``
 
 As ``G++`` can compile all library belong with to ``GCC`` like ``stdio.h``, ``stdlib.h``, ``string.h``... so all ``GCC`` library and their functions can be included inside a ``CPP`` program.
 
-### GCC compiler
+**Example**
+
+Stream out with ``printf()``
+
+```cpp
+#include <iostream>
+#include <stdio.h> //For printf
+
+using namespace std;
+
+main(){
+	cout << "Hello, World!" << endl;
+    printf("Hello, World!\n");
+}
+```
+
+## GCC compiler
 
 ``gcc test.cpp``: This will give **linking error** because of missing linker
 
