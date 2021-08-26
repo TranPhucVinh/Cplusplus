@@ -1,21 +1,28 @@
-Check ``System time.md`` in ``C/Physical layer`` for 3 examples as their implementations are identical:
+Using library ``ctime``
 
-**Example 1**
+### Example 1
 
-* Get current time with ``time.h`` 
-* Get day, month and year with ``localtime()``
-* Get current time of day in Unix-alike system
+Get current time with ``time()``:
 
-**Example 2**: Delay for a number of seconds
-
-**Example 3**: Print out a string after every one second with ``sleep()``
-
-General define for those 3 examples
-
-```c
+```cpp
 #include <iostream>
+#include <ctime>
 
 using namespace std;
+
+int main() {
+    time_t currentTime;
+    time(&currentTime);//Get current time and save to currentTime
+	cout << ctime(&currentTime);//Thu Aug 26 23:42:02 2021
+    return(0);
+}
 ```
 
-Use ``cout`` to print out
+Get day, month and year with ``localtime()``:
+
+```cpp
+time_t currentTime;
+time(&currentTime); //Get current time and save to currentTime
+struct tm *time_value = localtime(&currentTime);
+cout << "Day " << time_value->tm_mday << " month: " << time_value->tm_mon << "year: " << time_value->tm_year;
+```

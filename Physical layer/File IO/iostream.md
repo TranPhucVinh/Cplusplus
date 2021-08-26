@@ -22,6 +22,8 @@ main(){
 }
 ```
 
+By default ``iostream`` doesn't support printing out with formating like ``printf()``.
+
 ### Get entered int value from Stream in
 
 Get entered int value from ``Stream in`` with ``cin`` then print out:
