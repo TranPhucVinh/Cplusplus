@@ -46,3 +46,24 @@ void intNumber(int a, int b){
     cout << "b: " << b << endl;
 }
 ```
+
+If define:
+
+```c
+void intNumber(int a, int b = 12);
+
+int main(){
+	//operations go here
+}
+
+void intNumber(int a, int b=12){
+	//operations go here
+}
+```
+
+There will be error:
+
+```
+test.cpp:12:31: error: default argument given for parameter 2 of ‘void intNumber(int, int)’ [-fpermissive]
+ void intNumber(int a, int b=12){
+```
