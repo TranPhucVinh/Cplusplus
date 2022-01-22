@@ -40,11 +40,20 @@ string displayString = "Hello, World !";
 cout << displayString[0]; //H
 ```
 
-Add character to a string
+Add character to a string with ``+``:
 
 ```cpp
 string displayString = "Hello, World ";
 cout << displayString+'!'; //Hello, World !
+```
+
+Using ``append()``:
+
+```c
+string displayString = "Hello, World ";
+
+cout << displayString.append("!") << endl; //Hello, World !
+cout << displayString.append("!") << endl; //Hello, World !!
 ```
 
 Convert ``string`` to ``const char*``
