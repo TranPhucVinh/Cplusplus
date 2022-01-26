@@ -1,3 +1,5 @@
+## hex
+
 ### Print out a hex value
 
 ```c
@@ -43,4 +45,22 @@ uint8_t lastByte = value;
 uint8_t firstByte = value>>8;
 cout << std::hex << static_cast<int>(lastByte) << endl;//34
 cout << std::hex << static_cast<int>(firstByte) << endl;//12    
+```
+
+## dec
+
+```c
+int a = 0x11;
+
+cout << dec << 9 << endl;//9
+cout << dec << a << endl;//17
+```
+
+## oct
+
+```c
+int a = 0x11;
+
+cout << oct << 9 << endl;//11
+cout << oct << a << endl;//21
 ```
