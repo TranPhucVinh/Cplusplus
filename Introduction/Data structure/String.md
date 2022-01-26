@@ -134,9 +134,19 @@ int main() {
     ss1 << 123 << " " << "Hello, World !";
     ss2.str("This is a string");
     cout << ss1.str() << endl;//123 Hello, World !
-    cout << ss2.str() << endl;//123 Hello, World !
+    cout << ss2.str() << endl;//This is a string
+
+    //Then append ss1
+    ss1 << " Append string";
+    cout << ss1.str() << endl;//123 Hello, World ! Append string
 }
 ```
+
+After forming with ``ss2.str()``, ``ss2`` can't be appended with ``<<``
+
+For clearing the contents of a stringstream, using: ``ss.str("")``
+
+Value formed by stringsteam can be splitted by ``space``.
 
 Add and read value with ``stringstream``:
 
