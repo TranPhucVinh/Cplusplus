@@ -1,11 +1,11 @@
-### Char array for string
+## Char array for string
 
 ```cpp
 char displayString[] = "Hello, World !";
 cout << displayString;
 ```
 
-### Char pointer for string
+## Char pointer for string
 
 ```c
 char *displayedString;
@@ -31,7 +31,7 @@ displayedString = "Hello, World ! txt";
 int main () {}
 ```
 
-### string type
+## string type
 
 Get character index of a string
 
@@ -116,5 +116,22 @@ int main(){
     tempConstantString = returnedString.c_str();
     strcpy(stringArray, tempConstantString);
     cout << stringArray;
+}
+```
+
+## stringstream
+
+``stringstream`` is a stream that doesn't do IO operation. It is used to read and write string
+
+```c
+#include <iostream>
+#include <sstream>//std::stringstream
+
+using namespace std;
+stringstream ss;
+
+int main() {
+    ss << 123 << " " << "Hello, World !";
+    cout << ss.str() << endl;//123 Hello, World !
 }
 ```
