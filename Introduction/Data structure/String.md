@@ -128,11 +128,13 @@ int main(){
 #include <sstream>//std::stringstream
 
 using namespace std;
-stringstream ss;
+stringstream ss1, ss2;
 
 int main() {
-    ss << 123 << " " << "Hello, World !";
-    cout << ss.str() << endl;//123 Hello, World !
+    ss1 << 123 << " " << "Hello, World !";
+    ss2.str("This is a string");
+    cout << ss1.str() << endl;//123 Hello, World !
+    cout << ss2.str() << endl;//123 Hello, World !
 }
 ```
 
