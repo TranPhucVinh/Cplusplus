@@ -1,11 +1,11 @@
-### Array for string char
+### Char array for string
 
 ```cpp
 char displayString[] = "Hello, World !";
 cout << displayString;
 ```
 
-### Pointer for string char
+### Char pointer for string
 
 ```c
 char *displayedString;
@@ -31,7 +31,7 @@ displayedString = "Hello, World ! txt";
 int main () {}
 ```
 
-### String handler
+### string type
 
 Get character index of a string
 
