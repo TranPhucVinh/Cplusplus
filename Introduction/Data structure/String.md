@@ -135,3 +135,28 @@ int main() {
     cout << ss.str() << endl;//123 Hello, World !
 }
 ```
+
+Add and read value with ``stringstream``:
+
+```c
+#include <iostream>
+#include <sstream>//std::stringstream
+
+using namespace std;
+stringstream ss;
+
+int a;
+string b, c;
+int main() {
+    //Add value to ss
+    ss << 123 << " " << "Hello, World !";
+
+    //Read value from ss
+    ss >> a;
+    ss >> b;
+    ss >> c;
+    cout << a << endl;//123
+    cout << b << endl;//Hello,
+    cout << c << endl;//World
+}
+```
