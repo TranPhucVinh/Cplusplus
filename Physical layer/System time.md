@@ -1,3 +1,5 @@
+## ctime
+
 Using library ``ctime``
 
 ### Example 1
@@ -26,3 +28,20 @@ time(&currentTime); //Get current time and save to currentTime
 struct tm *time_value = localtime(&currentTime);
 cout << "Day " << time_value->tm_mday << " month: " << time_value->tm_mon << "year: " << time_value->tm_year;
 ```
+
+## unistd.h
+
+``sleep()`` example
+
+```c
+#include <iostream>
+#include <unistd.h>
+
+using namespace std;
+
+int main() {
+  while (1){
+    cout << "Hello, World !" << endl;//Must have new line for proper print out
+    sleep(1);
+  }
+}

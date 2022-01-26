@@ -1,5 +1,7 @@
 # Cplusplus
 
+C++ document and software for Unix-based applications, followed its OS architecture.
+
 ## G++ compiler
 
 ``g++ main.cpp``
