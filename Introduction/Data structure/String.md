@@ -153,10 +153,12 @@ int main() {
 
     //Read value from ss
     ss >> a;
-    ss >> b;
-    ss >> c;
     cout << a << endl;//123
+
+    ss >> b;
     cout << b << endl;//Hello,
+
+    ss >> c;
     cout << c << endl;//World
 }
 ```
