@@ -40,6 +40,8 @@ string displayString = "Hello, World !";
 cout << displayString[0]; //H
 ```
 
+Get size: ``cout << displayString.length();//14``
+
 Add character to a string with ``+``:
 
 ```cpp
@@ -72,8 +74,6 @@ int main(){
     cout << pointerString;
 }
 ```
-
-Compile this program normally with ``G++``. To compile with ``GCC``: ``gcc test.cpp -lstdc++``
 
 Unable to converted the function with ``c_str()``:
 
