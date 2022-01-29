@@ -58,6 +58,15 @@ cout << displayString.append("!") << endl; //Hello, World !
 cout << displayString.append("!") << endl; //Hello, World !!
 ```
 
+Using ``push_back()``:
+
+```cpp
+string displayed_string = "Hello World !";
+displayed_string.push_back('A');//Hello World !A
+```
+
+``string`` type has no member ``pop_back()``.
+
 Convert ``string`` to ``const char*``
 
 ```c
