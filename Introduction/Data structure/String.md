@@ -33,14 +33,15 @@ int main () {}
 
 ## string type
 
-Get character index of a string
+Get character index of a string and size, length
 
 ```cpp
-string displayString = "Hello, World !";
-cout << displayString[0]; //H
-```
+string displayed_string = "Hello World !";
 
-Get size: ``cout << displayString.length();//14``
+cout << displayed_string[0] << endl; //H
+cout << displayed_string.size() << endl;//13
+cout << displayed_string.length() << endl;//13
+```
 
 Add character to a string with ``+``:
 
