@@ -1,41 +1,18 @@
-Reference as function argument:
+**Reference as function argument**: Change value of variable by pointer in a function
 
-```c
-#include <iostream>
-
-int a = 8;
-void foo(uintptr_t &object_ptr)
-{
-	object_ptr = (uintptr_t)&a;
-}
-```
-
-**Example**: Get address of a variable then store into a pointer
-
-Use a variable to store the address of other variable then changes that variable value with reference as function argument:
-
-```c
-#include <iostream>
+```cpp
+#include <stdio.h>
 #include <stdint.h>
 
-using namespace std;
-
 int a = 8;
-int b = 10;
 
-void foo(uintptr_t &object_ptr)
+int add_value(uintptr_t &a)
 {
-	object_ptr = (uintptr_t)&a;
+	return a+1;
 }
 
-int main()
-{
-    int* ptr;
-    ptr = &b;   
-  	cout << "*ptr: " << *ptr << endl;
-  	foo((uintptr_t&)ptr); 
-
-	  cout << "*ptr: " << *ptr << endl;
-  	return 0;
+int main(){
+   printf("a: %d\n", a);
+   printf("a: %d\n", add_value((uintptr_t&)a));
 }
 ```
