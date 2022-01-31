@@ -68,6 +68,10 @@ displayed_string.push_back('A');//Hello World !A
 
 ``string`` type has no member ``pop_back()``.
 
+**Convert other data type to string**:
+
+Using ``to_string()``: ``to_string()`` is only available in ``MS VC++``
+
 Convert ``string`` to ``const char*``
 
 ```c
@@ -85,7 +89,7 @@ int main(){
 }
 ```
 
-Unable to converted the function with ``c_str()``:
+Unable to converted the ``string`` function with ``c_str()``:
 
 ```c
 string returnedString;
@@ -104,7 +108,16 @@ int main(){
 
 ``pointerString`` is Null.
 
-**Example 2**: Convert string to ``char stringArray[100]`` using ``c_str()``
+To clear a ``string``: ``clear()``
+
+```cpp
+string displayed_string = "Hello World !";
+cout << displayed_string << endl;//Hello World !
+displayed_string.clear();
+cout << displayed_string << endl;//(NULL)
+```
+
+**Convert string to char stringArray[100] using c_str()**
 
 ```c
 #include <iostream>
