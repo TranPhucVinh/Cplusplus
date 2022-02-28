@@ -43,3 +43,22 @@ main(){
 	printf("hello");
 }
 ```
+
+## C++ standard
+
+| Standard| __cplusplus output |
+| ------- |:------:|
+|C++98    | 199711    |
+|C++11    | 201103  |
+|C++14| 201402|
+|C++17|201500 or 201703 |
+
+Environment variable ``__cplusplus`` is the C++ standard value:
+
+```cpp
+cout << __cplusplus << endl;
+```
+
+Compile G++: ``g++ test.cpp``. Result: ``199711``
+
+Compile G++ with specific standard, e.g ``C++14``: ``g++ -std=c++14 test.cpp``.  Result: ``201402``
