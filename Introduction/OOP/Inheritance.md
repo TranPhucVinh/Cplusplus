@@ -1,4 +1,36 @@
-### protect method
+## Basic inheritance example
+
+```c
+#include <iostream>
+
+using namespace std;
+
+class origin_class{
+	public:
+		void display_function(){
+			cout << "Hello World \n";
+		}
+};
+
+class derive_class: public origin_class{
+	public:
+		void derive_class_function(){
+			cout << "Derive class function\n";
+		}
+		//Function display_function() of origin_class class is redefine in derive_class class
+		void display_function(){
+			cout << "Redefined display_function() of origin_class\n";
+		}
+};
+
+main(){
+	derive_class derive_class_object;
+	derive_class_object.derive_class_function(); //Derive class function
+	derive_class_object.display_function(); //Redefined display_function() of origin_class
+}
+```
+	
+## protect method
 
 ``protected`` access modifier is similar to ``private`` access modifiers, the difference is that the class member declared as ``protected`` are inaccessible outside the class but they can be accessed by any subclass (derived class) of that class.
 
