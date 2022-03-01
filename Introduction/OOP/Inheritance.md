@@ -1,6 +1,6 @@
 ## Basic inheritance example
 
-```c
+```cpp
 #include <iostream>
 
 using namespace std;
@@ -24,7 +24,10 @@ class derive_class: public origin_class{
 };
 
 main(){
+	origin_class origin_class_object;
 	derive_class derive_class_object;
+	
+	origin_class_object.display_function();//Hello World
 	derive_class_object.derive_class_function(); //Derive class function
 	derive_class_object.display_function(); //Redefined display_function() of origin_class
 }
