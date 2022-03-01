@@ -1,5 +1,7 @@
 ### Introduction
 
+Define variable and function for a class
+
 ```cpp
 #include <iostream>
 
@@ -21,6 +23,18 @@ main(){
 	cout << object.publicNumber << endl; //10
 }
 ```
+
+**Note**: If compiling with default G++ (C++98: ``g++ test.cpp``) and GCC (``gcc test.cpp -lstd++``), there will be warning: 
+
+```
+test.cpp:33:22: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11
+   int publicNumber = 10;
+                      ^
+test.cpp:38:22: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11
+   int privateNumer = 20; //Unable to read that value outside
+```
+
+So initilize variable variable inside a class is prefered to be implemented with ``C++11`` and the above ``C++`` standard.
 
 You are unable to read private properties outside the class:
 
