@@ -50,3 +50,30 @@ int main () {
     printf("%d\n", ns2::number); //2
 }
 ```
+
+## using keyword
+
+The ``using`` keyword is used to:
+1. Bring a specific member from the namespace into the current scope.
+
+**Bring a specific member from the namespace into the current scope**
+
+Bring member ``number`` from namespace ``name_space`` into ``main()``:
+
+```c
+#include <iostream>
+
+using namespace std;
+
+namespace name_space
+{
+    int number = 2;
+}
+
+using name_space::number;
+
+int main () {
+    cout << number << endl;//2
+    cout << name_space::number << endl;//2
+}
+```
