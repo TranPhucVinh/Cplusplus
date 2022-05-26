@@ -55,22 +55,24 @@ int main () {
 
 The ``using`` keyword is used to:
 1. Bring a specific member from the namespace into the current scope.
+2. Bring all members from the namespace into the current scope.
 
-**Bring a specific member from the namespace into the current scope**
+**Example**
 
-Bring member ``number`` from namespace ``name_space`` into ``main()``:
+* Bring member ``number`` from namespace ``name_space`` into ``main()``
+* Bring the entire ``std`` namespace in the current scope
 
 ```c
 #include <iostream>
 
-using namespace std;
+using namespace std;//Bring the entire std namespace in the current scope
 
 namespace name_space
 {
     int number = 2;
 }
 
-using name_space::number;
+using name_space::number;//bringing number to current scope
 
 int main () {
     cout << number << endl;//2
