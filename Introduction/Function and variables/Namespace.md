@@ -77,3 +77,20 @@ int main () {
     cout << name_space::number << endl;//2
 }
 ```
+
+If there is a variable with the same name to namespace member, there will be error:
+
+```cpp
+int number = 1;
+
+namespace name_space
+{
+    int number = 2;
+}
+```
+
+**Error**
+
+```
+test.cpp:14:19: error: 'int name_space::number' conflicts with a previous declaration
+```
