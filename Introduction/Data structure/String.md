@@ -51,8 +51,15 @@ Add character to a string with ``+``:
 string displayString = "Hello, World ";
 cout << displayString+'!'; //Hello, World !
 ```
+**Note**: With ``+`` operator on ``string``, only character is allowed to add. Number are not allow:
 
-Using ``append()``:
+```cpp
+//This is wrong and must not be done although this give no compilation error
+cout << displayString + 123;
+```
+**Result**: ``lled after throwing an instance of '!``
+
+Using ``append()`` to append string to string:
 
 ```c
 string displayString = "Hello, World ";
