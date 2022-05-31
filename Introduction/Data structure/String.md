@@ -33,6 +33,8 @@ int main () {}
 
 ## string type
 
+``string`` type are included ``iostream``.
+
 Get character index of a string and size, length
 
 ```cpp
