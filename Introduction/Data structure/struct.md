@@ -1,49 +1,50 @@
-### Example 1
+# Fundamental concepts
 
-Split a string with the following sequence ``host`` and ``port``.
+Build a struct with variables, functions, constructor and destructor functions
 
-```c
+```cpp
 #include <iostream>
-#include <cstring>
-#include <cstdio>
-#include <unistd.h>
-
-#define STDOUT_FD 1
+#include <string.h>
 
 using namespace std;
 
-char host[19];
-char port[3];
+struct struct_data {
+	int id;
+	char displayed_string[30];
+	void no_param_func(){
+		cout << "Hello, World !" << endl;
+	}
 
-void struct_data_parsing(char *data);
+	void params_func(int a, int b){
+		cout << a+b << endl;
+	}
+
+	struct_data() {
+		cout << "Constructor function is called" << endl;
+	}
+
+	~struct_data() {
+		cout << "Destructor function is called" << endl;
+	}
+};
 
 int main() {
-	char displayed[] = "demo.thingsboard.io443";
-	struct_data_parsing(displayed);
+	struct_data object;
+
+	object.id = 1;
+	cout << object.id << endl;
+	strcpy(object.displayed_string, "Displayed string");
+	object.no_param_func();
+	object.params_func(1, 3);
 } 
-
-void struct_data_parsing(char *data){
-    struct struct_data {
-        char host[19];
-        char port[3];
-    } data_frame;
-
-    memcpy(&data_frame, data, 22);
-    strcpy(host, data_frame.host);
-    strcpy(port, data_frame.port);
-
-    write(STDOUT_FD, host, sizeof(host));
-    printf("\n");
-    write(STDOUT_FD, port, sizeof(port));
-    printf("\n");
-}
 ```
 
-**Notice**: 
+**Result**: 
 
-Using ``cout`` like this will cause error:
-
-```c
-cout << host << endl;//demo.thingsboard.io443
-cout << port << endl;//443
+```
+Constructor function is called
+1
+Hello, World !
+4
+Destructor function is called
 ```
