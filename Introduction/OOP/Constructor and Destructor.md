@@ -1,4 +1,4 @@
-### Constructor
+## Constructor
 
 A **class constructor** is a special member function of a class that is executed whenever we create new objects of that class, and have **no return value**.
 
@@ -50,7 +50,53 @@ main(){
 }
 ```
 
-### Destructor
+### Change variable value by constructor
+
+Public and private variables value can be changed by constructor with ``:`` operator:
+
+```c
+#include <iostream>
+
+using namespace std;
+
+class class_test{
+	public:
+		int public_number = 10;
+
+        //Calling this construct to change value of public_number and private_numer
+        class_test() : public_number(12), private_numer(13){
+            cout << "Constructor: \n";
+            cout << "public_number " << public_number << "; ";
+            cout << "private number " << private_numer << endl;
+        }
+
+		void get_number(){
+            cout << "Get public and private numbers: \n";
+            cout << "public_number " << public_number << "; ";
+            cout << "private_numer " << private_numer << endl;
+		}
+
+	private:
+		int private_numer = 20; //Unable to read that value outside
+};
+
+int main(){
+	class_test object;
+	object.get_number();
+	cout << object.public_number << endl; //12
+}
+```
+
+**Result**
+```
+Constructor:
+public_number 12; private number 13
+Get public and private numbers:
+public_number 12; private_numer 13
+12
+```
+
+## Destructor
 
 **What is destructor ?**
 
