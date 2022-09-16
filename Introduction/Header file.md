@@ -1,3 +1,5 @@
+## Header file with class
+
 ``header.h``
 
 ```cpp
@@ -9,13 +11,13 @@ using namespace std;
 
 class Header
 {
-  public:
-    void display();
-    void displayNumber(int number);
-    void displayRespective(int lastNumber);
-  private:
-    int _number;
-    int _lastNumber;
+	public:
+		void display();
+		void displayNumber(int number);
+		void displayRespective(int lastNumber);
+	private:
+		int _number;
+		int _lastNumber;
 };
 #endif
 
@@ -88,7 +90,7 @@ This number is 6
 Hello, World!
 ```
 
-### Define value in header file, without class
+## Define value in header file, without class
 
 **header.h**
 ```cpp
@@ -101,10 +103,10 @@ using namespace std;
 
 class Header
 {
-  public:
-    void hello();
-  private:
-    int _number;
+	public:
+		void hello();
+	private:
+		int _number;
 };
 #endif
 
