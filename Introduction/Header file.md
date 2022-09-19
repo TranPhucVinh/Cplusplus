@@ -4,9 +4,6 @@
 
 ```cpp
 #include <iostream>
-#ifndef header_h
-#define header_h
-
 using namespace std;
 
 class Header
@@ -19,18 +16,9 @@ class Header
 		int _number;
 		int _lastNumber;
 };
-#endif
 
 void helloworld();
 ```
-
-**Notice**
-
-```
-#ifndef header_h
-#define header_h
-```
-Without this line, there will be error when calling class Header in header.cpp
 
 ``header.cpp``
 
@@ -95,8 +83,6 @@ Hello, World!
 **header.h**
 ```cpp
 #include <iostream>
-#ifndef header_h
-#define header_h
 #define integerValue 190
 
 using namespace std;
@@ -108,7 +94,6 @@ class Header
 	private:
 		int _number;
 };
-#endif
 
 void helloworld();
 int value = 18;
