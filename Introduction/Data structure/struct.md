@@ -1,6 +1,6 @@
 # Fundamental concepts
 
-Build a struct with variables, functions, constructor and destructor functions
+CPP struct support variables, functions, constructor and destructor functions
 
 ```cpp
 #include <iostream>
