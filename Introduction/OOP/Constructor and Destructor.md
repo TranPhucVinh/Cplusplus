@@ -50,6 +50,52 @@ main(){
 }
 ```
 
+We can use this method to set up values for public and private variables:
+
+```c
+#include <iostream>
+
+using namespace std;
+
+class class_test{
+	public:
+		int public_number;
+        class_test(int _public_number, int _private_number){
+            public_number = _public_number;
+            private_number = _private_number;
+        }
+
+        class_test(){
+            cout << "Call constructor\n";
+        }
+
+		void get_number(){
+            cout << "Get public and private numbers: \n";
+            cout << "public_number " << public_number << "; ";
+            cout << "private_numer " << private_number << endl;
+		}
+
+	private:
+		int private_number;
+};
+
+int main(){
+	class_test object_1;
+	object_1.get_number();
+
+    class_test object_2(1, 2);
+	object_2.get_number();
+}
+```
+
+```
+Call constructor
+Get public and private numbers:
+public_number -427810560; private_numer 21946
+Get public and private numbers:
+public_number 1; private_numer 2
+```
+
 ### Change variable value by constructor
 
 Public and private variables value can be changed by constructor with ``:`` and ``()`` operator:
