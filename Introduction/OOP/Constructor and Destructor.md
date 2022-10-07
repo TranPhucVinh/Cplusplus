@@ -54,7 +54,7 @@ main(){
 
 Public and private variables value can be changed by constructor with ``:`` operator:
 
-```c
+```cpp
 #include <iostream>
 
 using namespace std;
