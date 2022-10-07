@@ -96,6 +96,56 @@ Get public and private numbers:
 public_number 1; private_numer 2
 ```
 
+### default keyword
+
+``default`` keyword, which is supported from ``C++11``, supports performing default operations like setting variables inside the default constructor. This method is useful when having multiple constructor functions:
+
+```c
+#include <iostream>
+
+using namespace std;
+
+class class_test{
+	public:
+		int public_number = 1;
+
+		class_test() = default;
+
+        class_test(int _public_number, int _private_number){
+            public_number = _public_number;
+            private_number = _private_number;
+        }
+
+		void get_number(){
+            cout << "Get public and private numbers: \n";
+            cout << "public_number " << public_number << "; ";
+            cout << "private_numer " << private_number << endl;
+		}
+
+	private:
+		int private_number = 2;
+};
+
+int main(){
+	class_test object_1;
+	object_1.get_number();
+
+    class_test object_2(3, 4);
+	object_2.get_number();
+}
+```
+	
+Result
+
+```
+Get public and private numbers:
+public_number 1; private_numer 2
+Get public and private numbers:
+public_number 3; private_numer 4
+```
+
+In this program, calling ``class_test object_1`` will call the default constructor (setup by ``class_test() = default``) to setup default value for variables.
+
 ### Change variable value by constructor
 
 Public and private variables value can be changed by constructor with ``:`` and ``()`` operator:
