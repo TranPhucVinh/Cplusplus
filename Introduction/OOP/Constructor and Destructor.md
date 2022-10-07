@@ -52,7 +52,7 @@ main(){
 
 ### Change variable value by constructor
 
-Public and private variables value can be changed by constructor with ``:`` operator:
+Public and private variables value can be changed by constructor with ``:`` and ``()`` operator:
 
 ```cpp
 #include <iostream>
@@ -61,13 +61,14 @@ using namespace std;
 
 class class_test{
 	public:
-		int public_number = 10;
+		int public_number;
+        class_test(int value){
+            public_number = value;
+        }
 
         //Calling this construct to change value of public_number and private_numer
         class_test() : public_number(12), private_numer(13){
-            cout << "Constructor: \n";
-            cout << "public_number " << public_number << "; ";
-            cout << "private number " << private_numer << endl;
+            return;
         }
 
 		void get_number(){
@@ -77,23 +78,24 @@ class class_test{
 		}
 
 	private:
-		int private_numer = 20; //Unable to read that value outside
+		int private_numer = 2;
 };
 
 int main(){
-	class_test object;
-	object.get_number();
-	cout << object.public_number << endl; //12
+	class_test object_1;
+	object_1.get_number();
+
+    class_test object_2(1);
+	object_2.get_number();
 }
 ```
 
 **Result**
 ```
-Constructor:
-public_number 12; private number 13
 Get public and private numbers:
 public_number 12; private_numer 13
-12
+Get public and private numbers:
+public_number 1; private_numer 2
 ```
 
 ## Destructor
