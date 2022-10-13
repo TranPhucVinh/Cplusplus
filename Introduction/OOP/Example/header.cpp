@@ -19,6 +19,10 @@ void exampleClass::add_number(int int_param){
     Calling static void exampleClass::read_static_var() results in compilation error
 */
 void exampleClass::read_static_var(){
+	/*
+		Non-static variable instance_var can't be called inside this static function
+		Non-static function add_number() can't be called inside this static function
+	*/
 	static_var = 190;
 	cout << static_var;
 }
