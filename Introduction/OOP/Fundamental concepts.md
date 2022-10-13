@@ -57,7 +57,9 @@ So this will give error: ``cout << object.privateNumber << endl;``
 
 **Static variables**
 
-* Static variables can be defined with: ``className::staticVariable = value``
+Static variables exist as members of the class rather than as an instance in each object of the class. There is only a single instance of each static data member for the entire class.
+
+Static variables can be defined with: ``className::staticVariable = value``
 
 Example:
 
