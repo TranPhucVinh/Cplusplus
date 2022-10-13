@@ -1,4 +1,4 @@
-### Introduction
+## Introduction
 
 Define variable and function for a class
 
@@ -45,7 +45,7 @@ private:
 
 So this will give error: ``cout << object.privateNumber << endl;``
 
-### Types of variables in class
+## Types of variables in class
 
 * Instance variables
 * Static variables
@@ -125,3 +125,6 @@ using namespace std;
 
 int Header::a = 10;
 ```
+## Types of functions in class
+
+Non-static member functions can access all data members (static and non-static variables) of the class. Example: Check ``addNumber()`` function in [header.cpp](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/OOP/Example/header.cpp)
