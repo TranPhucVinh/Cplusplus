@@ -9,6 +9,16 @@ void exampleClass::class_constructor(){
 
 void exampleClass::add_number(int int_param){
     _int_param = 10;
-    int return_val = int_param + _int_param + static_var;
+	instance_var = 11;
+    int return_val = int_param + _int_param + static_var + instance_var;
     cout << "return value: " << return_val << endl;
+}
+
+/*
+    Must not put storage class static here
+    Calling static void exampleClass::read_static_var() results in compilation error
+*/
+void exampleClass::read_static_var(){
+	static_var = 190;
+	cout << static_var;
 }
