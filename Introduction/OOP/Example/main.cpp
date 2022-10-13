@@ -2,6 +2,6 @@
 
 main(){
 	exampleClass object;
-	object.exampleClassConstructor();
-    object.addNumber(13);
+	object.class_constructor();
+    object.add_number(13);
 }
