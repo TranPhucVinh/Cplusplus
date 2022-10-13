@@ -1,6 +1,10 @@
 #include "header.h"
 using namespace std;
 
+/*
+    Must not put storage class static here
+    Calling static int exampleClass::static_var results in compilation error
+*/
 int exampleClass::static_var = 10;
 
 void exampleClass::class_constructor(){
