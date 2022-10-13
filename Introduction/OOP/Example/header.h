@@ -6,12 +6,13 @@ using namespace std;
 
 class exampleClass
 {
-  public:
-    static int staticVariable;
-    int instanceVariable;
-    void exampleClassConstructor();
-    void addNumber(int intParameter);
-  private:  
-    int _intParameter;
+  	public:
+		static int 	static_var;
+		static void read_var();
+		int 		instance_var;
+		void 		class_constructor();
+		void 		add_number(int int_param);
+  	private:  
+    	int 		_int_param;
 };
 #endif
