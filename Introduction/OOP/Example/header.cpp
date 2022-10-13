@@ -1,14 +1,14 @@
 #include "header.h"
 using namespace std;
 
-int exampleClass::staticVariable = 10;
+int exampleClass::static_var = 10;
 
-void exampleClass::exampleClassConstructor(){
+void exampleClass::class_constructor(){
     cout << "Example class constructor" << endl;
 }
 
-void exampleClass::addNumber(int intParameter){
-    _intParameter = 10;
-    int returnInt = intParameter + _intParameter + staticVariable;
-    cout << "returnInt: " << returnInt << endl;
+void exampleClass::add_number(int int_param){
+    _int_param = 10;
+    int return_val = int_param + _int_param + static_var;
+    cout << "return value: " << return_val << endl;
 }
