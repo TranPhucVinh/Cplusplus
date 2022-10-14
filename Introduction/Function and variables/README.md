@@ -1,6 +1,6 @@
 ## Fundamental concepts
 
-* [Initializer List](#Initializer%20list)
+* [Initializer list](#initializer-list)
 * [Function overloading and function default arguments](Function.md)
 * [Namespace](Namespace.md)
 * [Template](Template.md)
