@@ -1,4 +1,4 @@
-``template`` are expanded at compiler time. This is like macros. The difference is, the compiler does type checking before ``template`` expansion. The idea is simple, source code contains only function/class, but compiled code may contain multiple copies of same function/class. 
+``template`` is used to pass data type as a parameter so that we don’t need to write the same code for different data types. ``template`` are expanded at compiler time. This is like macros. The difference is, the compiler does type checking before ``template`` expansion. The idea is simple, source code contains only function/class, but compiled code may contain multiple copies of same function/class. 
 
 **Example**: Using ``template`` for data type
 
