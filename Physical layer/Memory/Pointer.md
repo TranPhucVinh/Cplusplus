@@ -29,7 +29,18 @@ classTest *pointer_object;
 cout << pointer_object->public_number << endl;//Segmentation fault
 ```
 
-# Reference as function argument
+# Reference declaration
+
+By using ``&b`` reference declaration, ``&b`` will store the address of ``a`` (as ``&a``):
+
+```c
+int a = 9;
+int &b = a;
+std::cout << a << " " << b << std::endl; //9 9
+std::cout << &a << " " << &b << std::endl;//0x72fe04 0x72fe04
+```
+
+### Reference as function argument
 
 Change value of variable by pointer in a function
 
