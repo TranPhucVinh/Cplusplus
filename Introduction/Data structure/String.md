@@ -176,6 +176,25 @@ int main() {
 
 After forming with ``ss2.str()``, ``ss2`` can't be appended with ``<<``
 
+**Forming stringstream when using int and uint8_t**:
+
+```c
+stringstream ss1, ss2;
+int int_value = 123;
+uint8_t value = 48;
+
+int main() {
+	ss1 << "ss1 " << value;
+	cout << ss1.str() << endl;//ss1 0
+
+	ss2 << "ss2 " << int_value;
+	cout << ss2.str() << endl;//ss2 123
+
+}
+```
+
+Note that ``ss2 << "ss2 " << int_value`` will concatenate the string ``ss2`` and int value ``int_value`` normally while ``ss1 << "ss1 " << value`` will convert the ``uint8_t value`` ``48`` to its ASCII symbol ``0`` then perform converting to ``ss1 0``.
+
 For clearing the contents of a stringstream, using: ``ss.str("")``
 
 Value formed by stringsteam can be splitted by ``space``.
