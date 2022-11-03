@@ -81,7 +81,7 @@ displayed_string.push_back('A');//Hello World !A
 
 Using ``to_string()``: ``to_string()`` is only available in ``MS VC++``
 
-Convert ``string`` to ``const char*``
+Convert ``string`` to ``const char*`` using c_str():
 
 ```c
 #include <iostream>
