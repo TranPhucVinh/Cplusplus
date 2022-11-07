@@ -81,6 +81,8 @@ displayed_string.push_back('A');//Hello World !A
 
 ``string`` type has no member ``pop_back()``.
 
+## Update
+
 **Convert other data type to string**:
 
 Using ``to_string()``: ``to_string()`` is only available in ``MS VC++``
@@ -121,14 +123,6 @@ int main(){
 
 ``pointerString`` is Null.
 
-To clear a ``string``: ``clear()``
-
-```cpp
-string displayed_string = "Hello World !";
-cout << displayed_string << endl;//Hello World !
-displayed_string.clear();
-cout << displayed_string << endl;//(NULL)
-```
 
 **Convert string to char stringArray[100] using c_str()**
 
@@ -153,6 +147,17 @@ int main(){
     strcpy(stringArray, tempConstantString);
     cout << stringArray;
 }
+```
+
+## Delete
+
+To clear a ``string``, using ``clear()``:
+
+```cpp
+string displayed_string = "Hello World !";
+cout << displayed_string << endl;//Hello World !
+displayed_string.clear();
+cout << displayed_string << endl;//(NULL)
 ```
  
 # stringstream
