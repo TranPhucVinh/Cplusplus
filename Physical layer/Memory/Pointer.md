@@ -40,6 +40,14 @@ std::cout << a << " " << b << std::endl; //9 9
 std::cout << &a << " " << &b << std::endl;//0x72fe04 0x72fe04
 ```
 
+Reference declarion for ``std::string``:
+
+```c
+const std::string& str = "Hello, World !";//Must define with const
+cout << str << endl;//Hello, World !
+cout << &str << endl;//0x4d5060
+```
+
 ### Reference as function argument
 
 Change value of variable by pointer in a function
