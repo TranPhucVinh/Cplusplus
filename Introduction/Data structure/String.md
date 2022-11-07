@@ -72,6 +72,12 @@ cout << displayString + 123;
 ```
 **Result**: ``lled after throwing an instance of '!``
 
+
+
+## Update
+
+### Append string
+
 Using ``append()`` to append string to string:
 
 ```cpp
@@ -90,9 +96,7 @@ displayed_string.push_back('A');//Hello World !A
 
 ``string`` type has no member ``pop_back()``.
 
-## Update
-
-**Convert other data type to string**:
+### Convert other data type to string
 
 Using ``to_string()``: ``to_string()`` is only available in ``MS VC++``
 
