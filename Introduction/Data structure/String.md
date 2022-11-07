@@ -7,7 +7,7 @@ cout << displayString;
 
 ## Char pointer for string
 
-```c
+```cpp
 char *displayedString;
 
 int main(){
@@ -24,7 +24,7 @@ warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-stri
 
 Compile error with G++ and GCC:
 
-```c
+```cpp
 char *displayedString;
 displayedString = "Hello, World ! txt";
 
@@ -61,7 +61,7 @@ cout << displayString + 123;
 
 Using ``append()`` to append string to string:
 
-```c
+```cpp
 string displayString = "Hello, World ";
 
 cout << displayString.append("!") << endl; //Hello, World !
@@ -83,7 +83,7 @@ Using ``to_string()``: ``to_string()`` is only available in ``MS VC++``
 
 Convert ``string`` to ``const char*`` using c_str():
 
-```c
+```cpp
 #include <iostream>
 
 using namespace std;
@@ -151,6 +151,8 @@ int main(){
 }
 ```
 
+**Define string with Reference declaration**: [const std::string& str = "Hello, World !";](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/Pointer.md#reference-declaration)
+ 
 ## stringstream
 
 ``stringstream`` is a stream that doesn't do IO operation. It is used to read and write string
