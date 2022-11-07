@@ -1,11 +1,11 @@
-## Char array for string
+# Char array for string
 
 ```cpp
 char displayString[] = "Hello, World !";
 cout << displayString;
 ```
 
-## Char pointer for string
+# Char pointer for string
 
 ```cpp
 char *displayedString;
@@ -31,7 +31,9 @@ displayedString = "Hello, World ! txt";
 int main () {}
 ```
 
-## string type
+# string type
+
+## Create and read
 
 ``string`` type are included ``iostream``.
 
@@ -44,6 +46,8 @@ cout << displayed_string[0] << endl; //H
 cout << displayed_string.size() << endl;//13
 cout << displayed_string.length() << endl;//13
 ```
+
+**Define string with reference declaration**: [const std::string& str = "Hello, World !";](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/Pointer.md#reference-declaration)
 
 Add character to a string with ``+``:
 
@@ -150,10 +154,8 @@ int main(){
     cout << stringArray;
 }
 ```
-
-**Define string with Reference declaration**: [const std::string& str = "Hello, World !";](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/Pointer.md#reference-declaration)
  
-## stringstream
+# stringstream
 
 ``stringstream`` is a stream that doesn't do IO operation. It is used to read and write string
 
