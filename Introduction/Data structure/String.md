@@ -49,6 +49,15 @@ cout << displayed_string.length() << endl;//13
 
 **Define string with reference declaration**: [const std::string& str = "Hello, World !";](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/Pointer.md#reference-declaration)
 
+Append a reference declaration string with ``+``:
+
+```c
+string appended = "123";
+const std::string& str = "Hello, World !";//Must define with const
+cout << str + appended << endl;//Hello, World !123
+cout << str + " 456" << endl;//Hello, World ! 456
+```
+
 Add character to a string with ``+``:
 
 ```cpp
