@@ -58,7 +58,7 @@ cout << str + appended << endl;//Hello, World !123
 cout << str + " 456" << endl;//Hello, World ! 456
 ```
 
-Add character to a string with ``+``:
+Add character to a string with ``+`` to read:
 
 ```cpp
 string displayString = "Hello, World ";
@@ -95,6 +95,14 @@ displayed_string.push_back('A');//Hello World !A
 ```
 
 ``string`` type has no member ``pop_back()``.
+
+Using ``+`` to append an existing string (same operation for a new empty string):
+
+```c
+string displayString = "Hello, World ";
+displayString += "123";
+cout << displayString << endl;//Hello, World 123
+```
 
 ### Convert other data type to string
 
