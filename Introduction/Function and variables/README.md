@@ -22,3 +22,17 @@ int main()
     return 0;
 }
 ```
+
+## algorithm library header
+
+```c
+#include <iostream>
+#include <algorithm>//For min_element
+
+using namespace std;
+
+int main() {
+	int a = std::min(12, 34);
+	cout << a << endl;
+}
+```
