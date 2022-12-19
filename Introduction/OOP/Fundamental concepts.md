@@ -1,4 +1,4 @@
-## Introduction
+# Introduction
 
 Define variable and function for a class
 
@@ -36,16 +36,20 @@ test.cpp:38:22: warning: non-static data member initializers only available with
 
 So initilize variable variable inside a class is prefered to be implemented with ``C++11`` and the above ``C++`` standard.
 
-You are unable to read private properties outside the class:
+## Private variables
+
+Private variables are available only inside the class function definition (check [examples](https://github.com/TranPhucVinh/Cplusplus/tree/master/Introduction/OOP/Example) for that implementation), class object is unable to access it
+
+In the example above, class object ``object`` is unable to read private variable ``privateNumer``:
 
 ```cpp
 private:
-    int privateNumer = 20; //Unable to read 
+    int privateNumer = 20; //Unable to read that value outside
 ```
 
 So this will give error: ``cout << object.privateNumber << endl;``
 
-## Types of variables in class
+# Types of variables in class
 
 * Instance variables
 * Static variables
@@ -129,7 +133,7 @@ using namespace std;
 
 int Header::a = 10;
 ```
-## Types of functions in class
+# Types of functions in class
 
 Non-static member functions can access all data members (static and non-static variables) of the class. Example: Check ``add_number()`` function in [header.cpp](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/OOP/Example/header.cpp)
 
