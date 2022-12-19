@@ -135,9 +135,11 @@ int Header::a = 10;
 ```
 # Types of functions in class
 
-Non-static member functions can access all data members (static and non-static variables) of the class. Example: Check ``add_number()`` function in [header.cpp](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/OOP/Example/header.cpp)
+**Private function** can't be access outside the class internal definition and can only be called from outisde the class by public functions. Check ``call_private_function()`` function in [header.cpp](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/OOP/Example/header.cpp)
 
-Static member functions can only operate on the static variables, static functions and variables and functions outside the class. It can't call non-static variables and non-static functions. Example: Check ``read_static_var()`` function in [header.cpp](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/OOP/Example/header.cpp). Also note that defining function ``read_static_var()`` inside the CPP source file must not have ``static`` storage class.
+**Non-static member functions** can access all data members (static and non-static variables) of the class. Example: Check ``add_number()`` function in [header.cpp](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/OOP/Example/header.cpp)
+
+**Static member functions** can only operate on the static variables, static functions and variables and functions outside the class. It can't call non-static variables and non-static functions. Example: Check ``read_static_var()`` function in [header.cpp](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/OOP/Example/header.cpp). Also note that defining function ``read_static_var()`` inside the CPP source file must not have ``static`` storage class.
 
 Static member functions works with variables and functions outside the class like this example:
 
