@@ -28,5 +28,13 @@ void exampleClass::read_static_var(){
 		Non-static function add_number() can't be called inside this static function
 	*/
 	static_var = 190;
-	cout << static_var;
+	cout << static_var << endl;
+}
+
+void exampleClass::call_private_function(){
+    display_string();
+}
+
+void exampleClass::display_string(){
+    cout << "Private function can only be called inside public function" << endl;
 }
