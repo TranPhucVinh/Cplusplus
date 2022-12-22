@@ -92,7 +92,7 @@ json json_obj = json::parse(fileStream);
 std::cout << json_obj << std::endl;//Print out the whole JSON object
 ```    
 
-Getting JSON value by array with key can't be used for conditional check:
+Getting JSON value by array with key can't be used for operator (e.g ``+``, ``-``,...):
 
 ```cpp
 json json_obj = {
@@ -100,16 +100,16 @@ json json_obj = {
     {"id",123}
 };
 
-if ((json_obj["id"] - 1) == 122) std::cout << "Equal";
+int id = json_obj["id"] + 1;
 ```
 **Result**: This will be error
 
 ```
-main.cpp:14:27: note:   ‘nlohmann::basic_json<>::value_type’ {aka ‘nlohmann::basic_json<>’} is not derived from ‘const __gnu_cxx::__normal_iterator<_IteratorL, _Container>’
-   14 |     if ((json_obj["id"] - 1) == 122) std::cout << "Equal";
+main.cpp:14:31: note:   mismatched types ‘const std::_Expr<_Dom1, typename _Dom1::value_type>’ and ‘int’
+   14 |     int id = json_obj["id"] + 1;
 ```
 
-Getting JSON value by ``value()`` can be used for conditonal check normally:
+Getting JSON value by ``value()`` can be used for operator normally:
 
 ```cpp
 //This work normally
@@ -117,7 +117,7 @@ json json_obj = {
     {"name","Username"},
     {"id",123}
 };
-if ((json_obj.value("id", 456) - 1) == 122) std::cout << "Equal";//Equal
+int id = json_obj.value("id", 456) + 1;//id will be 124
 ```
 
 ## Update JSON element
