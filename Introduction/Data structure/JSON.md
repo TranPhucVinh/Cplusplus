@@ -92,6 +92,34 @@ json json_obj = json::parse(fileStream);
 std::cout << json_obj << std::endl;//Print out the whole JSON object
 ```    
 
+Getting JSON value by array with key can't be used for conditional check:
+
+```cpp
+json json_obj = {
+    {"name","Username"},
+    {"id",123}
+};
+
+if ((json_obj["id"] - 1) == 122) std::cout << "Equal";
+```
+**Result**: This will be error
+
+```
+main.cpp:14:27: note:   ‘nlohmann::basic_json<>::value_type’ {aka ‘nlohmann::basic_json<>’} is not derived from ‘const __gnu_cxx::__normal_iterator<_IteratorL, _Container>’
+   14 |     if ((json_obj["id"] - 1) == 122) std::cout << "Equal";
+```
+
+Getting JSON value by ``value()`` can be used for conditonal check normally:
+
+```cpp
+//This work normally
+json json_obj = {
+    {"name","Username"},
+    {"id",123}
+};
+if ((json_obj.value("id", 456) - 1) == 122) std::cout << "Equal";//Equal
+```
+
 ## Update JSON element
 
 Using array key:
