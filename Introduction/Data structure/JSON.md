@@ -34,6 +34,12 @@ int main()
     return 0;
 }
 ```
+**Result**
+```
+{"id":123,"name":"Username"}
+name: Username
+ID: 123
+```
 
 Create by array type:
 
