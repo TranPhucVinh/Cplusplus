@@ -6,6 +6,8 @@ Install on Ubuntu 20.04
 sudo apt-get install nlohmann-json3-dev
 ```
 
+# Implementation
+
 ## Create and read a JSON object
 
 Create by [initializer lists](https://github.com/TranPhucVinh/Cplusplus/tree/master/Introduction/Function%20and%20variables#initializer-list):
@@ -49,8 +51,54 @@ for (auto& el : json_obj.items()) {
 // std::cout << "name: " << json_obj["name"] << std::endl;
 // std::cout << "ID: " << json_obj["id"] << std::endl;           
 ```
+## Read JSON element by key
 
-## API
+Read JSON element by key with ``value()``. If that read key not existed, return the default value.
+
+```cpp
+json json_obj = {
+    {"name","Username"},
+    {"id",123}
+};
+
+std::string name = json_obj.value("name", "Default string");
+int id = json_obj.value("id", 456);
+int not_existed_id = json_obj.value("not_existed_id", 789);
+
+std::cout << "name: " << name << std::endl;
+std::cout << "ID: " << id << std::endl;           
+std::cout << "Not existed JSON element will be printed out with default value:" << not_existed_id << std::endl;           
+```
+**Result**
+```
+name: Username
+ID: 123
+Not existed JSON element will be printed out with default value:789
+```
+
+## Update JSON element
+
+Using array key:
+
+```cpp
+json json_obj = {
+    {"name","Username"},
+    {"id",123}
+};
+
+std::cout << json_obj << std::endl;
+
+json_obj["name"] = "New string value";
+json_obj["id"] = 456;
+
+std::cout << json_obj << std::endl;
+```
+**Result**
+```
+{"id":123,"name":"Username"}
+{"id":456,"name":"New string value"}
+```
+# API
 
 ### items(), key() and value()
 
@@ -60,3 +108,22 @@ iteration_proxy<const_iterator> items() const noexcept;
 ```
 
 This function allows accessing iterator::key() and iterator::value() during range-based for loops. In these loops, a reference to the JSON values is returned, so there is no access to the underlying iterator.
+
+## ValueType value()
+
+```cpp
+template<class ValueType>
+ValueType value(const typename object_t::key_type& key, ValueType&& default_value) const;
+```
+
+Returns either a copy of an object's element at the specified key key or a given default value if no element with key key exists.
+
+The function is basically equivalent to executing:
+
+```cpp
+try {
+   return at(key);
+} catch(out_of_range) {
+   return default_value;
+}
+```
