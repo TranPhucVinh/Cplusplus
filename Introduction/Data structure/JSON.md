@@ -76,6 +76,16 @@ ID: 123
 Not existed JSON element will be printed out with default value:789
 ```
 
+Read the whole JSON from a file
+
+```cpp
+#include <fstream>
+
+std::fstream fileStream("config.json");
+json json_obj = json::parse(fileStream);
+std::cout << json_obj << std::endl;//Print out the whole JSON object
+```    
+
 ## Update JSON element
 
 Using array key:
