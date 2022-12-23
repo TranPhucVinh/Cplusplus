@@ -92,6 +92,29 @@ json json_obj = json::parse(fileStream);
 std::cout << json_obj << std::endl;//Print out the whole JSON object
 ```    
 
+## Update JSON element
+
+Using array key:
+
+```cpp
+json json_obj = {
+    {"name","Username"},
+    {"id",123}
+};
+
+std::cout << json_obj << std::endl;
+
+json_obj["name"] = "New string value";
+json_obj["id"] = 456;
+
+std::cout << json_obj << std::endl;
+```
+**Result**
+```
+{"id":123,"name":"Username"}
+{"id":456,"name":"New string value"}
+```
+
 Getting JSON value by array with key can't be used for operator (e.g ``+``, ``-``,...):
 
 ```cpp
@@ -120,28 +143,6 @@ json json_obj = {
 int id = json_obj.value("id", 456) + 1;//id will be 124
 ```
 
-## Update JSON element
-
-Using array key:
-
-```cpp
-json json_obj = {
-    {"name","Username"},
-    {"id",123}
-};
-
-std::cout << json_obj << std::endl;
-
-json_obj["name"] = "New string value";
-json_obj["id"] = 456;
-
-std::cout << json_obj << std::endl;
-```
-**Result**
-```
-{"id":123,"name":"Username"}
-{"id":456,"name":"New string value"}
-```
 # API
 
 ### items(), key() and value()
