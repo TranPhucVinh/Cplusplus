@@ -154,7 +154,7 @@ iteration_proxy<const_iterator> items() const noexcept;
 
 This function allows accessing iterator::key() and iterator::value() during range-based for loops. In these loops, a reference to the JSON values is returned, so there is no access to the underlying iterator.
 
-## ValueType value()
+### ValueType value()
 
 ```cpp
 template<class ValueType>
