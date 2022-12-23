@@ -47,7 +47,7 @@ for (auto& el : json_obj.items()) {
 // std::cout << "name: " << json_obj["name"] << std::endl;
 // std::cout << "ID: " << json_obj["id"] << std::endl;           
 ```
-# Read JSON element by key
+# Read JSON element
 
 ## value()
 
@@ -133,7 +133,7 @@ std::fstream fileStream("config.json");
 json json_obj = json::parse(fileStream);
 std::cout << json_obj << std::endl;//Print out the whole JSON object
 ```    
-## Update JSON element
+# Update JSON element
 
 Using array key:
 
