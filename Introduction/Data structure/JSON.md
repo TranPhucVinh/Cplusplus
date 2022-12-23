@@ -59,6 +59,8 @@ for (auto& el : json_obj.items()) {
 ```
 ## Read JSON element by key
 
+### value()
+
 Read JSON element by key with ``value()``. If that read key not existed, return the default value.
 
 ```cpp
@@ -82,7 +84,34 @@ ID: 123
 Not existed JSON element will be printed out with default value:789
 ```
 
-Read array as JSON element: Must use array type read
+### Get JSON element's type
+
+Use this comparison method (``==``) as a way to get JSON element's type
+
+```cpp
+json json_obj = {
+    {"name","Username"},
+    {"id",123}
+};
+
+std::cout << (json_obj["name"].type() == json::value_t::string) << std::endl;//1
+std::cout << (json_obj["id"].type() == json::value_t::number_integer) << std::endl;//1
+```
+``type()`` can't be gotten by ``cout``. This will cause error
+
+```cpp
+std::cout << json_obj["name"].type() << std::endl;
+```
+
+**Error**
+
+```
+‘std::ostream’ {aka ‘std::basic_ostream<char>’} is not derived from ‘const std::valarray<_Tp>’
+```
+
+### Read array as JSON element
+
+Must use array type read:
 
 ```cpp
 json json_obj = {
@@ -105,7 +134,7 @@ int val = json_obj.value("array", 123)[0];
 error: invalid types ‘int[int]’ for array subscript
 ```
 
-Read the whole JSON from a file
+### Read the whole JSON from a file
 
 ```cpp
 #include <fstream>
