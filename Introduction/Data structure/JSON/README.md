@@ -8,6 +8,9 @@ sudo apt-get install nlohmann-json3-dev
 
 # Implementations
 
+* [Create](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/Data%20structure/JSON/Implementations.md#create-and-read-a-json-object)
+* [Read](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/Data%20structure/JSON/Implementations.md#read-json-element)
+* [Update](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/Data%20structure/JSON/Implementations.md#update-json-element)
 
 # API
 
