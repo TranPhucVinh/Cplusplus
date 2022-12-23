@@ -82,6 +82,29 @@ ID: 123
 Not existed JSON element will be printed out with default value:789
 ```
 
+Read array as JSON element: Must use array type read
+
+```cpp
+json json_obj = {
+        {"array", {1, 2, 3, 4}}
+};
+
+
+int val = json_obj["array"][0];
+std::cout << "val: " << val << std::endl;//1
+```
+
+``value()`` can't be used to read as it has operator-overloading error:
+
+```cpp
+//This will cause error
+int val = json_obj.value("array", 123)[0];
+```
+**Error**
+```
+error: invalid types ‘int[int]’ for array subscript
+```
+
 Read the whole JSON from a file
 
 ```cpp
