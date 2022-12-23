@@ -72,6 +72,8 @@ int main()
 }
 ```
 
+``fileStream.fail()`` return ``1`` if file not existed and ``0`` if file existed.
+
 Or: 
 
 ```c
