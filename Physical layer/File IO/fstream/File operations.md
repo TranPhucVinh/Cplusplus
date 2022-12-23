@@ -58,9 +58,14 @@ Write with ``fstream()``
 #include <fstream>
 using namespace std;
 
+#define FILE_NAME   "text.txt"
 int main()
 {
-	fstream fileStream("text.txt");//File text.txt must exist
+	fstream fileStream(FILE_NAME);
+    if (fileStream.fail()) {//Use .fail() to check if FILE_NAME existed
+        cout << "File " << FILE_NAME << " not existed\n";
+        return 0;
+    }
     fileStream << "Hello, World !";
     fileStream.close();
     return 0;
