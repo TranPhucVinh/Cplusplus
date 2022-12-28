@@ -15,3 +15,7 @@ Example: ``header.hpp``
 #define header_hpp
 //Other definitions go here
 ```
+
+# Examples
+
+[Examples](Examples)
