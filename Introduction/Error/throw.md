@@ -1,3 +1,5 @@
+# throw int number
+
 ```c
 void throw_in_function(){
     float number = 1;
@@ -50,6 +52,23 @@ terminate called after throwing an instance of 'int'
 ```
 
 String ``Flow after throw() will not printed out`` will not print out.
+
+# throw string
+
+```c
+#include <iostream>
+
+int main(){
+    throw("Hello, World !");
+}
+```
+**Result**
+
+```
+terminate called after throwing an instance of 'char const*'
+```
+
+# throw runtime_error()
 
 Add customize throw message with ``runtime_error``:
 
