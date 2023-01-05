@@ -29,11 +29,15 @@ classTest *pointer_object;
 cout << pointer_object->public_number << endl;//Segmentation fault
 ```
 
-# Reference declaration
+# lvalue reference
+
+## lvalue reference declaration
+
+lvalue reference can be defined with ``int &`` and ``uintptr_t``.
 
 By using ``&b`` reference declaration, ``&b`` will store the address of ``a`` (as ``&a``).
 
-Pointer can be defined with ``uintptr_t`` (as unsigned int pointer): ``uintptr_t *c`` 
+Pointer can be defined with ``uintptr_t`` (as ``unsigned int pointer``): ``uintptr_t *c`` 
 
 ```cpp
 int a = 9;
@@ -58,7 +62,7 @@ cout << str << endl;//Hello, World !
 cout << &str << endl;//0x4d5060
 ```
 
-# Reference as function argument with ``uintptr_t``
+## lvalue reference as function argument with uintptr_t
 
 Change value of variable by pointer in a function. 
 
@@ -95,9 +99,11 @@ int main(){
    printf("a: %d\n", add_value((uintptr_t&)a));//9
 }
 ```
-# Double address operator
+# rvalue reference
 
-``&&`` is new in C++11. ``int&& a`` means "a" is an r-value reference. It can also define with ``int &&a```.
+rvalue reference is unofficially called as double address operator. rvalue reference can be defined with ``int &&`` and ``int &&a``.
+
+``&&`` is new in C++11. ``int&& a`` means "a" is an r-value reference.
 
 Compile: ``g++ main.c -std=c++11``
 
