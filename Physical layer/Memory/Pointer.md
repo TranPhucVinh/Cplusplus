@@ -58,9 +58,11 @@ cout << str << endl;//Hello, World !
 cout << &str << endl;//0x4d5060
 ```
 
-### Reference as function argument
+### Reference as function argument with ``uintptr_t``
 
-Change value of variable by pointer in a function
+Change value of variable by pointer in a function. 
+
+Using ``uintptr_t*``:
 
 ```cpp
 #include <stdio.h>
@@ -68,6 +70,21 @@ Change value of variable by pointer in a function
 
 int a = 8;
 
+int add_value(uintptr_t *a)
+{
+	return *a+1;
+}
+
+int main(){
+   printf("a: %d\n", a);//8
+   printf("a: %d\n", add_value((uintptr_t*)&a));//9
+}
+```
+
+Using ``uintptr_t&``:
+
+```cpp
+int a = 8;
 int add_value(uintptr_t &a)
 {
 	return a+1;
