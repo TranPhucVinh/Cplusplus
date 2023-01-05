@@ -1,6 +1,6 @@
 ``template`` is used to pass data type as a parameter so that we don’t need to write the same code for different data types. ``template`` are expanded at compiler time. This is like macros. The difference is, the compiler does type checking before ``template`` expansion. The idea is simple, source code contains only function/class, but compiled code may contain multiple copies of same function/class. 
 
-# Using ``template`` for data type
+# Using template for data type
 
 ```c
 #include <iostream>
@@ -29,6 +29,24 @@ dummy_type is f
 
 ```c
 template <typename dummy_type> dummy_type add_function(dummy_type a, dummy_type b){}
+```
+
+## Note
+
+Function definition must be followed right after ``template <typename>``. If not like this case, there will be error:
+
+```c
+template <typename dummy_type>
+void dummy_func();
+dummy_type add_function(dummy_type a, dummy_type b){
+}
+```
+    
+**Error**
+
+```
+main.cpp:6:1: error: 'dummy_type' does not name a type
+ dummy_type add_function(dummy_type a, dummy_type b){
 ```
 
 # Using template typename along with other type
