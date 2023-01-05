@@ -24,3 +24,9 @@ dummy_type is i
 dummy_type is f
 4.60
 ```
+
+``template`` can be defined in the same line of the function:
+
+```c
+template <typename dummy_type> dummy_type add_function(dummy_type a, dummy_type b){}
+```
