@@ -125,3 +125,22 @@ printf("&&b: %d", &&b);//This will result in error
 main.c:13:25: error: label 'a' used but not defined
 main.c:14:25: error: label 'b' used but not defined
 ```
+
+Double address operator as function argument: As double address is intended for rvalue, so the value passing to it must be rvalue
+
+```c
+#include <stdio.h>
+
+int func(int&& a)
+{
+    return a+1;
+}
+
+int main()
+{   
+    int a = 4;
+    printf("%d\n", func(3));//4
+    printf("%d\n", func(a-0));//5
+    printf("%d\n", func(a+1));//6
+}
+```
