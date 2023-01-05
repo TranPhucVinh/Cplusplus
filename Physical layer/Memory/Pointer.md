@@ -58,7 +58,7 @@ cout << str << endl;//Hello, World !
 cout << &str << endl;//0x4d5060
 ```
 
-### Reference as function argument with ``uintptr_t``
+# Reference as function argument with ``uintptr_t``
 
 Change value of variable by pointer in a function. 
 
@@ -93,5 +93,22 @@ int add_value(uintptr_t &a)
 int main(){
    printf("a: %d\n", a);//8
    printf("a: %d\n", add_value((uintptr_t&)a));//9
+}
+```
+# Double address operator
+
+``&&`` is new in C++11. ``int&& a`` means "a" is an r-value reference. It can also define with ``int &&a```.
+
+Compile: ``g++ main.c -std=c++11``
+
+```c
+#include <stdio.h>
+
+int main()
+{
+    int&& a = 1;//Define with int&&   
+    int &&b = 2;//Define with int &&
+    printf("a: %d, &a: %d\n", a, &a);//a: 1, &a: 6487560
+    printf("a: %d, &b: %d\n", b, &b);//a: 2, &b: 6487564
 }
 ```
