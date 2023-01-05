@@ -109,7 +109,7 @@ int main()
     int&& a = 1;//Define with int&&   
     int &&b = 2;//Define with int &&
     printf("a: %d, &a: %d\n", a, &a);//a: 1, &a: 6487560
-    printf("a: %d, &b: %d\n", b, &b);//a: 2, &b: 6487564
+    printf("b: %d, &b: %d\n", b, &b);//b: 2, &b: 6487564
 }
 ```
 
