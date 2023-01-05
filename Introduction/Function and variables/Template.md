@@ -49,6 +49,30 @@ main.cpp:6:1: error: 'dummy_type' does not name a type
  dummy_type add_function(dummy_type a, dummy_type b){
 ```
 
+## Multiple template used for functions
+
+Based on the [note](#note), multiple template used for functions must be like this:
+
+```cpp
+#include <iostream>
+#include <typeinfo>
+
+template <typename dummy_type> dummy_type add_function(dummy_type a, dummy_type b){
+    return a + b;
+}
+
+template <typename dummy_type> dummy_type display_value(dummy_type a){
+    std::cout << "a: " << a << std::endl;
+}
+
+int main () {
+    printf("%d\n", add_function<int>(1, 2));//3
+    printf("%.2f\n", add_function<float>(1.2, 3.4));//4.6
+    display_value<int>(1);//a: 1
+    display_value<std::string>("Hello, World !");//a: Hello, World !
+}
+```
+
 # Using template typename along with other type
 
 ```c
