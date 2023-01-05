@@ -64,7 +64,7 @@ int add_value(uintptr_t &a)
 }
 
 int main(){
-   printf("a: %d\n", a);
-   printf("a: %d\n", add_value((uintptr_t&)a));
+   printf("a: %d\n", a);//8
+   printf("a: %d\n", add_value((uintptr_t&)a));//9
 }
 ```
