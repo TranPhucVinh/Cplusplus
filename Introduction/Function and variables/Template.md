@@ -1,6 +1,6 @@
 ``template`` is used to pass data type as a parameter so that we don’t need to write the same code for different data types. ``template`` are expanded at compiler time. This is like macros. The difference is, the compiler does type checking before ``template`` expansion. The idea is simple, source code contains only function/class, but compiled code may contain multiple copies of same function/class. 
 
-**Example**: Using ``template`` for data type
+# Using ``template`` for data type
 
 ```c
 #include <iostream>
@@ -29,4 +29,31 @@ dummy_type is f
 
 ```c
 template <typename dummy_type> dummy_type add_function(dummy_type a, dummy_type b){}
+```
+
+# Using template typename along with other type
+
+```c
+#include <iostream>
+#include <typeinfo>
+
+template <typename dummy_type> void add_function(dummy_type a, int b){
+    std::cout << "a: " << a << std::endl;
+    std::cout << "b: " << b << std::endl;
+}
+
+int main () {
+    add_function<int>(1, 2);
+    add_function<float>(1.2, 3);
+    add_function<std::string>("Hello, World !", 4);
+}
+```
+
+```
+a: 1
+b: 2
+a: 1.2
+b: 3
+a: Hello, World !
+b: 4
 ```
