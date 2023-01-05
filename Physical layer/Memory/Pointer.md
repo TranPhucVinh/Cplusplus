@@ -112,3 +112,16 @@ int main()
     printf("a: %d, &b: %d\n", b, &b);//a: 2, &b: 6487564
 }
 ```
+
+Calling ``&&a`` will result in error:
+
+```cpp
+printf("&&a: %d", &&a);//This will result in error
+printf("&&b: %d", &&b);//This will result in error
+```
+**Error**
+
+```
+main.c:13:25: error: label 'a' used but not defined
+main.c:14:25: error: label 'b' used but not defined
+```
