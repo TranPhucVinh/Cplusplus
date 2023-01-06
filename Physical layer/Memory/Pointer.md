@@ -31,9 +31,7 @@ cout << pointer_object->public_number << endl;//Segmentation fault
 
 # lvalue reference
 
-lvalue reference can be defined with ``int &`` and ``uintptr_t``.
-
-## lvalue reference defined with &
+lvalue reference is defined with ``int &``
 
 By using ``&b`` reference declaration, ``&b`` will store the address of ``a`` (as ``&a``).
 
@@ -64,14 +62,21 @@ The error will be:
 main.cpp:29:6: error: 'b' declared as reference but not initialized
 ```
 
-## lvalue reference defined with uintptr_t
+# uintptr_t
 
-Pointer can be defined with ``uintptr_t`` (as ``unsigned int pointer``): ``uintptr_t *c`` 
+``uintptr_t`` is uesd to convert a pointer to integer. ``uintptr_t`` is ``unsigned __int64``.
 
 ```cpp
 int a = 9;
 uintptr_t *b = (uintptr_t*) &a;
 std::cout << &a << " " << b << std::endl; //0x72fe14 0x72fe14
+```
+
+``uintptr_t`` can't be used to get the value of the pointer.
+
+```c
+//With define like above
+std::cout << *b << " " << std::endl; //3236750919781, not 9 as value of variable a
 ```
 
 **Note**: If defining pointer like this, there will be error
@@ -80,9 +85,7 @@ std::cout << &a << " " << b << std::endl; //0x72fe14 0x72fe14
 uintptr_t *c = &a;
 ```
 
-## lvalue reference as function argument with uintptr_t
-
-Change value of variable by pointer in a function. 
+## Change value of variable by uintptr_t
 
 Using ``uintptr_t*``:
 
