@@ -31,22 +31,34 @@ cout << pointer_object->public_number << endl;//Segmentation fault
 
 # lvalue reference
 
-## lvalue reference declaration
-
 lvalue reference can be defined with ``int &`` and ``uintptr_t``.
 
-By using ``&b`` reference declaration, ``&b`` will store the address of ``a`` (as ``&a``).
+## lvalue reference defined with &
 
-Pointer can be defined with ``uintptr_t`` (as ``unsigned int pointer``): ``uintptr_t *c`` 
+By using ``&b`` reference declaration, ``&b`` will store the address of ``a`` (as ``&a``).
 
 ```cpp
 int a = 9;
 int &b = a;
-uintptr_t *c = (uintptr_t*) &a;
 std::cout << a << " " << b << std::endl; //9 9
 std::cout << &a << " " << &b << std::endl;//0x72fe04 0x72fe04
-std::cout << &a << " " << c << std::endl;//0x72fe04 0x72fe04
 ```
+
+**Note**: ``int &b`` can't be define without referencing to any lvalue this.
+
+```cpp
+int &b;//Define without referencing to any lvalue
+```
+
+The error will be:
+
+```
+main.cpp:29:6: error: 'b' declared as reference but not initialized
+```
+
+## lvalue reference defined with uintptr_t
+
+Pointer can be defined with ``uintptr_t`` (as ``unsigned int pointer``): ``uintptr_t *c`` 
 
 **Note**: If defining pointer like this, there will be error
 
