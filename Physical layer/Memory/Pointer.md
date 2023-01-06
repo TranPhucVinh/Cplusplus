@@ -44,6 +44,14 @@ std::cout << a << " " << b << std::endl; //9 9
 std::cout << &a << " " << &b << std::endl;//0x72fe04 0x72fe04
 ```
 
+Reference declarion for ``std::string``:
+
+```c
+const std::string& str = "Hello, World !";//Must define with const
+cout << str << endl;//Hello, World !
+cout << &str << endl;//0x4d5060
+```
+
 **Note**: ``int &b`` can't be define without referencing to any lvalue this.
 
 ```cpp
@@ -60,18 +68,16 @@ main.cpp:29:6: error: 'b' declared as reference but not initialized
 
 Pointer can be defined with ``uintptr_t`` (as ``unsigned int pointer``): ``uintptr_t *c`` 
 
+```cpp
+int a = 9;
+uintptr_t *b = (uintptr_t*) &a;
+std::cout << &a << " " << b << std::endl; //0x72fe14 0x72fe14
+```
+
 **Note**: If defining pointer like this, there will be error
 
 ```cpp
 uintptr_t *c = &a;
-```
-
-Reference declarion for ``std::string``:
-
-```c
-const std::string& str = "Hello, World !";//Must define with const
-cout << str << endl;//Hello, World !
-cout << &str << endl;//0x4d5060
 ```
 
 ## lvalue reference as function argument with uintptr_t
