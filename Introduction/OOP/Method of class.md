@@ -52,7 +52,7 @@ main(){
 
 **Methods take object as parameter**: Check ``call_object_method()`` for the method to take object as parameter in [header.cpp](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/OOP/Example/header.cpp)
 
-# Calling multiple method of
+# Calling multiple method at one time
 
 ```cpp
 #include <iostream>
