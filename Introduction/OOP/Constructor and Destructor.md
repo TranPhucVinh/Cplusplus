@@ -52,7 +52,7 @@ main(){
 
 We can use this method to set up values for public and private variables:
 
-```c
+```cpp
 #include <iostream>
 
 using namespace std;
@@ -100,7 +100,7 @@ public_number 1; private_numer 2
 
 ``default`` keyword, which is supported from ``C++11``, supports performing default operations like setting variables inside the default constructor. This method is useful when having multiple constructor functions:
 
-```c
+```cpp
 #include <iostream>
 
 using namespace std;
@@ -204,10 +204,10 @@ public_number 1; private_numer 2
 **When is destructor called ?**
 
 A destructor function is called automatically when the object goes out of scope:
-* (1) the function ends
-* (2) the program ends
-* (3) a block containing local variables ends
-* (4) a delete operator is called 
+* the function ends
+* the program ends
+* a block containing local variables ends
+* a delete operator is called 
 
 **Example**
 
