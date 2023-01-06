@@ -62,6 +62,26 @@ The error will be:
 main.cpp:29:6: error: 'b' declared as reference but not initialized
 ```
 
+## Change value of variable by lvalue reference
+
+```cpp
+int number = 8;
+int add_value(int& a)
+{
+	return a+1;
+}
+
+int main(){
+   printf("number: %d\n", number);//8
+
+    /*
+        Calling add_value(number) will treat the paramter as
+        int &a = number;
+    */
+   printf("number: %d\n", add_value(number));//9
+}
+```
+
 # uintptr_t
 
 ``uintptr_t`` is uesd to convert a pointer to integer. ``uintptr_t`` is ``unsigned __int64``.
