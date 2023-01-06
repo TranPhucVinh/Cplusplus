@@ -15,7 +15,8 @@ class exampleClass
 		void 		class_constructor();
 		void 		add_number(int int_param);
 		void 		call_private_function();
-		
+		void 		call_object_method(exampleClass object);
+
   	private:  
     	int 		_int_param;
 		void		display_string();
