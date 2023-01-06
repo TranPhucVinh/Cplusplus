@@ -35,6 +35,10 @@ void exampleClass::call_private_function(){
     display_string();
 }
 
+void exampleClass::call_object_method(exampleClass object){
+    object.add_number(12);
+}
+
 void exampleClass::display_string(){
     cout << "Private function can only be called inside public function" << endl;
 }
