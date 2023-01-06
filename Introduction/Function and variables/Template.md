@@ -99,3 +99,32 @@ b: 3
 a: Hello, World !
 b: 4
 ```
+
+# Template with class as type
+
+```c
+#include <iostream>
+#include <typeinfo>
+
+using namespace std;
+template <typename class_type>
+void call_object_method(class_type object){
+    object.display_string();
+    object.display_number();
+}
+
+class classTest{
+	public:
+		void display_string(){
+			cout << "Hello World \n";
+		}
+        void display_number(){
+			cout << 123;
+		}
+};
+
+int main(){
+	classTest object;
+    call_object_method<classTest>(object);
+}
+```
