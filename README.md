@@ -1,8 +1,8 @@
-# Cplusplus
+# Overview
 
 C++ document and software for Unix-based applications, followed its OS architecture.
 
-## G++ compiler
+# G++ compiler
 
 ``g++ main.cpp``
 
@@ -24,7 +24,7 @@ main(){
 }
 ```
 
-## GCC compiler
+# GCC compiler
 
 ``gcc test.cpp``: This will give **linking error** because of missing linker
 
@@ -44,7 +44,7 @@ main(){
 }
 ```
 
-## C++ standard
+# C++ standard
 
 | Standard| __cplusplus output |
 | ------- |:------:|
@@ -62,3 +62,10 @@ cout << __cplusplus << endl;
 Compile G++: ``g++ test.cpp``. Result: ``199711``
 
 Compile G++ with specific standard, e.g ``C++14``: ``g++ -std=c++14 test.cpp``.  Result: ``201402``
+
+## C++11
+
+Those features are supported since C++11:
+
+* [thread with thread class](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Thread.md)
+* [rvalue reference](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/Pointer.md#rvalue-reference)
