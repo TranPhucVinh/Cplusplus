@@ -1,4 +1,4 @@
-### Stream out
+# std::cout
 
 ```cpp
 #include <iostream>
@@ -24,7 +24,9 @@ main(){
 
 By default ``iostream`` doesn't support printing out with formating like ``printf()``.
 
-### Get entered int value from Stream in
+# cin
+
+## Get entered int value from std::cin
 
 Get entered int value from ``Stream in`` with ``cin`` then print out:
 
@@ -47,7 +49,7 @@ int main(){
 
 **Input**: ``Hello, World !`` **Output**: ``0``
 
-Get multiple data from ``cin`` then print out:
+## Get multiple entered int value from std::cin then print out
 
 ```cpp
 #include <iostream>
@@ -62,9 +64,7 @@ int main(){
 }
 ```
 
-### Get an entered string from Stream in
-
-Get an entered string with ``cin``
+## Get an entered string from std::cin
 
 ```cpp
 #include <iostream>
@@ -82,9 +82,9 @@ int main(){
 
 **Input**: ``Hello, World !`` **Output**: ``Hello,``
 
-### Get the whole entered string (include space)
+# getline()
 
-With ``getline()``: Get line from ``stream`` into ``string``
+``getline()`` is used to get the whole entered string (include space).
 
 ```c
 istream& getline (istream& is, string& str, char delim);
@@ -104,8 +104,6 @@ main(){
 }
 ```
 
-For other examples with ``getline()``, check: ``Example.md``.
-
 With ``cin.getline()``: ``getline(char_type* __s, streamsize __n)`` (from ``istream``)
 
 ```cpp
@@ -114,7 +112,33 @@ cin.getline(data, 100);
 cout << data;
 ```
 
-### setw()
+Enter multiple string with ``getline()``
+
+```c
+#include <iostream>
+
+using namespace std;
+
+int number;
+string sentence1, sentence2, sentence3;
+
+int main(){
+	cout << "Enter sentence 1: ";
+	getline(cin, sentence1);
+	
+	cout << "Enter sentence 2: ";
+	getline(cin, sentence2);
+
+	cout << "Enter sentence 3: ";
+	getline(cin, sentence3);
+
+	cout << "The whole sentence is: " << sentence1 << endl;
+	cout << "The whole sentence is: " << sentence2 << endl;
+	cout << "The whole sentence is: " << sentence3 << endl;
+}
+```
+
+# setw()
 
 ```cpp
 #include <iostream>
