@@ -1,36 +1,3 @@
-# Char array for string
-
-```cpp
-char displayString[] = "Hello, World !";
-cout << displayString;
-```
-
-# Char pointer for string
-
-```cpp
-char *displayedString;
-
-int main(){
-    displayedString = "Hello, World !";
-    cout << displayedString;//Hello, World !
-}    
-```
-
-Compile with both ``G++`` and ``GCC`` gives warning:
-
-```
-warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
-```
-
-Compile error with G++ and GCC:
-
-```cpp
-char *displayedString;
-displayedString = "Hello, World ! txt";
-
-int main () {}
-```
-
 # string type
 
 ## Create and read
