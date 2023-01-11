@@ -17,8 +17,9 @@ int main()
     //For first time setup value for vector, push_back() must be used
     vec.push_back(12);
     vec.push_back(34);
-
-    for (int i = 0; i < 2; i++){
+   
+    //Get vector size by std::vector::size
+    for (int i = 0; i < vec.size(); i++){
         cout << vec[i] << endl;
     }
 }
@@ -33,7 +34,7 @@ vector<const char*> vec;
 vec.push_back("12");
 vec.push_back("34");
 
-for (int i = 0; i < 2; i++){
+for (int i = 0; i < vec.size(); i++){
     cout << vec[i] << endl;
 }
 ```
@@ -67,7 +68,7 @@ int main()
     vec.push_back(vec_mem_1);
     vec.push_back(vec_mem_2);
 
-    for (int i = 0; i < 2; i++){
+    for (int i = 0; i < vec.size(); i++){
         cout << vec[i].int_val << endl;
         cout << vec[i].str_val << endl;
     }
@@ -86,14 +87,14 @@ vector<int> vec;
 vec.push_back(12);
 vec.push_back(34);
 
-for (int i = 0; i < 2; i++){
+for (int i = 0; i < vec.size(); i++){
     cout << vec[i] << endl;
 }
 
 vec[0] = 1;
 vec[1] = 1;
 
-for (int i = 0; i < 2; i++){
+for (int i = 0; i < vec.size(); i++){
     cout << vec[i] << endl;
 }
 ```
