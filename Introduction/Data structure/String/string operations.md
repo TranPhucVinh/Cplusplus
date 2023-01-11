@@ -132,6 +132,14 @@ int main(){
 }
 ```
 
+Convert char array to string:
+
+```cpp
+char ch[] = "Hello, World 11111";
+string str(ch);
+cout << str;
+```
+
 # Delete
 
 To clear a ``string``, using ``clear()``:
