@@ -35,7 +35,32 @@ int main () {}
 
 ## Operations
 
+* Create
+* Read
+* Update: [Append](), [convert other data type to string]()
+* Delete
+
 ## API
+
+### string::find()
+
+```c
+size_t find (const string& str, size_t pos = 0) const;
+```
+
+Find if a string is matched with ``str``(as a substring), start finding from index ``0`` by default.
+
+**Return**:
+
+* The position of the first character of the first match, as ``std::size_t found``
+* If no matches were found, the function returns ``string::npos``
+
+```c
+#include <string>//string::npos
+
+string str = "Hello, World !";
+if ( std::size_t found = str.find("Hello") != string::npos) cout << str << endl;
+```
 
 # stringstream
 
