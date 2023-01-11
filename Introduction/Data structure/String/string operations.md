@@ -67,11 +67,11 @@ displayString += "123";
 cout << displayString << endl;//Hello, World 123
 ```
 
-## Convert other data type to string
+## Convertion
 
 Using ``to_string()``: ``to_string()`` is only available in ``MS VC++``
 
-Convert ``string`` to ``const char*`` using c_str():
+Convert ``string`` to ``const char*`` using ``c_str()``:
 
 ```cpp
 #include <iostream>
@@ -106,7 +106,6 @@ int main(){
 ```
 
 ``pointerString`` is Null.
-
 
 **Convert string to char stringArray[100] using c_str()**
 
