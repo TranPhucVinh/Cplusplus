@@ -24,7 +24,21 @@ int main()
 }
 ```
 
-**Example**: Class object as member of a vector
+## const char pointer as member of a vector
+
+```cpp
+vector<const char*> vec;
+
+//For first time setup value for vector, push_back() must be used
+vec.push_back("12");
+vec.push_back("34");
+
+for (int i = 0; i < 2; i++){
+    cout << vec[i] << endl;
+}
+```
+
+## Class object as member of a vector
 
 ```cpp
 #include <iostream>
