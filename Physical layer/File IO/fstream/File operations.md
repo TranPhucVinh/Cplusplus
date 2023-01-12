@@ -119,7 +119,7 @@ fileStream.close();
 ```
 **Output**: ``1``
 
-The same issue happens with ``ifstream()``.
+The same issue happens with ``ifstream()``. That’s because the >> operator reads a string only until it encounters a white space character (such as a space or line break). 
 
 An inefficient way to solve the problem:
 
