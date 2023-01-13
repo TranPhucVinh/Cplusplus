@@ -1,4 +1,4 @@
-## Create new file
+# Create new file
 
 Open a file (created if not existed) and write data to that file
 
@@ -19,56 +19,9 @@ main() {
 
 Or: ``ofstream fileStreamOut("text.txt");``
 
-## Write data to file
+# Read data from file
 
-Write with ``fstream()``
-
-```cpp
-#include <iostream>
-#include <fstream>
-using namespace std;
-
-#define FILE_NAME   "text.txt"
-int main()
-{
-	fstream fileStream(FILE_NAME);
-    if (fileStream.fail()) {//Use .fail() to check if FILE_NAME existed
-        cout << "File " << FILE_NAME << " not existed\n";
-        return 0;
-    }
-    fileStream << "Hello, World !";
-    fileStream.close();
-    return 0;
-}
-```
-
-``fileStream.fail()`` return ``1`` if file not existed and ``0`` if file existed.
-
-Or: 
-
-```c
-fstream fileStream("text.txt", ios::in | ios::out);
-```
-
-Write with ``ofstream()``
-
-```c
-#include <iostream>
-#include <fstream>
-
-using namespace std;
-
-int number = 10;
-string displayedString = "Hello, World !";
-
-main() {
-	ofstream fileStreamOut("file.txt");
-	fileStreamOut << number << " " << displayedString << endl;
-	fileStreamOut.close();
-}
-```
-
-## Read data from file
+## << caused reading separated by spaces 
 
 ``text.txt``
 ```
@@ -122,5 +75,76 @@ ifstream fileStreamIn("README.md");
 while (!fileStreamIn.eof()){
 	getline(fileStreamIn, data);
 	cout << data << endl;
+}
+```
+
+## Read the whole file
+
+Use ``read()`` function to read the whole file into a buffer
+
+```cpp
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+char buf[358];
+int main()
+{
+    ifstream rf("main.cpp");
+    if(!rf) {
+      cout << "Cannot open file!" << endl;
+      return 1;
+    } else cout << "Open file successfully\n";
+    rf.read(buf, sizeof(buf));
+    cout << buf << endl;
+}
+```
+
+# Write data to file
+
+Write with ``fstream()``
+
+```cpp
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+#define FILE_NAME   "text.txt"
+int main()
+{
+	fstream fileStream(FILE_NAME);
+    if (fileStream.fail()) {//Use .fail() to check if FILE_NAME existed
+        cout << "File " << FILE_NAME << " not existed\n";
+        return 0;
+    }
+    fileStream << "Hello, World !";
+    fileStream.close();
+    return 0;
+}
+```
+
+``fileStream.fail()`` return ``1`` if file not existed and ``0`` if file existed.
+
+Or: 
+
+```c
+fstream fileStream("text.txt", ios::in | ios::out);
+```
+
+Write with ``ofstream()``
+
+```c
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int number = 10;
+string displayedString = "Hello, World !";
+
+main() {
+	ofstream fileStreamOut("file.txt");
+	fileStreamOut << number << " " << displayedString << endl;
+	fileStreamOut.close();
 }
 ```
