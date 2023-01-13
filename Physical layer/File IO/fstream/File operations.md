@@ -19,36 +19,6 @@ main() {
 
 Or: ``ofstream fileStreamOut("text.txt");``
 
-### Check file open status
-
-Check status: ``is_open()``
-
-```cpp
-#include <iostream>
-#include <fstream>
-
-using namespace std;
-
-main() {
-	ofstream fileStreamOut("text.txt");
-	fileStreamOut << "Hello, World !";
-	if (fileStreamOut.is_open()) cout << "The file is open" << endl;
-	else cout << "File is close \n";
-	fileStreamOut.close();
-
-	//After closing, check open status again
-	if (fileStreamOut.is_open()) cout << "The file is open" << endl;
-	else cout << "File is close \n";
-}
-```
-
-**Result**
-
-```
-The file is open
-File is close !! 
-```
-
 ## Write data to file
 
 Write with ``fstream()``
