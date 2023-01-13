@@ -1,8 +1,8 @@
 # API
 
 * ``fstream`` for two operations ``input`` and ``output`` at the same time.
-* ``ifstream`` for input operation
-* ``ofstream`` for output operation
+* ``ifstream`` for input operation, used for **reading**
+* ``ofstream`` for output operation, used for **creating** and **writing**
 
 You can't open input and output file stream (with ``ifstream`` and ``ofstream``) at the same time, this will not give compilation error but result in failure when run
 
