@@ -1,3 +1,12 @@
+# String
+
+String document will include
+
+* [Char array for string](https://github.com/TranPhucVinh/Cplusplus/tree/master/Introduction/Data%20structure/String#char-array-for-string)
+* [Char pointer for string](https://github.com/TranPhucVinh/Cplusplus/tree/master/Introduction/Data%20structure/String#char-array-for-string)
+* [std::string](https://github.com/TranPhucVinh/Cplusplus/tree/master/Introduction/Data%20structure/String#stdstring)
+* [stringstream](https://github.com/TranPhucVinh/Cplusplus/tree/master/Introduction/Data%20structure/String#stringstream)
+
 # Queue
 
 Create a queue to store all int variable then read all those value.
