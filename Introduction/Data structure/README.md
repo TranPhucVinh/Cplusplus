@@ -1,4 +1,6 @@
-**Example 1**: Create a queue to store all int variable then read all those value.
+# Queue
+
+Create a queue to store all int variable then read all those value.
 
 ```cpp
 #include <iostream>
