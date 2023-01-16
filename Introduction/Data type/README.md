@@ -6,9 +6,9 @@
 
 # auto keyword
 
-``auto`` keyword is available since C++11 and allows to automatic deduct of the data type of an expression. ``auto`` in CPP doesn't work like ```auto`` in ``C``.
+``auto`` keyword is available since C++11 and allows to automatic deduct of the data type of an expression. ``auto`` in CPP doesn't work like ``auto`` in ``C``.
 
-```
+```cpp
 #include <iostream>
 
 using namespace std;
@@ -30,6 +30,12 @@ int main()
   cout << c << endl;//1.23
   d->a = 10;
   cout << d->a << endl;//10
+  
+  //Then get type
+  cout << typeid(a).name() << endl;//i
+  cout << typeid(b).name() << endl;//PKc
+  cout << typeid(c).name() << endl;//d
+  cout << typeid(d).name() << endl;//P9autoClass
 }
 ```
 
