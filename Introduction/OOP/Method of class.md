@@ -79,4 +79,4 @@ int main(){
 }
 ```
   
-``display_number()`` can be called after ``display_string()`` as ``display_string()`` return object ``new_object``. ``new_object`` will then be used for calling ``display_number()``.
+``display_number()`` can be called after ``display_string()`` as ``display_string()`` return object ``new_object`` as having type ``classTest``. ``new_object`` will then be used for calling ``display_number()``.
