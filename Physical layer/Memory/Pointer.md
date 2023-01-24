@@ -81,6 +81,57 @@ int main(){
    printf("number: %d\n", add_value(number));//9
 }
 ```
+# rvalue reference
+
+rvalue reference is unofficially called as double address operator. rvalue reference can be defined with ``int &&`` and ``int &&a``.
+
+``&&`` is new in C++11. ``int&& a`` means "a" is an r-value reference.
+
+Compile: ``g++ main.c -std=c++11``
+
+```c
+#include <stdio.h>
+
+int main()
+{
+    int&& a = 1;//Define with int&&   
+    int &&b = 2;//Define with int &&
+    printf("a: %d, &a: %d\n", a, &a);//a: 1, &a: 6487560
+    printf("b: %d, &b: %d\n", b, &b);//b: 2, &b: 6487564
+}
+```
+
+Calling ``&&a`` will result in error:
+
+```cpp
+printf("&&a: %d", &&a);//This will result in error
+printf("&&b: %d", &&b);//This will result in error
+```
+**Error**
+
+```
+main.c:13:25: error: label 'a' used but not defined
+main.c:14:25: error: label 'b' used but not defined
+```
+
+Double address operator as function argument: As double address is intended for rvalue, so the value passing to it must be rvalue
+
+```c
+#include <stdio.h>
+
+int func(int&& a)
+{
+    return a+1;
+}
+
+int main()
+{   
+    int a = 4;
+    printf("%d\n", func(3));//4
+    printf("%d\n", func(a-0));//5
+    printf("%d\n", func(a+1));//6
+}
+```
 
 # uintptr_t
 
@@ -138,56 +189,5 @@ int add_value(uintptr_t &a)
 int main(){
    printf("a: %d\n", a);//8
    printf("a: %d\n", add_value((uintptr_t&)a));//9
-}
-```
-# rvalue reference
-
-rvalue reference is unofficially called as double address operator. rvalue reference can be defined with ``int &&`` and ``int &&a``.
-
-``&&`` is new in C++11. ``int&& a`` means "a" is an r-value reference.
-
-Compile: ``g++ main.c -std=c++11``
-
-```c
-#include <stdio.h>
-
-int main()
-{
-    int&& a = 1;//Define with int&&   
-    int &&b = 2;//Define with int &&
-    printf("a: %d, &a: %d\n", a, &a);//a: 1, &a: 6487560
-    printf("b: %d, &b: %d\n", b, &b);//b: 2, &b: 6487564
-}
-```
-
-Calling ``&&a`` will result in error:
-
-```cpp
-printf("&&a: %d", &&a);//This will result in error
-printf("&&b: %d", &&b);//This will result in error
-```
-**Error**
-
-```
-main.c:13:25: error: label 'a' used but not defined
-main.c:14:25: error: label 'b' used but not defined
-```
-
-Double address operator as function argument: As double address is intended for rvalue, so the value passing to it must be rvalue
-
-```c
-#include <stdio.h>
-
-int func(int&& a)
-{
-    return a+1;
-}
-
-int main()
-{   
-    int a = 4;
-    printf("%d\n", func(3));//4
-    printf("%d\n", func(a-0));//5
-    printf("%d\n", func(a+1));//6
 }
 ```
