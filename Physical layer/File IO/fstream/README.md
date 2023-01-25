@@ -14,6 +14,11 @@ ofstream fileStreamOut("text.txt");
 
 So it means that you can't edit the content of a single line belong to an opening a file to read.
 
+File operations with ``fstream`` includes:
+* [Create new file](File%20operations.md#create-new-file)
+* [Read data from file](File%20operations.md#read-data-from-file): [Issue with <<](File%20operations.md#-caused-reading-separated-by-spaces) and [the method to read the whole file](File%20operations.md#read-the-whole-file)
+* [Write data to file](File%20operations.md#write-data-to-file)
+
 # API
 
 ## is_open()
