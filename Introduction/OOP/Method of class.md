@@ -10,7 +10,7 @@ Static member functions works with variables and functions outside the class lik
 
 ``head.h``
 
-```c
+```cpp
 #include <iostream>
 #ifndef header_h
 #define header_h
