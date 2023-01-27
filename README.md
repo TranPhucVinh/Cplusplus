@@ -68,4 +68,5 @@ Compile G++ with specific standard, e.g ``C++14``: ``g++ -std=c++14 test.cpp``. 
 Those features are supported since C++11:
 
 * [thread with thread class](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Thread.md)
-* [rvalue reference](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/Pointer.md#rvalue-reference)
+* [std::move](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/README.md#stdmove)
+* Pointer: [nullptr](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/Pointer.md#nullptr), [rvalue reference](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/Pointer.md#rvalue-reference)
