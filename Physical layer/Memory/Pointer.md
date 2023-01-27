@@ -1,3 +1,15 @@
+# nullptr
+
+``nullptr`` is NULL pointer and is available since C++11.
+
+```cpp
+int *ptr = nullptr;
+int a = 123;
+
+ptr = &a;
+std::cout << *ptr;//123
+```
+
 # Pointer object of a class
 
 ```cpp
