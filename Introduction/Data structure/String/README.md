@@ -35,10 +35,9 @@ int main () {}
 
 ## Operations
 
-* Create
-* Read
-* Update: [Append](), [convert other data type to string]()
-* Delete
+* [Create and Read](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/Data%20structure/String/string%20operations.md#create-and-read)
+* Update: [Append](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/Data%20structure/String/string%20operations.md#append-string), [convert other data type to string](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/Data%20structure/String/string%20operations.md#convertion)
+* [Delete](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/Data%20structure/String/string%20operations.md#delete)
 
 ## API
 
