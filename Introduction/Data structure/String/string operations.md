@@ -12,7 +12,7 @@ cout << displayed_string.size() << endl;//13
 cout << displayed_string.length() << endl;//13
 ```
 
-**Define string with reference declaration**: [const std::string& str = "Hello, World !";](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/Pointer.md#reference-declaration)
+**Define string with lvalue reference/reference declaration**: [const std::string& str = "Hello, World !";](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/Pointer.md#lvalue-reference)
 
 Append a reference declaration string with ``+``:
 
