@@ -14,6 +14,17 @@ cout << displayed_string.length() << endl;//13
 
 **Define string with lvalue reference/reference declaration**: [const std::string& str = "Hello, World !";](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/Pointer.md#lvalue-reference)
 
+**Set default value for a string**
+
+```c
+string displayed_string("Hello, World !");// Set default value for displayed_string
+cout << displayed_string << endl; //Hello, World !
+
+//Then change the value of displayed_string
+displayed_string = "Another new string";
+cout << displayed_string << endl; //Another new string
+```
+
 Append a reference declaration string with ``+``:
 
 ```c
