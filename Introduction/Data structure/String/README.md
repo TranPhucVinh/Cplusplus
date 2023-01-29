@@ -35,9 +35,16 @@ int main () {}
 
 ## Operations
 
+### Basic operations
+
 * [Create and Read](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/Data%20structure/String/string%20operations.md#create-and-read)
 * Update: [Append](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/Data%20structure/String/string%20operations.md#append-string), [convert other data type to string](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/Data%20structure/String/string%20operations.md#convertion)
 * [Delete](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/Data%20structure/String/string%20operations.md#delete)
+
+### Other operation
+
+* [find with find()](#stringfind)
+* [compare with compare()]()
 
 ## API
 
@@ -61,6 +68,20 @@ string str = "Hello, World !";
 if ( std::size_t found = str.find("Hello") != string::npos) cout << str << endl;
 ```
 
+### string::compare()
+
+```cpp
+int compare (const string& str) const;
+```
+**Return**: ``0`` if string is matched.
+
+```cpp
+string str = "Hello";
+int ret = str.compare("Hello");
+if (!ret) cout << str;
+else cout << "Not equal";
+```
+**Result**: ``Hello``
 # stringstream
 
 ``stringstream`` is a stream that doesn't do IO operation. It is used to read and write string
