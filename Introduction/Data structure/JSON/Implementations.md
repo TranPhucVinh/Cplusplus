@@ -31,7 +31,7 @@ name: Username
 ID: 123
 ```
 
-Create by array type:
+Create by ``["field_name"]`` and read by ``for`` loop:
 
 ```cpp
 json json_obj;
