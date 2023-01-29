@@ -49,6 +49,16 @@ for (auto& el : json_obj.items()) {
 ```
 # Read JSON element
 
+## Read all key and value using for loop:
+
+Like impmenented above on [create operation]():
+
+```cpp
+for (auto& el : json_obj.items()) {
+        std::cout << el.key() << " : " << el.value() << "\n";
+}
+```
+
 ## value()
 
 Read JSON element by key with ``value()``. If that read key not existed, return the default value.
