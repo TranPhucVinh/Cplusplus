@@ -53,6 +53,18 @@ main(){
 |C++14| 201402|
 |C++17|201500 or 201703 |
 
+GCC version with C++ standard
+
+```
+GCC Version   C++ Standard
+4.9             C++11
+5               C++14
+6               C++14
+7               C++17
+8               C++17
+9               C++20
+```
+
 Environment variable ``__cplusplus`` is the C++ standard value:
 
 ```cpp
