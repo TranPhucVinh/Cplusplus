@@ -22,7 +22,7 @@ char str[] = "C programming with GNU-GCC";
 
 Available since C+11: ``g++ main.cpp -std=c++11``
 
-Allow the efficient transfer of resources
+Allow the efficient transfer of resources. ``std::move()`` is used for [the function argument as a rvalue](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/lvalue%20and%20rvalue.md#rvalue-as-function-argument).
 
 ### A simple variable
 
