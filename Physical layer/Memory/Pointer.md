@@ -62,13 +62,13 @@ cout << str << endl;//Hello, World !
 cout << &str << endl;//0x4d5060
 ```
 
-**Note**: ``int &b`` can't be define without referencing to any lvalue this.
+**Note**: ``int &b`` can't be defined without referencing to any lvalue like this
 
 ```cpp
 int &b;//Define without referencing to any lvalue
 ```
 
-The error will be:
+This will cause error:
 
 ```
 main.cpp:29:6: error: 'b' declared as reference but not initialized
