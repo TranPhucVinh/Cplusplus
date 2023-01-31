@@ -94,3 +94,19 @@ Can also call by this way:
 classTest object;
 object.display_string().display_number();
 ```
+
+To keep the same object when calling multiple methods, it's better to use ``this`` pointer.
+
+```cpp
+classTest display_string(){
+    cout << "*this Hello, World !\n";
+    return *this;
+}
+
+//Other operations keep as above
+
+int main(){
+	classTest object;
+    object.display_string().display_number();
+}
+```
