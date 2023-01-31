@@ -54,6 +54,8 @@ main(){
 
 # Calling multiple method at one time
 
+## Simple call
+
 ```cpp
 #include <iostream>
 
@@ -95,6 +97,8 @@ classTest object;
 object.display_string().display_number();
 ```
 
+## Using this pointer
+
 To keep the same object when calling multiple methods, it's better to use ``this`` pointer.
 
 ```cpp
@@ -108,5 +112,35 @@ classTest display_string(){
 int main(){
 	classTest object;
     object.display_string().display_number();
+}
+```
+## Using rvalue class object
+```c
+#include <iostream>
+#include <typeinfo>
+
+using namespace std;
+template <typename class_type>
+void call_object_method(class_type&& object){
+    object
+        .display_string()
+        .display_number()
+    ;
+}
+
+class classTest{
+	public:
+		classTest& display_string(){
+			cout << "Hello World \n";
+            return *this;
+		}
+        void display_number(){
+			cout << 123;
+		}
+};
+
+int main(){
+	classTest&& rval_object = classTest();
+    call_object_method<classTest&&>(move(rval_object));
 }
 ```
