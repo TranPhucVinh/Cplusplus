@@ -131,6 +131,28 @@ main.c:13:25: error: label 'a' used but not defined
 main.c:14:25: error: label 'b' used but not defined
 ```
 
+## rvalue as class object
+
+```cpp
+#include <iostream>
+
+using namespace std;
+
+class classTest{
+	public:
+		int publicNumber = 10;
+		void hello(){
+			cout << "Hello, World !\n";
+		}
+};
+
+int main(){
+    classTest &&rval_object = classTest();
+    rval_object.hello();//Hello, World !
+    cout << rval_object.publicNumber << endl; //10
+}
+```
+	
 ## rvalue as function argument
 
 For rvalue as function argument, the value passing to it must be rvalue
