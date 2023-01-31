@@ -147,7 +147,7 @@ int main()
 
 # uintptr_t
 
-``uintptr_t`` is uesd to convert a pointer to integer. ``uintptr_t`` is ``unsigned __int64``.
+``uintptr_t`` is used to convert a pointer to integer. ``uintptr_t`` is ``unsigned __int64``.
 
 ```cpp
 int a = 9;
