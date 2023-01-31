@@ -80,3 +80,17 @@ int main(){
 ```
   
 ``display_number()`` can be called after ``display_string()`` as ``display_string()`` return object ``new_object`` as having type ``classTest``. ``new_object`` will then be used for calling ``display_number()``.
+
+**Result**
+
+```
+Hello, World !
+123
+```
+
+Can also call by this way:
+
+```cpp
+classTest object;
+object.display_string().display_number();
+```
