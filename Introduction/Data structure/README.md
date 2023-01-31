@@ -93,3 +93,11 @@ int main()
     return 0;
 }
 ```
+# enum
+
+Since C++11, ``enum`` allows accessing its member with ``::``:
+
+```c
+enum enum_object {value0 = 10, value1, value2, value3, value4 = 10, value5 = 16, value6};
+printf("%d\n", enum_object::value0);
+```
