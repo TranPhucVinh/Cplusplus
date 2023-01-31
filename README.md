@@ -1,6 +1,18 @@
-# Overview
+# About
 
-C++ document and software for Unix-based applications, followed its OS architecture.
+Documents, implementation and examples for:
+
+* C++ software for Unix-based applications, followed its OS architecture.
+* Fundamental C++ programming concepts
+
+# OS
+
+Main OS: Ubuntu 16.04
+
+Other OS:
+
+* Windows (specifically noted on any software that are built on Windows)
+* WSL Ubuntu 18.04
 
 # G++ compiler
 
