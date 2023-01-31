@@ -1,8 +1,8 @@
-For a variable of a class, this pointer will help working with that variable (i.e: Setting/modifying this variable) inside a method if there is a local variable with the same name.
+For a variable of a class, ``this`` pointer will help working with that variable (i.e: Setting/modifying this variable) inside a method if there is a local variable with the same name.
 
-For a method of a class, this pointer will help calling this method.
+For a method of a class, ``this`` pointer will help calling this method.
 
-Implementation of this pointer
+Implementation of ``this`` pointer:
 
 * Set class variable value by a method
 * Calling class methods inside another method
