@@ -97,6 +97,7 @@ int main(){
 }
 ```
 That happen as ``a`` variable passed to ``func()`` is passed by value, so `` b`` in ``int &b = a`` inside ``func()`` is set with the garbage value.
+
 # rvalue reference
 
 rvalue reference is unofficially called as double address operator. rvalue reference can be defined with ``int &&`` and ``int &&a``.
@@ -130,7 +131,9 @@ main.c:13:25: error: label 'a' used but not defined
 main.c:14:25: error: label 'b' used but not defined
 ```
 
-Double address operator as function argument: As double address is intended for rvalue, so the value passing to it must be rvalue
+## rvalue as function argument
+
+For rvalue as function argument, the value passing to it must be rvalue
 
 ```c
 #include <stdio.h>
@@ -147,4 +150,9 @@ int main()
     printf("%d\n", func(a-0));//5
     printf("%d\n", func(a+1));//6
 }
+```
+Use ``std::move()`` to be more efficient, instead of using ``func(a-0)``:
+
+```cpp
+printf("%d\n", func(std::move(a)));
 ```
