@@ -115,7 +115,7 @@ int main(){
 }
 ```
 ## Using rvalue class object
-```c
+```cpp
 #include <iostream>
 #include <typeinfo>
 
