@@ -44,3 +44,27 @@ int main(){
 # iostream
 
 Check [iostream](iostream) document
+
+# filesystem
+
+``filesystem`` is supported since C++17
+
+``std::filesystem::path``: represents a path
+
+``std::filesystem::directory_iterator``: an iterator to the contents of the directory
+
+**Example**: List out all files inside directory ``dir_name``
+
+```cpp
+#include <string>
+#include <iostream>
+#include <filesystem>
+namespace fs = std::filesystem;
+
+int main()
+{
+    std::string path = "dir_name";
+    for (const auto &entry : fs::directory_iterator(path))
+        std::cout << entry.path() << std::endl;
+}
+```
