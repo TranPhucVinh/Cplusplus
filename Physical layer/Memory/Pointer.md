@@ -93,6 +93,53 @@ int main(){
    printf("number: %d\n", add_value(number));//9
 }
 ```
+## lvalue function
+
+```cpp
+int& func(){
+    int a = 456;
+    int &b = a;
+    return b;
+}
+
+int main(){
+    int &c = func();
+    cout << c << endl;//123
+}
+```
+
+lvalue function with pass by reference
+
+```cpp
+int &func(int *a){
+    int &b = *a;
+    return b;
+}
+
+int main(){
+    int a = 123;
+    int &c = func(&a);
+    cout << &a << " " << &c << std::endl; //0x7ffd31a69acc 0x7ffd31a69acc
+    cout << c << endl;// 123
+}
+```
+
+lvalue function with pass by value
+
+```cpp
+int &func(int a){
+    int &b = a;
+    return b;
+}
+
+int main(){
+    int a = 123;
+    int &c = func(a);
+    cout << &a << " " << &c << std::endl; //0x7fff0aa5179c 0x7ffcb4797cdc
+    cout << c << endl;//Garbage value
+}
+```
+That happen as ``a`` variable passed to ``func()`` is passed by value, so `` b`` in ``int &b = a`` inside ``func()`` is set with the garbage value.
 # rvalue reference
 
 rvalue reference is unofficially called as double address operator. rvalue reference can be defined with ``int &&`` and ``int &&a``.
