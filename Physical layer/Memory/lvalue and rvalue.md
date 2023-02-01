@@ -61,7 +61,7 @@ int& func(){
 
 int main(){
     int &c = func();
-    cout << c << endl;//123
+    cout << c << endl;//456
 }
 ```
 
