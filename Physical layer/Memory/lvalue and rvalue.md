@@ -43,6 +43,10 @@ void add_value(int& a)
 
 int main(){
     printf("number: %d\n", number);//8
+    /*
+        Calling add_value(number) will treat the paramter as
+        int &a = number;
+    */
     add_value(number);
     printf("number: %d\n", number);//9
 }
