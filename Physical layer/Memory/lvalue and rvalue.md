@@ -31,6 +31,28 @@ This will cause error:
 main.cpp:29:6: error: 'b' declared as reference but not initialized
 ```
 
+## std::string as lvalue reference
+
+```c
+//For passing const string, use const std::string
+void const_str(const std::string& const_str)
+{
+    cout << const_str;
+    return;
+}
+
+void lval_ref_str(std::string &str){
+    cout << str;
+    return;
+}
+
+int main(){
+    string str = "lvalue reference string\n";
+    const_str("Hello, World !\n");//Passing const string Hello, World !
+    lval_ref_str(str);
+}
+```
+
 ## lvalue reference as pass by reference
 
 ```cpp
