@@ -31,23 +31,20 @@ This will cause error:
 main.cpp:29:6: error: 'b' declared as reference but not initialized
 ```
 
-## Change value of variable by lvalue reference
+## lvalue reference as pass by reference
 
 ```cpp
 int number = 8;
-int add_value(int& a)
+void add_value(int& a)
 {
-	return a+1;
+	a += 1;
+    return;
 }
 
 int main(){
-   printf("number: %d\n", number);//8
-
-    /*
-        Calling add_value(number) will treat the paramter as
-        int &a = number;
-    */
-   printf("number: %d\n", add_value(number));//9
+    printf("number: %d\n", number);//8
+    add_value(number);
+    printf("number: %d\n", number);//9
 }
 ```
 ## lvalue function
