@@ -78,3 +78,23 @@ Use ``std::move()`` to be more efficient, instead of using ``func(a-0)``:
 ```cpp
 printf("%d\n", func(std::move(a)));
 ```
+
+# rvalue as pass reference
+
+rvalue as pass reference to change value of a variable
+
+```c
+void func(int&& a)
+{
+    a += 1;
+    return;
+}
+
+int main()
+{   
+    int a = 4;
+    printf("%d\n", a);//4
+    func(std::move(a));
+    printf("%d\n", a);//5
+}
+```
