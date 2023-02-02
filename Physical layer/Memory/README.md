@@ -71,7 +71,7 @@ int main(){
 # lvalue
 
 * [lvalue reference as pass by reference](lvalue.md#lvalue-reference-as-pass-by-reference)
-* [lvalue function with pass by reference](lvalue-function-with-pass-by-reference)
+* [lvalue function with pass by reference](lvalue.md#lvalue-function-with-pass-by-reference)
 * [lvalue function with pass by value](lvalue.md#lvalue-function-with-pass-by-value)
 
 # rvalue
