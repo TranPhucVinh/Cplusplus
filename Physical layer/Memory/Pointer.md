@@ -74,14 +74,16 @@ Using ``uintptr_t*``:
 
 int a = 8;
 
-int add_value(uintptr_t *a)
+void add_value(uintptr_t *a)
 {
-	return *a+1;
+    *a += 1;
+	return;
 }
 
 int main(){
    printf("a: %d\n", a);//8
-   printf("a: %d\n", add_value((uintptr_t*)&a));//9
+   add_value((uintptr_t*)&a);
+   printf("a: %d\n", a);//9
 }
 ```
 
