@@ -77,3 +77,4 @@ int main(){
 # rvalue
 
 * [rvalue concept, define rvalue](rvalue.md#define-rvalue)
+* [rvalue as class object](rvalue.md#rvalue-as-class-object)
