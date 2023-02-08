@@ -1,4 +1,4 @@
-### Function overloading
+# Function overloading
 
 ```cpp
 #include <iostream>
@@ -31,7 +31,7 @@ int main () {
 
 **Notice**  ``addTwoNumbers(3.0f, 4.0f)`` for float number, without ``f`` there will be error ``call of overloaded ‘addTwoNumbers(double, double)’ is ambiguous``, as ``addTwoNumbers(3.1, 4.1)`` is interpreted as double number.
 
-### Default arguments
+# Default arguments
 
 ```c
 void intNumber(int a, int b = 12);
