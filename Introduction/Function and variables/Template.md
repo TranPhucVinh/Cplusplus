@@ -1,3 +1,9 @@
+# Generics
+
+Generics is the idea to allow type (integer, string,... and user-defined types) to be a parameter to methods, classes and interfaces. Generic programming enables the programmer to write a general algorithm which will work with all data types and eliminates the need to create different algorithms if the data type is an integer, string or a character. Beside that, generic programming will also avoid [function overloading](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/Function%20and%20variables/Function.md#function-overloading).
+
+Generics can be implemented in C++ using **template**.
+
 ``template`` is used to pass data type as a parameter so that we don’t need to write the same code for different data types. ``template`` are expanded at compiler time. This is like macros. The difference is, the compiler does type checking before ``template`` expansion. The idea is simple, source code contains only function/class, but compiled code may contain multiple copies of same function/class. 
 
 # Using template for data type
