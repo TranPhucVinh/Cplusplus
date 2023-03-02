@@ -1,5 +1,3 @@
-# Constructor
-
 A **class constructor** is a special member function of a class that is executed whenever we create new objects of that class, and have **no return value**.
 
 ```cpp
@@ -19,7 +17,7 @@ main(){
 }
 ```
 
-## More than 1 constructor in one class with arguments
+# More than 1 constructor in one class with arguments
 
 ```c++
 #include <iostream>
@@ -96,7 +94,7 @@ Get public and private numbers:
 public_number 1; private_numer 2
 ```
 
-## default keyword
+# default keyword
 
 ``default`` keyword, which is supported from ``C++11``, supports performing default operations like setting variables inside the default constructor. This method is useful when having multiple constructor functions:
 
@@ -146,7 +144,7 @@ public_number 3; private_numer 4
 
 In this program, calling ``class_test object_1`` will call the default constructor (setup by ``class_test() = default``) to setup default value for variables.
 
-## Change variable value by constructor
+# Change variable value by constructor
 
 Public and private variables value can be changed by constructor with ``:`` and ``()`` operator:
 
@@ -192,46 +190,4 @@ Get public and private numbers:
 public_number 12; private_numer 13
 Get public and private numbers:
 public_number 1; private_numer 2
-```
-
-# Destructor
-
-**What is destructor ?**
-
-* Destructor is a member function which destructs or deletes an object
-* Destructors don’t take any argument and don’t return anything
-
-**When is destructor called ?**
-
-A destructor function is called automatically when the object goes out of scope:
-* the function ends
-* the program ends
-* a block containing local variables ends
-* a delete operator is called 
-
-**Example**
-
-```cpp
-#include <iostream>
-
-using namespace std;
-
-class helloWorld{
-	public:
-	helloWorld(){
-		cout << "hello world" << endl;
-	}
-	~helloWorld(){
-		cout << "Object is being deleted" << endl;
-	}
-};
-
-main(){
-	helloWorld hi;
-}
-```
-**Result**
-```
-hello world
-Object is being deleted
 ```
