@@ -1,4 +1,4 @@
-## Constructor
+# Constructor
 
 A **class constructor** is a special member function of a class that is executed whenever we create new objects of that class, and have **no return value**.
 
@@ -19,7 +19,7 @@ main(){
 }
 ```
 
-### More than 1 constructor in one class with arguments
+## More than 1 constructor in one class with arguments
 
 ```c++
 #include <iostream>
@@ -96,7 +96,7 @@ Get public and private numbers:
 public_number 1; private_numer 2
 ```
 
-### default keyword
+## default keyword
 
 ``default`` keyword, which is supported from ``C++11``, supports performing default operations like setting variables inside the default constructor. This method is useful when having multiple constructor functions:
 
@@ -146,7 +146,7 @@ public_number 3; private_numer 4
 
 In this program, calling ``class_test object_1`` will call the default constructor (setup by ``class_test() = default``) to setup default value for variables.
 
-### Change variable value by constructor
+## Change variable value by constructor
 
 Public and private variables value can be changed by constructor with ``:`` and ``()`` operator:
 
@@ -194,7 +194,7 @@ Get public and private numbers:
 public_number 1; private_numer 2
 ```
 
-## Destructor
+# Destructor
 
 **What is destructor ?**
 
