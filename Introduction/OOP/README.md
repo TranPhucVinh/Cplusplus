@@ -6,8 +6,53 @@ Fundamental concepts include:
 * [Define variable and function for a class](Fundamental%20concepts.md#define-variable-and-function-for-a-class)
 * [Types of variables in class](Fundamental%20concepts.md#types-of-variables-in-class)
 * [Method of class](Method%20of%20class.md)
-* [Constructor and destructor](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/OOP/Constructor%20and%20Destructor.md)
+* [Constructor and destructor](constructor-and-destructor.md)
 * [this pointer](this%20pointer.md)
 * [Inheritance](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/OOP/Inheritance.md)
 
 Examples: [Example](Example)
+
+# Constructor and destructor
+
+[Constructor document](Constructor.md) includes:
+* Fundamental concepts
+* [Multiple constructors in one class with arguments](Constructor.md#multiple-constructors-in-one-class-with-arguments)
+* [default keyword](Constructor.md#change-variable-value-by-constructor)
+* [Change variable value by constructor](Constructor.md#change-variable-value-by-constructor)
+
+## Destructor
+
+Destructor is a member function which destructs or deletes an object. Destructors don’t take any argument and don’t return anything
+
+A destructor function is called automatically when the object goes out of scope:
+* the function ends
+* the program ends
+* a block containing local variables ends
+* a delete operator is called 
+
+**Example**
+
+```cpp
+#include <iostream>
+
+using namespace std;
+
+class helloWorld{
+	public:
+	helloWorld(){
+		cout << "hello world" << endl;
+	}
+	~helloWorld(){
+		cout << "Object is being deleted" << endl;
+	}
+};
+
+main(){
+	helloWorld hi;
+}
+```
+**Result**
+```
+hello world
+Object is being deleted
+```
