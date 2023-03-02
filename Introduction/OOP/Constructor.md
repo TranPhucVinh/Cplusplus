@@ -17,7 +17,7 @@ main(){
 }
 ```
 
-# More than 1 constructor in one class with arguments
+# Multiple constructors in one class with arguments
 
 ```c++
 #include <iostream>
