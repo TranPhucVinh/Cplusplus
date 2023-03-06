@@ -53,7 +53,7 @@ int main () {
 
 # Unnamed namespace
 
-Unnamed namespace is used to limit the scope of its variable and function to be inside its source file, as [internal linkage](https://github.com/TranPhucVinh/C/blob/master/Introduction/Linkage.md#internal-linkage). In this manner, unnamed namespace behaves like [global static variable and global static function](https://github.com/TranPhucVinh/C/blob/master/Introduction/Keywords/static.md#global-static-variable-and-static-function).
+Unnamed namespace is used to limit the scope of its variable and function to be inside its source file, as [internal linkage](https://github.com/TranPhucVinh/C/blob/master/Introduction/Linkage.md#internal-linkage), so that the same function names and variables can be reused in other files. In this manner, unnamed namespace behaves like [global static variable and global static function](https://github.com/TranPhucVinh/C/blob/master/Introduction/Keywords/static.md#global-static-variable-and-static-function).
 
 ``head1.c``
 
