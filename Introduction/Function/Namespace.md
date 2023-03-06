@@ -8,7 +8,7 @@ A ``namespace`` is a declarative region that provides a scope to the identifiers
 
 ``using namespace std`` is used for ``cout``, ``cin``, ``endl``.
 
-**Example**: ``namespace`` for variables
+# namespace for variables
 
 ```cpp
 #include <iostream>
@@ -28,7 +28,7 @@ int main () {
 }
 ```
 
-**Example**: ``namespace`` for variables and functions
+# namespace for variables and functions
 
 ```cpp
 #include <iostream>
@@ -51,7 +51,65 @@ int main () {
 }
 ```
 
-## using keyword
+# Unnamed namespace
+
+Unnamed namespace is used to limit the scope of its variable and function to be inside its source file, as [internal linkage](https://github.com/TranPhucVinh/C/blob/master/Introduction/Linkage.md#internal-linkage). In this manner, unnamed namespace behaves like [global static variable and global static function](https://github.com/TranPhucVinh/C/blob/master/Introduction/Keywords/static.md#global-static-variable-and-static-function).
+
+``head1.c``
+
+```c
+#include <stdio.h>
+
+namespace
+{
+    int a = 123;
+    void display_string(){
+        printf("Display string in head1.c\n");
+    }
+}
+
+void head1(){
+    display_string();
+    printf("head1 a %d\n", a);
+}
+```
+``head2.c``
+```c
+#include <stdio.h>
+
+namespace
+{
+    int a = 456;
+	void display_string(){
+		printf("Display string in head2.c\n");
+	}
+}
+
+void head2(){
+	display_string();
+	printf("head2 a %d\n", a);
+}
+```
+``main.c``
+```c
+#include <stdio.h>
+
+void head1();
+void head2();
+
+int main(){
+	head1();
+	head2();
+}
+```
+**Result**
+```
+Display string in head1.c
+head1 a 123
+Display string in head2.c
+head2 a 456
+```
+# using keyword
 
 The ``using`` keyword is used to:
 1. Bring a specific member from the namespace into the current scope.
