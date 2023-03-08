@@ -1,7 +1,7 @@
 # [iostream](iostream)
 
-* (std::cout)[iostream.md#stdcout]
-* (std::cin)[iostream.md#stdcin]: [Get entered int value from std::cin](), [Get multiple entered int value from std::cin then print out](iostream.md#get-multiple-entered-int-value-from-stdcin-then-print-out), [Get multiple entered int value from std::cin then print out](iostream.md#get-multiple-entered-int-value-from-stdcin-then-print-out), [Get an entered string from std::cin](), [std::cin in foor loop](iostream.md#stdcin-in-foor-loop)
+* [std::cout](iostream.md#stdcout)
+* [std::cin](iostream.md#stdcin): [Get entered int value from std::cin](), [Get multiple entered int value from std::cin then print out](iostream.md#get-multiple-entered-int-value-from-stdcin-then-print-out), [Get multiple entered int value from std::cin then print out](iostream.md#get-multiple-entered-int-value-from-stdcin-then-print-out), [Get an entered string from std::cin](), [std::cin in foor loop](iostream.md#stdcin-in-foor-loop)
 * getline()
 * setw()
 
