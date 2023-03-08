@@ -49,3 +49,41 @@ Result
 ```
 OK (1 tests)
 ```
+
+# API
+
+## CPPUNIT_ASSERT_EQUAL()
+
+```cpp
+CPPUNIT_ASSERT_EQUAL(1 + 1, 2);
+```
+
+## CPPUNIT_ASSERT_EQUAL_MESSAGE()
+
+```cpp
+CPPUNIT_ASSERT_EQUAL_MESSAGE(message, expected, actual)
+```
+Return:
+* Print out ``message`` if ``expect != equal``
+* Return ``OK`` if ``expect == equal``
+
+Example
+
+
+Result
+
+```cpp
+CPPUNIT_ASSERT_EQUAL_MESSAGE("Not qual", 1 + 3, 2);
+```
+
+```
+!!!FAILURES!!!
+Test Results:
+Run:  1   Failures: 1   Errors: 0
+
+1) test: TestClass::equal_check (F) line: 8 test_script.cpp
+equality assertion failed
+- Expected: 4
+- Actual  : 2
+- Not qual
+```
