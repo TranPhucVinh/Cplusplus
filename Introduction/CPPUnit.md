@@ -57,7 +57,32 @@ OK (1 tests)
 ```cpp
 CPPUNIT_ASSERT_EQUAL(1 + 1, 2);
 ```
+## CPPUNIT_ASSERT_MESSAGE()
 
+```cpp
+CPPUNIT_ASSERT_MESSAGE(message, exp);
+```
+
+``CPPUNIT_ASSERT_MESSAGE`` will print out the ``message`` if ``exp`` is ``false`` and print out nothing (i.e skip ``CPPUNIT_ASSERT_MESSAGE``) if exp is ``true``
+
+```cpp
+bool bool_val = false;
+CPPUNIT_ASSERT_MESSAGE("Not true", true);// This is not printed out as the param is true
+CPPUNIT_ASSERT_MESSAGE("bool_val is true", bool_val);
+```
+
+**Result**
+
+```
+!!!FAILURES!!!
+Test Results:
+Run:  1   Failures: 1   Errors: 0
+
+1) test: TestClass::equal_check (F) line: 10 test_script.cpp
+assertion failed
+- Expression: bool_val
+- bool_val is true
+```
 ## CPPUNIT_ASSERT_EQUAL_MESSAGE()
 
 ```cpp
