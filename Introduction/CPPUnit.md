@@ -17,7 +17,6 @@ A fixture, from ``TestFixture``, is a known set of objects that serves as a base
 ```cpp
 #include <cppunit/extensions/HelperMacros.h>
 #include <cppunit/ui/text/TestRunner.h>
-#include <iostream>
 
 class TestClass : public CppUnit::TestFixture
 {
