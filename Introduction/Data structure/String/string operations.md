@@ -12,7 +12,7 @@ cout << displayed_string.size() << endl;//13
 cout << displayed_string.length() << endl;//13
 ```
 
-**Define string with lvalue reference/reference declaration**: [const std::string& str = "Hello, World !";](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/Pointer.md#lvalue-reference)
+**Define string with lvalue reference/reference declaration**: [const std::string& str = "Hello, World !";](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/lvalue.md#define)
 
 **Set default value for a string**
 
