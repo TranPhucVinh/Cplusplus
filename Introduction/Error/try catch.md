@@ -31,20 +31,21 @@ Invalid number: 1
 
 If ``throw runtime_error``, the program will then stop and block of code in ``catch`` will not be executed:
 
-```c
+```cpp
 try {
       int value = 1;
       if (value >= 10) {
           cout << "Valid number";
       } else {
-          throw runtime_error("Invalid number");
+          throw std::runtime_error("Invalid number throw runtime_error");
       }
       //Other block of code are like the program above
   }
+//Other block of code are like the program above
 ```
 **Result**
 
 ```
 terminate called after throwing an instance of 'std::runtime_error'
-  what():  Invalid number
+  what():  Invalid number throw runtime_error
 ```
