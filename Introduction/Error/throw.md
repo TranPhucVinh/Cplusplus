@@ -85,3 +85,6 @@ if (number >= 10) {
 terminate called after throwing an instance of 'std::runtime_error'
   what():  Invalid number
 ```
+# throw value to try/catch
+
+Value in ``throw`` can be thrown to ``catch`` inside the [try/catch](try%20catch.md).
