@@ -77,7 +77,7 @@ int number = 1;
 if (number >= 10) {
     cout << "Valid number\n";
 } else {
-    throw runtime_error("Invalid number");
+    throw std::runtime_error("Invalid number");
 }
 ```
 **Result**
