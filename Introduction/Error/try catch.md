@@ -1,5 +1,4 @@
-
-``try catch`` will try execute the block of code inside ``try`` until it reaches
+``try catch`` will try execute the block of code inside ``try``. ``catch`` will be executed if there is [throw](throw.md) inside ``try`` and the line of code of ``throw`` is reached.
 
 ```c
 #include <iostream>
