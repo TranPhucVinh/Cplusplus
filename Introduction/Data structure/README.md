@@ -101,3 +101,27 @@ Since C++11, ``enum`` allows accessing its member with ``::``:
 enum enum_object {value0 = 10, value1, value2, value3, value4 = 10, value5 = 16, value6};
 printf("%d\n", enum_object::value0);
 ```
+## enum class
+
+```c
+#include <iostream>
+using namespace std;
+enum class enum_class : int
+{
+    int_1 = 0,
+    int_2 = 1,
+    int_3 = 1,
+};
+
+int main(){
+    enum_class a;
+    a = enum_class::int_1; 
+    cout << int(a) << std::endl;
+
+    /*  
+        Must have conversion for std::cout
+        Without int(), there will be error
+    */
+    cout << int(enum_class::int_1) << std::endl;//0
+}
+```
