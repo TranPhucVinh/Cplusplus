@@ -34,5 +34,17 @@ struct tm *time_value = localtime(&currentTime);
 cout << "Day " << time_value->tm_mday << " month: " << time_value->tm_mon << "year: " << time_value->tm_year;
 ```
 
+# Communicating with the environment
+
+## getenv()
+
+Get the environment variable value (setup by [export](https://github.com/TranPhucVinh/Linux-Shell/blob/master/Bash%20script/Variable/Environment%20variable.md#export-command) command:
+
+``getenv()`` is available since C++11.
+
+```c
+std::cout << std::getenv("env_var"));
+```
+Setup environment variable ``env_var``: ``export env_var="Hello, World !"``
 
 # File IO
