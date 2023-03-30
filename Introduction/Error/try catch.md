@@ -21,14 +21,18 @@ int main(){
     catch (int number_var) {
         cout << "Invalid number: " << number_var << "\n";
     }
+        printf("Program keeps running as throw error is caught\n");
 }
 ```
 
 ```c
 Invalid number: 1
+Program keeps running as throw error is caught
 ```
 
-If ``throw runtime_error``, the program will then stop and block of code in ``catch`` will not be executed:
+As the throw error (``throw value``) is caught (by ``catch``), the program won't stop so the line of code after ``catch(int number_var)`` keeps executing (``printf("Program keeps running as throw error is caught\n")``);
+
+If ``throw std::runtime_error``, the program will then stop and block of code in ``catch`` will not be executed:
 
 ```cpp
 try {
