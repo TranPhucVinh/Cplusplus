@@ -1,3 +1,5 @@
+# throw value
+
 ``try catch`` will try execute the block of code inside ``try``. ``catch`` will be executed if there is [throw](throw.md) inside ``try`` and the line of code of ``throw`` is reached.
 
 ```c
@@ -31,6 +33,8 @@ Program keeps running as throw error is caught
 ```
 
 As the throw error (``throw value``) is caught (by ``catch``), the program won't stop so the line of code after ``catch(int number_var)`` keeps executing (``printf("Program keeps running as throw error is caught\n")``);
+
+# throw std::runtime_error
 
 If ``throw std::runtime_error``, the program will then stop and block of code in ``catch`` will not be executed:
 
