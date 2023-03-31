@@ -11,6 +11,8 @@ std::cout << a << " " << b << std::endl; //9 9
 std::cout << &a << " " << &b << std::endl;//0x72fe04 0x72fe04
 ```
 
+From this example, we can see that the lvalue reference (``&b``) shares the same memory address of the variable it presents (``&a``).
+
 Reference declarion for ``std::string``:
 
 ```c
