@@ -51,23 +51,22 @@ printf("Program keeps running as throw error is caught\n");
     
 # throw std::runtime_error
 
-If ``throw std::runtime_error``, the program will then stop and block of code in ``catch`` will not be executed:
+``throw std::runtime_error`` must be caught with ``std::runtime_error &e``
 
 ```cpp
 try {
-      int value = 1;
-      if (value >= 10) {
-          cout << "Valid number";
-      } else {
-          throw std::runtime_error("Invalid number throw runtime_error");
-      }
-      //Other block of code are like the program above
-  }
-//Other block of code are like the program above
+    int value = 1;
+    if (value >= 10) {
+        std::cout << "Valid number";
+    } else throw std::runtime_error("Invalid number throw runtime_error");
+}
+catch (std::runtime_error &e) {
+    std::cout << "Invalid number: " << e.what() << "\n";
+}
+printf("Program keeps running as throw error is caught\n");
 ```
 **Result**
-
 ```
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  Invalid number throw runtime_error
+Invalid number: Invalid number throw runtime_error
+Program keeps running as throw error is caught
 ```
