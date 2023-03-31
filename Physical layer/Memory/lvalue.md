@@ -2,7 +2,7 @@
 
 lvalue reference is defined with ``int &``
 
-By using ``&b`` reference declaration, ``&b`` will store the address of ``a`` (as ``&a``).
+By using ``&b`` reference declaration, ``&b`` will store the address of ``a`` (as ``&a``). As ``b`` is declared as lvalue reference, it becomes an alternative name for ``a``.
 
 ```cpp
 int a = 9;
