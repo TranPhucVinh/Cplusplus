@@ -56,7 +56,12 @@ int main(){
 # lvalue reference as pass by reference
 
 ```cpp
+#include <iostream>
+
+using namespace std;
+
 int number = 8;
+int &lval = number;
 void add_value(int& a)
 {
 	a += 1;
@@ -65,12 +70,19 @@ void add_value(int& a)
 
 int main(){
     printf("number: %d\n", number);//8
+    printf("lval: %d\n", lval);//8
+
     /*
         Calling add_value(number) will treat the paramter as
         int &a = number;
     */
     add_value(number);
     printf("number: %d\n", number);//9
+    printf("lval: %d\n", lval);//9
+
+    add_value(lval);//As &lval is number, so changing it will change number
+    printf("number: %d\n", number);//10
+    printf("lval: %d\n", lval);//10
 }
 ```
 # lvalue function
