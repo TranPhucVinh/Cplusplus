@@ -87,6 +87,4 @@ terminate called after throwing an instance of 'std::runtime_error'
 ```
 # throw value to try/catch
 
-The implementation with [throw int number]() and [throw string]() above stop the program as their thrown value are not handled in ``catch`` inside the [try/catch](try%20catch.md).
-
-``throw runtime_error()`` will stop the program immediately no matter they're inside the try/catch or not.
+The implementation with [throw int number](), [throw string]() and [throw runtime_error()]() above stop the program as their thrown value are not handled in ``catch`` inside the [try/catch](try%20catch.md).
