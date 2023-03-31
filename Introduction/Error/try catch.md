@@ -44,7 +44,7 @@ try {
     } else throw "throw a string value";//Throw value as the exeception number
 }
 catch (const char *str) {//As handling with const char*
-    cout << "Invalid number: " << str << "\n";
+    cout << "Thow string: " << str << "\n";
 }
 printf("Program keeps running as throw error is caught\n");
 ```
