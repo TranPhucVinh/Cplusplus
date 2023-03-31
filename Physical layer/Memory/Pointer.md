@@ -1,6 +1,6 @@
 # nullptr
 
-``nullptr`` is NULL pointer and is available since C++11.
+``nullptr`` is NULL pointer (or NULL reference) and is available since C++11.
 
 ```cpp
 int *ptr = nullptr;
