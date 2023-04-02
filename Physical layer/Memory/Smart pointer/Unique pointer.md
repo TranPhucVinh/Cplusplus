@@ -71,3 +71,26 @@ std::cout << *uniquePtr2 << std::endl;//123
 // std::cout << &uniquePtr1 << std::endl;//Segmentation fault
 // std::cout << *uniquePtr1 << std::endl;//Segmentation fault
 ```
+# Unique pointer for class object
+
+```c
+class classTest{
+	public:
+        classTest(){
+			cout << "Constructor of classTest\n";
+		}
+        ~classTest(){
+			cout << "Destructor of classTest\n";
+		}
+        void displayString() {
+            std::cout << "Hello, World !\n";
+        }
+};
+
+int main(){
+    std::unique_ptr<classTest> object = std::make_unique<classTest>();
+
+    // As object is an unique pointer so it access the class member by ->
+    object->displayString();
+}
+```
