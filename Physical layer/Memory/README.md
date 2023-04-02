@@ -30,6 +30,7 @@ Allow the efficient transfer of resources. ``std::move()`` is used for [the func
 int a = 10;
 int b = std::move(a);
 std::cout << b << std::endl;//10
+std::cout << a << std::endl;//10; after calling std::move(), variable a still keeps its value
 ```
 
 ### A class object
@@ -59,6 +60,10 @@ int main(){
 
 	cout << object_2.publicNumber << endl; //1
 	object_2.hello(1);//Value: 3
+	
+	// After calling std::move(), object object_1 still keeps its value
+	cout << object_1.publicNumber << endl; //1
+	object_1.hello(1);//Value: 3
 }
 ```
 
