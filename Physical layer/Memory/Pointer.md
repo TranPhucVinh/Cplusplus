@@ -1,3 +1,11 @@
+# [Smart pointer](Smart%20pointer)
+
+There are 3 types of smart pointer in CPP:
+
+* [Unique pointer](Smart%20pointer#Unique%20pointer.md) (support since C++14)
+* Share pointer
+* Weak pointer
+
 # nullptr
 
 ``nullptr`` is NULL pointer (or NULL reference) and is available since C++11.
