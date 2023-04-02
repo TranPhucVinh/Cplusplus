@@ -29,7 +29,7 @@ Allow the efficient transfer of resources. ``std::move()`` is used for [the func
 ```c
 int a = 10;
 int b = std::move(a);
-std::cout << b << std::endl;
+std::cout << b << std::endl;//10
 ```
 
 ### A class object
@@ -66,7 +66,7 @@ int main(){
 
 * [nullptr]()
 * [Pointer object of a class]()
-* [uintptr_t](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/Pointer.md#uintptr_t): [Change Change value of variable by uintptr_t* and uintptr_t&](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/Pointer.md#change-value-of-variable-by-uintptr_t)
+* [uintptr_t](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/Pointer.md#uintptr_t): [Change value of variable by uintptr_t* and uintptr_t&](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/Pointer.md#change-value-of-variable-by-uintptr_t)
 
 # lvalue
 
