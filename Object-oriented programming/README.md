@@ -37,22 +37,22 @@ A destructor function is called automatically when the object goes out of scope:
 
 using namespace std;
 
-class helloWorld{
+class classTest{
 	public:
-	helloWorld(){
-		cout << "hello world" << endl;
-	}
-	~helloWorld(){
-		cout << "Object is being deleted" << endl;
-	}
+        classTest(){
+			cout << "Constructor of classTest\n";
+		}
+        ~classTest(){
+			cout << "Destructor of classTest\n";
+		}
 };
 
-main(){
-	helloWorld hi;
+int main(){
+	classTest object;
 }
 ```
 **Result**
 ```
-hello world
-Object is being deleted
+Constructor of classTest
+Destructor of classTest
 ```
