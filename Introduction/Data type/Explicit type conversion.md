@@ -14,8 +14,8 @@ Beside conventional explicit type conversion performed in C, CPP supports explic
 float f = 3.5;
 int a = f; // this is how you do in C
 int b = static_cast<int>(f);
-cout << a << endl;
-cout << b << endl;
+cout << a << endl;// 3
+cout << b << endl;// 3 
 ```
 
 There are cases that ``static_cast`` can't be implemented although its corresponding implementation in C performed successfully:
@@ -23,9 +23,9 @@ There are cases that ``static_cast`` can't be implemented although its correspon
 ```cpp
 char a = 'a';//ASCII value is 97
   
-int *q = (int*)&a; 
-int *p = static_cast<int*>(&a);//Error at compilation:  invalid static_cast from type 'char*' to type 'int*'
+int *a_c = (int*)&a; 
+int *a_cpp = static_cast<int*>(&a);//Error at compilation:  invalid static_cast from type 'char*' to type 'int*'
 
-printf("%c", *q);//a
-printf("%c", *p);//Error at compilation:  invalid static_cast from type 'char*' to type 'int*'
+printf("%c", *a_c);//a
+printf("%c", *a_cpp);//Error at compilation:  invalid static_cast from type 'char*' to type 'int*'
 ```
