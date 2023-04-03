@@ -1,6 +1,7 @@
 # Basic inheritance example
 
 ```cpp
+
 #include <iostream>
 
 using namespace std;
@@ -9,6 +10,9 @@ class base_class {
 	public:
 		void display_function(){
 			cout << "Hello World \n";
+		}
+		void base_class_function(){
+			cout << "Base class display function \n";
 		}
 };
 
@@ -27,9 +31,12 @@ int main(){
 	base_class base_class_object;
 	derive_class derive_class_object;
 	
-	base_class_object.display_function();//Hello World
-	derive_class_object.derive_class_function(); //Derive class function
-	derive_class_object.display_function(); //Redefined display_function() of base_class
+	base_class_object.display_function();// Hello World
+	derive_class_object.derive_class_function(); // Derive class function
+	derive_class_object.display_function(); // Redefined display_function() of base_class
+
+	//derive_class_object call the base_class_function function, which isn't defined in class derive_class
+	derive_class_object.base_class_function();// Base class display function
 }
 ```
 	
