@@ -1,4 +1,8 @@
+# Fundamental concepts
+
 A **class constructor** is a special member function of a class that is executed whenever we create new objects of that class, and have **no return value**.
+
+**Default constructors** have the same name with the class
 
 ```cpp
 #include <iostream>
