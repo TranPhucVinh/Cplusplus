@@ -2,7 +2,7 @@
 
 **Class** is a group of objects having the same properties.
 
-# Define variable and function for a class
+# Define variable and function for a class, use class object as a pointer
 
 ```cpp
 #include <iostream>
@@ -19,10 +19,14 @@ class classTest{
 		int privateNumer = 20; //Unable to read that value outside
 };
 
-main(){
-	classTest object;
+int main(){
+	classTest object, *obj_ptr;
 	object.hello(); //Hello World
 	cout << object.publicNumber << endl; //10
+
+	obj_ptr = &object;
+	obj_ptr->hello(); //Hello World
+	cout << obj_ptr->publicNumber << endl; //10
 }
 ```
 
@@ -134,55 +138,4 @@ Static variable can be defined normally in another source file:
 using namespace std;
 
 int Header::a = 10;
-```
-# const function
-
-**const function** as a class member doesn't allow changing the object value. Be not confused const function of a class with [the function define as const](https://github.com/TranPhucVinh/C/tree/master/Introduction/Keywords#const-as-function-definition) as defining a function as const has no effect.
-
-```c
-#include <iostream>
-
-using namespace std;
-
-class classTest{
-	public:
-		int publicNumber;
-        classTest(){
-            publicNumber = 1;
-            privateNumber = 2;
-        }
-        int function(int a) const {
-            /*
-                Doing any suff inside the class member const function which effect publicNumber
-                and privateNumber will give compilation error
-            */
-            a += 1;// Any stuff can be done as long as they don't effect the variable of publicNumber
-            return publicNumber;
-	    // return privateNumber; privateNumber returns normally
-        }
-    private:
-        int privateNumber;
-};
-
-int main(){
-	classTest object;
-    cout << object.function(12) << endl; //1 as function() returns publicNumber
-}
-```
-
-If define:
-
-```cpp
-// Must not do this
-int function(int a) const {
-    publicNumber = a;// Compilation error here
-    privateNumber = a;// Compilation error here
-    return publicNumber;
-}
-```
-This gives compilation error as trying to modify the class member (``publicNumber`` and ``privateNumber``) inside a const function:
-
-```
-error: assignment of member 'classTest::publicNumber' in read-only object
-error: assignment of member 'classTest::privateNumber' in read-only object
 ```
