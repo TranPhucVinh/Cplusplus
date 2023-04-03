@@ -9,7 +9,7 @@ using namespace std;
 class base_class {
 	public:
 		void display_function(){
-			cout << "Hello World \n";
+			cout << "base_class display_function()\n";
 		}
 		void base_class_function(){
 			cout << "Base class display function \n";
@@ -18,22 +18,24 @@ class base_class {
 
 class derive_class: public base_class{
 	public:
+		//Function display_function() of base_class class is redefine in derive_class class
+		void display_function(){
+			cout << "derive_class display_function()\n";
+		}
+		
 		void derive_class_function(){
 			cout << "Derive class function\n";
 		}
-		//Function display_function() of base_class class is redefine in derive_class class
-		void display_function(){
-			cout << "Redefined display_function() of base_class\n";
-		}
+		
 };
 
 int main(){
 	base_class base_class_object;
 	derive_class derive_class_object;
 	
-	base_class_object.display_function();// Hello World
+	base_class_object.display_function();// base_class display_function()
 	derive_class_object.derive_class_function(); // Derive class function
-	derive_class_object.display_function(); // Redefined display_function() of base_class
+	derive_class_object.display_function(); // derive_class display_function()
 
 	//derive_class_object call the base_class_function function, which isn't defined in class derive_class
 	derive_class_object.base_class_function();// Base class display function
