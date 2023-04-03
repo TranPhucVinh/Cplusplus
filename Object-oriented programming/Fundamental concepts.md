@@ -1,6 +1,6 @@
 # What is class ?
 
-**Class** is a group of objects having the same properties. Every class has at least one constructor. **Constructor** is like a function and is used to express the attribute of an object. Constructor doesn't have returned type like ``void``, ``int``,... and doesn't have return value.
+**Class** is a group of objects having the same properties.
 
 # Define variable and function for a class
 
