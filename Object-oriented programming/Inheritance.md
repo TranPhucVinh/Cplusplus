@@ -1,45 +1,43 @@
-## Basic inheritance example
+# Basic inheritance example
 
 ```cpp
 #include <iostream>
 
 using namespace std;
 
-class origin_class{
+class base_class {
 	public:
 		void display_function(){
 			cout << "Hello World \n";
 		}
 };
 
-class derive_class: public origin_class{
+class derive_class: public base_class{
 	public:
 		void derive_class_function(){
 			cout << "Derive class function\n";
 		}
-		//Function display_function() of origin_class class is redefine in derive_class class
+		//Function display_function() of base_class class is redefine in derive_class class
 		void display_function(){
-			cout << "Redefined display_function() of origin_class\n";
+			cout << "Redefined display_function() of base_class\n";
 		}
 };
 
-main(){
-	origin_class origin_class_object;
+int main(){
+	base_class base_class_object;
 	derive_class derive_class_object;
 	
-	origin_class_object.display_function();//Hello World
+	base_class_object.display_function();//Hello World
 	derive_class_object.derive_class_function(); //Derive class function
-	derive_class_object.display_function(); //Redefined display_function() of origin_class
+	derive_class_object.display_function(); //Redefined display_function() of base_class
 }
 ```
 	
-## protect method
+# protect method
 
 ``protected`` access modifier is similar to ``private`` access modifiers, the difference is that the class member declared as ``protected`` are inaccessible outside the class but they can be accessed by any subclass (derived class) of that class.
 
-### Example
-
-Change value of protected variable ``addValue`` in inherited class.
+## Change value of protected variable ``addValue`` in inherited class.
 
 ```cpp
 #include <iostream>
@@ -71,7 +69,7 @@ addValue before: -1604079712
 addValue after: 10
 ```
 
-### Header files with class and public method
+# Header files with class and public method
 
 **header.h**
 
