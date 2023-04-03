@@ -30,7 +30,7 @@ int main(){
 }
 ```
 
-**Note**: If compiling with default G++ (C++98: ``g++ test.cpp``) and GCC (``gcc test.cpp -lstd++``), there will be warning: 
+**Note 1**: If compiling with default G++ (C++98: ``g++ test.cpp``) and GCC (``gcc test.cpp -lstd++``), there will be warning: 
 
 ```
 test.cpp:33:22: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11
@@ -41,6 +41,14 @@ test.cpp:38:22: warning: non-static data member initializers only available with
 ```
 
 So initilize variable variable inside a class is prefered to be implemented with ``C++11`` and the above ``C++`` standard.
+
+**Note 2**: For pointer object ``obj_ptr``, like all normal pointer, it must be mapped to an object of that class. If not mapping, this pointer object will be a wild pointer and can't access the variable value of that object (cause Segmentation fault error)
+
+```c
+//This cause Segmentation fault error and must not be done
+classTest *obj_ptr;
+cout << obj_ptr->public_number << endl;//Segmentation fault
+```
 
 ## Private variables
 
