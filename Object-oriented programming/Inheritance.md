@@ -39,7 +39,9 @@ int main(){
 	derive_class_object.base_class_function();// Base class display function
 }
 ```
-	
+
+``void display_function()`` are defined in the base_class and in the derived class with different ways. This is known as **polymorphism**, as a function in inheritance can have many form in both the base class and the derive classes.
+
 # protect method
 
 ``protected`` access modifier is similar to ``private`` access modifiers, the difference is that the class member declared as ``protected`` are inaccessible outside the class but they can be accessed by any subclass (derived class) of that class.
