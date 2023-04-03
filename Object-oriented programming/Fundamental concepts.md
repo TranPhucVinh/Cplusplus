@@ -44,10 +44,19 @@ So initilize variable variable inside a class is prefered to be implemented with
 
 **Note 2**: For pointer object ``obj_ptr``, like all normal pointer, it must be mapped to an object of that class. If not mapping, this pointer object will be a wild pointer and can't access the variable value of that object (cause Segmentation fault error)
 
-```c
+```cpp
 //This cause Segmentation fault error and must not be done
 classTest *obj_ptr;
 cout << obj_ptr->public_number << endl;//Segmentation fault
+```
+
+``new`` keyword can be used to allocate memory for ``*obj_ptr``:
+
+```cpp
+classTest *obj_ptr = new classTest();
+
+obj_ptr->hello(); //Hello World
+cout << obj_ptr->publicNumber << endl; //10
 ```
 
 ## Private variables
