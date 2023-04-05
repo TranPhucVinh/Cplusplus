@@ -5,8 +5,11 @@
 * [Constructor and destructor](#constructor-and-destructor)
 * [this pointer](this%20pointer.md)
 * [Inheritance](Inheritance.md): [Basic inheritance example as polymorphism](), [protect method]() and [Header files with class and public method]()
+* [Virtual function]()
+* [Binding](#binding): [Early binding]() and [late binding]()
+* [const function]()
 
-Examples: [Example](Example)
+[Example](Example)
 
 # Constructor and destructor
 
@@ -52,6 +55,15 @@ int main(){
 Constructor of classTest
 Destructor of classTest
 ```
+
+# Binding
+
+Binding refers to the process of converting identifiers (such as variable and performance names) into addresses. Binding is done for each variable and functions. For functions, it means that matching the call with the right function definition by the compiler. It takes place either at compile time or at runtime.
+
+**Early binding (compile-time time polymorphism)**: In early binding, compiler (or linker) directly associate an address to the function call. C++ uses early binding by default. 
+
+**Late binding (run time polymorphism)**: In late binding, the compiler adds code that identifies the kind of object at runtime then matches the call with the right function definition. This can be achieved by declaring a [virtual function]().
+
 # const function
 
 **const function** as a class member doesn't allow changing the object value. Be not confused const function of a class with [the function define as const](https://github.com/TranPhucVinh/C/tree/master/Introduction/Keywords#const-as-function-definition) as defining a function as const has no effect.
