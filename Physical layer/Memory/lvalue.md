@@ -21,18 +21,16 @@ cout << str << endl;//Hello, World !
 cout << &str << endl;//0x4d5060
 ```
 
-**Note**: ``int &b`` can't be defined without referencing to any lvalue like this
-
+## NULL initialization is not allowed in lvalue
+As lvalue reference is an alternative name of a variable it present, NULL initialization is not allowed.
 ```cpp
-int &b;//Define without referencing to any lvalue
+int &b;//Must not do this, this gives compilation error
 ```
-
-This will cause error:
-
+Or this:
+```cpp
+int &b = NULL;//Must not do this, this gives compilation error
 ```
-main.cpp:29:6: error: 'b' declared as reference but not initialized
-```
-
+This is differnt from pointer as pointer allow [NULL pointer](https://github.com/TranPhucVinh/C/blob/master/Physical%20layer/Memory/Pointer/Types%20of%20pointer.md#null-pointer).
 # std::string as lvalue reference
 
 ```c
