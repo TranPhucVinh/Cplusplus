@@ -84,7 +84,7 @@ Dynamic dispatch's compilation process includes a V table. V table is a table co
 
 # Implementation
 
-## [Assign derive class object to base class pointer to call this derive class function]()
+## Assign derive class object to base class pointer to call this derive class function
 
 Add ``virtual`` to ``void display_function()`` of ``base_class``
 
@@ -103,7 +103,7 @@ int main(){
 	b_ptr->display_function();// derive_class display_function()
 }
 ```
-## [Pass derive class object by reference to function with base class object pointer]()
+## Pass derive class object by reference to function with base class object pointer
 
 ```cpp
 // Other part of the program kept as above
@@ -120,4 +120,28 @@ int main(){
 	print_function(&dc_1);// derive_class_1 display_function()
 	print_function(&dc_2);// derive_class_2 display_function()
 }
+```
+# override keyword
+
+It's better to add the ``override`` keyword, **which is supported since C++11**, to the function in the derived class which used the virtual function, atlthough don't call it give no compilation error. This will be easier to to read the code as ``override`` will state that the function calling it is the derived function of the virtual function.
+
+Adding ``override`` to the function which isn't derived from the virtual function gives compilation error.
+
+In [Pass derive class object by reference to function with base class object pointer](#pass-derive-class-object-by-reference-to-function-with-base-class-object-pointer):
+
+```cpp
+// Other part of the program kept as above
+class derive_class_1: public base_class{
+	public:
+		void display_function() override {
+			cout << "derive_class_1 display_function()\n";
+		}
+};
+
+class derive_class_2: public base_class{
+	public:
+		void display_function() override{
+			cout << "derive_class_2 display_function()\n";
+		}
+};
 ```
