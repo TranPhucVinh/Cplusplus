@@ -7,19 +7,17 @@ In this example, we want pointer ``*b_ptr`` to use the ``display_function()`` de
 ```cpp
 #include <iostream>
 
-using namespace std;
-
 class base_class {
 	public:
 		void display_function(){
-			cout << "base_class display_function()\n";
+			std::cout << "base_class display_function()\n";
 		}
 };
 
 class derive_class: public base_class{
 	public:
 		void display_function(){
-			cout << "derive_class display_function()\n";
+			std::cout << "derive_class display_function()\n";
 		}
 };
 
@@ -39,26 +37,24 @@ In this example, we want to call the ``display_function()`` of every class objec
 ```cpp
 #include <iostream>
 
-using namespace std;
-
 class base_class {
 	public:
 		void display_function(){
-			cout << "base_class display_function()\n";
+			std::cout << "base_class display_function()\n";
 		}
 };
 
 class derive_class_1: public base_class{
 	public:
 		void display_function(){
-			cout << "derive_class_1 display_function()\n";
+			std::cout << "derive_class_1 display_function()\n";
 		}
 };
 
 class derive_class_2: public base_class{
 	public:
 		void display_function(){
-			cout << "derive_class_2 display_function()\n";
+			std::cout << "derive_class_2 display_function()\n";
 		}
 };
 
@@ -93,7 +89,7 @@ Add ``virtual`` to ``void display_function()`` of ``base_class``
 class base_class {
 	public:
 		virtual void display_function(){
-			cout << "base_class display_function()\n";
+			std::cout << "base_class display_function()\n";
 		}
 };
 // Other part of the program kept as above
@@ -110,7 +106,7 @@ int main(){
 class base_class {
 	public:
 		virtual void display_function(){
-			cout << "base_class display_function()\n";
+			std::cout << "base_class display_function()\n";
 		}
 };
 // Other part of the program kept as above
@@ -134,14 +130,30 @@ In [Pass derive class object by reference to function with base class object poi
 class derive_class_1: public base_class{
 	public:
 		void display_function() override {
-			cout << "derive_class_1 display_function()\n";
+			std::cout << "derive_class_1 display_function()\n";
 		}
 };
 
 class derive_class_2: public base_class{
 	public:
 		void display_function() override{
-			cout << "derive_class_2 display_function()\n";
+			std::cout << "derive_class_2 display_function()\n";
+		}
+};
+```
+# Virtual destructor
+
+For safety purpose as expecting the derived class is destructed properly, ``virtual`` is added to the destructor function:
+
+```cpp
+//Other part of the program kept as above
+class base_class {
+	public:
+		virtual void display_function(){
+			std::cout << "base_class display_function()\n";
+		}
+		virtual ~base_class(){
+			std::cout << "base_class destructor\n";
 		}
 };
 ```
