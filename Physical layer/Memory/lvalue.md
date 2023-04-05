@@ -87,7 +87,15 @@ int main(){
     printf("lval: %d\n", lval);//10
 }
 ```
-# lvalue function
+Base on this example, we can see that by using lvalue reference, we pass the variable directly to function:
+```c
+int number = 8;
+void add_value(int& a);
+add_value(number);
+```
+This is different from passing by pointer as we have to [pass the address of the variable to the function](https://github.com/TranPhucVinh/C/blob/master/Physical%20layer/Memory/Pointer/Implementations.md#change-value-of-variable-by-pointer-in-a-function)
+
+# Return lvalue for a function
 
 ```cpp
 int& func(){
