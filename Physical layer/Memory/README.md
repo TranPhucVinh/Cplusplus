@@ -81,6 +81,7 @@ int main(){
 * [Return lvalue for a function]()
 * [lvalue function with pass by reference](lvalue.md#lvalue-function-with-pass-by-reference)
 * [lvalue function with pass by value](lvalue.md#lvalue-function-with-pass-by-value)
+* [Choosing between passing by pointer and passing by lvalue reference in C++]()
 
 # rvalue
 
