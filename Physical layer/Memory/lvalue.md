@@ -22,7 +22,7 @@ cout << &str << endl;//0x4d5060
 ```
 
 ## NULL initialization is not allowed in lvalue
-As lvalue reference is an alternative name of a variable it present, NULL initialization is not allowed.
+As lvalue reference is an alternative name of a variable it present, ``NULL`` initialization is not allowed.
 ```cpp
 int &b;//Must not do this, this gives compilation error
 ```
@@ -30,7 +30,16 @@ Or this:
 ```cpp
 int &b = NULL;//Must not do this, this gives compilation error
 ```
-This is differnt from pointer as pointer allow [NULL pointer](https://github.com/TranPhucVinh/C/blob/master/Physical%20layer/Memory/Pointer/Types%20of%20pointer.md#null-pointer).
+This is different from pointer as pointer allow [NULL pointer](https://github.com/TranPhucVinh/C/blob/master/Physical%20layer/Memory/Pointer/Types%20of%20pointer.md#null-pointer).
+## lvalue reinitialization is not allowed
+```c
+int a = 9;
+int &b = a;
+std::cout << a << " " << b << std::endl; //9 9
+std::cout << &a << " " << &b << std::endl;//0x72fe04 0x72fe04
+int c = 10;
+&b = c;//Compilation error; reinitialization for lvalue is not allow
+```
 # std::string as lvalue reference
 
 ```c
@@ -108,7 +117,7 @@ int main(){
 }
 ```
 
-## lvalue function with pass by reference
+# lvalue function with pass by reference
 
 ```cpp
 int &func(int *a){
@@ -124,7 +133,7 @@ int main(){
 }
 ```
 
-## lvalue function with pass by value
+# lvalue function with pass by value
 
 ```cpp
 int &func(int a){

@@ -76,7 +76,9 @@ int main(){
 
 # lvalue
 
+* [lvalue define](): [NULL initialization]() and [reinitialization]() aren't allowed
 * [lvalue reference as pass by reference](lvalue.md#lvalue-reference-as-pass-by-reference)
+* [Return lvalue for a function]()
 * [lvalue function with pass by reference](lvalue.md#lvalue-function-with-pass-by-reference)
 * [lvalue function with pass by value](lvalue.md#lvalue-function-with-pass-by-value)
 
