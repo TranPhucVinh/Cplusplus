@@ -157,3 +157,18 @@ class base_class {
 		}
 };
 ```
+# Pure virtual function and abstract class
+
+A **pure virtual function** is a virtual function assigned to ``0``. Its implementation is then defined in the derived classes.
+
+In [Pass derive class object by reference to function with base class object pointer](#pass-derive-class-object-by-reference-to-function-with-base-class-object-pointer):
+
+```cpp
+//Other part of the program kept as above
+class base_class {
+	public:
+		virtual void display_function() = 0;
+};
+```
+
+An **abstract class** is a class with at least one pure virtual function.
