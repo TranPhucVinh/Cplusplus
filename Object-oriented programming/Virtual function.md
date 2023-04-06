@@ -76,8 +76,26 @@ In computer science, especially with OOP, dynamic dispatch is the process of sel
 
 A virtual function or virtual method is an inheritable and overridable function or method for which dynamic dispatch is facilitated. In short, a virtual function defines a target function to be executed, but the target might not be known at compile time.
 
-Dynamic dispatch's compilation process includes a V table. V table is a table contains a mapping for all virtual functions inside the **base class** so that we can actually map them to the correct overwritten function in the **derived classes** at runtime
+Dynamic dispatch's compilation process includes a **vtable**. **vtable** is a table contains a mapping for all virtual functions inside the **base class** so that we can actually map them to the correct overwritten function in the **derived classes** at runtime. For the mapping process, C++ compiler creates a hidden pointer, called **vptr** (virtual pointer) which points to the **vtable**. 
 
+``base_class`` object vptr vtable:
+
+```
+vptr		vtable	function
+vptr ->		base_class::vtable[0] ->	base_class::display_function()
+```
+``derive_class_1`` object vptr vtable
+
+```
+vptr		vtable	function
+vptr ->		derive_class_1::Vtable[0] ->	derive_class_1::display_function()
+```
+``derive_class_2`` object vptr vtable
+
+```
+vptr		vtable	function
+vptr ->		derive_class_2::Vtable[0] ->	derive_class_2::display_function()
+```
 # Implementation
 
 ## Assign derive class object to base class pointer to call this derive class function
