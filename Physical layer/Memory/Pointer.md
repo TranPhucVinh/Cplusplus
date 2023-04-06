@@ -94,20 +94,3 @@ int main(){
    printf("a: %d\n", a);//9
 }
 ```
-
-Using ``uintptr_t&``:
-
-```cpp
-int a = 8;
-void add_value(uintptr_t &a)
-{
-    a += 1;
-	return;
-}
-
-int main(){
-   printf("a: %d\n", a);//8
-   add_value((uintptr_t&)a);
-   printf("a: %d\n", a);//9
-}
-```
