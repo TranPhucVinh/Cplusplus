@@ -112,8 +112,10 @@ int& func(){
 }
 
 int main(){
-    int &c = func();
-    cout << c << endl;//456
+	int a = func();
+	std::cout << a << std::endl;//456
+    int &b = func();
+    std::cout << b << std::endl;//456
 }
 ```
 
