@@ -149,7 +149,28 @@ int main(){
 }
 ```
 That happen as ``a`` variable passed to ``func()`` is passed by value, so `` b`` in ``int &b = a`` inside ``func()`` is set with the garbage value.
+# lvalue as class object
 
+```c
+#include <iostream>
+class classTest{
+	public:
+		int publicNumber = 10;
+		void hello(){
+			std::cout << "Hello World \n";
+		}
+	private:
+		int privateNumer = 20;
+};
+
+int main(){
+	classTest object;
+	classTest &obj_lval = object;
+
+	obj_lval.hello(); //Hello World
+	std::cout << obj_lval.publicNumber << std::endl; //10
+}
+```
 # Choosing between passing by pointer and passing by lvalue reference in C++ 
 
 As lvalue reference is supported in C++, we still need to use pointer for a variable when this variable needs:
