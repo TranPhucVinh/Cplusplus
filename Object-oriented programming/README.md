@@ -5,7 +5,7 @@
 * [Constructor and destructor](#constructor-and-destructor)
 * [this pointer](this%20pointer.md)
 * [Inheritance](Inheritance.md): [Basic inheritance example as polymorphism](), [protect method]() and [Header files with class and public method]()
-* [Virtual function]()
+* [Virtual function](Virtual%20function.md): [When to use virtual function ?](Virtual%20function.md#when-to-use-virtual-function-), [virtual function definition](Virtual%20function.md#virtual-function-definition) and [implementation](Virtual%20function.md#implementation), [override keyword](Virtual%20function.md#override-keyword), [virtual destructor](Virtual%20function.md#virtual-destructor), [pure virtual function and abstract class](Virtual%20function.md#pure-virtual-function-and-abstract-class)
 * [Binding](#binding): [Early binding]() and [late binding]()
 * [const function]()
 
