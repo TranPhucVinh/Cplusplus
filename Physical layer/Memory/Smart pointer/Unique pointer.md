@@ -1,16 +1,14 @@
 # Fundamental concepts
 
-A unique pointer stores one pointer to an object at a time. We can assign a different object by removing the current one from the unique pointer. With that feature, we will use unique pointer when we want to have single ownership (exclusive) of a resource.
+[A unique pointer is a pointer which can only point to an object at a time](Unique%20pointer.md#using-stdmove-to-completely-move-value-from-2-unique-pointers). We can assign a different object by removing the current one from the unique pointer. With that feature, we will use unique pointer when we want to have single ownership (exclusive) of a resource.
 
-Unique pointer is supported since C++11. Include ``<memory>`` to use it.
-
-``std::make_unique`` is supported since C++14.
+Unique pointer is supported since **C++11**. Include ``<memory>`` to use it. ``std::make_unique()`` is supported since **C++14**.
 
 # Unique pointer allows setting value to its deferencing
 
 Unlike normal pointer which doesn't allow setting value to its dereferencing, unique pointer allows this operation:
 
-```c
+```cpp
 #include <iostream>
 #include <memory>
 
@@ -60,6 +58,8 @@ int main(){
 
 # Using std::move to completely move value from 2 unique pointers
 
+In this example, we can see the object with address ``0x7fff13475d50`` can only be point at one time respectively by ``uniquePtr1`` and ``uniquePtr2``.
+	
 ```cpp
 std::unique_ptr<int> uniquePtr1 = std::make_unique<int>(123);
 
@@ -83,7 +83,7 @@ std::cout << *uniquePtr2 << std::endl;//123
 ```
 # Unique pointer for class object
 
-```c
+```cpp
 class classTest{
 	public:
         classTest(){
