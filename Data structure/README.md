@@ -15,54 +15,11 @@ Implement [JSON](JSON) with [nlohmann/json](https://github.com/nlohmann/json) li
 
 # struct
 
-``struct`` in CPP support variables, functions, constructor and destructor functions
+``struct`` in CPP can be treated as a class as it supports all class feature: public, private, constructor, destructor, inheritance, polymorphism, virtual function and abstract class.
 
-```cpp
-#include <iostream>
-#include <string.h>
-
-using namespace std;
-
-struct struct_data {
-	int id;
-	char displayed_string[30];
-	void no_param_func(){
-		cout << "Hello, World !" << endl;
-	}
-
-	void params_func(int a, int b){
-		cout << a+b << endl;
-	}
-
-	struct_data() {
-		cout << "Constructor function is called" << endl;
-	}
-
-	~struct_data() {
-		cout << "Destructor function is called" << endl;
-	}
-};
-
-int main() {
-	struct_data object;
-
-	object.id = 1;
-	cout << object.id << endl;
-	strcpy(object.displayed_string, "Displayed string");
-	object.no_param_func();
-	object.params_func(1, 3);
-} 
-```
-
-**Result**: 
-
-```
-Constructor function is called
-1
-Hello, World !
-4
-Destructor function is called
-```
+* [A struct works like a class](struct.md#a-struct-works-like-a-class)
+* [Inheritance with struct](struct.md#inheritance-with-struct)
+* [Pure virtual function and abstract class in struct](struct.md#pure-virtual-function-and-abstract-class-in-struct)
 
 # Queue
 
