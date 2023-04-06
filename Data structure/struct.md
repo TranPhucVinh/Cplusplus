@@ -1,4 +1,7 @@
 struct in CPP can be treated as a class as it supports all class feature: public, private, constructor, destructor, inheritance, polymorphism, virtual function and abstract class.
+
+An instance of a struct is called the **struct variable**, not object like class object. Members of a struct are **public by default**, which is different from class, as class object are private by default.
+
 # A struct works like a class
 ```cpp
 #include <iostream>
