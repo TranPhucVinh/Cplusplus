@@ -1,5 +1,7 @@
 Unique pointer is supported since C++11. Include ``<memory>`` to use it.
 
+``std::make_unique`` is supported since C++14.
+
 # Unique pointer allows setting value to its deferencing
 
 Unlike normal pointer which doesn't allow setting value to its dereferencing, unique pointer allows this operation:
