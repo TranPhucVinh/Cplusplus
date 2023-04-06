@@ -1,6 +1,8 @@
 # What is class ?
 
-**Class** is a group of objects having the same properties.
+**Class** is a group of objects having the same properties. An instance of a class is called an **object**.
+
+If not declaring **public** or **private**, members of a class are private by default.
 
 # Define variable and function for a class, use class object as a pointer
 
