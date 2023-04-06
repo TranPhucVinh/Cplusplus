@@ -14,6 +14,10 @@ using namespace std;
 
 int main(){
     std::unique_ptr<int> uniquePtr = std::make_unique<int>(123);
+    /*
+    	Must not call this, it gives compilation error
+    	std::cout << uniquePtr << std::endl;
+    */
     std::cout << &uniquePtr << std::endl;//0x7fff13475d50
     std::cout << *uniquePtr << std::endl;//123
 }
