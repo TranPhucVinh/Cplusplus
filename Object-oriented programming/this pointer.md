@@ -51,7 +51,24 @@ int main(){
 ```
 # this pointer for class variable
 
-Must not call this pointer outside class definition
+## Setting variable by this pointer inside class definition gives no effect
+
+```cpp
+class Header
+{
+  public:
+    int a;
+    int b = this->a + 1;
+};
+
+int main(){
+    Header header;
+    header.a = 19;
+    cout << header.b << endl;//1, expected 20
+}
+```
+
+## Must not call this pointer outside class definition
 
 ```cpp
 //Must not do this, this give compilation error
