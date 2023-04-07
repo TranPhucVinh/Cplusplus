@@ -44,6 +44,7 @@ int main(){
 	classTest object;
     object.set_var(100);
     object.get_var();//100
+    cout << object.publicNumber << endl;//100
     object.change_var(10);
     object.get_var();//110
 }
