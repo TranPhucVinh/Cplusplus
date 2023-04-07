@@ -68,3 +68,19 @@ int main(){
     header.b = this->a + 1;//Must not do this; invalid use of this pointer
 }
 ```
+# this pointer can only be used inside a nonstatic member function
+As this pointer is intended for separated class object while static member (function, variable) are intended to be shared for all class objects, this pointer can only be used inside a nonstatic member function
+
+Must not call this pointer inside class static function like this:
+
+```cpp
+//Must not do this,  this give compilation error
+class Header
+{
+    public:
+        int a = 19;
+        static void change_value(int b){
+            cout << this->a << endl;//error: 'this' is unavailable for static member functions
+        }
+};
+```
