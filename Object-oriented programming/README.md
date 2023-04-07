@@ -29,7 +29,7 @@ A destructor function is called automatically when the object goes out of scope:
 * a block containing local variables ends
 * a delete operator is called 
 
-**Example**
+### Destructor is called when program ends
 
 ```cpp
 #include <iostream>
@@ -48,11 +48,13 @@ class classTest{
 
 int main(){
 	classTest object;
+    	cout << "Destructor is called when program ends\n";
 }
 ```
 **Result**
 ```
 Constructor of classTest
+Destructor is called when program ends
 Destructor of classTest
 ```
 
