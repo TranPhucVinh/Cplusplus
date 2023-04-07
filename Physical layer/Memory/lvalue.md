@@ -41,7 +41,6 @@ int c = 10;
 &b = c;//Compilation error; reinitialization for lvalue is not allow
 ```
 # lvalue reference as pass by reference
-
 ```cpp
 #include <iostream>
 
@@ -81,7 +80,6 @@ add_value(number);
 This is different from passing by pointer as we have to [pass the address of the variable to the function](https://github.com/TranPhucVinh/C/blob/master/Physical%20layer/Memory/Pointer/Implementations.md#change-value-of-variable-by-pointer-in-a-function)
 
 # Return lvalue for a function
-
 ```cpp
 int& func(){
     int a = 456;
@@ -96,7 +94,20 @@ int main(){
     std::cout << b << std::endl;//456
 }
 ```
+Assign value to a lvalue returned function to change a global variable:
+```cpp
+int a = 123;
 
+int& func(){
+    return a;
+}
+
+int main(){
+    std::cout << a << std::endl;//123
+	func() = 456;
+	std::cout << a << std::endl;//456
+}
+```
 # lvalue function with pass by reference
 
 ```cpp
