@@ -16,25 +16,24 @@ class classTest{
 	public:
 		int publicNumber;
 		void get_var(){
-            cout << publicNumber << "\n";
-
-            //  Same result when using this->publicNumber
-            //  cout << this->publicNumber << "\n";
+            cout << this->publicNumber << "\n";
+            //  Same result when using
+            //  cout << publicNumber << "\n";
 		}
         void set_var(int publicNumber);
-        void change_var();
+        void change_var(int increase);
         void display_string();
 };
 
 void classTest::set_var(int publicNumber){
-    // This will set local variable publicNumber of function
-    // set_var to class variable publicNumber
+    // This will set local variable publicNumber of set_var()
+    // to class variable publicNumber
     this->publicNumber = publicNumber;
     this->display_string();// This is like calling display_string()
 }
 
-void classTest::change_var(){
-    this->publicNumber += 10;
+void classTest::change_var(int increase){
+    this->publicNumber += increase;
 }
 
 void classTest::display_string(){
@@ -45,7 +44,7 @@ int main(){
 	classTest object;
     object.set_var(100);
     object.get_var();//100
-    object.change_var();
+    object.change_var(10);
     object.get_var();//110
 }
 ```
