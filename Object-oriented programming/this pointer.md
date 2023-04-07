@@ -26,8 +26,8 @@ class classTest{
 };
 
 void classTest::set_var(int publicNumber){
-    // This will set local variable publicNumber of set_var()
-    // to class variable publicNumber
+    // This will assign local variable publicNumber of set_var()
+    // to object variable publicNumber
     this->publicNumber = publicNumber;
     this->display_string();// This is like calling display_string()
 }
