@@ -2,9 +2,9 @@
 
 **Class** is a group of objects having the same properties. An instance of a class is called an **object**.
 
-If not declaring **public** or **private**, members of a class are private by default.
+If not declaring **public** or **[private](#private-variables)**, members of a class are private by default.
 
-# Define variable and function for a class, use class object as a pointer
+# Define variable and function for a class; Use class object as a pointer
 
 ```cpp
 #include <iostream>
@@ -74,17 +74,17 @@ private:
 
 So this will give error: ``cout << object.privateNumber << endl;``
 
-# Types of variables in class
+# Types of class variables
 
-* Instance variables
-* Static variables
+* [Instance variables]()
+* [Static variables]()
 
-**Instance variables**
+## Instance variables
 
 * Instance variables are created ``when an object of the class is created`` and ``destroyed when the object is destroyed``.
 * Instance variables can be accessed ``only by creating objects``.
 
-**Static variables**
+## Static variables
 
 Static variables exist as members of the class rather than as an instance in each object of the class. There is only a single instance of each static data member for the entire class. 
 
