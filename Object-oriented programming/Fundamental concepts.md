@@ -81,8 +81,8 @@ So this will give error: ``cout << object.privateNumber << endl;``
 
 ## Instance variables
 
-* Instance variables are created ``when an object of the class is created`` and ``destroyed when the object is destroyed``.
-* Instance variables can be accessed ``only by creating objects``.
+* Instance variables are **created when an object of the class is created** and **destroyed when the object is destroyed**.
+* Instance variables can be accessed **only by creating objects**.
 
 ## Static variables
 
