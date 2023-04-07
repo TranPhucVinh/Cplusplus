@@ -72,7 +72,7 @@ int main(){
 * [nullptr](Pointer.md#nullptr)
 * [Pointer as an object of a class, new keyword](../../Object-oriented%20programming/Fundamental%20concepts.md#define-variable-and-function-for-a-class-use-class-object-as-a-pointer)
 * [uintptr_t](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/Pointer.md#uintptr_t): [Change value of variable by uintptr_t* and uintptr_t&](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/Pointer.md#change-value-of-variable-by-uintptr_t)
-* [Smart pointer](Smart%20pointer): [Unique pointer](Smart%20pointer#Unique%20pointer.md), share pointer and weak pointer
+* [Smart pointer](Smart%20pointer): [Unique pointer](Smart%20pointer#Unique%20pointer.md), [shared pointer](Shared%20pointer.md) and weak pointer
 
 # lvalue
 
