@@ -2,7 +2,7 @@ For a variable of a class, ``this`` pointer will help working with that variable
 
 For a method of a class, ``this`` pointer will help calling this method.
 
-Implementation of ``this`` pointer:
+# this pointer for class function
 
 * Set class variable value by a method
 * Calling class methods inside another method
@@ -47,5 +47,24 @@ int main(){
     object.get_var();//100
     object.change_var();
     object.get_var();//110
+}
+```
+# this pointer for class variable
+
+Must not call this pointer outside class definition
+
+```cpp
+//Must not do this, this give compilation error
+class Header
+{
+  public:
+    int a;
+    int b;
+};
+
+int main(){
+    Header header;
+    header.a = 19;
+    header.b = this->a + 1;//Must not do this; invalid use of this pointer
 }
 ```
