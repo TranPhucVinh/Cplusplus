@@ -30,7 +30,6 @@ A destructor function is called automatically when the object goes out of scope:
 * a delete operator is called 
 
 ### Destructor is called when program ends
-
 ```cpp
 #include <iostream>
 
@@ -57,7 +56,32 @@ Constructor of classTest
 Destructor is called when program ends
 Destructor of classTest
 ```
+### Destructor is called by delete (for pointer object)
+```cpp
+class classTest{
+	public:
+		int publicNumber;
+		void hello(){
+            publicNumber = 10;
+			cout << "Hello World \n";
+		}
+        ~classTest() {cout << "Destructor\n";}
+};
 
+int main(){
+    classTest *obj_ptr = new classTest();
+	obj_ptr->hello(); //Hello World
+	cout << obj_ptr->publicNumber << endl; //10
+    delete obj_ptr;
+    cout << "Call pointer\n";
+}
+```
+```
+Hello World
+10
+Destructor
+Call pointer
+```
 # Binding
 
 Binding refers to the process of converting identifiers (such as variable and performance names) into addresses. Binding is done for each variable and functions. For functions, it means that matching the call with the right function definition by the compiler. It takes place either at compile time or at runtime.
