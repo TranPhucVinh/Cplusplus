@@ -1,7 +1,7 @@
 Beside conventional [explicit type conversion](https://github.com/TranPhucVinh/C/blob/master/Introduction/Data%20type/Type%20conversion.md#explicit-type-conversion) performed in C, CPP supports explicit type conversion with ``cast``:
 
 * [static_cast](#static_cast)
-* Dynamic cast
+* [dynamic_cast](#dynamic_cast)
 * [const_cast](#const_cast)
 * [reinterpret_cast](#reinterpret_cast)
 
@@ -30,6 +30,49 @@ printf("%c", *a_c);//a
 printf("%c", *a_cpp);//Error at compilation:  invalid static_cast from type 'char*' to type 'int*'
 ```
 That's why this example needs [reinterpret_cast](#reinterpret_cast)
+# dynamic_cast
+``dynamic_cast`` is used for upcasting and downcasting in [polymorphism](../../Object-oriented%20programming/Inheritance/README.md#Basic%20inheritance%20example) with [virtual function](../../Object-oriented%20programming/Inheritance/Virtual%20function.md)
+
+**Downcasting** is when a base class object is casted to the derived class object.
+
+**Upcasting** is when a base class object is casted to the derived class object.
+
+For virtual function, like in [Assign derive class object to base class pointer to call this derive class function](../../Object-oriented%20programming/Inheritance/Virtual%20function.md#assign-derive-class-object-to-base-class-pointer-to-call-this-derive-class-function)
+, it's a safe practice to use ``dynamic_cast`` for downcasting and upcasting
+
+```cpp
+#include <iostream>
+
+class base_class {
+	public:
+		virtual void display_function(){
+			std::cout << "base_class display_function()\n";
+		}
+};
+
+class derive_class: public base_class{
+	public:
+		void display_function(){
+			std::cout << "derive_class display_function()\n";
+		}
+};
+
+int main(){
+	derive_class dc_1;
+
+	// Upcast from derive_class to base_class
+	base_class *b_ptr = dynamic_cast<base_class*>(&dc_1);
+	b_ptr->display_function();
+
+	derive_class *dc_2;
+
+	// Downcast from base_class to derive_class
+	dc_2 = dynamic_cast<derive_class*>(b_ptr);
+	dc_2->display_function();
+	b_ptr->display_function();
+}
+```
+
 # const_cast
 
 ``const_cast`` is used to cast away the constness of variables. The type in a ``const_cast`` must be a pointer, reference, or pointer to member to an object type.
@@ -84,63 +127,4 @@ int *a_cpp = reinterpret_cast<int*>(&a);
 printf("%c\n", *a_c);//a
 printf("%c\n", *a_cpp);//a
 ```
-``reinterpret_cast`` for pointer to access to class object value:
-```cpp
-#include <iostream>
-using namespace std;
-
-class classTest {
-	public:
-		int intVal1;
-		int intVal2;
-		char charVal;
-		bool boolVal;
-};
-
-int main()
-{
-	classTest object;
-
-	object.intVal1 = 5;
-	object.intVal2 = 10;
-	object.charVal = 'a';
-	object.boolVal = true;
-
-	// Cast object to int pointer for later step to access to intVal1 and intVal2
-	int* ptr = reinterpret_cast<int*>(&object);
-
-	cout << sizeof(object) << endl;// 12, size of class classTest
-
-	cout << *ptr << endl;// 5; ptr now point to object.intVal1
-
-	ptr++;// Incrementing the *ptr by 1, it will now point to object.intVal2
-
-	cout << *ptr << endl;// 10; *ptr now point to object.intVal2
-
-	ptr++;// Incrementing the *ptr by 1, it will now point to object.charVal
-
-	// Cast int pointer *ptr to char pointer *ch
-	/*
-		As *ptr now point to object.charVal, it needs to have the same type to
-		access to object.charVal so we need a casting here
-	*/
-	char* ch = reinterpret_cast<char*>(ptr);
-
-	cout << *ch << endl;// *ch now point to object.charVal
-
-	ch++;// Incrementing the *ch by 1, it will now point to object.boolVal
-
-	// Cast char pointer *ch to bool pointer *b
-	/*
-		As *ch now point to object.boolVal, it needs to have the same type to
-		access to object.boolVal so we need a casting here
-	*/
-	bool* b = reinterpret_cast<bool*>(ch);
-	cout << *b << endl;
-
-	// We can also use this line of code to print the value pointed by (*ch)
-	// cout << *(reinterpret_cast<bool*>(ch));
-
-	return 0;
-}
-```
+``reinterpret_cast`` for pointer to access to class object value: [reinterpret_cast_for_class_object.cpp](reinterpret_cast_for_class_object.cpp)
