@@ -81,7 +81,7 @@ std::cout << *uniquePtr2 << std::endl;//123
 // std::cout << &uniquePtr1 << std::endl;//Segmentation fault
 // std::cout << *uniquePtr1 << std::endl;//Segmentation fault
 ```
-# Unique pointer for class object
+# Unique pointer as class object
 
 ```cpp
 class classTest{
@@ -102,5 +102,13 @@ int main(){
 
     // As object is an unique pointer so it access the class member by ->
     object->displayString();
+	std::cout << "Program finished\n";
 }
 ```
+```
+Constructor of classTest
+Hello, World !
+Program finished
+Destructor of classTest
+```
+From the result, we can see that the unique pointer as class object is destroyed when the program ended
