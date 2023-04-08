@@ -1,8 +1,9 @@
 # Memory functions
 
-## [Dynamic memory allocation]()
+## [Dynamic memory allocation](Dynamic%20memory%20allocation.md)
 
-Checl dynamic memory allocation document for implementation with new and delete.
+Check [dynamic memory allocation document](Dynamic%20memory%20allocation.md) for implementation with new and delete.
+
 ## memset()
 
 Calling ``memset()`` of ``cstring``
