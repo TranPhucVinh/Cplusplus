@@ -32,7 +32,9 @@ printf("%c", *a_cpp);//Error at compilation:  invalid static_cast from type 'cha
 That's why this example needs [reinterpret_cast](#reinterpret_cast)
 # const_cast
 
-const_cast help changing the object value inside a [const function](../../Object-oriented%20programming/README.md#const-function)
+``const_cast`` is used to cast away the constness of variables. The type in a ``const_cast`` must be a pointer, reference, or pointer to member to an object type.
+
+``const_cast`` help changing the object value inside a [const function](../../Object-oriented%20programming/README.md#const-function)
 
 ```cpp
 #include <iostream>

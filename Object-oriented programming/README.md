@@ -141,3 +141,4 @@ This gives compilation error as trying to modify the class member (``publicNumbe
 error: assignment of member 'classTest::publicNumber' in read-only object
 error: assignment of member 'classTest::privateNumber' in read-only object
 ```
+However, object value inside a const function can be changed by [const_cast](../Introduction/Data%20type/Explicit%20type%20conversion.md#const_cast)
