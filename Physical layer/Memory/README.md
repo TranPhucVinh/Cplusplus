@@ -1,5 +1,8 @@
 # Memory functions
 
+## [Dynamic memory allocation]()
+
+Checl dynamic memory allocation document for implementation with new and delete.
 ## memset()
 
 Calling ``memset()`` of ``cstring``
