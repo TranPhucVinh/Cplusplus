@@ -4,8 +4,8 @@
 * [Method of class](Method%20of%20class.md)
 * [Constructor and destructor](#constructor-and-destructor)
 * [this pointer](this%20pointer.md)
-* [Inheritance](Inheritance.md): [Basic inheritance example as polymorphism](), [protect method]() and [Header files with class and public method]()
-* [Virtual function](Virtual%20function.md): [When to use virtual function ?](Virtual%20function.md#when-to-use-virtual-function-), [virtual function definition](Virtual%20function.md#virtual-function-definition) and [implementation](Virtual%20function.md#implementation), [override keyword](Virtual%20function.md#override-keyword), [virtual destructor](Virtual%20function.md#virtual-destructor), [pure virtual function and abstract class](Virtual%20function.md#pure-virtual-function-and-abstract-class)
+* [Inheritance](Inheritance.md): [Basic inheritance example as polymorphism](), [protect method]()m [Header files with class and public method](), [multilevel inheritance]() and [multiple inheritance]()
+* [Virtual function](Inheritance/Virtual%20function.md): [When to use virtual function ?](Inheritance/Virtual%20function.md#when-to-use-virtual-function-), [virtual function definition](Virtual%20function.md#virtual-function-definition) and [implementation](Inheritance/Virtual%20function.md#implementation), [override keyword](Inheritance/Virtual%20function.md#override-keyword), [virtual destructor](Inheritance/Virtual%20function.md#virtual-destructor), [pure virtual function and abstract class](Inheritance/Virtual%20function.md#pure-virtual-function-and-abstract-class)
 * [Binding](#binding): [Early binding]() and [late binding]()
 * [const function]()
 
