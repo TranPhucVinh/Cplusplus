@@ -1,4 +1,4 @@
-Beside conventional explicit type conversion performed in C, CPP supports explicit type conversion with ``cast``:
+Beside conventional [explicit type conversion](https://github.com/TranPhucVinh/C/blob/master/Introduction/Data%20type/Type%20conversion.md#explicit-type-conversion) performed in C, CPP supports explicit type conversion with ``cast``:
 
 * [static_cast](#static_cast)
 * Dynamic cast
