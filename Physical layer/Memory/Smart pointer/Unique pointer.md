@@ -81,6 +81,20 @@ std::cout << *uniquePtr2 << std::endl;//123
 // std::cout << &uniquePtr1 << std::endl;//Segmentation fault
 // std::cout << *uniquePtr1 << std::endl;//Segmentation fault
 ```
+# Using .get() to copy unique pointer value to normal pointer
+```c
+int *p;
+std::unique_ptr<int> uniquePtr = std::make_unique<int>(123);
+
+p = uniquePtr.get();
+
+std::cout << p << std::endl;//  0x7e4c20
+std::cout << *p << std::endl;// 123
+
+// By using get(), uniquePtr doesn't lose its value and can still be access normally
+std::cout << &uniquePtr << std::endl;// 0x7ffffcebc750
+std::cout << *uniquePtr << std::endl;// 123
+```
 # Unique pointer as class object
 
 ```cpp
