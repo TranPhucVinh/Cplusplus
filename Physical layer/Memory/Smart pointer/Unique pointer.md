@@ -82,7 +82,7 @@ std::cout << *uniquePtr2 << std::endl;//123
 // std::cout << *uniquePtr1 << std::endl;//Segmentation fault
 ```
 # Using .get() to copy unique pointer value to normal pointer
-```c
+```cpp
 int *p;
 std::unique_ptr<int> uniquePtr = std::make_unique<int>(123);
 
