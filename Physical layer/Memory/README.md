@@ -78,7 +78,7 @@ int main(){
 * [uintptr_t](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/Pointer.md#uintptr_t): [Change value of variable by uintptr_t* and uintptr_t&](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/Pointer.md#change-value-of-variable-by-uintptr_t)
 * [Smart pointer](Smart%20pointer): [Unique pointer](Smart%20pointer#Unique%20pointer.md), [shared pointer](Smart%20pointer#Shared%20pointer.md) and weak pointer
 
-# lvalue
+# [lvalue](lvalue.md)
 
 * [lvalue define](): [NULL initialization]() and [reinitialization]() aren't allowed
 * [lvalue reference as pass by reference](lvalue.md#lvalue-reference-as-pass-by-reference)
@@ -87,7 +87,7 @@ int main(){
 * [lvalue function with pass by value](lvalue.md#lvalue-function-with-pass-by-value)
 * [Choosing between passing by pointer and passing by lvalue reference in C++]()
 
-# rvalue
+# [rvalue](rvalue.md)
 
 * [rvalue concept, define rvalue](rvalue.md#define-rvalue)
 * [rvalue as class object](rvalue.md#rvalue-as-class-object)

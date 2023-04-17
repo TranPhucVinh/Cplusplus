@@ -30,6 +30,14 @@ printf("&&b: %d", &&b);//This will result in error
 main.c:13:25: error: label 'a' used but not defined
 main.c:14:25: error: label 'b' used but not defined
 ```
+# Arithmetic
+
+```cpp
+int a = 1;
+int b = 2;
+int &&c = a + b;
+printf("c: %d\n", c);//c: 3
+```
 
 # rvalue as class object
 
