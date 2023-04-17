@@ -30,7 +30,7 @@ printf("&&b: %d", &&b);//This will result in error
 main.c:13:25: error: label 'a' used but not defined
 main.c:14:25: error: label 'b' used but not defined
 ```
-# Arithmetic
+## Arithmetic
 
 ```cpp
 int a = 1;
@@ -60,10 +60,46 @@ int main(){
     cout << rval_object.publicNumber << endl; //10
 }
 ```
+## Set rvalue for a class object from an existed one
 To set rvalue for a class object from an existed one, use [std::move()](README.md#stdmove):
 ```cpp
 classTest object;
 classTest &&rval_object = std::move(object);
+```
+## rvalue as function argument with constructor setup
+```cpp
+#include <iostream>
+
+using namespace std;
+
+class classTest{
+	public:
+		classTest(int a, string str){
+			_a = a;
+			_str = str;
+
+		}
+		int _a;
+		string _str;
+		void display_string(){
+			cout << _str << endl;
+			cout << _a << endl;
+		}
+};
+
+void display(classTest &&rval_object);
+
+int main(){
+	display({123, "Hello, World !"});
+}
+
+void display(classTest &&rval_object){
+	rval_object.display_string();
+}
+```
+```
+Hello, World !
+123
 ```
 # rvalue as function argument
 
