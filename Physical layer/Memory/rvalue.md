@@ -60,7 +60,7 @@ int main(){
     cout << rval_object.publicNumber << endl; //10
 }
 ```
-To set rvalue for a class object from an existed one, use ``std::move``:
+To set rvalue for a class object from an existed one, use [std::move()](README.md#stdmove):
 ```cpp
 classTest object;
 classTest &&rval_object = std::move(object);
@@ -85,7 +85,7 @@ int main()
     printf("%d\n", func(a+1));//6
 }
 ```
-Use ``std::move()`` to be more efficient, instead of using ``func(a-0)``:
+Use [std::move()](README.md#stdmove) to be more efficient, instead of using ``func(a-0)``:
 
 ```cpp
 printf("%d\n", func(std::move(a)));
@@ -93,7 +93,7 @@ printf("%d\n", func(std::move(a)));
 
 # rvalue as pass reference
 
-rvalue as pass reference to change value of a variable
+For rvalue as pass reference to change value of a variable, use [std::move()](README.md#stdmove)
 
 ```c
 void func(int&& a)
