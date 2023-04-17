@@ -60,7 +60,11 @@ int main(){
     cout << rval_object.publicNumber << endl; //10
 }
 ```
-	
+To set rvalue for a class object from an existed one, use ``std::move``:
+```cpp
+classTest object;
+classTest &&rval_object = std::move(object);
+```
 # rvalue as function argument
 
 For rvalue as function argument, the value passing to it must be rvalue
