@@ -8,7 +8,7 @@ Generics can be implemented in C++ using **template**.
 
 # Using template for data type
 
-```c
+```cpp
 #include <iostream>
 #include <typeinfo>
 
@@ -81,7 +81,7 @@ int main () {
 
 # Using template typename along with other type
 
-```c
+```cpp
 #include <iostream>
 #include <typeinfo>
 
@@ -108,7 +108,7 @@ b: 4
 
 # Template with class as type
 
-```c
+```cpp
 #include <iostream>
 #include <typeinfo>
 
