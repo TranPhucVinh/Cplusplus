@@ -5,9 +5,7 @@
 * Smart pointer: Unique pointer, shared pointer
 * rvalue and lvalue
 
-# System time
-
-Use library ``ctime``
+# Time with ctime
 
 ## Get current time with time()
 
@@ -33,6 +31,15 @@ time(&currentTime); //Get current time and save to currentTime
 struct tm *time_value = localtime(&currentTime);
 cout << "Day " << time_value->tm_mday << " month: " << time_value->tm_mon << "year: " << time_value->tm_year;
 ```
+# Time with chrono
+chrono value is only available in [thread](). 
+
+Can't use chrono time value like seconds for ``sleep()`` function:
+
+```cpp
+//Must not do this. This gives compilation error
+sleep(std::chrono::seconds(1));
+```
 
 # Communicating with the environment
 
@@ -43,7 +50,7 @@ Get the environment variable value (setup by [export](https://github.com/TranPhu
 ``getenv()`` is available since C++11.
 
 ```c
-std::cout << std::getenv("env_var"));
+std::cout << std::getenv("env_var");
 ```
 Setup environment variable ``env_var``: ``export env_var="Hello, World !"``
 
