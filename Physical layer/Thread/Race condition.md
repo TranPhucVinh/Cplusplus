@@ -75,7 +75,7 @@ bool std::mutex::try_lock()
 
 Return:
 * ``true``: Success
-* ``fail``: Fail
+* ``false``: Fail
 
 Use ``std::mutex::try_lock()`` for [One thread function handler to increase a share value]():
 
@@ -99,3 +99,28 @@ Fail to lock mutex
 Fail to lock mutex
 share_value after executing 2 threads: 1987206
 ```
+# Timed mutex
+
+```cpp
+std::timed_mutex::try_lock_for()
+```
+
+``try_lock_for()`` will try to lock the mutex for a chrono time period.
+Return:
+* ``true``: Success
+* ``false``: Fail
+
+```cpp
+std::timed_mutex tm;
+void thread_func()
+{
+    for (int i = 0; i < RANGE; i++) {
+		if (tm.try_lock_for(std::chrono::seconds(1))){
+            share_value++;
+            tm.unlock();
+        } else printf("Fail to lock mutex\n");
+	}
+}
+//Other operations are like One thread function handler to increase a share value
+```
+**Result**: ``share_value after executing 2 threads: 2000000``
