@@ -1,5 +1,9 @@
+# [Memory](Memory)
 
-# Memory
+* Dynamic memory allocation
+* Pointer
+* Smart pointer: Unique pointer, shared pointer
+* rvalue and lvalue
 
 # System time
 
