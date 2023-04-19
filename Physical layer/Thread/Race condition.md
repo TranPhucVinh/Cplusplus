@@ -105,7 +105,7 @@ share_value after executing 2 threads: 1987206
 std::timed_mutex::try_lock_for()
 ```
 
-``try_lock_for()`` will try to lock the mutex for a chrono time period. Blocks until specified chrono time period has elapsed or the lock is acquired, whichever comes first
+``try_lock_for()`` will try to lock the mutex for a chrono time period. ``try_lock_for()`` will block the program until specified chrono time period has elapsed or the lock is acquired, whichever comes first
 
 Return:
 * ``true``: Success
