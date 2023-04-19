@@ -1,13 +1,13 @@
-# API
+# Fundamental concepts
 
 ``class thread`` is available since C++11.
+
+Compile: ``g++ main.cpp -std=c++11 -pthread``
 
 ```cpp
 #include <thread>
 std::thread thread_object(callback);
 ```
-
-# Implementations
 
 ## Create a simple thread
 
@@ -30,7 +30,7 @@ int main()
 
 ## Thread function with argument
 
-Thread function with one argument
+### Thread function with one argument
 
 ```cpp
 void thread_func(int int_arg)
@@ -51,7 +51,7 @@ int main()
 Int arg: 123
 ```
 
-Thread function with multiple arguments
+### Thread function with multiple arguments
 
 ```cpp
 void thread_func(int int_arg, std::string string_arg)
@@ -93,77 +93,5 @@ int main()
     return 0;
 }
 ```
-# Race condition
 
-## One thread function handler to increase a share value
-
-```cpp
-#include <iostream>
-#include <thread>
-
-#define RANGE 1000000
-
-int share_value;
-
-void thread_func()
-{
-    for (int i = 0; i < RANGE; i++) share_value++;
-}
-
-int main()
-{
-    std::thread thread_1(thread_func), thread_2(thread_func);
-    thread_1.join();
-	thread_2.join();
-	printf("share_value after executing 2 threads: %d\n", share_value);
-    return 0;
-}
-```
-**Result**: ``share_value after executing 2 threads: 1053188`` (expected ``2000000``)
-
-## Solved by std::mutex
-
-```cpp
-#include <iostream>
-#include <thread>
-#include <mutex>
-
-#define RANGE 1000000
-
-int share_value;
-std::mutex _mutex;
-
-void thread_func()
-{
-    for (int i = 0; i < RANGE; i++) {
-		_mutex.lock();
-		share_value++;
-		_mutex.unlock();
-	}
-}
-
-int main()
-{
-    std::thread thread_1(thread_func), thread_2(thread_func);
-    thread_1.join();
-	thread_2.join();
-	printf("share_value after executing 2 threads: %d\n", share_value);
-    return 0;
-}
-```
-
-# std::mutex API
-
-```cpp
-void std::mutex::lock()
-```
-
-Locks the mutex
-
-```cpp
-bool std::mutex::try_lock()
-```
-
-Lock the mutex. Return:
-* ``true``: Success
-* ``fail``: Fail
+# [Race condition]()
