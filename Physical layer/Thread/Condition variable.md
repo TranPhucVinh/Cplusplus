@@ -99,3 +99,54 @@ void thread_func_2(){
     }
 }
 ```
+# void wait(std::unique_lock<std::mutex>& lock, Predicate stop_waiting)
+```cpp
+template<class Predicate>
+void wait(std::unique_lock<std::mutex>& lock, Predicate stop_waiting);
+```
+This type of ``wait()`` function can be used to return a variable
+```cpp
+#include <iostream>
+#include <thread>
+#include <mutex>
+#include <condition_variable>
+
+#define RANGE 1000000
+
+void thread_func_1();
+void thread_func_2();
+
+int share_value;
+int thread_2_run = 0;
+
+std::mutex 					_mutex;
+std::condition_variable 	cv;
+
+int main()
+{
+    std::thread thread_1(thread_func_1), thread_2(thread_func_2);
+    thread_1.join();
+	thread_2.join();
+	printf("share_value after executing 2 threads: %d\n", share_value);
+    return 0;
+}
+
+void thread_func_1()
+{
+    for (int i = 0; i < RANGE; i++) {
+		std::unique_lock<std::mutex> thread1_lock(_mutex);
+		share_value++;
+    }   
+	cv.notify_one();
+    thread_2_run = 1;
+}
+
+void thread_func_2(){
+	printf("Thread 2 isn't ready to run\n");
+	std::unique_lock<std::mutex> thread2_lock(_mutex);
+	cv.wait(thread2_lock, []{ return thread_2_run;});
+    for (int i = 0; i < RANGE; i++) {
+        share_value++;
+    }
+}
+```
