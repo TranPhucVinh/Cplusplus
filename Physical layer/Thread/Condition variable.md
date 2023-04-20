@@ -46,7 +46,7 @@ void thread_func_2(){
     }
 }
 ```
-# wait(std::unique_lock<std::mutex>& lock)
+# void wait(std::unique_lock<std::mutex>& lock)
 ```cpp
 void std::condition_variable::wait( std::unique_lock<std::mutex>& lock);
 ```
@@ -106,31 +106,7 @@ void wait(std::unique_lock<std::mutex>& lock, Predicate stop_waiting);
 ```
 This type of ``wait()`` function can be used to return a variable
 ```cpp
-#include <iostream>
-#include <thread>
-#include <mutex>
-#include <condition_variable>
-
-#define RANGE 1000000
-
-void thread_func_1();
-void thread_func_2();
-
-int share_value;
-int thread_2_run = 0;
-
-std::mutex 					_mutex;
-std::condition_variable 	cv;
-
-int main()
-{
-    std::thread thread_1(thread_func_1), thread_2(thread_func_2);
-    thread_1.join();
-	thread_2.join();
-	printf("share_value after executing 2 threads: %d\n", share_value);
-    return 0;
-}
-
+//Other parts are like in void wait(std::unique_lock<std::mutex>& lock) example
 void thread_func_1()
 {
     for (int i = 0; i < RANGE; i++) {
@@ -149,4 +125,26 @@ void thread_func_2(){
         share_value++;
     }
 }
+```
+# std::condition_variable::wait_for()
+
+```cpp
+//Other parts are like in void wait(std::unique_lock<std::mutex>& lock) example
+void thread_func_2(){
+	printf("Thread 2 isn't ready to run\n");
+	std::unique_lock<std::mutex> thread2_lock(_mutex);
+	int ready = cv.wait_for(thread2_lock, std::chrono::seconds(1), []{ return thread_2_run;});
+	if (ready){
+		printf("Thread 2 is ready now\n");
+		for (int i = 0; i < RANGE; i++) {
+	        share_value++;
+	    }
+	} else printf("Thread 2 hasn't been ready in after 1 second waiting\n");
+}
+```
+**Result**
+```
+Thread 2 isn't ready to run
+Thread 2 is ready now
+share_value after executing 2 threads: 2000000
 ```
