@@ -1,4 +1,4 @@
-# Fundamental concepts
+# [Fundamental concepts](Fundamental%20concepts.md)
 
 ``class thread`` is available since C++11.
 
@@ -9,89 +9,18 @@ Compile: ``g++ main.cpp -std=c++11 -pthread``
 std::thread thread_object(callback);
 ```
 
-## Create a simple thread
+* [Create a simple thread](Fundamental%20concepts.md#create-a-simple-thread)
+* [Thread function with argument](Fundamental%20concepts.md#thread-function-with-argument): [Thread function with one argument](Fundamental%20concepts.md#thread-function-with-multiple-arguments) and [Thread function with multiple arguments](Fundamental%20concepts.md#thread-function-with-multiple-arguments)
+* [Delay inside thread](Fundamental%20concepts.md#delay-inside-thread)
 
-```cpp
-#include <iostream>
-#include <thread>
+# [Race condition](Race%20condition.md)
+**Race condition issue**: [One thread function handler to increase a share value](Race%20condition.md#one-thread-function-handler-to-increase-a-share-value)
 
-void thread_func()
-{
-    std::cout << "Hello, World !";
-}
+[std::mutex](Race%20condition.md#stdmutex) for **One thread function handler to increase a share value** issue: 
+* [std::mutex::lock()](Race%20condition.md#lock)
+* [std::mutex::try_lock()](Race%20condition.md#try_lock)
 
-int main()
-{
-    std::thread thread_obj(thread_func);
-    thread_obj.join();
-    return 0;
-}
-```
+[Timed mutex](Race%20condition.md#timed-mutex) for **One thread function handler to increase a share value** issue: 
+* [std::timed_mutex::try_lock_for()]()
 
-## Thread function with argument
-
-### Thread function with one argument
-
-```cpp
-void thread_func(int int_arg)
-{
-    std::cout << "Int arg: " << int_arg;
-}
-
-int main()
-{
-    std::thread thread_obj(thread_func, 123);
-    thread_obj.join();
-    return 0;
-}
-```
-**Result**
-
-```
-Int arg: 123
-```
-
-### Thread function with multiple arguments
-
-```cpp
-void thread_func(int int_arg, std::string string_arg)
-{
-    std::cout << "Int arg: " << int_arg << std::endl;
-    std::cout << "String arg: " << string_arg << std::endl;
-}
-
-int main()
-{
-    std::thread thread_obj(thread_func, 123, "Hello, World !");
-    thread_obj.join();
-    return 0;
-}
-```
-
-```
-Int arg: 123
-String arg: Hello, World !
-```
-
-## Delay inside thread
-
-Delay inside thread with ``sleep_for()`` and ``chrono``:
-
-```cpp
-void thread_func()
-{
-    while (1){
-        std::cout << "Hello, World !" << std::endl;
-        std::this_thread::sleep_for(std::chrono::seconds(1));
-    }
-}
-
-int main()
-{
-    std::thread thread_obj(thread_func);
-    thread_obj.join();
-    return 0;
-}
-```
-
-# [Race condition]()
+[lock_guard](Race%20condition.md#lock_guard) for **One thread function handler to increase a share value** issue.
