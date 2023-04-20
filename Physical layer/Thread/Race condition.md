@@ -91,7 +91,7 @@ void thread_func()
 }
 //Other operations are like One thread function handler to increase a share value
 ```
-**Resul**:
+**Result**:
 
 ```
 ...
@@ -121,6 +121,26 @@ void thread_func()
             tm.unlock();
         } else printf("Fail to lock mutex\n");
 	}
+}
+//Other operations are like One thread function handler to increase a share value
+```
+**Result**: ``share_value after executing 2 threads: 2000000``
+# lock_guard
+**Resource Acquisition Is Initialization**, abbreviated **RAII**, is a C++ programming technique which binds the life cycle of a resource that must be acquired before use, like locked mutex.
+
+The class ``lock_guard`` is a mutex wrapper that provides a convenient RAII-style mechanism for owning a mutex for the duration of a scoped block. The ``lock_guard`` lock of the mutex will be automatically remove when goes out of the scope.
+
+```cpp
+#include <mutex>
+
+std::mutex _mutex;
+
+int share_value;
+
+void thread_func()
+{
+	std::lock_guard<std::mutex> lock(_mutex);
+  for (int i = 0; i < RANGE; i++) share_value++;
 }
 //Other operations are like One thread function handler to increase a share value
 ```
