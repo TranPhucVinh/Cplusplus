@@ -6,7 +6,7 @@
 
 # auto keyword
 
-``auto`` keyword is available since C++11 and allows to automatic deduct of the data type of an expression. ``auto`` in CPP doesn't work like ``auto`` in ``C``.
+``auto`` keyword is available since C++11 and allows to automatic deduct of the data type of an expression. ``auto`` in CPP doesn't work like [C auto](https://github.com/TranPhucVinh/C/tree/master/Introduction/Keywords#auto), which intended for local variable.
 
 ```cpp
 #include <iostream>
@@ -41,3 +41,12 @@ int main()
 ```
 
 Must not use auto for array like this: ``auto d[3] = {1, 2, 3};//Must not used``
+
+``auto`` in for loop:
+
+```cpp
+int array[5] = {10, 20, 30, 40, 50};
+for (auto i : array) {
+    std::cout << i << "\n";
+}
+```
