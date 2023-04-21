@@ -100,7 +100,7 @@ Fail to lock mutex
 share_value after executing 2 threads: 1987206
 ```
 # Timed mutex
-
+## try_lock_for()
 ```cpp
 std::timed_mutex::try_lock_for()
 ```
@@ -125,6 +125,22 @@ void thread_func()
 //Other operations are like One thread function handler to increase a share value
 ```
 **Result**: ``share_value after executing 2 threads: 2000000``
+## try_lock_until()
+Work like ``try_lock_for()``, but the wait time is set from current time.
+```cpp
+std::timed_mutex tm;
+void thread_func()
+{
+	auto now=std::chrono::steady_clock::now();
+	for (int i = 0; i < RANGE; i++) {
+		if (tm.try_lock_until(now + std::chrono::seconds(10))){
+            share_value++;
+			tm.unlock();
+        } else printf("Fail to lock mutex\n");
+	}
+}
+//Other operations are like One thread function handler to increase a share value
+```
 # lock_guard
 **Resource Acquisition Is Initialization**, abbreviated **RAII**, is a C++ programming technique which binds the life cycle of a resource that must be acquired before use, like locked mutex.
 
