@@ -26,3 +26,5 @@ int main()
 }
 ```
 **Result**: ``share_value after executing 2 threads: 6000000``
+
+For ``unique_lock``, we don't need to call ``.unlock()`` as the mutex is automatically unlocked when the ``unique_lock`` object goes out of its scope.
