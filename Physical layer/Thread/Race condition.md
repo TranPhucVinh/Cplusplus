@@ -126,7 +126,7 @@ void thread_func()
 ```
 **Result**: ``share_value after executing 2 threads: 2000000``
 ## try_lock_until()
-Work like ``try_lock_for()``, but the wait time is set from current time.
+Work like [try_lock_for()](#try_lock_for), but the wait time is set from current time.
 ```cpp
 std::timed_mutex tm;
 void thread_func()
