@@ -130,6 +130,3 @@ int main() {
 	cout << a << endl;
 }
 ```
-# Examples
-
-[Examples](Examples)
