@@ -134,3 +134,69 @@ int main(){
     call_object_method<classTest>(object);
 }
 ```
+# Template parameter pack
+
+Template parameter pack is a template features for template [variable length argument/variadic function](https://github.com/TranPhucVinh/C/blob/master/Introduction/Function/Variadic%20function.md)
+
+```cpp
+#include <iostream>
+
+template <typename...dummy_type>
+void parameter_packs_size(dummy_type... dt){
+	printf("Size of parameter packs: %ld\n", (sizeof...(dummy_type)));
+}
+
+int main(){
+	parameter_packs_size();// 0
+	parameter_packs_size(1, 2);// 2
+	parameter_packs_size(1, 2, 3);// 3
+}
+```
+G++ 5.0 doesn't support template parameter pack properly while G++ 9.0 (test environment: WSL Ubuntu 20.04) supports it properly with C++17
+
+The following implementation are in G++ 9.0, on WSL Ubuntu 20.04, C++17:
+
+## Sum all members of template parameter packs
+
+```cpp
+#include <iostream>
+
+template <typename ...dummy_type>
+auto parameter_packs(dummy_type... dt) {
+	return (dt + ...);
+}
+
+int main() {
+	printf("%d\n", parameter_packs(1, 2));
+	printf("%lf\n", parameter_packs(1.2, 3.4, 5.6));
+}
+```
+
+## Sum all class object member of template parameter packs
+
+```cpp
+#include <iostream>
+
+using namespace std;
+
+class classTest{
+	public:
+		int int_number;
+		float float_number;
+};
+
+template <typename ...classTest>
+auto parameter_packs(classTest... ct) {
+	return (ct + ...);
+}
+
+int main(){
+	classTest obj1, obj2;
+	obj1.int_number = 1;
+	obj1.float_number = 1.2;
+	obj2.int_number = 2;
+	obj2.float_number = 3.4;
+	printf("%d\n", parameter_packs(obj1.int_number, obj2.int_number));
+	printf("%lf\n", parameter_packs(obj1.float_number, obj2.float_number));
+}
+```
