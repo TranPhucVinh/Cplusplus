@@ -3,7 +3,7 @@ Map is a data structure that supports creating an object includes a key and its 
 ```cpp
 std::map<key, value> Map;
 ```
-
+Map is supported since [C++11](https://github.com/TranPhucVinh/Cplusplus#c11).
 # Create a map and read all of its objects
 
 ```cpp
@@ -54,4 +54,39 @@ std::cout << "Map after inserting\n";
 for (auto &el: Map){
     std::cout << el.first << " " << el.second << std::endl;
 }
+```
+# Arrange the map
+
+Arrange the map from the greatest key value (int) to the lowest one
+
+```cpp
+std::map<int, std::string, std::greater<>> Map;
+Map[1] = "A";
+Map[2] = "A";
+Map[3] = "A";
+
+for (auto &el: Map){
+    std::cout << el.first << " " << el.second << std::endl;
+}
+```
+```
+3 A
+2 A
+1 A
+```
+Arrange the map from the lowest key value (int) to the greatest one
+```cpp
+std::map<int, std::string, std::less<>> Map;
+Map[1] = "A";
+Map[2] = "A";
+Map[3] = "A";
+
+for (auto &el: Map){
+		std::cout << el.first << " " << el.second << std::endl;
+}
+```
+```
+1 A
+2 A
+3 A
 ```
