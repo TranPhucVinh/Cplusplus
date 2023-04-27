@@ -73,6 +73,8 @@ int main(){
 
 # [Pointer](Pointer.md)
 
+C only supports pointer while C++ supports pointers and reference ([lvalue reference](#lvalue) and [rvalue reference](#rvalue))
+
 * [nullptr](Pointer.md#nullptr)
 * [Pointer as an object of a class, new keyword](../../Object-oriented%20programming/Fundamental%20concepts.md#define-variable-and-function-for-a-class-use-class-object-as-a-pointer)
 * [uintptr_t](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/Pointer.md#uintptr_t): [Change value of variable by uintptr_t* and uintptr_t&](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/Pointer.md#change-value-of-variable-by-uintptr_t)
