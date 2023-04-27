@@ -2,14 +2,24 @@
 * [Definition of class](Fundamental%20concepts.md#what-is-class-), [define variable and function for a class](Fundamental%20concepts.md#define-variable-and-function-for-a-class)
 * [Types of variables in class](Fundamental%20concepts.md#types-of-variables-in-class)
 * [Method of class](Method%20of%20class.md)
+* [Encapsulation](#encapsulation)
 * [Constructor and destructor](#constructor-and-destructor)
 * [this pointer](this%20pointer.md)
 * [Inheritance](Inheritance.md): [Basic inheritance example as polymorphism](), [protect method]()m [Header files with class and public method](), [multilevel inheritance]() and [multiple inheritance]()
 * [Virtual function](Inheritance/Virtual%20function.md): [When to use virtual function ?](Inheritance/Virtual%20function.md#when-to-use-virtual-function-), [virtual function definition](Virtual%20function.md#virtual-function-definition) and [implementation](Inheritance/Virtual%20function.md#implementation), [override keyword](Inheritance/Virtual%20function.md#override-keyword), [virtual destructor](Inheritance/Virtual%20function.md#virtual-destructor), [pure virtual function and abstract class](Inheritance/Virtual%20function.md#pure-virtual-function-and-abstract-class)
 * [Binding](#binding): [Early binding]() and [late binding]()
-* [const function](#const%20function)
+* [const function](const%20function.md)
 
 [Example](Example)
+
+# Encapsulation
+Encapsulation is defined as the wrapping up of data and information in a single unit. 
+
+We can not access any function from the class directly. We need an object to access that function that is using the member variables of that class. 
+
+The function which we are making inside the class must use only member variables, only then it is called encapsulation.
+
+Encapsulation will help increasing the security of data.
 
 # Constructor and destructor
 
@@ -89,56 +99,3 @@ Binding refers to the process of converting identifiers (such as variable and pe
 **Early binding (compile-time time polymorphism)**: In early binding, compiler (or linker) directly associate an address to the function call. C++ uses early binding by default. 
 
 **Late binding (run time polymorphism)**: In late binding, the compiler adds code that identifies the kind of object at runtime then matches the call with the right function definition. This can be achieved by declaring a [virtual function]().
-
-# const function
-
-**const function** as a class member doesn't allow changing the object value. Be not confused const function of a class with [the function define as const](https://github.com/TranPhucVinh/C/tree/master/Introduction/Keywords#const-as-function-definition) as defining a function as const has no effect.
-
-```c
-#include <iostream>
-
-using namespace std;
-
-class classTest{
-	public:
-		int publicNumber;
-        classTest(){
-            publicNumber = 1;
-            privateNumber = 2;
-        }
-        int function(int a) const {
-            /*
-                Doing any suff inside the class member const function which effect publicNumber
-                and privateNumber will give compilation error
-            */
-            a += 1;// Any stuff can be done as long as they don't effect the variable of publicNumber
-            return publicNumber;
-	    // return privateNumber; privateNumber returns normally
-        }
-    private:
-        int privateNumber;
-};
-
-int main(){
-	classTest object;
-    cout << object.function(12) << endl; //1 as function() returns publicNumber
-}
-```
-
-If define:
-
-```cpp
-// Must not do this
-int function(int a) const {
-    publicNumber = a;// Compilation error here
-    privateNumber = a;// Compilation error here
-    return publicNumber;
-}
-```
-This gives compilation error as trying to modify the class member (``publicNumber`` and ``privateNumber``) inside a const function:
-
-```
-error: assignment of member 'classTest::publicNumber' in read-only object
-error: assignment of member 'classTest::privateNumber' in read-only object
-```
-However, object value inside a const function can be changed by [const_cast](../Introduction/Data%20type/Explicit%20type%20conversion.md#const_cast)
