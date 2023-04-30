@@ -17,7 +17,7 @@ std::thread thread_object(callback);
 
 Just like GCC, G++ pthread doesn't have functions to suspend and resume thread. Suspend and resume features must be implemented by [mutex](Race%20condition.md#stdmutex) and [conditional variable](Condition%20variable.md).
 
-To suspend and resume between 2 threads in functions with no specific class object, check [suspend_and_resume_threads_raw_functions.cpp](suspend_and_resume_threads_raw_functions.cpp). This example is intended for comprehensive and easy to understand the thread suspend and resume operation.
+To suspend and resume between 2 threads in functions with no specific class object, check [suspend_and_resume_threads_raw_functions.cpp](suspend_and_resume_threads_raw_functions.cpp).
 
 # [Race condition](Race%20condition.md)
 **Race condition issue**: [One thread function handler to increase a share value](Race%20condition.md#one-thread-function-handler-to-increase-a-share-value)
