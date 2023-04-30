@@ -30,3 +30,5 @@ To suspend and resume between 2 threads in functions with no specific class obje
 * [std::timed_mutex::try_lock_for()]()
 
 [lock_guard](Race%20condition.md#lock_guard) for **One thread function handler to increase a share value** issue.
+
+[Condition variable](Condition%20variable.md): [2 threads with mutex where thread 1 allows thread 2 to run](Condition%20variable.md#2-threads-with-mutex-where-thread-1-allows-thread-2-to-run) and APIs
