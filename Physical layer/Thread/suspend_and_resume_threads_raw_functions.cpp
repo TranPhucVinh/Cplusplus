@@ -8,8 +8,8 @@ std::mutex                  suspend_mutex;
 std::condition_variable 	resume_condition;
 void *suspend_thread_func();
 void *resume_thread_func();
-void resumeThread();
-void suspendThread();
+void resumeAnySuspendedThread();
+void suspendCurrentThread();
 
 int main()
 {
@@ -27,7 +27,7 @@ void *suspend_thread_func()
         std::cout << "number " << number << "\n";
 		if (number==3) {
             std::cout << "Task is suspended\n";
-            suspendThread();
+            suspendCurrentThread();
             std::cout << "Task is resumed\n";
     	}
         std::this_thread::sleep_for(std::chrono::seconds(1));
@@ -38,21 +38,21 @@ void *resume_thread_func(){
     while (1){
 		if (number == 3){
             std::this_thread::sleep_for(std::chrono::seconds(3));
-            resumeThread();
+            resumeAnySuspendedThread();
             std::cout << "Has delay for 3 seconds in resume_thread\n";
         }
         std::this_thread::sleep_for(std::chrono::seconds(2));
     }	
 }
 
-void resumeThread()
+void resumeAnySuspendedThread()
 { 
-    std::unique_lock<std::mutex> resumeThreadLock(suspend_mutex);
+    std::unique_lock<std::mutex> resumeAnySuspendedThreadLock(suspend_mutex);
     resume_condition.notify_one();
 }
 
-void suspendThread()
+void suspendCurrentThread()
 { 
-    std::unique_lock<std::mutex> suspendThreadLock(suspend_mutex);
-    resume_condition.wait(suspendThreadLock);
+    std::unique_lock<std::mutex> suspendCurrentThreadLock(suspend_mutex);
+    resume_condition.wait(suspendCurrentThreadLock);
 }
