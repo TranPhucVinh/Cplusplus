@@ -13,6 +13,12 @@ std::thread thread_object(callback);
 * [Thread function with argument](Fundamental%20concepts.md#thread-function-with-argument): [Thread function with one argument](Fundamental%20concepts.md#thread-function-with-multiple-arguments) and [Thread function with multiple arguments](Fundamental%20concepts.md#thread-function-with-multiple-arguments)
 * [Delay inside thread](Fundamental%20concepts.md#delay-inside-thread)
 
+## Suspend and resume threads
+
+Just like GCC, G++ pthread doesn't have functions to suspend and resume thread. Suspend and resume features must be implemented by [mutex](Race%20condition.md#stdmutex) and [conditional variable](Condition%20variable.md).
+
+To suspend and resume between 2 threads in functions with no specific class object, check [suspend_and_resume_threads_raw_functions.cpp](suspend_and_resume_threads_raw_functions.cpp). This example is intended for comprehensive and easy to understand the thread suspend and resume operation.
+
 # [Race condition](Race%20condition.md)
 **Race condition issue**: [One thread function handler to increase a share value](Race%20condition.md#one-thread-function-handler-to-increase-a-share-value)
 
