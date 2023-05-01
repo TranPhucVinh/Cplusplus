@@ -16,7 +16,20 @@ int main()
     return 0;
 }
 ```
+Multiple arguments can be passed into thread function handler:
+```cpp
+void thread_func(int num1, int num2, int num3, int num4)
+{
+    std::cout << num1 + num2 + num3 + num4 << std::endl;
+}
 
+int main()
+{
+    std::thread thread_obj(thread_func, 1, 2, 3, 4);
+    thread_obj.join();
+    return 0;
+}
+```
 # Thread function with argument
 
 ## Thread function with one argument
