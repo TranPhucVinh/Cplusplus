@@ -128,3 +128,37 @@ printf("%c\n", *a_c);//a
 printf("%c\n", *a_cpp);//a
 ```
 ``reinterpret_cast`` for pointer to access to class object value: [reinterpret_cast_for_class_object.cpp](reinterpret_cast_for_class_object.cpp)
+
+## [Split a string into specific sequences](https://github.com/TranPhucVinh/C/blob/master/Data%20structure/struct/Examples/Use%20struct%20for%20string%20parsing.md#split-a-string-into-specific-sequences)
+
+Using reinterpret_cast to split a string into the following sequence ``host`` and ``port``: 
+
+```cpp
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+#define STDOUT_FD 1
+
+char displayed[] = "demo.thingsboard.io443";
+char host[19], port[3];
+
+int main() {
+    char *ptr;
+    ptr = (char*) malloc(19 * sizeof(char));
+
+    ptr = reinterpret_cast<char*>(displayed);
+    strcpy(host, ptr);
+
+    write(STDOUT_FD, host, 19);
+    write(STDOUT_FD, "\n", 2);
+
+    // Must not use printf() here to display the string as it will print out
+    // wrong string, like demo.thingsboard.io443
+
+    ptr += 19;
+    strcpy(port, ptr);
+    write(STDOUT_FD, port, 3);
+    write(STDOUT_FD, "\n", 2);
+}
+```
