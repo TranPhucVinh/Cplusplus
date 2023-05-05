@@ -16,6 +16,11 @@ int main()
     return 0;
 }
 ```
+Or using pointer:
+```cpp
+std::thread *thread_obj = new std::thread(thread_func);
+thread_obj->join();
+```
 Multiple arguments can be passed into thread function handler:
 ```cpp
 void thread_func(int num1, int num2, int num3, int num4)
