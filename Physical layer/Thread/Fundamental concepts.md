@@ -51,15 +51,15 @@ class classTest{
 int main()
 {
 	classTest obj;
-    std::thread thread_1(classTest::display_string, obj);
-	std::thread thread_2(classTest::display_number, obj, 123);
+    std::thread thread_1(&classTest::display_string, obj);
+	std::thread thread_2(&classTest::display_number, obj, 123);
 
     thread_1.join();// Hello, World !
 	thread_2.join();// 123
     return 0;
 }
 ```
-With static class method, class object must not be passed into the ``std::thread`` constructor:
+With static class method, class object must not be passed into the ``std::thread`` constructor. Callback functions ``classTest::display_string`` and ``classTest::display_number`` don't need to be lvalue:
 
 ```cpp
 class classTest{
