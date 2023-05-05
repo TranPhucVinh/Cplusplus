@@ -59,6 +59,29 @@ int main()
     return 0;
 }
 ```
+With static class method, class object must not be passed into the ``std::thread`` constructor:
+
+```cpp
+class classTest{
+	public:
+		static void display_string(){
+			cout << "Hello, World !\n";
+		}
+		static void display_number(int num){
+			cout << num << endl;
+		}
+};
+
+int main()
+{
+    std::thread thread_1(classTest::display_string);
+	std::thread thread_2(classTest::display_number, 123);
+
+    thread_1.join();
+	thread_2.join();
+    return 0;
+}
+```
 
 # Thread function with argument
 
