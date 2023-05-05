@@ -12,6 +12,7 @@ std::thread thread_object(callback);
 * [Create a simple thread](Fundamental%20concepts.md#create-a-simple-thread)
 * [Thread function with argument](Fundamental%20concepts.md#thread-function-with-argument): [Thread function with one argument](Fundamental%20concepts.md#thread-function-with-multiple-arguments) and [Thread function with multiple arguments](Fundamental%20concepts.md#thread-function-with-multiple-arguments)
 * [Delay inside thread](Fundamental%20concepts.md#delay-inside-thread)
+* [Thread is blocked by while(1)](Fundamental%20concepts.md##thread-is-blocked-by-while1), compare with the [corresponded issue in GCC PThread](https://github.com/TranPhucVinh/C/tree/master/Physical%20layer/Thread#thread-is-blocked-by-while1).
 
 ## Suspend and resume threads
 
