@@ -30,6 +30,36 @@ int main()
     return 0;
 }
 ```
+# Create a thread with thread function handler as class method
+
+```cpp
+#include <iostream>
+#include <thread>
+
+using namespace std;
+
+class classTest{
+	public:
+		void display_string(){
+			cout << "Hello, World !\n";
+		}
+		void display_number(int num){
+			cout << num << endl;
+		}
+};
+
+int main()
+{
+	classTest obj;
+    std::thread thread_1(classTest::display_string, obj);
+	std::thread thread_2(classTest::display_number, obj, 123);
+
+    thread_1.join();// Hello, World !
+	thread_2.join();// 123
+    return 0;
+}
+```
+
 # Thread function with argument
 
 ## Thread function with one argument
