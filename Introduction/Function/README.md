@@ -6,6 +6,7 @@
 * [Function default arguments](#default-arguments)
 * [Namespace](Namespace.md)
 * [Template](Template.md)
+* [Lambda](Lambda.md)
 
 # For-each loop
 
