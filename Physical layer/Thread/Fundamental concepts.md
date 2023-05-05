@@ -16,6 +16,12 @@ int main()
     return 0;
 }
 ```
+Thread can be created by calling it separately like this, which will help creating thread inside class:
+```cpp
+std::thread thread_obj;
+thread_obj = std::thread(display_string);
+thread_obj.join();
+```
 Or using pointer:
 ```cpp
 std::thread *thread_obj = new std::thread(thread_func);
