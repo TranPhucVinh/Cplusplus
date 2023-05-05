@@ -1,11 +1,10 @@
 [Fundamental concepts](Fundamental%20concepts.md) include:
-* [Definition of class](Fundamental%20concepts.md#what-is-class-), [define variable and function for a class](Fundamental%20concepts.md#define-variable-and-function-for-a-class)
-* [Types of variables in class](Fundamental%20concepts.md#types-of-variables-in-class)
+* [Definition of class](Fundamental%20concepts.md#what-is-class-), [define variable and function for a class](Fundamental%20concepts.md#define-variable-and-function-for-a-class), [types of variables in class](Fundamental%20concepts.md#types-of-class-variables)
 * [Method of class](Method%20of%20class.md)
 * [Encapsulation](#encapsulation)
 * [Constructor and destructor](#constructor-and-destructor)
 * [this pointer](this%20pointer.md)
-* [Inheritance](Inheritance.md): [Basic inheritance example as polymorphism](), [protect method]()m [Header files with class and public method](), [multilevel inheritance]() and [multiple inheritance]()
+* [Inheritance](Inheritance.md): [Basic inheritance example as polymorphism](), [protect method](Inheritance/README.md#protect-method), [Header files with class and public method](), [multilevel inheritance]() and [multiple inheritance]()
 * [Virtual function](Inheritance/Virtual%20function.md): [When to use virtual function ?](Inheritance/Virtual%20function.md#when-to-use-virtual-function-), [virtual function definition](Virtual%20function.md#virtual-function-definition) and [implementation](Inheritance/Virtual%20function.md#implementation), [override keyword](Inheritance/Virtual%20function.md#override-keyword), [virtual destructor](Inheritance/Virtual%20function.md#virtual-destructor), [pure virtual function and abstract class](Inheritance/Virtual%20function.md#pure-virtual-function-and-abstract-class)
 * [Binding](#binding): [Early binding]() and [late binding]()
 * [const function](const%20function.md)
