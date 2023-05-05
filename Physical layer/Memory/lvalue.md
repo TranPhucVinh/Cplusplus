@@ -40,7 +40,7 @@ std::cout << &a << " " << &b << std::endl;//0x72fe04 0x72fe04
 int c = 10;
 &b = c;//Compilation error; reinitialization for lvalue is not allow
 ```
-# lvalue reference as pass by reference
+# Pass by reference: lvalue as function argument
 ```cpp
 #include <iostream>
 
