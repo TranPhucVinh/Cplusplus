@@ -37,9 +37,9 @@ int main () {}
 
 ### Basic operations
 
-* [Create and Read](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/Data%20structure/String/string%20operations.md#create-and-read)
-* Update: [Append](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/Data%20structure/String/string%20operations.md#append-string), [converse other data type to string](string%20operations.md#conversion)
-* [Delete](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/Data%20structure/String/string%20operations.md#delete)
+* [Create and Read](string%20operations.md#create-and-read)
+* Update: [Append](string%20operations.md#append-string), [converse other data type to string](string%20operations.md#conversion)
+* [Delete](string%20operations.md#delete)
 
 ### Other operation
 

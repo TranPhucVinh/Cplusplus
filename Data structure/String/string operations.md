@@ -82,6 +82,10 @@ std::cout << displayString << endl;//Hello, World 123
 
 ``std::to_string`` is supported sinced C++11. Convert any data type like int, float to ``std::string`` using ``to_string()``:
 ```cpp
+#include <iostream>
+
+#define NAME "HTTP"
+
 std::string displayedString = "Hello, World !";
 
 int main(){
@@ -89,6 +93,8 @@ int main(){
     std::cout << displayedString << std::endl;// Hello, World !456 
     displayedString +=  std::to_string(12.34);
     std::cout << displayedString << std::endl;// Hello, World !456 12.340000
+    displayedString +=  NAME;
+    std::cout << displayedString << std::endl;// Hello, World !456 12.340000HTTP
 }
 ```
 
