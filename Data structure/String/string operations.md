@@ -16,7 +16,7 @@ cout << displayed_string.length() << endl;//13
 
 **Set default value for a string**
 
-```c
+```cpp
 string displayed_string("Hello, World !");// Set default value for displayed_string
 cout << displayed_string << endl; //Hello, World !
 
@@ -27,7 +27,7 @@ cout << displayed_string << endl; //Another new string
 
 Append a reference declaration string with ``+``:
 
-```c
+```cpp
 string appended = "123";
 const std::string& str = "Hello, World !";//Must define with const
 cout << str + appended << endl;//Hello, World !123
@@ -72,15 +72,25 @@ displayed_string.push_back('A');//Hello World !A
 
 Using ``+`` to append an existing string (same operation for a new empty string):
 
-```c
-string displayString = "Hello, World ";
+```cpp
+std::string displayString = "Hello, World ";
 displayString += "123";
-cout << displayString << endl;//Hello, World 123
+std::cout << displayString << endl;//Hello, World 123
 ```
 
-## Convertion
+## Conversion
 
-Using ``to_string()``: ``to_string()`` is only available in ``MS VC++``
+``std::to_string`` is supported sinced C++11. Convert any data type like int, float to ``std::string`` using ``to_string()``:
+```cpp
+std::string displayedString = "Hello, World !";
+
+int main(){
+    displayedString +=  std::to_string(456) + " ";
+    std::cout << displayedString << std::endl;// Hello, World !456 
+    displayedString +=  std::to_string(12.34);
+    std::cout << displayedString << std::endl;// Hello, World !456 12.340000
+}
+```
 
 Convert ``string`` to ``const char*`` using ``c_str()``:
 
@@ -99,7 +109,7 @@ int main(){
 }
 ```
 
-Unable to converted the ``string`` function with ``c_str()``:
+Unable to converted the ``std::string`` returned from function by ``c_str()``:
 
 ```c
 string returnedString;
@@ -112,15 +122,13 @@ string returnStringFunction(){
 
 int main(){
     pointerString = returnStringFunction().c_str();
-    cout << pointerString;
+    cout << pointerString;// NULL; pointerString is NULL
 }
 ```
 
-``pointerString`` is Null.
-
 **Convert string to char stringArray[100] using c_str()**
 
-```c
+```cpp
 #include <iostream>
 #include <string.h> //for strcpy()
 
