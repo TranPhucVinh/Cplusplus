@@ -15,7 +15,7 @@ From this example, we can see that the lvalue reference (``&b``) shares the same
 
 Reference declarion for ``std::string``:
 
-```c
+```cpp
 const std::string& str = "Hello, World !";//Must define with const
 cout << str << endl;//Hello, World !
 cout << &str << endl;//0x4d5060
@@ -32,7 +32,7 @@ int &b = NULL;//Must not do this, this gives compilation error
 ```
 This is different from pointer as pointer allow [NULL pointer](https://github.com/TranPhucVinh/C/blob/master/Physical%20layer/Memory/Pointer/Types%20of%20pointer.md#null-pointer).
 ## lvalue reinitialization is not allowed
-```c
+```cpp
 int a = 9;
 int &b = a;
 std::cout << a << " " << b << std::endl; //9 9
@@ -72,7 +72,7 @@ int main(){
 }
 ```
 Base on this example, we can see that by using lvalue reference, we pass the variable directly to function:
-```c
+```cpp
 int number = 8;
 void add_value(int& a);
 add_value(number);
@@ -142,7 +142,7 @@ int main(){
 That happen as ``a`` variable passed to ``func()`` is passed by value, so `` b`` in ``int &b = a`` inside ``func()`` is set with the garbage value.
 # lvalue as class object
 
-```c
+```cpp
 #include <iostream>
 class classTest{
 	public:
