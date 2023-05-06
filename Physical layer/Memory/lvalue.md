@@ -167,3 +167,5 @@ int main(){
 As lvalue reference is supported in C++, we still need to use pointer for a variable when this variable needs:
 * Address updated
 * Set to NULL
+# Applications
+[Suspend and resume threads by OOP](../Thread/README.md#suspend-and-resume-threads): [suspend_thread](../Thread/suspend_and_resume_threads_oop.cpp#L23) and [resume_thread](../Thread/suspend_and_resume_threads_oop.cpp#L18) methods must be defined by lvalue.
