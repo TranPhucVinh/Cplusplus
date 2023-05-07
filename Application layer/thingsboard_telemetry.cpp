@@ -58,6 +58,7 @@ int socket_connect(const char *host, in_port_t port){
 std::string form_http_request(std::string data){
 	static std::string http_request;
 
+	http_request = "";
     http_request += "POST /api/v1/";
     http_request += TOKEN;
     http_request += "/telemetry HTTP/1.1\r\nHost: ";
@@ -95,7 +96,7 @@ void telemetry(){
 
         if (wsz == http_request.size()) send_number += 1;
         else std::cout << "Fail to send HTTP request\n" << std::endl;
-        sleep(5);
+        sleep(1);
     }
     shutdown(client_fd, SHUT_RDWR); 
     close(client_fd);
