@@ -5,11 +5,11 @@
 Get character index of a string and size, length
 
 ```cpp
-string displayed_string = "Hello World !";
+std::string displayed_string = "Hello World !";
 
-cout << displayed_string[0] << endl; //H
-cout << displayed_string.size() << endl;//13
-cout << displayed_string.length() << endl;//13
+std::cout << displayed_string[0] << std::endl; //H
+std::cout << displayed_string.size() << std::endl;//13
+std::cout << displayed_string.length() << std::endl;//13
 ```
 
 **Define string with lvalue reference/reference declaration**: [const std::string& str = "Hello, World !";](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/lvalue.md#define)
@@ -17,21 +17,21 @@ cout << displayed_string.length() << endl;//13
 **Set default value for a string**
 
 ```cpp
-string displayed_string("Hello, World !");// Set default value for displayed_string
-cout << displayed_string << endl; //Hello, World !
+std::string displayed_string("Hello, World !");// Set default value for displayed_string
+std::cout << displayed_string << std::endl; //Hello, World !
 
 //Then change the value of displayed_string
 displayed_string = "Another new string";
-cout << displayed_string << endl; //Another new string
+std::cout << displayed_string << std::endl; //Another new string
 ```
 
 Append a reference declaration string with ``+``:
 
 ```cpp
-string appended = "123";
+std::string appended = "123";
 const std::string& str = "Hello, World !";//Must define with const
-cout << str + appended << endl;//Hello, World !123
-cout << str + " 456" << endl;//Hello, World ! 456
+std::cout << str + appended << std::endl;//Hello, World !123
+std::cout << str + " 456" << std::endl;//Hello, World ! 456
 ```
 
 Add character to a string with ``+`` to read:
