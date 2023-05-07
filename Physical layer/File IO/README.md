@@ -71,6 +71,29 @@ int main()
         std::cout << entry.path() << std::endl;
 }
 ```
+# File I/O with unistd
+
+As [write()](https://github.com/TranPhucVinh/C/blob/master/Physical%20layer/File%20IO/System%20call/README.md#fundamental-concepts) of unistd.h requires ``char*`` buffer to read, to read the file into ``std::string``:
+```cpp
+#include <iostream>
+#include <unistd.h> // read()
+#include <fcntl.h>  // open()
+
+#define FILE_NAME   "README.md"
+int fd;
+
+int main(){
+    char buffer[10];
+
+    fd = open(FILE_NAME, O_RDONLY);
+    if (fd > 0){
+        read(fd, buffer, 10);
+        std::string str(buffer);
+        std::cout << str << std::endl;
+    } else std::cout << "Unable to open " << FILE_NAME << std::endl;
+}
+```
+
 # [File IO for database management](File%20IO%20for%20database%20management)
 * [Employee management by file](File%20IO%20for%20database%20management/README.md#Employee%20management%20by%20file)
 * [Employee management with OOP](File%20IO%20for%20database%20management/README.md#Employee%20management%20with%20OOP)
