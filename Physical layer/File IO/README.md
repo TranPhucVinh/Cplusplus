@@ -17,23 +17,23 @@ Library [fstream](fstream)
 
 ``cstdio`` is corresponded to ``stdio.h``. All functions of ``stdio.h`` existed in ``cstdio``.
 
-**Example 1**: Using ``printf()``
+## Using printf()
 
-```c
+```cpp
 #include <iostream>
 #include <cstdio> //For printf
 
 using namespace std;
 
-main(){
+int main(){
 	cout << "Hello, World!" << endl;
     printf("Hello, World!\n");
 }
 ```
 
-**Example 2**: Get the entered string with ``fgets()``
+## Get the entered string with fgets()
 
-```c
+```cpp
 #include <iostream>
 #include <cstdio>
 
@@ -56,7 +56,7 @@ int main(){
 
 ``std::filesystem::directory_iterator``: an iterator to the contents of the directory
 
-**Example**: List out all files inside directory ``dir_name``
+## List out all files inside directory dir_name
 
 ```cpp
 #include <string>
