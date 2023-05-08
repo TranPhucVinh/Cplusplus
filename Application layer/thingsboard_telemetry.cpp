@@ -32,7 +32,7 @@ int main()
 int socket_connect(const char *host, in_port_t port){
 	struct hostent *hp;
 	struct sockaddr_in addr;
-	int sock_fd;     
+	int sock_fd;
 
 	if((hp = gethostbyname(host)) == NULL){
 		herror("gethostbyname");
@@ -47,7 +47,7 @@ int socket_connect(const char *host, in_port_t port){
 		perror("setsockopt");
 		exit(1);
 	}
-	
+
 	if(connect(sock_fd, (struct sockaddr *)&addr, sizeof(struct sockaddr_in)) == -1){
         std::cout << "Fail to connect to " << host << std::endl;
 		exit(1);
@@ -73,31 +73,38 @@ std::string form_http_request(std::string data){
 void telemetry(){
 	int client_fd;
     std::string send_json;
-    
+    int rc = 0;
+
     client_fd = socket_connect(HOST, PORT);
 
     while (1){
         send_json = "{'unix_tcp_client':" + std::to_string(send_number) + "}";
-        
+
         std::string http_request = form_http_request(send_json);
 
-        #ifdef DEBUG    
+        #ifdef DEBUG
             std::cout << http_request << std::endl;
         #endif
         int wsz = write(client_fd, http_request.c_str(), http_request.size());//wsz: write size
-        
-        #ifdef DEBUG    
-            while(read(client_fd, response_buffer, BUFFSIZE - 1) != 0){
+
+        #ifdef DEBUG
+            while((rc = read(client_fd, response_buffer, BUFFSIZE - 1)) != 0){
                 std::cout << response_buffer << std::endl;
                 bzero(response_buffer, BUFFSIZE);
                 break;
             }
+	    std::cout << "rc value: " << rc << std::endl;
+	    if (rc <= 0) {
+		shutdown(client_fd, SHUT_RDWR);
+		close(client_fd);
+		client_fd = socket_connect(HOST, PORT);
+	    }
         #endif
 
         if (wsz == http_request.size()) send_number += 1;
         else std::cout << "Fail to send HTTP request\n" << std::endl;
         sleep(1);
     }
-    shutdown(client_fd, SHUT_RDWR); 
+    shutdown(client_fd, SHUT_RDWR);
     close(client_fd);
 }
