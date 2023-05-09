@@ -59,13 +59,8 @@ std::string form_http_request(std::string data){
 	static std::string http_request;
 
 	http_request = "";
-    http_request += "POST /api/v1/";
-    http_request += TOKEN;
-    http_request += "/telemetry HTTP/1.1\r\nHost: ";
-    http_request += HOST;
-    http_request += "\r\nContent-Type: application/json\r\nContent-Length: ";
-    http_request += std::to_string(data.size());
-    http_request += "\r\n\r\n" + data + "\r\n";
+    http_request += "POST /api/v1/" + TOKEN + "/telemetry HTTP/1.1\r\nHost: " + HOST;
+    http_request += "\r\nContent-Type: application/json\r\nContent-Length: " += std::to_string(data.size()) + "\r\n\r\n" + data + "\r\n";
 
 	return http_request;
 }
