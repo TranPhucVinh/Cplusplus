@@ -86,11 +86,8 @@ int main(int argc, char *argv[]){
 std::string form_http_request(){
 	static std::string http_request;
 
-    http_request += "GET ";
-    http_request += PATH;
-    http_request += " HTTP/1.0\r\nHost: ";
-	http_request += HOST;
-	http_request += "\r\nConnection: close\r\n\r\n";
+    http_request = std::string("GET ") + PATH + std::string(" HTTP/1.0\r\nHost: ");
+	http_request += HOST + std::string("\r\nConnection: close\r\n\r\n");
 
 	return http_request;
 }
