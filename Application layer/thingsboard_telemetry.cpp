@@ -66,10 +66,12 @@ std::string form_http_request(std::string data){
 void telemetry(){
 	int client_fd;
     std::string send_json;
-    
-    client_fd = socket_connect(HOST, PORT);
 
     while (1){
+        // As socket_connect(HOST, PORT) is inside while(1) loop, when Internet gets disconnected
+        // program stops immediatetly
+        client_fd = socket_connect(HOST, PORT);
+        
         send_json = "{'unix_tcp_client':" + std::to_string(send_number) + "}";
         
         std::string http_request = form_http_request(send_json);

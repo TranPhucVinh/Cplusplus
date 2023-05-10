@@ -44,7 +44,10 @@ int main(int argc, char *argv[]){
 	int fd;
 
     while (1){
+        // As socket_connect(HOST, PORT) is inside while(1) loop, when Internet gets disconnected
+        // program stops immediatetly
         fd = socket_connect(HOST, PORT); 
+        
         std::string http_request = form_http_request();
         std::cout << http_request << std::endl;
 
