@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <fcntl.h>
-#include <string.h>//bcopy()
+#include <string.h>// bcopy()
 #include <netinet/tcp.h>
 #include <sys/socket.h>
 #include <sys/types.h>
@@ -58,10 +58,8 @@ int socket_connect(const char *host, in_port_t port){
 std::string form_http_request(std::string data){
 	static std::string http_request;
 
-	http_request = "";
-    http_request += "POST /api/v1/" + TOKEN + "/telemetry HTTP/1.1\r\nHost: " + HOST;
-    http_request += "\r\nContent-Type: application/json\r\nContent-Length: " += std::to_string(data.size()) + "\r\n\r\n" + data + "\r\n";
-
+    http_request = std::string("POST /api/v1/") + TOKEN + std::string("/telemetry HTTP/1.1\r\nHost: ") + HOST + std::string("\r\nContent-Type: application/json");
+    http_request += "\r\nContent-Length: " + std::to_string(data.size()) + "\r\n\r\n" + data + "\r\n";
 	return http_request;
 }
 
