@@ -1,6 +1,6 @@
-GET request to ``example.com`` by TCP socket, using [std::string](../Data%20structure/String/README.md#stdstring) to form HTTP request: [get_data.cpp](get_data.cpp)
+GET request to ``example.com`` by TCP socket, using [std::string](../Data%20structure/String/README.md#stdstring) to form HTTP request: [get_data.cpp](get_data.cpp). While sending HTTP request or reading HTTP respose and Internet gets disconnected, program stops immediately (as ``socket_connect(HOST, PORT)``, which includes ``exit()``, is inside ``while(1)`` loop)
 
-Telemetry data to ThingsBoard: [thingsboard_telemetry.cpp](thingsboard_telemetry.cpp)
+Telemetry data to ThingsBoard: [thingsboard_telemetry.cpp](thingsboard_telemetry.cpp). While sending HTTP request or reading HTTP respose and Internet gets disconnected, program stops immediately (as ``socket_connect(HOST, PORT)``, which includes ``exit()``, is inside ``while(1)`` loop)
 
 # Telemetry to ThingsBoard based on Internet status
 

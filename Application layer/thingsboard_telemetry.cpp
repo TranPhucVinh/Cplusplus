@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <fcntl.h>
-#include <string.h>//bcopy()
+#include <string.h>// bcopy()
 #include <netinet/tcp.h>
 #include <sys/socket.h>
 #include <sys/types.h>
@@ -58,25 +58,20 @@ int socket_connect(const char *host, in_port_t port){
 std::string form_http_request(std::string data){
 	static std::string http_request;
 
-	http_request = "";
-    http_request += "POST /api/v1/";
-    http_request += TOKEN;
-    http_request += "/telemetry HTTP/1.1\r\nHost: ";
-    http_request += HOST;
-    http_request += "\r\nContent-Type: application/json\r\nContent-Length: ";
-    http_request += std::to_string(data.size());
-    http_request += "\r\n\r\n" + data + "\r\n";
-
+    http_request = std::string("POST /api/v1/") + TOKEN + std::string("/telemetry HTTP/1.1\r\nHost: ") + HOST + std::string("\r\nContent-Type: application/json");
+    http_request += "\r\nContent-Length: " + std::to_string(data.size()) + "\r\n\r\n" + data + "\r\n";
 	return http_request;
 }
 
 void telemetry(){
 	int client_fd;
     std::string send_json;
-    
-    client_fd = socket_connect(HOST, PORT);
 
     while (1){
+        // As socket_connect(HOST, PORT) is inside while(1) loop, when Internet gets disconnected
+        // program stops immediatetly
+        client_fd = socket_connect(HOST, PORT);
+        
         send_json = "{'unix_tcp_client':" + std::to_string(send_number) + "}";
         
         std::string http_request = form_http_request(send_json);
