@@ -20,7 +20,7 @@ Just like GCC, G++ pthread doesn't have functions to suspend and resume thread. 
 
 To suspend and resume between 2 threads without OOP, check [suspend_and_resume_threads_raw_functions.cpp](suspend_and_resume_threads_raw_functions.cpp). This program is intended for comprehensive and easy to understand the suspend and resume operation.
 
-To suspend and resume between 2 threads with OOP, check [suspend_and_resume_threads_oop.cpp](suspend_and_resume_threads_oop.cpp). This program is intended for functions inheritance for other programs. [lvalue](../Memory/lvalue.md) is mandatorily used in this program to define [suspend_thread](suspend_and_resume_threads_oop.cpp#L23) and [resume_thread](suspend_and_resume_threads_oop.cpp#L18) methods.
+To suspend and resume between 2 threads with OOP, check [suspend_and_resume_threads_oop.cpp](suspend_and_resume_threads_oop.cpp). This program is intended for functions inheritance for other programs. [lvalue](../Memory/lvalue.md) is mandatorily used in this program to define [suspend_thread](suspend_and_resume_threads_oop.cpp#L23) and [resume_thread](suspend_and_resume_threads_oop.cpp#L18) methods. [Telemetry to ThingsBoard based on Internet status program](../../Application%20layer/thingsboard_telemetry_suspend_resume_by_internet_status.cpp) uses this mechanism.
 
 # [Race condition](Race%20condition.md)
 **Race condition issue**: [One thread function handler to increase a share value](Race%20condition.md#one-thread-function-handler-to-increase-a-share-value)
