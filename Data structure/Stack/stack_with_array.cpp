@@ -10,6 +10,7 @@ class Stack{
     public:
         Stack(int stack_size){
             stack_arr = new int[stack_size];
+            top = -1;
         }
         ~Stack(){
             delete(stack_arr);
@@ -33,7 +34,7 @@ class Stack{
             } else std::cout << "Could not insert data, stack is full\n";
         }
         int is_empty(){
-            if(top == 0) return 1;
+            if(top == -1) return 1;
             else return 0;
         }
         int is_full(){
