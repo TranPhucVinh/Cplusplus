@@ -9,6 +9,7 @@ A similar data structure to map is a [vector]() including a struct/class object 
 
 # Create a map and read all of its objects
 
+Use [for_each loop](../Introduction/Function/README.md#for-each-loop) to access each element of the map, with ``el.first`` gets the key and el.second gets the value:
 ```cpp
 #include <iostream>
 #include <map>
@@ -22,21 +23,19 @@ int main()
 
     std::cout << Map[123] << std::endl;// Map, key 123
 
+    int map_index = 0;
     for (auto &el: Map){
-        std::cout << "First element: " << el.first << std::endl;
-        std::cout << "Second element: " << el.second << std::endl;
+        std::cout << map_index << ", key: " << el.first << "; value: " << el.second << std::endl;
+        map_index += 1;
     }
     return 0;
 }
 ```
 ```
 Map, key 123
-First element: 1
-Second element: Map, key 1
-First element: 123
-Second element: Map, key 123
-First element: 456
-Second element: Map, key 456
+0, key: 1; value: Map, key 1
+1, key: 123; value: Map, key 123
+2, key: 456; value: Map, key 456
 ```
 # Insert a new member to the map
 
