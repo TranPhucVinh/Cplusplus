@@ -12,13 +12,13 @@
 
 C++ support the for-each loop which is introduced in C++ version 11 (2011):
 
-```c
+```cpp
 for (type variableName : arrayName) {
   // code block to be executed
 }
 ```
 
-```c
+```cpp
 #include <iostream>
 
 int main()
@@ -29,7 +29,15 @@ int main()
     }
 }
 ```
+for-each loop doesn't support getting the index value, i.e: ``array[5]`` in the example above won't support this:
 
+```
+0: 10
+1: 20
+2: 30
+...
+```
+``index`` of array must be got by traditional for loop.
 # Initializer list
 
 Initializer list is a method to initialize a variable's value. Initializer list ``{}`` is only available from C++11 and above:
