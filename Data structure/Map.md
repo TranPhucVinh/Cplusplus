@@ -37,6 +37,13 @@ Map, key 123
 1, key: 123; value: Map, key 123
 2, key: 456; value: Map, key 456
 ```
+# For string as key
+```cpp
+std::map<std::string, std::string> Map;
+Map["str_1"] = "Map, key str_1";
+Map["str_2"] = "Map, key str_2";
+Map["str_3"] = "Map, key str_3";
+```
 # Insert a new member to the map
 
 ```cpp
