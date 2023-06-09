@@ -1,7 +1,7 @@
 
 **const function** as a class member doesn't allow changing the object value. Be not confused const function of a class with [the function define as const](https://github.com/TranPhucVinh/C/tree/master/Introduction/Keywords#const-as-function-definition) as defining a function as const has no effect.
 
-```c
+```cpp
 #include <iostream>
 
 using namespace std;
