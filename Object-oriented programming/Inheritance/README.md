@@ -141,3 +141,5 @@ Result from cloneNumberProcess class is 2090
 Result from numberProcess class is 280
 hello world
 ```
+# Generalization
+In C/C++ domain modeling class diagrams, a **generalization relationship**, which is also called an inheritance or "an A is a B" (a human is a mammal, a mammal is an animal) relationship, implies that a specialized, child class is based on a general, parent class.
