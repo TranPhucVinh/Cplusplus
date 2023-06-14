@@ -152,9 +152,43 @@ public_number 3; private_numer 4
 
 In this program, calling ``class_test object_1`` will call the default constructor (setup by ``class_test() = default``) to setup default value for variables.
 
-# Change variable value by constructor
+# Constructor initializer list
 
-Public and private variables value can be changed by constructor with ``:`` and ``()`` operator:
+Constructor initializer list is used to defined member variables:
+```cpp
+class class_test{
+	public:
+		int public_number;
+        class_test(int _public_number, int _private_number): public_number(_public_number), private_number(_private_number) {}
+/*
+        This constructor initializer list works like this:
+        class_test(int _public_number, int _private_number){
+            public_number = _public_number;
+            private_number = _private_number;
+        }
+*/
+		void get_number(){
+            cout << "Get public and private numbers: \n";
+            cout << "public_number " << public_number << "; ";
+            cout << "private_numer " << private_number << endl;
+		}
+
+	private:
+		int private_number;
+};
+
+int main(){
+    class_test object(12, 34);
+	object.get_number();
+}
+```
+**Result**:
+```
+Get public and private numbers:
+public_number 12; private_numer 34
+```
+
+Constructor initializer list with ``return``:
 
 ```cpp
 #include <iostream>
