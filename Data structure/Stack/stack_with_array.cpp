@@ -10,6 +10,7 @@ class Stack{
     public:
         Stack(int stack_size){
             stack_arr = new int[stack_size];
+            _stack_size = stack_size;
             top = -1;
         }
         ~Stack(){
