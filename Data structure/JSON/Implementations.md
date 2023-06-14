@@ -1,6 +1,6 @@
 # Create and read a JSON object
 
-Create by [initializer lists](https://github.com/TranPhucVinh/Cplusplus/tree/master/Introduction/Function%20and%20variables#initializer-list):
+Create by [initializer list](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/Function/README.md#initializer-list):
 
 ```c
 #include <iostream>
