@@ -25,8 +25,8 @@ Encapsulation will help increasing the security of data.
 [Constructor document](Constructor.md) includes:
 * [Fundamental concepts](Constructor.md#fundamental-concepts)
 * [Multiple constructors in one class with arguments](Constructor.md#multiple-constructors-in-one-class-with-arguments)
-* [default keyword](Constructor.md#change-variable-value-by-constructor)
-* [Change variable value by constructor](Constructor.md#change-variable-value-by-constructor)
+* [default keyword](Constructor.md#default-keyword)
+* [Constructor initializer list](Constructor.md#constructor-initializer-list)
 
 ## Destructor
 
