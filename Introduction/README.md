@@ -1,5 +1,45 @@
 * Insertion operator: ``<<``
 * Extraction operator: ``>>``
+# Variables
+
+## All ways to define a variable in CPP
+
+Initialize with default value given by the environment:
+```cpp
+int var_1;
+```
+Implicit cast:
+```cpp
+int var_1 = 4;
+```
+[Inintializer list](#initializer-list)
+int var_1{4};
+
+Initialize with a value:
+```cpp
+int var_1(4);
+```
+Initialize var_1 by the value of var_2 as [copy constructor]():
+```cpp
+int var_1(var_2);
+```
+## Initializer list
+
+Initializer list is a method to initialize a variable's value. Initializer list ``{}`` is only available from C++11 and above:
+
+```cpp
+#include <iostream>
+
+int main()
+{
+    int value {};
+    std::cout << value << std::endl;//0
+
+	int number {123};
+    std::cout << number << std::endl;//123
+    return 0;
+}
+```
 
 # Header file
 

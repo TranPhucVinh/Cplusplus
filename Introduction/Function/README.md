@@ -1,7 +1,6 @@
 # Fundamental concepts
 
 * [For-each loop](#for-each-loop)
-* [Initializer list](#initializer-list)
 * [Function overloading](#function-overloading)
 * [Function default arguments](#default-arguments)
 * [Namespace](Namespace.md)
@@ -38,23 +37,7 @@ for-each loop doesn't support getting the index value, i.e: ``array[5]`` in the 
 ...
 ```
 ``index`` of array must be got by traditional for loop.
-# Initializer list
 
-Initializer list is a method to initialize a variable's value. Initializer list ``{}`` is only available from C++11 and above:
-
-```cpp
-#include <iostream>
-
-int main()
-{
-    int value {};
-    std::cout << value << std::endl;//0
-
-	int number {123};
-    std::cout << number << std::endl;//123
-    return 0;
-}
-```
 
 # Function overloading
 
@@ -91,7 +74,7 @@ int main () {
 
 # Default arguments
 
-```c
+```cpp
 void intNumber(int a, int b = 12);
 
 int main(){
@@ -107,7 +90,7 @@ void intNumber(int a, int b){
 
 If define:
 
-```c
+```cpp
 void intNumber(int a, int b = 12);
 
 int main(){
@@ -128,7 +111,7 @@ test.cpp:12:31: error: default argument given for parameter 2 of ‘void intNumb
 
 # algorithm library header
 
-```c
+```cpp
 #include <iostream>
 #include <algorithm>//For min_element
 
