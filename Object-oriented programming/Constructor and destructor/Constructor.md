@@ -97,7 +97,7 @@ int main(){
     cout << object.public_num << endl;// 123
     cout << object1.public_num << endl;// 123 
 
-    classTest object2 = object; //object1 is the copy construct of object, using =
+    classTest object2 = object; //object1 is the copy construct of object, using = (assignment operator)
     cout << object2.public_num << endl;// 123 
 }
 ```
