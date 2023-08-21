@@ -1,11 +1,5 @@
 # Fundamental concepts
 
-A **class constructor** is a special member function of a class that is executed whenever we create new objects of that class.
-
-Every class has at least one constructor. **Constructor** is like a function and is used to express the attribute of an object. Constructor doesn't have returned type like ``void``, ``int``,... and doesn't have return value.
-
-All class constructors and destructors **must be put inside public**. If putting them in private or without public, there will be compilation error.
-
 **Default constructors** have the same name with the class
 
 ```cpp
