@@ -19,7 +19,7 @@ Initialize with a value:
 ```cpp
 int var_1(4);
 ```
-Initialize var_1 by the value of var_2 as [copy constructor]():
+Initialize var_1 by the value of var_2 as [copy constructor](https://github.com/TranPhucVinh/Cplusplus/blob/master/Object-oriented%20programming/Constructor%20and%20destructor/Constructor.md#copy-constructor):
 ```cpp
 int var_1(var_2);
 ```
