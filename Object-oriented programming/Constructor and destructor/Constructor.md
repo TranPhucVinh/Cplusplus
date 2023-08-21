@@ -1,6 +1,6 @@
 # Multiple constructors in one class with arguments
 
-```c++
+```cpp
 #include <iostream>
 
 using namespace std;
@@ -73,6 +73,33 @@ Get public and private numbers:
 public_number -427810560; private_numer 21946
 Get public and private numbers:
 public_number 1; private_numer 2
+```
+# copy constructor
+A copy constructor is a member function that initializes an object using an existing object of the same class. Copy constructor is used to initialize the members of a newly created object by copying the members of an already existing object.
+```cpp
+#include <iostream>
+
+using namespace std;
+
+class classTest{
+	public:
+        int public_num;
+        classTest(int a, int b){
+            cout << a+b << endl;
+        }
+};
+
+int main(){
+    classTest object(1, 2); //3   
+    object.public_num = 123;
+
+    classTest object1(object); //object1 is the copy construct of object, using ()
+    cout << object.public_num << endl;// 123
+    cout << object1.public_num << endl;// 123 
+
+    classTest object2 = object; //object1 is the copy construct of object, using =
+    cout << object2.public_num << endl;// 123 
+}
 ```
 
 # default keyword
