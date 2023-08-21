@@ -74,11 +74,11 @@ public_number -427810560; private_numer 21946
 Get public and private numbers:
 public_number 1; private_numer 2
 ```
-# copy constructor
-A copy constructor is a member function that initializes an object using an existing object of the same class. Copy constructor is used to initialize the members of a newly created object by copying the members of an already existing object.
+# Shallow copy, deep copy and copy constructor
+**Shallow copy** is used to initialize the members of a newly created object by copying the members of an already existing object.
 ```cpp
+// There is no copy constructor in this shallow copy implementation
 #include <iostream>
-
 using namespace std;
 
 class classTest{
@@ -101,7 +101,39 @@ int main(){
     cout << object2.public_num << endl;// 123 
 }
 ```
+A **copy constructor** is a member function that initializes an object using an existing object of the same class. Copy constructor will be called during the shallow copy:
+```cpp
+#include <iostream>
+using namespace std;
 
+class classTest{
+	public:
+        classTest(int a, int b){
+            cout << a+b << endl;
+            cout << "classTest(int a, int b) is called\n";
+        }
+
+        // This is a copy constructor which will be called for
+        // classTest object1(object);
+        // classTest object2 = object;
+        classTest(const classTest &obj){
+            cout << "classTest(const classTest &obj) is called\n";
+        }
+};
+
+int main(){
+    classTest object(1, 2);// 3   
+
+    classTest object1(object); //object1 is the copy construct of object, using ()
+    classTest object2 = object; //object1 is the copy construct of object, using = (assignment operator)
+}
+```
+**Result**
+```
+3 
+classTest(int a, int b) is called                                                                                                                                          classTest(const classTest &obj) is called // classTest object1(object)
+classTest(const classTest &obj) is called // classTest object2 = object   
+```
 # default keyword
 
 ``default`` keyword, which is supported from ``C++11``, supports performing default operations like setting variables inside the default constructor. This method is useful when having multiple constructor functions:
