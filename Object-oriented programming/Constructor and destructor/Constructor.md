@@ -116,7 +116,7 @@ class classTest{
         // This is a copy constructor which will be called for
         // classTest object1(object);
         // classTest object2 = object;
-        classTest(const classTest &obj){
+        classTest(classTest &obj){
             cout << "classTest(const classTest &obj) is called\n";
         }
 };
