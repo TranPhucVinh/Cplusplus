@@ -5,6 +5,24 @@ Every class has at least one constructor. **Constructor** is like a function and
 
 All class constructors and destructors **must be put inside public**. If putting them in private or without public, there will be compilation error.
 
+**Default constructors** have the same name with the class
+
+```cpp
+#include <iostream>
+
+using namespace std;
+
+class helloWorld{
+	public:
+	helloWorld(){
+		cout << "hello world" << endl;
+	}
+};
+
+main(){
+	helloWorld hi; //hello world
+}
+```
 [Constructor document](Constructor.md) includes:
 * [Fundamental concepts](Constructor.md#fundamental-concepts)
 * [Multiple constructors in one class with arguments](Constructor.md#multiple-constructors-in-one-class-with-arguments)
