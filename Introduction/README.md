@@ -40,7 +40,7 @@ int main()
     return 0;
 }
 ```
-
+[Constructor initializer list](https://github.com/TranPhucVinh/Cplusplus/blob/master/Object-oriented%20programming/Constructor%20and%20destructor/Constructor.md#constructor-initializer-list)
 # Header file
 
 ## hpp file
