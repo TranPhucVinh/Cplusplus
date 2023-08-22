@@ -1,5 +1,20 @@
 **const reference** is the reference (lvalue, rvalue) which doesn't allow changing its value.
-# const reference for lvalue
+```cpp
+// THIS EXAMPLE IS WRONG AND GIVES COMPILATION ERROR
+int a = 123;
+const int &b = a;
+cout << b << endl;// 123
+b = 456;//Compilation error: assignment of read-only reference ‘b’   
+```
+# const reference value can be changed when assigned it to a variable
+```cpp
+int a = 123;
+const int &b = a;
+cout << b << endl;// 123
+a = 456;
+cout << b << endl;// 456
+```
+# const reference for lvalue as function argument doesn't allow changing
 ```cpp
 // THIS EXAMPLE IS WRONG AND GIVES COMPILATION ERROR
 int number = 8;
@@ -16,7 +31,7 @@ int main(){
     printf("number: %d\n", number);//Wrong; program won't reach here
 }
 ```
-# const reference for rvalue
+# const reference for rvalue as function argument doesn't allow changing
 ```cpp
 // THIS EXAMPLE IS WRONG AND GIVES COMPILATION ERROR
 void add_value(const int&& a)
@@ -31,12 +46,3 @@ int main(){
     printf("number: %d\n", number);//9
 }
 ```
-# const reference value can be changed when assigned it to a variable
-```cpp
-int a = 123;
-const int &b = a;
-cout << b << endl;// 123
-a = 456;
-cout << b << endl;// 456
-```
-    
