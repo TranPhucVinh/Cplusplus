@@ -70,3 +70,20 @@ printf("Program keeps running as throw error is caught\n");
 Invalid number: Invalid number throw runtime_error
 Program keeps running as throw error is caught
 ```
+# catch (...) except all thrown data types
+```c
+int main()
+{
+    try {
+        int value = 1;
+        if (value >= 10) {
+            cout << "Valid number";
+        } else {
+            throw value;//Throw value as the exeception number
+        }
+    }
+    catch (...) {
+        cout << "Exception is thrown\n";
+    }
+}
+```
