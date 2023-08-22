@@ -107,7 +107,7 @@ class classTest{
 	public:
         int *ptr;
         classTest(): ptr(new int(0)){}
-        classTest(classTest &obj){
+        classTest(const classTest &obj){
             ptr = new int(0);
             *ptr = *obj.ptr;
             return;
