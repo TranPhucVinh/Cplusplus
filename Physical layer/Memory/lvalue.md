@@ -32,6 +32,7 @@ int &b = NULL;//Must not do this, this gives compilation error
 ```
 This is different from pointer as pointer allow [NULL pointer](https://github.com/TranPhucVinh/C/blob/master/Physical%20layer/Memory/Pointer/Types%20of%20pointer.md#null-pointer).
 ## Change lvalue
+By using the lvalue, we can also change the value of the variable pointing to that lvalue. In this case variable ``a`` changes its value as it points to ``&b``
 ```cpp
 int a = 9;
 int &b = a;
