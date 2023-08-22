@@ -13,7 +13,7 @@ std::cout << &a << " " << &b << std::endl;//0x72fe04 0x72fe04
 
 From this example, we can see that the lvalue reference (``&b``) shares the same memory address of the variable it presents (``&a``).
 
-Reference declarion for ``std::string`` must be [const reference](const%20reference.md):
+Reference declaration for ``std::string`` must be [const reference](const%20reference.md):
 
 ```cpp
 const std::string& str = "Hello, World !";//Must define as const reference
