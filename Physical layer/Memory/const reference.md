@@ -46,3 +46,12 @@ int main(){
     printf("number: %d\n", number);//9
 }
 ```
+# When to use const reference
+const reference is useful when we want to pass the reference to the function for read-only purpose. An example for this is the [copy constructor in deep copy](https://github.com/TranPhucVinh/Cplusplus/blob/master/Object-oriented%20programming/Constructor%20and%20destructor/Shallow%20copy,%20deep%20copy%20and%20copy%20constructor.md#deep-copy):
+```cpp
+classTest(const classTest &obj){
+    ptr = new int(0);
+    *ptr = *obj.ptr;
+    return;
+}
+```
