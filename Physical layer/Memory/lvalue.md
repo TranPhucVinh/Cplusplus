@@ -43,6 +43,11 @@ b = c;
 std::cout << a << " " << b << std::endl; //10 10
 std::cout << &a << " " << &b << std::endl;//0x72fe04 0x72fe04
 ```
+## Can't assign const to lvalue
+```cpp
+const int a = 9;
+int &b = a;//Compilation error: binding reference of type ‘int&’ to ‘const int’ discards qualifiers 
+```
 # Pass by reference: lvalue as function argument
 ```cpp
 #include <iostream>
