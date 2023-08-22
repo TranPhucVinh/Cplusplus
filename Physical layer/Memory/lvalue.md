@@ -31,14 +31,16 @@ Or this:
 int &b = NULL;//Must not do this, this gives compilation error
 ```
 This is different from pointer as pointer allow [NULL pointer](https://github.com/TranPhucVinh/C/blob/master/Physical%20layer/Memory/Pointer/Types%20of%20pointer.md#null-pointer).
-## lvalue reinitialization is not allowed
+## Change lvalue
 ```cpp
 int a = 9;
 int &b = a;
 std::cout << a << " " << b << std::endl; //9 9
 std::cout << &a << " " << &b << std::endl;//0x72fe04 0x72fe04
 int c = 10;
-&b = c;//Compilation error; reinitialization for lvalue is not allow
+b = c;
+std::cout << a << " " << b << std::endl; //10 10
+std::cout << &a << " " << &b << std::endl;//0x72fe04 0x72fe04
 ```
 # Pass by reference: lvalue as function argument
 ```cpp
