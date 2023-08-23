@@ -124,7 +124,42 @@ public_number 3; private_numer 4
 ```
 
 In this program, calling ``class_test object_1`` will call the default constructor (setup by ``class_test() = default``) to setup default value for variables.
+# Implicit conversion and explicit keyword
+For multiple constructors **which has only one argument**, beside the setting this arugment [in the traditional way](#multiple-constructors-in-one-class-with-arguments), CPP support implicit conversion which allow setting this constructor argument value by the assignment operator (``=``):
+```cpp
+class classTest{
+	public:
+        classTest(string displayString) {
+            cout << displayString << endl;
+        }
+        classTest(int intValue){
+             cout << intValue << endl;
+        }
+};
 
+int main(){
+	// Must use std::string(); not classTest object1 = "Display string"
+    classTest object1 = std::string("Display string"); //Display string
+    classTest object2 = 19; //19
+}
+```
+**Explicit keyword** will block CPP compiler from back so that you're force to use the [traditional way](#multiple-constructors-in-one-class-with-arguments) to set up constructor value:
+```cpp
+class classTest{
+	public:
+        explicit classTest(string displayString) {
+            cout << displayString << endl;
+        }
+        explicit classTest(int intValue){
+             cout << intValue << endl;
+        }
+};
+
+int main(){
+    classTest object1 = std::string("Display string"); //Compilation error
+    classTest object2 = 19; //Compilation error
+}
+```
 # Constructor initializer list
 
 Constructor initializer list is used to defined member variables:
