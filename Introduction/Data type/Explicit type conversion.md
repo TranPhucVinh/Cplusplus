@@ -5,6 +5,7 @@ Beside conventional [explicit type conversion](https://github.com/TranPhucVinh/C
 * [const_cast](#const_cast)
 * [reinterpret_cast](#reinterpret_cast)
 
+Be not to confused the **explicit type conversion** to the **[explicit keyword](https://github.com/TranPhucVinh/Cplusplus/blob/master/Object-oriented%20programming/Constructor%20and%20destructor/Constructor.md#implicit-conversion-and-explicit-keyword)** which is used for the constructor function which only has one argument.
 # static_cast
 
 * ``static_cast`` does things like implicit conversions between types (such as ``int`` to ``float``, or ``pointer`` to ``void*``), and it can also call explicit conversion functions.
