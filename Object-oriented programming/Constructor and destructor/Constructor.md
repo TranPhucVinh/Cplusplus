@@ -25,7 +25,8 @@ main(){
 	classTest object0;// Hello, World!
     classTest object1("Display string"); //Display string
     classTest object2(19); //19
-    classTest object3(1, 2); //3   
+    classTest object3(1, 2); //3
+    classTest object4 = {4, 5}; //9; Initializer list, C++ and above  
 }
 ```
 
@@ -124,9 +125,13 @@ public_number 3; private_numer 4
 ```
 
 In this program, calling ``class_test object_1`` will call the default constructor (setup by ``class_test() = default``) to setup default value for variables.
-# Implicit conversion and explicit keyword
-For multiple constructors **which has only one argument**, beside the setting this arugment [in the traditional way](#multiple-constructors-in-one-class-with-arguments), CPP support implicit conversion which allow setting this constructor argument value by the assignment operator (``=``):
+# Implicit conversion, conversion constructor and explicit keyword
+For multiple constructors, beside the setting this arugment [in the traditional way](#multiple-constructors-in-one-class-with-arguments), CPP support implicit conversion which allow setting this constructor argument value by the assignment operator (``=``):
 ```cpp
+#include <iostream>
+
+using namespace std;
+
 class classTest{
 	public:
         classTest(string displayString) {
@@ -135,14 +140,19 @@ class classTest{
         classTest(int intValue){
              cout << intValue << endl;
         }
+        classTest(int a, int b){
+            cout << a+b << endl;
+        }
 };
 
 int main(){
 	// Must use std::string(); not classTest object1 = "Display string"
     classTest object1 = std::string("Display string"); //Display string
     classTest object2 = 19; //19
+    classTest object3 = {4, 5}; //9; Initializer list, C++ and above  
 }
 ```
+All the constructors implemented in the above example are **conversion constructors**. **Conversion constructors** are constructors that convert types of its parameter into a type of the class.
 **Explicit keyword** will block CPP compiler from back so that you're force to use the [traditional way](#multiple-constructors-in-one-class-with-arguments) to set up constructor value:
 ```cpp
 class classTest{
@@ -153,11 +163,15 @@ class classTest{
         explicit classTest(int intValue){
              cout << intValue << endl;
         }
+        explicit classTest(int a, int b){
+            cout << a+b << endl;
+        }
 };
 
 int main(){
     classTest object1 = std::string("Display string"); //Compilation error
     classTest object2 = 19; //Compilation error
+	classTest object3 = {4, 5}; //Compilation error
 }
 ```
 # Constructor initializer list
