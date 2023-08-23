@@ -13,8 +13,9 @@ Implicit cast:
 int var_1 = 4;
 ```
 [Inintializer list](#initializer-list)
+```cpp
 int var_1{4};
-
+```
 Initialize with a value:
 ```cpp
 int var_1(4);
