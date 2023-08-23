@@ -12,7 +12,7 @@ Implicit cast:
 ```cpp
 int var_1 = 4;
 ```
-[Inintializer list](#initializer-list)
+[Initializer list](#initializer-list)
 ```cpp
 int var_1{4};
 ```
