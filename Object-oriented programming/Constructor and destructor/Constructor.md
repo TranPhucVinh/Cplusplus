@@ -1,4 +1,5 @@
-# Multiple constructors in one class with arguments
+# Constructor overloading
+We can have multiple constructors in one class, where each constructor can have arguments. This is known as **constructor overloading**, which is quite similar to [function overloading](https://github.com/TranPhucVinh/Cplusplus/tree/master/Introduction/Function#function-overloading).
 
 ```cpp
 #include <iostream>
