@@ -107,13 +107,12 @@ It can be seen that ``addNumbers`` are encoded into ``_Z10addNumbersff`` (for ``
 void intNumber(int a, int b = 12);
 
 int main(){
-    intNumber(150, 13);
-    intNumber(15);
+    intNumber(150, 13);// a: 150; b: 13
+    intNumber(15);// a: 15; b: 12
 }
 
 void intNumber(int a, int b){
-    cout << "a: " << a << endl;
-    cout << "b: " << b << endl;
+    cout << "a: " << a << "; b: " << b << endl;
 }
 ```
 
