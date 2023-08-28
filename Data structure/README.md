@@ -1,3 +1,35 @@
+# Array
+**Array as function parameter**
+
+Beside the traditonal way to pass array as function parameter (which includes the array size), CPP allows passing the array by reference ([lvalue](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/lvalue.md#lvalue-function-with-pass-by-reference)) which also includes/hard-codes the array size:
+
+```cpp
+/*
+    Completely like this traditional way:
+    void func(int a[2]) {}
+*/
+void func(int (&a)[2]) {
+    for (int i = 0; i < 2; i++) std::cout << a[i] << std::endl;
+}
+
+int main(){
+    int arr[2] = {123, 456};
+    func(arr);//123 456
+}
+```
+
+Using [template](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/Function/Template.md) is the only solution to allow **passing array as function parameter without using its size**
+```cpp
+template <typename T, int arr_size>
+void func(T (&a)[arr_size]) {
+    for (int i = 0; i < arr_size; i++) std::cout << a[i] << std::endl;
+}
+
+int main(){
+    int arr[2] = {123, 456};
+    func(arr);//123 456
+}
+```
 # String
 
 String document will include
@@ -20,7 +52,9 @@ Implement [JSON](JSON) with [nlohmann/json](https://github.com/nlohmann/json) li
 * [A struct works like a class](struct.md#a-struct-works-like-a-class)
 * [Inheritance with struct](struct.md#inheritance-with-struct)
 * [Pure virtual function and abstract class in struct](struct.md#pure-virtual-function-and-abstract-class-in-struct)
-
+# [Stack](Stack)
+* Build stack with array: [stack_with_array.cpp](Stack/stack_with_array.cpp)
+* Build stack with array which support multiple data type by using [template](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/Function/Template.md): [stack_genertic.cpp](Stack/stack_genertic.cpp)
 # Queue
 
 Create a queue to store all int variable then read all those value.
