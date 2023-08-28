@@ -104,17 +104,27 @@ It can be seen that ``addNumbers`` are encoded into ``_Z10addNumbersff`` (for ``
 # Default arguments
 
 ```cpp
-void intNumber(int a, int b = 12);
+void intNumber(int a = 1, int b = 2, int c = 3, int d = 4);
 
 int main(){
-    intNumber(150, 13);// a: 150; b: 13
-    intNumber(15);// a: 15; b: 12
+    //set a; keep a, b, c default
+    intNumber(12);// 12 2 3 4
+
+    // set b, keep a, c, d default
+    intNumber(1, 12);// 1 12 3 4
+
+    // set c, keep a, b, d default
+    intNumber(1, 2, 34);// 1 2 34 4
+
+    // set d, keep a, b, c default
+    intNumber(1, 2, 3, 56);// 1 2 3 56
 }
 
-void intNumber(int a, int b){
-    cout << "a: " << a << "; b: " << b << endl;
+void intNumber(int a, int b, int c, int d){
+    cout << a << " " << b << " " << c << " " << d << endl;
 }
 ```
+**Note**: When you pass a value for a particular parameter that has a default argument, you have to pass values for all the default parameters before it. Otherwise, the value you have passed will be taken as the value for the first default parameter.
 
 If define:
 
