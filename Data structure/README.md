@@ -1,7 +1,7 @@
 # Array
 **Array as function parameter**
 
-Beside the traditonal way to pass array as function parameter (which includes the array size), CPP allows passing the array by reference ([lvalue](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/lvalue.md#lvalue-function-with-pass-by-reference)) which also includes/hard-codes the array size:
+Beside the traditonal way to pass array as function parameter (which includes the array size), CPP allows passing the array by reference ([lvalue](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/lvalue.md#lvalue-function-with-pass-by-reference)) which also includes/is hard-coded the array size:
 
 ```cpp
 /*
