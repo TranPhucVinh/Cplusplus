@@ -71,6 +71,9 @@ int main () {
 ```
 
 **Notice**  ``addTwoNumbers(3.0f, 4.0f)`` for float number, without ``f`` there will be error ``call of overloaded ‘addTwoNumbers(double, double)’ is ambiguous``, as ``addTwoNumbers(3.1, 4.1)`` is interpreted as double number.
+## Different between overload and override/overloading and overriding
+* **Overloading**: same method name but different parameters in the same class/same function name but different parameters in the same program.
+* **[Overridding](https://github.com/TranPhucVinh/Cplusplus/blob/master/Object-oriented%20programming/Inheritance/Virtual%20function.md#override-keyword)**: Same method signature in both base class and derived class
 # Name mangling
 Name mangling, which is supported in CPP, not C, is the encoding of function and variable names into unique names so that linkers can separate common names in the language. Name mangling is implemented in function overloading so that the linker knows which functions to use.
 
