@@ -1,3 +1,4 @@
+# Fundamental concept
 **Operator overloading** is a compile-time polymorphism which gives a special meaning to an existing operator in C++ without changing its original meaning.
 
 In this complex number as object created from class ``Complex``, we want the ``+`` operator to have the ability to add its real and imagine part.
@@ -97,3 +98,14 @@ int main()
 	c3.print();
 }
 ```
+# What operators can be overloaded ?
+Almost all operators can be overloaded like:
+* [Unary operators](https://github.com/TranPhucVinh/C/blob/master/Introduction/Variable/README.md#unary-operators)
+* [Binary operators]()
+* Special operators like ``[]``, ``()``,...
+# What operators can't be overloaded ?
+* sizeof
+* typeid
+* Scope resolution (::)
+* Class member access operators (.(dot), .* (pointer to member operator))
+* Ternary or conditional (?:)
