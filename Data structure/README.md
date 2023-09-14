@@ -1,35 +1,5 @@
-# Array
-**Array as function parameter**
+# [Array](Array.md)
 
-Beside the traditonal way to pass array as function parameter (which includes the array size), CPP allows passing the array by reference ([lvalue](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/lvalue.md#lvalue-function-with-pass-by-reference)) which also includes/is hard-coded the array size:
-
-```cpp
-/*
-    Completely like this traditional way:
-    void func(int a[2]) {}
-*/
-void func(int (&a)[2]) {
-    for (int i = 0; i < 2; i++) std::cout << a[i] << std::endl;
-}
-
-int main(){
-    int arr[2] = {123, 456};
-    func(arr);//123 456
-}
-```
-
-Using [template](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/Function/Template.md) is the only solution to allow **passing array as function parameter without using its size**
-```cpp
-template <typename T, int arr_size>
-void func(T (&a)[arr_size]) {
-    for (int i = 0; i < arr_size; i++) std::cout << a[i] << std::endl;
-}
-
-int main(){
-    int arr[2] = {123, 456};
-    func(arr);//123 456
-}
-```
 # String
 
 String document will include
