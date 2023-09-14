@@ -42,6 +42,16 @@ int main()
 }
 ```
 [Constructor initializer list](https://github.com/TranPhucVinh/Cplusplus/blob/master/Object-oriented%20programming/Constructor%20and%20destructor/Constructor.md#constructor-initializer-list)
+# STL
+STL is standard template library. It consists of three components:
+* Container
+* [Iterator](#interator)
+* Algorithm
+## Iterator
+
+An iterator is an object (like a pointer) that points to an element inside the container. We can use iterators to move through the contents of the container. 
+
+Iterators are used to point at the memory addresses of STL containers.
 # Header file
 
 ## hpp file
