@@ -68,3 +68,49 @@ int main(){
     func(float_arr);//12.34 45.67
 }
 ```
+# [Iterator](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/README.md#iterator) in std::array
+```cpp
+#include <iostream>
+#include <array>
+
+int main ()
+{
+	std::array<int, 4> int_arr = {1, 2, 3, 4};
+	std::array<int, 100>::iterator iter;
+	for (iter = int_arr.begin(); iter < int_arr.end(); iter++){
+		std::cout << *iter << " ";
+	}
+	std::cout << '\n';
+
+	return 0;
+}
+```
+Iterator declared by ``auto``:
+```cpp
+int main ()
+{
+	std::array<int, 4> int_arr = {1, 2, 3, 4};
+	for (auto it = int_arr.begin(); it < int_arr.end(); it++){
+		std::cout << *it;
+		std::cout << '\n';
+	}
+}
+```
+Modify the array member by iterator:
+```cpp
+int main ()
+{
+	std::array<int, 4> int_arr = {1, 2, 3, 4};
+	std::array<int, 100>::iterator iter;
+	for (iter = int_arr.begin(); iter < int_arr.end(); iter++){
+		std::cout << *iter << " ";
+		*iter += 1;
+	}
+	std::cout << '\n';
+	for (iter = int_arr.begin(); iter < int_arr.end(); iter++){
+		std::cout << *iter << " ";
+	}
+
+	return 0;
+}
+```
