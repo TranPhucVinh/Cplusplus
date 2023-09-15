@@ -8,6 +8,7 @@
 * [Virtual function](Inheritance/Virtual%20function.md): [When to use virtual function ?](Inheritance/Virtual%20function.md#when-to-use-virtual-function-), [virtual function definition](Virtual%20function.md#virtual-function-definition) and [implementation](Inheritance/Virtual%20function.md#implementation), [override keyword](Inheritance/Virtual%20function.md#override-keyword), [virtual destructor](Inheritance/Virtual%20function.md#virtual-destructor), [pure virtual function and abstract class](Inheritance/Virtual%20function.md#pure-virtual-function-and-abstract-class)
 * [Binding](#binding): [Early binding]() and [late binding]()
 * [const](const.md): [const function](const.md#const-function), [const object](const.md#const-object) and [mutable]()
+* [friend](friend.md): [friend class](friend.md#friend-class), [friend function](friend.md#friend-function): Use [a global function](friend.md#use-a-global-function-as-a-friend-method-to-change-public-and-private-member-of-an-object) and [a class method](friend.md#use-a-class-method-as-a-friend-method-to-change-public-and-private-member-of-an-object) as a friend method to change public and private member of an object.
 
 [Example](Example)
 
