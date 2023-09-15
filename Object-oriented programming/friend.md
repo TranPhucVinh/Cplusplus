@@ -113,3 +113,5 @@ int main(){
 	object_1.disp_var();// 789 321
 }
 ```
+# Application
+In [overloading operator implementation for + operator for complex number, when the 2 complex tries to access to its real and imagine value as the private member, friend must be used](https://github.com/TranPhucVinh/Cplusplus/blob/master/Object-oriented%20programming/Operator%20overloading.md#using-friend-method-when-the-objects-of-the-overloading-operator-function-try-to-access-to-the-private-member).
