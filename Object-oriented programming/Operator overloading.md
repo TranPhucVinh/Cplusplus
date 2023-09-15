@@ -98,6 +98,38 @@ int main()
 	c3.print();
 }
 ```
+# Using [friend](https://github.com/TranPhucVinh/Cplusplus/blob/master/Object-oriented%20programming/friend.md) method when the objects of the overloading operator function try to access to the private member
+```cpp
+class Complex {
+//Other definitions are unchanged
+
+	// This gives compilation error as c1 and c2 trying to access to private member
+        // Complex operator+(Complex const& c1, Complex const& c2)
+        // {
+        //     Complex result;
+        //     result.real = c1.real + c2.real;
+        //     result.img = c1.img + c2.img;
+        //     return result;
+        // }
+	// Use friend as c1, c2 access to private member
+	friend Complex operator+(Complex const& c1, Complex const& c2)
+        {
+            Complex result;
+            result.real = c1.real + c2.real;
+            result.img = c1.img + c2.img;
+            return result;
+        }
+};
+
+int main()
+{
+	Complex c1(1, 2), c2(3, 4);
+    c1.print();
+    c2.print();
+	Complex c3 = c1 + c2;
+	c3.print();
+}
+```
 # What operators can be overloaded ?
 Almost all operators can be overloaded like:
 * [Unary operators](https://github.com/TranPhucVinh/C/blob/master/Introduction/Variable/README.md#unary-operators)
