@@ -180,17 +180,3 @@ There will be error:
 test.cpp:12:31: error: default argument given for parameter 2 of ‘void intNumber(int, int)’ [-fpermissive]
  void intNumber(int a, int b=12){
 ```
-
-# algorithm library header
-
-```cpp
-#include <iostream>
-#include <algorithm>//For min_element
-
-using namespace std;
-
-int main() {
-	int a = std::min(12, 34);
-	cout << a << endl;
-}
-```
