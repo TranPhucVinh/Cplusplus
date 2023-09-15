@@ -71,8 +71,8 @@ int main(){
 ```
 
 # Virtual function definition
-
-In computer science, especially with OOP, dynamic dispatch is the process of selecting which implementation of a polymorphic operation (method or function) to call at run time.
+## Dynamic dispatch
+In computer science, especially with OOP, **dynamic dispatch** is the process of selecting which implementation of a polymorphic operation (method or function) to call at run time.
 
 A virtual function or virtual method is an inheritable and overridable function or method for which dynamic dispatch is facilitated. In short, a virtual function defines a target function to be executed, but the target might not be known at compile time.
 
@@ -96,6 +96,11 @@ vptr ->		derive_class_1::Vtable[0] ->	derive_class_1::display_function()
 vptr		vtable	function
 vptr ->		derive_class_2::Vtable[0] ->	derive_class_2::display_function()
 ```
+## RTTI
+In C++, RTTI (Run-time type information) is a mechanism that exposes information about an object’s data type at runtime and is available only for the classes which have at least one virtual function. It allows the type of an object to be determined during program execution.
+
+For example, [dynamic_cast](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/Data%20type/Explicit%20type%20conversion.md#dynamic_cast) uses RTTI (when the base class the virtual function).
+
 # Implementation
 
 ## Assign derive class object to base class pointer to call this derive class function
