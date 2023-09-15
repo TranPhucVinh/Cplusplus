@@ -1,6 +1,6 @@
 # Fundamental concepts
 
-* [for-each](#for-each) and [for_each]()
+* [for-each](#for-each) and [for_each](#for_each)
 * [Function overloading](#function-overloading)
 * [Name mangling]()
 * [Function default arguments](#default-arguments)
@@ -8,7 +8,7 @@
 * [Template](Template.md)
 * [Lambda](Lambda.md)
 
-# for-each loop
+# for-each
 
 C++ support the for-each loop which is introduced in C++ version 11 (2011):
 
