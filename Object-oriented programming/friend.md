@@ -31,9 +31,9 @@ int main(){
 	obj.read_all_var(object);
 }
 ```
-# Friend function
+# friend function
 
-A friend function can be granted special access to private and protected members of a class. They can be global function or method of another class
+A **friend function** can be granted special access to private and protected members of a class. They can be global function or method of another class
 
 # Use a global function as a friend method to change public and private member of an object
 ```cpp
