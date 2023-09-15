@@ -36,7 +36,7 @@ That's why this example needs [reinterpret_cast](#reinterpret_cast)
 
 **Downcasting** is when a base class object is casted to the derived class object.
 
-**Upcasting** is when a base class object is casted to the derived class object.
+**Upcasting** is when a derived class object is casted to the base class object.
 
 For virtual function, like in [Assign derive class object to base class pointer to call this derive class function](../../Object-oriented%20programming/Inheritance/Virtual%20function.md#assign-derive-class-object-to-base-class-pointer-to-call-this-derive-class-function)
 , it's a safe practice to use ``dynamic_cast`` for downcasting and upcasting
