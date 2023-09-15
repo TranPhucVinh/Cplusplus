@@ -52,6 +52,9 @@ STL is standard template library. It consists of three components:
 An iterator is an object (like a pointer) that points to an element inside the container. We can use iterators to move through the contents of the container. 
 
 Iterators are used to point at the memory addresses of STL containers.
+
+Implementation: [Iterator in std::array](https://github.com/TranPhucVinh/Cplusplus/blob/master/Data%20structure/Array.md#iterator-in-stdarray)
+
 # Header file
 
 ## hpp file
