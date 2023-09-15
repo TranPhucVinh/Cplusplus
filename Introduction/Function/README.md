@@ -1,6 +1,6 @@
 # Fundamental concepts
 
-* [For-each loop](#for-each-loop)
+* [for-each](#for-each) and [for_each]()
 * [Function overloading](#function-overloading)
 * [Name mangling]()
 * [Function default arguments](#default-arguments)
@@ -8,7 +8,7 @@
 * [Template](Template.md)
 * [Lambda](Lambda.md)
 
-# For-each loop
+# for-each loop
 
 C++ support the for-each loop which is introduced in C++ version 11 (2011):
 
@@ -39,6 +39,37 @@ for-each loop doesn't support getting the index value, i.e: ``array[5]`` in the 
 ```
 ``index`` of array must be got by traditional for loop.
 
+Be not to confused for-each with for_each, which is part of the STL and included in ``<algorithm>``.
+# for_each
+```cpp
+for_each (InputIterator start_iter, InputIterator last_iter, Function fnc);
+```
+``fnc/obj_fnc``: a function or an object function which operation would be applied to each element. This function must have only 1 argument which is the current element in the current iteration.
+
+```cpp
+#include <iostream>
+#include <array>
+#include <algorithm> // for_each()
+
+// The for_each function handler must have only 1 argument which is the current element in the current iteration
+void display(int a){
+	std::cout << "for_each()\n";
+}
+void display_arg(int a){
+	std::cout << a << "\n";
+}
+int main ()
+{
+	int arr[] = {1, 2, 3};
+	std::array<int, 4> int_arr = {1, 2, 3, 4};
+
+	std::for_each(arr, arr + 3, display_arg);
+	std::for_each(int_arr.begin(), int_arr.end(), display);
+	std::for_each(int_arr.begin(), int_arr.end(), display_arg);
+
+	return 0;
+}
+```
 # Function overloading
 
 ```cpp
