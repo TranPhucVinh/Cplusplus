@@ -7,6 +7,7 @@ Unique pointer is supported since **C++11**. Include ``<memory>`` to use it. ``s
 # Unique pointer allows setting value to its deferencing
 
 Unlike normal pointer which doesn't allow setting value to its dereferencing, unique pointer allows this operation:
+## Use std::make_unique<>()
 
 ```cpp
 #include <iostream>
@@ -24,7 +25,18 @@ int main(){
     std::cout << *uniquePtr << std::endl;//123
 }
 ```
+## Use std::unique_ptr<>(new) directly
+```cpp
+std::unique_ptr<int> uniquePtr;
+uniquePtr = std::unique_ptr<int>(new int(123));
 
+std::cout << &uniquePtr << std::endl;//0x7fff13475d50
+std::cout << *uniquePtr << std::endl;//123
+```
+For ``auto`` keyword:
+```cpp
+auto uniquePtr = std::unique_ptr<int>(new int(123));
+```
 # Unique pointer doesn't allow sharing
 
 **Unique** in unique pointer means it doesn't allow sharing that pointer. Unlike normal pointer which can be assigned to many variables address, unique pointer doesn't allow that.
