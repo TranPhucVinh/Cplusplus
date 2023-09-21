@@ -104,7 +104,7 @@ Hello, World !
 Hello, World !
 ... (Only thread 1 runs, thread 2 doesn't run. The lines of code after str_thread.join() won't be run as they're blocked)
 ```
-**Problem solved**: Use ``[std::thread::detach]()`` to separate the thread of execution from the thread object, allowing execution to continue independently.
+**Problem solved**: Use **[std::thread::detach](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Thread/Create%20thread.md#stdthreadjoin)** to separate the thread of execution from the thread object, allowing execution to continue independently.
 
 ```cpp
 std::thread str_thread(display_string, "Hello, World !");
