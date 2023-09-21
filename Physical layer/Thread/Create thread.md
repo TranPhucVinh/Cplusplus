@@ -41,8 +41,8 @@ int main()
     return 0;
 }
 ```
-## std::thread::join()
-Just like [pthread_join()](https://github.com/TranPhucVinh/C/blob/master/Physical%20layer/Thread/API.md#pthread_join), std::thread::join() will block the current process until this thread finishes its execution.
+## ``std::thread::join()``
+Just like [pthread_join()](https://github.com/TranPhucVinh/C/blob/master/Physical%20layer/Thread/API.md#pthread_join), ``std::thread::join()`` will block the current process until this thread finishes its execution.
 
 However, creating std::thread without ``std::thread::join()`` results in error:
 ```c
