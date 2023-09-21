@@ -64,10 +64,10 @@ int main()
 }
 ```
 # ``std::thread::join()`` will block the process if this thread has while(1)
-Based on PThread program flow as [explained in GCC](https://github.com/TranPhucVinh/C/tree/master/Physical%20layer/Thread#thread-is-blocked-by-while1), ``str_thread`` in this program will block the program
 ```cpp
 #include <iostream>
 #include <thread>
+#include <unistd.h>
 
 void display_string(const char *str){
 	while (1){
@@ -89,6 +89,12 @@ int main()
 	str_thread.join();
 	std::thread int_thread(display_int, 123);
 	int_thread.join();
+	std::cout << "display_string thread has joined" << std::endl;
+	std::cout << "display_int thread has joined" << std::endl;
+	while(1){
+		std::cout << "2 thread are running now\n";
+		sleep(1);
+	}
     return 0;
 }
 ```
@@ -96,13 +102,36 @@ int main()
 ```
 Hello, World !
 Hello, World !
-... (Only thread 1 runs, thread 2 doesn't run)
+... (Only thread 1 runs, thread 2 doesn't run. The lines of code after str_thread.join() won't be run as they're blocked)
 ```
-**Problem solved**: Call ``str_thread.join()`` and ``int_thread.join()`` at the same time:
+**Problem solved**: Use [std::thread::detach]() to separate the thread of execution from the thread object, allowing execution to continue independently.
 
 ```cpp
 std::thread str_thread(display_string, "Hello, World !");
+str_thread.detach();
 std::thread int_thread(display_int, 123);
-str_thread.join();
-int_thread.join();
+int_thread.detach();
+std::cout << "display_string thread has joined" << std::endl;
+std::cout << "display_int thread has joined" << std::endl;
+while(1){
+	std::cout << "2 thread are running now\n";
+	sleep(1);
+}
+return 0;
+```
+**Result**:
+```
+display_string thread has joined
+display_int thread has joined                                                                                  
+2 thread are running now
+Hello, World !
+123                                                                                                                    
+2 thread are running now 
+Hello, World !
+123
+2 thread are running now                         
+123
+Hello, World ! 
+123
+....
 ```
