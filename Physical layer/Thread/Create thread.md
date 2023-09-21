@@ -41,6 +41,19 @@ int main()
     return 0;
 }
 ```
+## std::thread::join()
+Just like [pthread_join()](https://github.com/TranPhucVinh/C/blob/master/Physical%20layer/Thread/API.md#pthread_join), std::thread::join() will block the current process until this thread finishes its execution.
+
+However, creating std::thread without ``std::thread::join()`` results in error:
+```c
+//This program gives error when running
+int main()
+{
+    std::thread thread_obj(thread_func);// Don't call thread_obj.join() after this results in error
+    return 0;
+}
+```
+When running this program, there will be error: **terminate called without an active exception**
 # Create a thread inside a class
 ```cpp
 #include <iostream>
