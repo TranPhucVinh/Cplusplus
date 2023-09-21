@@ -25,6 +25,8 @@ int main(){
     std::cout << *uniquePtr << std::endl;//123
 }
 ```
+You cannot use **std::make_unique** with a [custom deleter](). Only the [unique pointer direct method declaration](#use-stdunique_ptrnew-directly) allow [custom deleter]().
+
 ## Use std::unique_ptr<>(new) directly
 ```cpp
 std::unique_ptr<int> uniquePtr;
@@ -33,10 +35,15 @@ uniquePtr = std::unique_ptr<int>(new int(123));
 std::cout << &uniquePtr << std::endl;//0x7fff13475d50
 std::cout << *uniquePtr << std::endl;//123
 ```
+Or declaring directly:
+```cpp
+std::unique_ptr<int> uniquePtr(new int(987));
+```
 For ``auto`` keyword:
 ```cpp
 auto uniquePtr = std::unique_ptr<int>(new int(123));
 ```
+The direct ``std::unique_ptr<>(new)`` declaration allow using [custom deleter]().
 # Unique pointer doesn't allow sharing
 
 **Unique** in unique pointer means it doesn't allow sharing that pointer. Unlike normal pointer which can be assigned to many variables address, unique pointer doesn't allow that.
