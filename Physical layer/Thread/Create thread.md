@@ -125,3 +125,29 @@ int main()
     return 0;
 }
 ```
+Threads can be started from a class method by using this pointer:
+```cpp
+class classTest{
+	public:
+		void display_string(){
+			cout << "Hello, World !\n";
+		}
+		void display_number(int num){
+			cout << num << endl;
+		}
+		void start_thread(){
+			std::thread thread_1(&classTest::display_string, this);
+			std::thread thread_2(&classTest::display_number, this, 123);
+
+			thread_1.join();// Hello, World !
+			thread_2.join();// 123
+		}
+};
+
+int main()
+{
+	classTest obj;
+	obj.start_thread();
+    return 0;
+}
+```
