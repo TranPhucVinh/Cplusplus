@@ -54,6 +54,27 @@ int main()
 }
 ```
 When running this program, there will be error: **terminate called without an active exception**
+
+## [``std::thread::join()`` will block the process if this thread has while(1)](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Thread/Fundamental%20concepts.md#stdthreadjoin-will-block-the-process-if-this-thread-has-while1)
+## ``std::thread::detach()``
+``std::thread::detach()`` separate the thread of execution from the thread object, allowing execution to continue independently. Any allocated resources will be freed once the thread exits.
+```cpp
+void thread_func()
+{
+    std::cout << "Hello, World !";
+}
+
+int main()
+{
+    std::thread thread_obj(thread_func);
+	thread_obj.detach();
+    return 0;
+}
+```
+**Result**: (NULL/print out nothing)
+ ``std::thread::detach()`` is useful to avoid blocking the thread by ``std::thread::join()`` while still trying to have its run independently. Some of  ``std::thread::detach()`` implementations:
+* [Run 2 thread, which include while(1), independently](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Thread/Fundamental%20concepts.md#stdthreadjoin-will-block-the-process-if-this-thread-has-while1)
+* [Multithread HTTP server built on TCP API]()
 # Create a thread inside a class
 ```cpp
 #include <iostream>
