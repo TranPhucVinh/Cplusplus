@@ -63,7 +63,7 @@ int main()
     return 0;
 }
 ```
-# Thread is blocked by while(1)
+# ``std::thread::join()`` will block the process if this thread has while(1)
 Based on PThread program flow as [explained in GCC](https://github.com/TranPhucVinh/C/tree/master/Physical%20layer/Thread#thread-is-blocked-by-while1), ``str_thread`` in this program will block the program
 ```cpp
 #include <iostream>
