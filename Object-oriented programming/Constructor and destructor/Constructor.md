@@ -127,7 +127,8 @@ public_number 3; private_numer 4
 
 In this program, calling ``class_test object_1`` will call the default constructor (setup by ``class_test() = default``) to setup default value for variables.
 # Implicit conversion, conversion constructor and explicit keyword
-For multiple constructors, beside the setting this arugment [in the traditional way](#multiple-constructors-in-one-class-with-arguments), CPP support implicit conversion which allow setting this constructor argument value by the assignment operator (``=``):
+## Implicit conversion, conversion constructors
+For multiple constructors, beside the setting this argument [in the traditional way](#multiple-constructors-in-one-class-with-arguments), CPP supports implicit conversion which allow setting this constructor argument value by the assignment operator (``=``):
 ```cpp
 #include <iostream>
 
@@ -154,6 +155,7 @@ int main(){
 }
 ```
 All the constructors implemented in the above example are **conversion constructors**. **Conversion constructors** are constructors that convert types of its parameter into a type of the class.
+## explicit keyword
 **Explicit keyword** will block CPP compiler from back so that you're force to use the [traditional way](#multiple-constructors-in-one-class-with-arguments) to set up constructor value:
 ```cpp
 class classTest{
