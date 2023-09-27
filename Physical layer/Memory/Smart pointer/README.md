@@ -11,7 +11,7 @@ Smart pointer includes:
 * [Unique pointer allows setting value to its deferencing](Unique%20pointer.md#unique-pointer-allows-setting-value-to-its-deferencing)
 * [Unique pointer doesn't allow sharing](Unique%20pointer.md#unique-pointer-doesnt-allow-sharing)
 * [Using std::move to completely move value from 2 unique pointers](Unique%20pointer.md#using-stdmove-to-completely-move-value-from-2-unique-pointers)
-* [Unique pointer for class object](Unique%20pointer.md#unique-pointer-for-class-object)
+* [Unique pointer as class object](Unique%20pointer.md#unique-pointer-as-class-object)
 
 # [Shared pointer](Shared%20pointer.md)
 
