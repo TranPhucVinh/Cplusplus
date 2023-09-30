@@ -44,7 +44,7 @@ int main () {}
 ### Other operation
 
 * [find with find()](#stringfind)
-* [compare with compare()]()
+* [compare with compare()](#stringcompare)
 
 ## API
 
