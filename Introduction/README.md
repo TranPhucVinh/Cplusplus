@@ -12,9 +12,10 @@ Implicit cast:
 ```cpp
 int var_1 = 4;
 ```
-[Inintializer list](#initializer-list)
+[Initializer list](#initializer-list)
+```cpp
 int var_1{4};
-
+```
 Initialize with a value:
 ```cpp
 int var_1(4);
@@ -41,6 +42,33 @@ int main()
 }
 ```
 [Constructor initializer list](https://github.com/TranPhucVinh/Cplusplus/blob/master/Object-oriented%20programming/Constructor%20and%20destructor/Constructor.md#constructor-initializer-list)
+# STL
+STL is standard template library. It consists of three components:
+* [Container](https://github.com/TranPhucVinh/Cplusplus/blob/master/Data%20structure/README.md#container)
+* [Iterator](#interator)
+* [Algorithm](#algorithm)
+## Iterator
+
+An iterator is an object (like a pointer) that points to an element inside the container. We can use iterators to move through the contents of the container. 
+
+Iterators are used to point at the memory addresses of STL containers.
+
+Implementation: [Iterator in std::array](https://github.com/TranPhucVinh/Cplusplus/blob/master/Data%20structure/Array.md#iterator-in-stdarray)
+## Algorithm
+[for_each()](https://github.com/TranPhucVinh/Cplusplus/tree/master/Introduction/Function#for_each)
+
+``std::min()``
+```cpp
+#include <iostream>
+#include <algorithm>//For min_element
+
+using namespace std;
+
+int main() {
+	int a = std::min(12, 34);
+	cout << a << endl;
+}
+```
 # Header file
 
 ## hpp file

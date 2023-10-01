@@ -74,6 +74,17 @@ private:
 
 So this will give error: ``cout << object.privateNumber << endl;``
 
+Any members defined out specified **public** or **private** are **private** by default:
+```cpp
+class classTest{
+    int privateNumer; //This is a private member
+	public:
+		int publicNumber;
+		void displayStringhello(){
+            publicNumber = 123;
+		}
+};
+```
 # Types of class variables
 
 * [Instance variables]()

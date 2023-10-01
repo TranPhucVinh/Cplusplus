@@ -5,6 +5,7 @@ Beside conventional [explicit type conversion](https://github.com/TranPhucVinh/C
 * [const_cast](#const_cast)
 * [reinterpret_cast](#reinterpret_cast)
 
+Be not to confused the **explicit type conversion** to the **[explicit keyword](https://github.com/TranPhucVinh/Cplusplus/blob/master/Object-oriented%20programming/Constructor%20and%20destructor/Constructor.md#implicit-conversion-and-explicit-keyword)** which is used for the constructor function which only has one argument.
 # static_cast
 
 * ``static_cast`` does things like implicit conversions between types (such as ``int`` to ``float``, or ``pointer`` to ``void*``), and it can also call explicit conversion functions.
@@ -35,7 +36,7 @@ That's why this example needs [reinterpret_cast](#reinterpret_cast)
 
 **Downcasting** is when a base class object is casted to the derived class object.
 
-**Upcasting** is when a base class object is casted to the derived class object.
+**Upcasting** is when a derived class object is casted to the base class object.
 
 For virtual function, like in [Assign derive class object to base class pointer to call this derive class function](../../Object-oriented%20programming/Inheritance/Virtual%20function.md#assign-derive-class-object-to-base-class-pointer-to-call-this-derive-class-function)
 , it's a safe practice to use ``dynamic_cast`` for downcasting and upcasting

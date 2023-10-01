@@ -12,9 +12,20 @@ std::cout << displayed_string.size() << std::endl;//13
 std::cout << displayed_string.length() << std::endl;//13
 ```
 
-**Define string with lvalue reference/reference declaration**: [const std::string& str = "Hello, World !";](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/lvalue.md#define)
+## Define string with lvalue reference/reference declaration
 
-**Set default value for a string**
+[const std::string& str = "Hello, World !";](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/lvalue.md#define)
+
+## Define string with formatted string for used in snprintf()
+```cpp
+std::string displayed_string = "String: %s ";
+char buffer[50];
+
+snprintf(buffer, 50, displayed_string.c_str(), "Hello, World !");
+printf("%s", buffer);//String: Hello, World ! 
+ ```
+
+## Set default value for a string
 
 ```cpp
 std::string displayed_string("Hello, World !");// Set default value for displayed_string

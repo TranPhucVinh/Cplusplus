@@ -7,6 +7,7 @@ Unique pointer is supported since **C++11**. Include ``<memory>`` to use it. ``s
 # Unique pointer allows setting value to its deferencing
 
 Unlike normal pointer which doesn't allow setting value to its dereferencing, unique pointer allows this operation:
+## Use std::make_unique<>()
 
 ```cpp
 #include <iostream>
@@ -24,7 +25,25 @@ int main(){
     std::cout << *uniquePtr << std::endl;//123
 }
 ```
+You cannot use **std::make_unique** with a [custom deleter](). Only the [unique pointer direct method declaration](#use-stdunique_ptrnew-directly) allow [custom deleter]().
 
+## Use std::unique_ptr<>(new) directly
+```cpp
+std::unique_ptr<int> uniquePtr;
+uniquePtr = std::unique_ptr<int>(new int(123));
+
+std::cout << &uniquePtr << std::endl;//0x7fff13475d50
+std::cout << *uniquePtr << std::endl;//123
+```
+Or declaring directly:
+```cpp
+std::unique_ptr<int> uniquePtr(new int(987));
+```
+For ``auto`` keyword:
+```cpp
+auto uniquePtr = std::unique_ptr<int>(new int(123));
+```
+The direct ``std::unique_ptr<>(new)`` declaration allow using [custom deleter]().
 # Unique pointer doesn't allow sharing
 
 **Unique** in unique pointer means it doesn't allow sharing that pointer. Unlike normal pointer which can be assigned to many variables address, unique pointer doesn't allow that.
@@ -126,3 +145,42 @@ Program finished
 Destructor of classTest
 ```
 From the result, we can see that the unique pointer as class object is destroyed when the program ended
+# Unique pointer as function argument
+
+As a unique pointer only points to an object at a time, passing it as the argument to a function must use [std::move()](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/Smart%20pointer/Unique%20pointer.md#using-stdmove-to-completely-move-value-from-2-unique-pointers) or [lvalue](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/lvalue.md):
+
+Using [std::move()](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/Smart%20pointer/Unique%20pointer.md#using-stdmove-to-completely-move-value-from-2-unique-pointers)
+
+```c
+#include <iostream>
+#include <memory>
+
+using namespace std;
+
+void unique_ptr_func(std::unique_ptr<int> uniquePtr){
+    std::cout << *uniquePtr << std::endl;//123
+}
+
+int main(){
+	std::unique_ptr<int> uniquePtr = std::make_unique<int>(123);
+	std::cout << *uniquePtr << std::endl;//123
+	unique_ptr_func(std::move(uniquePtr));
+}
+```
+Using [lvalue](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/lvalue.md):
+```cpp
+#include <iostream>
+#include <memory>
+
+using namespace std;
+
+void unique_ptr_func(std::unique_ptr<int> &uniquePtr){
+    std::cout << *uniquePtr << std::endl;//123
+}
+
+int main(){
+	std::unique_ptr<int> uniquePtr = std::make_unique<int>(123);
+	std::cout << *uniquePtr << std::endl;//123
+	unique_ptr_func(uniquePtr);
+}
+```

@@ -13,10 +13,10 @@ std::cout << &a << " " << &b << std::endl;//0x72fe04 0x72fe04
 
 From this example, we can see that the lvalue reference (``&b``) shares the same memory address of the variable it presents (``&a``).
 
-Reference declarion for ``std::string``:
+Reference declaration for ``std::string`` must be [const reference](const%20reference.md):
 
 ```cpp
-const std::string& str = "Hello, World !";//Must define with const
+const std::string& str = "Hello, World !";//Must define as const reference
 cout << str << endl;//Hello, World !
 cout << &str << endl;//0x4d5060
 ```
@@ -31,14 +31,22 @@ Or this:
 int &b = NULL;//Must not do this, this gives compilation error
 ```
 This is different from pointer as pointer allow [NULL pointer](https://github.com/TranPhucVinh/C/blob/master/Physical%20layer/Memory/Pointer/Types%20of%20pointer.md#null-pointer).
-## lvalue reinitialization is not allowed
+## Change lvalue
+By using the lvalue, we can also change the value of the variable pointing to that lvalue. In this case variable ``a`` changes its value as it points to ``&b``
 ```cpp
 int a = 9;
 int &b = a;
 std::cout << a << " " << b << std::endl; //9 9
 std::cout << &a << " " << &b << std::endl;//0x72fe04 0x72fe04
 int c = 10;
-&b = c;//Compilation error; reinitialization for lvalue is not allow
+b = c;
+std::cout << a << " " << b << std::endl; //10 10
+std::cout << &a << " " << &b << std::endl;//0x72fe04 0x72fe04
+```
+## Can't assign const to lvalue
+```cpp
+const int a = 9;
+int &b = a;//Compilation error: binding reference of type ‘int&’ to ‘const int’ discards qualifiers 
 ```
 # Pass by reference: lvalue as function argument
 ```cpp

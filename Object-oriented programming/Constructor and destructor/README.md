@@ -24,11 +24,12 @@ main(){
 }
 ```
 [Constructor document](Constructor.md) includes:
-* [Fundamental concepts](Constructor.md#fundamental-concepts)
-* [Multiple constructors in one class with arguments](Constructor.md#multiple-constructors-in-one-class-with-arguments)
+* [Constructor overloading](Constructor.md#constructor-overloading)
 * [default keyword](Constructor.md#default-keyword)
+* [Implicit conversion, conversion constructor and explicit keyword]()
 * [Shallow copy, deep copy and copy constructor]()
-* [Constructor initializer list](Constructor.md#constructor-initializer-list)
+* [Constructor initializer list](Constructor%20initializer%20list.md#constructor-initializer-list), [delegating constructor](Constructor%20initializer%20list.md#delegating-constructor)
+
 # Destructor
 
 Destructor is a member function which destructs or deletes an object. Destructors don’t take any argument and don’t return anything

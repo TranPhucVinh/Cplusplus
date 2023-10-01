@@ -1,4 +1,5 @@
-# Multiple constructors in one class with arguments
+# Constructor overloading
+We can have multiple constructors in one class, where each constructor can have arguments. This is known as **constructor overloading**, which is quite similar to [function overloading](https://github.com/TranPhucVinh/Cplusplus/tree/master/Introduction/Function#function-overloading).
 
 ```cpp
 #include <iostream>
@@ -25,7 +26,8 @@ main(){
 	classTest object0;// Hello, World!
     classTest object1("Display string"); //Display string
     classTest object2(19); //19
-    classTest object3(1, 2); //3   
+    classTest object3(1, 2); //3
+    classTest object4 = {4, 5}; //9; Initializer list, C++ and above  
 }
 ```
 
@@ -124,85 +126,54 @@ public_number 3; private_numer 4
 ```
 
 In this program, calling ``class_test object_1`` will call the default constructor (setup by ``class_test() = default``) to setup default value for variables.
-
-# Constructor initializer list
-
-Constructor initializer list is used to defined member variables:
-```cpp
-class class_test{
-	public:
-		int public_number;
-        class_test(int _public_number, int _private_number): public_number(_public_number), private_number(_private_number) {}
-/*
-        This constructor initializer list works like this:
-        class_test(int _public_number, int _private_number){
-            public_number = _public_number;
-            private_number = _private_number;
-        }
-*/
-		void get_number(){
-            cout << "Get public and private numbers: \n";
-            cout << "public_number " << public_number << "; ";
-            cout << "private_numer " << private_number << endl;
-		}
-
-	private:
-		int private_number;
-};
-
-int main(){
-    class_test object(12, 34);
-	object.get_number();
-}
-```
-**Result**:
-```
-Get public and private numbers:
-public_number 12; private_numer 34
-```
-
-Constructor initializer list with ``return``:
-
+# Implicit conversion, conversion constructor and explicit keyword
+## Implicit conversion, conversion constructors
+For multiple constructors, beside the setting this argument [in the traditional way](#multiple-constructors-in-one-class-with-arguments), CPP supports implicit conversion which allow setting this constructor argument value by the assignment operator (``=``):
 ```cpp
 #include <iostream>
 
 using namespace std;
 
-class class_test{
+class classTest{
 	public:
-		int public_number;
-        class_test(int value){
-            public_number = value;
+        classTest(string displayString) {
+            cout << displayString << endl;
         }
-
-        //Calling this construct to change value of public_number and private_numer
-        class_test() : public_number(12), private_numer(13){
-            return;
+        classTest(int intValue){
+             cout << intValue << endl;
         }
-
-		void get_number(){
-            cout << "Get public and private numbers: \n";
-            cout << "public_number " << public_number << "; ";
-            cout << "private_numer " << private_numer << endl;
-		}
-
-	private:
-		int private_numer = 2;
+        classTest(int a, int b){
+            cout << a+b << endl;
+        }
 };
 
 int main(){
-	class_test object_1;
-	object_1.get_number();
-
-    class_test object_2(1);
-	object_2.get_number();
+	// Must use std::string(); not classTest object1 = "Display string"
+    classTest object1 = std::string("Display string"); //Display string
+    classTest object2 = 19; //19
+    classTest object3 = {4, 5}; //9; Initializer list, C++ and above  
 }
 ```
+All the constructors implemented in the above example are **conversion constructors**. **Conversion constructors** are constructors that convert types of its parameter into a type of the class.
+## explicit keyword
+**Explicit keyword** will block CPP compiler from back so that you're force to use the [traditional way](#multiple-constructors-in-one-class-with-arguments) to set up constructor value:
+```cpp
+class classTest{
+	public:
+        explicit classTest(string displayString) {
+            cout << displayString << endl;
+        }
+        explicit classTest(int intValue){
+             cout << intValue << endl;
+        }
+        explicit classTest(int a, int b){
+            cout << a+b << endl;
+        }
+};
 
-**Result**
-```
-Get public and private numbers:
-public_number 12; private_numer 13
-Get public and private numbers:
-public_number 1; private_numer 2
+int main(){
+    classTest object1 = std::string("Display string"); //Compilation error
+    classTest object2 = 19; //Compilation error
+	classTest object3 = {4, 5}; //Compilation error
+}
 ```
