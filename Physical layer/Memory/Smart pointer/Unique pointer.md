@@ -44,6 +44,17 @@ For ``auto`` keyword:
 auto uniquePtr = std::unique_ptr<int>(new int(123));
 ```
 The direct ``std::unique_ptr<>(new)`` declaration allow using [custom deleter]().
+# Unique pointer for array
+```cpp
+std::unique_ptr<int[]> uniquePtr(new int[2]);
+
+uniquePtr[0] = 123;
+uniquePtr[1] = 456;
+
+std::cout << &uniquePtr << std::endl;//0x7fff13475d50
+std::cout << uniquePtr[0] << std::endl;//123
+std::cout << uniquePtr[1] << std::endl;//456
+```
 # Unique pointer doesn't allow sharing
 
 **Unique** in unique pointer means it doesn't allow sharing that pointer. Unlike normal pointer which can be assigned to many variables address, unique pointer doesn't allow that.
