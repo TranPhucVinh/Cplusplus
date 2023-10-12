@@ -54,3 +54,25 @@ int main(){
 	unique_ptr_func(uniquePtr);
 }
 ```
+# Unique pointer as function argument of template function
+```cpp
+#include <iostream>
+#include <typeinfo>
+#include <memory>
+
+template <typename dummy_type> void add_function(std::unique_ptr<dummy_type> a, std::unique_ptr<dummy_type> b){
+    std::cout << "Add 2 unique ptr number: *a + *b = " << *a + *b << std::endl;
+}
+
+int main () {
+	std::unique_ptr<int> a = std::make_unique<int>(123);
+	std::unique_ptr<int> b = std::make_unique<int>(456);
+
+    add_function<int>(std::move(a), std::move(b));//579
+
+	std::unique_ptr<float> c = std::make_unique<float>(12.3);
+	std::unique_ptr<float> d = std::make_unique<float>(45.6);
+
+	add_function<float>(std::move(c), std::move(d));//57.9
+}
+```
