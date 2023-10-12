@@ -54,6 +54,22 @@ int main(){
 	unique_ptr_func(uniquePtr);
 }
 ```
+# Unique pointer array as function argument
+```cpp
+void unique_ptr_func(std::unique_ptr<int[]> uniquePtr){
+	// Have to hardcode the size if not using template
+	for (int i = 0; i < 2; i++) std::cout << uniquePtr[i] << std::endl;
+}
+
+int main(){
+	std::unique_ptr<int[]> uniquePtr(new int[2]);
+
+	uniquePtr[0] = 123;
+	uniquePtr[1] = 456;
+
+	unique_ptr_func(std::move(uniquePtr));
+}
+```
 # Unique pointer as function argument of template function
 ```cpp
 #include <iostream>
