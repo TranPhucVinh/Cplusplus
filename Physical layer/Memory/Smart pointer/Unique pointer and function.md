@@ -93,6 +93,21 @@ int main(){
 	func<int, ARR_SIZE>(std::move(uniquePtr));
 }
 ```
+# Update unique pointer array as function argument
+We must use lvalue for the unique pointer array as function argument in order to changes its member's value
+```cpp
+void unique_ptr_func(std::unique_ptr<int[]> &uniquePtr){
+	for (int i = 0; i < 2; i++) uniquePtr[i] = i;
+}
+
+int main(){
+	std::unique_ptr<int[]> uniquePtr(new int[2]);
+
+	unique_ptr_func(uniquePtr);
+
+	for (int i = 0; i < 2; i++) cout << uniquePtr[i] << endl;
+}
+```
 # Unique pointer as function argument of template function
 ```cpp
 #include <iostream>
