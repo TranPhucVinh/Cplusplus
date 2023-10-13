@@ -28,7 +28,7 @@ uint8_t value = 0x11;
 cout << std::hex << value << endl; //Garbage character
 ```
 
-This happens as std::hex requires printing out ``int`` value.
+This happens as ``std::hex`` requires printing out ``int`` value.
 
 Problem solved:
 
@@ -36,7 +36,7 @@ Problem solved:
 uint8_t value = 0x11;
 cout << std::hex << static_cast<int>(value) << endl; //11
 ```
-
+Please note that we use ``static_cast<int>`` only for printing out the value on ``std::hex``.
 ## Get first byte and last byte of a 2-byte int variable
 
 ```cpp
@@ -46,7 +46,10 @@ uint8_t firstByte = value>>8;
 cout << std::hex << lastByte << endl;//garbage_value
 cout << std::hex << firstByte << endl;//garbage_value
 cout << std::hex << static_cast<int>(lastByte) << endl;//34
-cout << std::hex << static_cast<int>(firstByte) << endl;//12      
+cout << std::hex << static_cast<int>(firstByte) << endl;//12
+cout << lastByte << endl;//garbage_value; Print out garbage_value as this is the parsing error of std::cout, use printf() instead
+cout << firstByte << endl;//garbage_value; Print out garbage_value as this is the parsing error of std::cout, use printf() instead
+printf("0x%x 0x%x\n", lastByte, firstByte);//0x34 0x12   
 ```
 
 # dec
