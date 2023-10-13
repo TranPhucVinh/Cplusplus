@@ -27,6 +27,7 @@ void func(T (&a)[arr_size]) {
 int main(){
     int arr[2] = {123, 456};
     func(arr);//123 456
+// Still fine: func<int, 2>(arr);
 }
 ```
 # std::array
