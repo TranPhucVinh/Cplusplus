@@ -55,6 +55,7 @@ main.cpp:6:1: error: 'dummy_type' does not name a type
  dummy_type add_function(dummy_type a, dummy_type b){
 ```
 ## [Template for unique pointer as function argument](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/Smart%20pointer/Unique%20pointer%20and%20function.md#unique-pointer-as-function-argument-of-template-function)
+## [Using template is the only solution to allow passing array as function parameter without using its size](https://github.com/TranPhucVinh/Cplusplus/blob/master/Data%20structure/Array.md#array-as-function-parameter)
 ## Multiple template used for functions
 
 Based on the [note](#note), multiple template used for functions must be like this:
