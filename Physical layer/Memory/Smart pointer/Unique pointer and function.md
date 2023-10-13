@@ -70,6 +70,29 @@ int main(){
 	unique_ptr_func(std::move(uniquePtr));
 }
 ```
+Using [template](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/Function/Template.md) so that array size is not hardcoded:
+```cpp
+#include <iostream>
+#include <memory>
+
+#define ARR_SIZE 2
+
+using namespace std;
+
+template <typename T, int arr_size>
+void func(std::unique_ptr<T[]> array) {
+    for (int i = 0; i < arr_size; i++) std::cout << array[i] << std::endl;
+}
+
+int main(){
+	std::unique_ptr<int[]> uniquePtr(new int[ARR_SIZE]);
+
+	uniquePtr[0] = 123;
+	uniquePtr[1] = 456;
+
+	func<int, ARR_SIZE>(std::move(uniquePtr));
+}
+```
 # Unique pointer as function argument of template function
 ```cpp
 #include <iostream>
