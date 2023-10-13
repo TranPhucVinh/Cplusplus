@@ -37,7 +37,7 @@ uint8_t value = 0x11;
 cout << std::hex << static_cast<int>(value) << endl; //11
 ```
 
-Get first byte and last byte of a 2 byte int variable
+## Get first byte and last byte of a 2-byte int variable
 
 ```cpp
 int value = 0x1234;
