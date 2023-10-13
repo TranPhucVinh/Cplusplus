@@ -37,7 +37,7 @@ dummy_type is f
 template <typename dummy_type> dummy_type add_function(dummy_type a, dummy_type b){}
 ```
 
-## Note
+## Note for templat function definition
 
 Function definition must be followed right after ``template <typename>``. If not like this case, there will be error:
 
@@ -53,6 +53,14 @@ dummy_type add_function(dummy_type a, dummy_type b){
 ```
 main.cpp:6:1: error: 'dummy_type' does not name a type
  dummy_type add_function(dummy_type a, dummy_type b){
+```
+## Note for template function argument
+For the argument passed to template function, e.g [Template for unique pointer as function argument](#template-for-unique-pointer-as-function-argument) and [Using template is the only solution to allow passing array as function parameter without using its size](#using-template-is-the-only-solution-to-allow-passing-array-as-function-parameter-without-using-its-size), const must be used, not variable
+```c
+//Using template to allow passing array as function parameter without using its size
+const int arr_size = 2;// MUST NOT USE: int arr_size = 2 
+int arr[arr_size] = {123, 456};
+func<int, arr_size>(arr);
 ```
 ## [Template for unique pointer as function argument](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/Smart%20pointer/Unique%20pointer%20and%20function.md#unique-pointer-as-function-argument-of-template-function)
 ## [Using template is the only solution to allow passing array as function parameter without using its size](https://github.com/TranPhucVinh/Cplusplus/blob/master/Data%20structure/Array.md#array-as-function-parameter)
