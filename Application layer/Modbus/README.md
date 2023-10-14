@@ -1,0 +1,1 @@
+Modbus RTU master/client reads multiple holding register of slave: [read_multi_holding_register.cpp.cpp](read_multi_holding_register.cpp.cpp). This example is intended for comprehensive and easy to understand the Modbus RTU operation.
