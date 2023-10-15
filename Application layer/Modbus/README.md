@@ -6,3 +6,5 @@ For slave to response data to this master program, use [diagslave]():
 ```sh
 diagslave -b 115200 -p none -m rtu -a 1 /dev/ttyUSB0 #115200 is the default baudrate of Ubuntu serial port
 ```
+# Modbus TCP
+Modbus TCP master/client reads multiple holding registers of Modbus TCP slave/server on localhost, port 8000: [modbus_tcp_rd_multi_hld_reg.cpp](modbus_tcp_rd_multi_hld_reg.cpp).
