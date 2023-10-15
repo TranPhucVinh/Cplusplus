@@ -29,25 +29,39 @@ namespace function_code {
 class Modbus_TCP_Client {
 	public:
 		Modbus_TCP_Client(const char* host, int port);
+        ~Modbus_TCP_Client();
 
         template <typename T, int tcp_data_size>
         int form_modbus_tcp_frame(int trans_id, uint8_t slave_address, uint8_t function_code, T (&tcp_data)[tcp_data_size], std::unique_ptr<uint8_t[]> &modbus_tcp_frame);
-        void send_modbus_rtu_frame(std::unique_ptr<uint8_t[]> &modbus_rtu_frame, int modbus_rtu_frame_size);
+        
+        void send_modbus_tcp_frame(std::unique_ptr<uint8_t[]> &modbus_tcp_frame, int modbus_tcp_frame_size);
+
+        template <typename T, int recv_buf_sz>
+        void recv_from_modbus_tcp_server(T (&recv_buf)[recv_buf_sz]);
 	private:
         int _server_fd;
         void error(const char *msg);
 };
 
 int main(){
-    std::unique_ptr<uint8_t[]> modbus_rtu_frame;
+    std::unique_ptr<uint8_t[]> modbus_tcp_frame;
     Modbus_TCP_Client client(HOST, PORT);
 
     int trans_id = 0x1234;//Transaction identifier, can be any number to be unique to be distinguished
     
     uint8_t modbus_tcp_data[] = {HLD_REG_MSB, HLD_REG_LSB, NUM_OF_REG_MSB, NUM_OF_REG_LSB};
 
-    int frame_sz = client.form_modbus_tcp_frame(trans_id, SLAVE_ADDRESS, function_code::RD_MULTI_HLD_REGS, modbus_tcp_data, modbus_rtu_frame);
-    client.send_modbus_rtu_frame(modbus_rtu_frame, frame_sz);
+    int frame_sz = client.form_modbus_tcp_frame(trans_id, SLAVE_ADDRESS, function_code::RD_MULTI_HLD_REGS, modbus_tcp_data, modbus_tcp_frame);
+    client.send_modbus_tcp_frame(modbus_tcp_frame, frame_sz);
+
+
+    uint8_t recv_buf[12];
+    client.recv_from_modbus_tcp_server(recv_buf);
+
+    for (int i = 0; i < 12; i++){
+        printf("0x%x ", recv_buf[i]);
+    }
+    cout << endl;
     return 0;
 }
 
@@ -76,6 +90,10 @@ Modbus_TCP_Client::Modbus_TCP_Client(const char* host, int port)
         } else cout << "Can't connect to server with error " <<  errno << endl;
         exit(0);
     } else cout << "connect to Modbus TCP server success\n";
+}
+
+Modbus_TCP_Client::~Modbus_TCP_Client(){
+    close(_server_fd); //Close socket
 }
 
 template <typename T, int tcp_data_size>
@@ -114,8 +132,12 @@ int Modbus_TCP_Client::form_modbus_tcp_frame(int trans_id, uint8_t slave_address
  	return frame_sz;
 }
 
-void Modbus_TCP_Client::send_modbus_rtu_frame(std::unique_ptr<uint8_t[]> &modbus_tcp_frame, int modbus_tcp_frame_size){
-    int sz = write(_server_fd, modbus_tcp_frame.get(), modbus_tcp_frame_size);
+void Modbus_TCP_Client::send_modbus_tcp_frame(std::unique_ptr<uint8_t[]> &modbus_tcp_frame, int modbus_tcp_frame_size){
+    int sz = write(_server_fd, modbus_tcp_frame.get(), modbus_tcp_frame_size);    
+}
 
-    close(_server_fd); //Close socket
+template <typename T, int recv_buf_sz>
+void Modbus_TCP_Client::recv_from_modbus_tcp_server(T (&recv_buf)[recv_buf_sz])
+{
+    int sz = read(_server_fd, recv_buf, recv_buf_sz);
 }
