@@ -48,7 +48,7 @@ dummy_type classTest::add_function(dummy_type a, dummy_type b){
     return a + b;
 }
 ```
-# Define template method of class in seperated source files
+# Define template method of class in separated source files
 
 Defining template method of class in seperated source files like this cause compilation error:
 
