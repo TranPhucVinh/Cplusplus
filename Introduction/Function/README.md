@@ -128,6 +128,7 @@ Template for functions:
 * [Multiple template used for functions](Template.md#multiple-template-used-for-functions)
 * [Using template typename along with other type](Template.md#using-template-typename-along-with-other-type)
 * [Template parameter pack]()
+  
 Template for class method:
 * [Template with class as type](Template%20with%20class.md#template-with-class-as-type)
 * [Template as class method]()
