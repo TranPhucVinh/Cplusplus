@@ -65,6 +65,14 @@ uniquePtr[0] = 123;
 uniquePtr[1] = 456;
 ```
 ## [Unique pointer array as function argument](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/Smart%20pointer/Unique%20pointer%20and%20function.md#unique-pointer-array-as-function-argument), using [template](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/Function/Template.md) so that array size is not hardcoded.
+## Unique pointer for char array as string
+
+```cpp
+std::unique_ptr<char[]> strPtr{new char[40]};
+
+strcpy(strPtr.get(), "Hello, World !");
+std::cout << strPtr.get() << std::endl;//Hello, World !
+```
 # Unique pointer doesn't allow sharing
 
 **Unique** in unique pointer means it doesn't allow sharing that pointer. Unlike normal pointer which can be assigned to many variables address, unique pointer doesn't allow that.
