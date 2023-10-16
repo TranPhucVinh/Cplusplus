@@ -12,8 +12,6 @@
 #define HOST "127.0.0.1"
 #define PORT 8000
 
-#define	PROTO_ID		        0x00
-#define LENGTH			        6
 #define SLAVE_ADDRESS          	0x01
 #define HLD_REG_MSB    	        0x00 // MSB of holding register address to start reading 
 #define HLD_REG_LSB    	        0x01 // LSB of holding register address to start reading 
@@ -53,7 +51,6 @@ int main(){
 
     int frame_sz = client.form_modbus_tcp_frame(trans_id, SLAVE_ADDRESS, function_code::RD_MULTI_HLD_REGS, modbus_tcp_data, modbus_tcp_frame);
     client.send_modbus_tcp_frame(modbus_tcp_frame, frame_sz);
-
 
     uint8_t recv_buf[12];
     client.recv_from_modbus_tcp_server(recv_buf);
