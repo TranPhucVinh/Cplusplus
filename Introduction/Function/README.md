@@ -5,7 +5,7 @@
 * [Name mangling]()
 * [Function default arguments](#default-arguments)
 * [Namespace](Namespace.md)
-* [Template](Template.md)
+* [Template](#template)
 * [Lambda](Lambda.md)
 
 # for-each
@@ -119,3 +119,16 @@ There will be error:
 test.cpp:12:31: error: default argument given for parameter 2 of ‘void intNumber(int, int)’ [-fpermissive]
  void intNumber(int a, int b=12){
 ```
+# Template
+Template for functions:
+* [Generics or Generics programming](Template.md#generics)
+* [Using template for data type](Template.md#using-template-for-data-type)
+* [Template for unique pointer as function argument]()
+* [Using template is the only solution to allow passing array as function parameter without using its size]()
+* [Multiple template used for functions](Template.md#multiple-template-used-for-functions)
+* [Using template typename along with other type](Template.md#using-template-typename-along-with-other-type)
+* [Template parameter pack]()
+Template for class method:
+* [Template with class as type](Template%20with%20class.md#template-with-class-as-type)
+* [Template as class method]()
+* [Define template method of class in separated source files]()
