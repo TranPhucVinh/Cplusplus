@@ -1,7 +1,7 @@
 Smart pointer is a wrapper of a raw pointer. Using smart pointer will automate the process of dynamic allocation then deallocation/free-up for pointer in the heap memory. The deallocation process when using smart pointer will help preventing memory leak.
 
 Smart pointer includes: 
-* [Unique pointer]()
+* [Unique pointer](#unique-pointer)
 * [Shared pointer]()
 * Weak pointer
 
