@@ -2,7 +2,6 @@
 
 * [for-each](#for-each) and [for_each](#for_each)
 * [Function overloading](#function-overloading)
-* [Name mangling]()
 * [Function default arguments](#default-arguments)
 * [Namespace](Namespace.md)
 * [Template](#template)
