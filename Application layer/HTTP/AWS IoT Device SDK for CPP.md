@@ -99,3 +99,13 @@ find_package(EventstreamRpc-cpp PATHS /home/username/wip/aws-iot-device-sdk)
 find_package(GreengrassIpc-cpp PATHS /home/username/wip/aws-iot-device-sdk)
 target_link_libraries(${PROJECT_NAME} AWS::GreengrassIpc-cpp)
 ```
+As the source code is CPP, we must [avoid building source code in recipes script](https://github.com/TranPhucVinh/Linux-Shell/blob/master/Platforms%20interaction/AWS/Greengrass/C%20source%20code%20component.md#avoid-building-source-code-in-recipes-script) so we have to build them separately (inside the component ``artifacts`` folder) then run ``make`` to generate binary file, before deploying:
+
+```sh
+cmake -DCMAKE_PREFIX_PATH="<absolute path to sdk-library>" --build .
+make
+```
+```sh
+username@hostname:~/workspace/gg_ipc_pub/artifacts/gg_ipc_pub/0.1.0$ cmake -DCMAKE_PREFIX_PATH="/home/username/wip/aws-iot-device-sdk" --build .
+username@hostname:~/workspace/gg_ipc_pub/artifacts/gg_ipc_pub/0.1.0$ make
+```
