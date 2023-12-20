@@ -32,7 +32,7 @@ $ ls
 include  lib
 ```
 Those 2 folders contain header files, and shared library files.
-# Publish and subscribe components
+# Develop publish and subscribe components
 
 Create 2 component's folders **gg_ipc_sub** and **gg_ipc_pub**, the working directory hierachy now will be:
 
@@ -109,3 +109,32 @@ make
 username@hostname:~/workspace/gg_ipc_pub/artifacts/gg_ipc_pub/0.1.0$ cmake -DCMAKE_PREFIX_PATH="/home/username/wip/aws-iot-device-sdk" --build .
 username@hostname:~/workspace/gg_ipc_pub/artifacts/gg_ipc_pub/0.1.0$ make
 ```
+# Deploy publish and subscribe components
+
+To enable GG components to publish and subscribe IPC message, the recipes json file must have the **authorization policies** to support those features:
+
+In the recipe file, in the object ``ComponentConfiguration`` -> ``DefaultConfiguration``, add the ``accessControl`` object. This will allow the component to communicate IPC
+
+```json
+"accessControl": {
+    "aws.greengrass.ipc.pubsub": {
+        "<comp_name>:pubsub:1": {
+        "policyDescription": "Allows access to subscribe to test/topic.",
+        "operations": [
+            "aws.greengrass#SubscribeToTopic"
+        ],
+        "resources": [
+            "<topic_string>"
+        ]
+        }
+    }
+}
+```
+There are two variables we need to fill in here
+* ``<comp_name>``: component's name
+* ``<topic_string>``: topic to subscribe or publish to
+
+In ``operations`` field, we have ``"aws.greengrass#SubscribeToTopic"`` for subscribe component.
+
+* [gg_ipc_sub.json](gg_ipc_sub.json) as gg_ipc_sub recipe
+* [gg_ipc_pub.json](gg_ipc_pub.json) as gg_ipc_pub recipe
