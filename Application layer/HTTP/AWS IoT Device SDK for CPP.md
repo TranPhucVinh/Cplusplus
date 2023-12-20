@@ -2,9 +2,9 @@ Use AWS IoT Device SDK for CPP v2
 
 ## Install AWS IoT Device SDK for C++
 
-```bash
+```sh
 # Create a workspace to hold all the component.
-mkdir sdk-ws
+mkdir sdk-ws # SDK workspace
 cd sdk-ws
 
 # clone the repo sdk
@@ -15,8 +15,8 @@ mkdir sdk-build
 cd sdk-build
 
 # Configure CMAKE before build
-cmake -DCMAKE_INSTALL_PREFIX="<absolute path to sdk-library>" -DCMAKE_BUILD_TYPE="Debug" ../aws-iot-device-sdk-cpp-v2
-# The "<absolute path to sdk-library>" is important, that will be the place for us to link to all the output libraries component
+cmake -DCMAKE_INSTALL_PREFIX="<absolute path to sdk library>" -DCMAKE_BUILD_TYPE="Debug" ../aws-iot-device-sdk-cpp-v2
+# The "<absolute path to sdk library>" is important, that will be the place for us to link to all the output libraries component
 
 cmake --build . --target install
 ```
@@ -26,7 +26,7 @@ cmake --build . --target install
 cmake -DCMAKE_INSTALL_PREFIX="/home/username/wip/aws-iot-device-sdk" -DCMAKE_BUILD_TYPE="Debug" ../aws-iot-device-sdk-cpp-v2
 ```
 
-The ```"<absolute path to sdk-library>"``` will contains two folders like this
+The ```<absolute path to sdk library>``` will contains two folders like this
 ```sh
 $ ls
 include  lib
@@ -39,23 +39,26 @@ Create 2 component's folders **gg_ipc_sub** and **gg_ipc_pub**, the working dire
 ```sh
 ├── aws-iot-device-sdk # This is sdk-library folder
 |     ├── include
-|     ├── lib
+|     └── lib
 ├── gg_ipc_pub
 |      ├── artifacts
-|      │    ├── gg_ipc_pub
-|      │           ├── 0.1.0
-|      │               └── main.cpp
-|      │               ├── CMakeLists.txt
+|      │    └── gg_ipc_pub
+|      │           └── 0.1.0
+|      │               ├── main.cpp
+|      │               └── CMakeLists.txt
 |      └── recipes
 |          └── gg_ipc_pub.json
 ├── gg_ipc_sub
 |      ├── artifacts
-|      │    ├── gg_ipc_sub
-|      │           ├── 0.1.0
-|      │               └── main.cpp
-|      │               ├── CMakeLists.txt
+|      │    └── gg_ipc_sub
+|      │           └── 0.1.0
+|      │               ├── main.cpp
+|      │               └── CMakeLists.txt
 |      └── recipes
 |          └── gg_ipc_sub.json
+└── sdk-ws
+      ├── aws-iot-device-sdk-cpp-v2 # aws-iot-device-sdk-cpp-v2.git Github repo
+      └── sdk-build
 ```
 ``CMakeLists.txt`` of each 2 components:
 ```cmake
