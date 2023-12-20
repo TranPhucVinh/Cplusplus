@@ -44,7 +44,7 @@ Create 2 component's folders **gg_ipc_sub** and **gg_ipc_pub**, the working dire
 |      ├── artifacts
 |      │    └── gg_ipc_pub
 |      │           └── 0.1.0
-|      │               ├── main.cpp
+|      │               ├── gg_ipc_pub.cpp
 |      │               └── CMakeLists.txt
 |      └── recipes
 |          └── gg_ipc_pub.json
@@ -52,7 +52,7 @@ Create 2 component's folders **gg_ipc_sub** and **gg_ipc_pub**, the working dire
 |      ├── artifacts
 |      │    └── gg_ipc_sub
 |      │           └── 0.1.0
-|      │               ├── main.cpp
+|      │               ├── gg_ipc_sub.cpp
 |      │               └── CMakeLists.txt
 |      └── recipes
 |          └── gg_ipc_sub.json
@@ -138,3 +138,18 @@ In ``operations`` field, we have ``"aws.greengrass#SubscribeToTopic"`` for subsc
 
 * [gg_ipc_sub.json](gg_ipc_sub.json) as gg_ipc_sub recipe
 * [gg_ipc_pub.json](gg_ipc_pub.json) as gg_ipc_pub recipe
+
+Source code:
+
+* [gg_ipc_sub.cpp](gg_ipc_sub.cpp)
+* [gg_ipc_pub.cpp](gg_ipc_pub.cpp)
+
+Finally deploy those subscribe and publish components:
+
+```sh
+sudo /greengrass/v2/bin/greengrass-cli deployment create --recipeDir $(pwd)/recipes --artifactDir $(pwd)/artifacts --merge "gg_ipc_sub=0.1.0"
+sudo /greengrass/v2/bin/greengrass-cli deployment create --recipeDir $(pwd)/recipes --artifactDir $(pwd)/artifacts --merge "gg_ipc_pub=0.1.0"
+```
+
+As ``gg_ipc_pub`` is deployed later to publish message to ``gg_ipc_sub``, ``gg_ipc_sub`` (with log ``/greengrass/v2/logs/gg_ipc_sub.log``) will be able to get the message ``Hello, World ! from gg_ipc_pub`` from ``gg_ipc_pub``
+
