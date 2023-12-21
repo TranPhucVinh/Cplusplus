@@ -33,7 +33,7 @@ int main () {}
 
 # std::string
 
-## Operations
+## [Operations](string%20operations.md)
 
 ### Basic operations
 
