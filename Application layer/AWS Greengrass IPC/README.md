@@ -1,4 +1,4 @@
-AWS Greengrass IPC is used for local components communication.
+AWS Greengrass IPC is used for local Greengrass components communication.
 
 # Develop publish and subscribe components
 
