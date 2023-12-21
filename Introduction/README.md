@@ -88,7 +88,7 @@ Example: ``header.hpp``
 
 ## constexpr
 
-``constexpr`` can be understand simply as a constant.
+``constexpr`` can be understand simply as a constant. **constexpr can't be used for [std::string](https://github.com/TranPhucVinh/Cplusplus/blob/master/Data%20structure/String/README.md#stdstring)**.
 
 There are 2 difference between [const](https://github.com/TranPhucVinh/C/blob/master/Introduction/Keywords/README.md#const) and ``constexpr`` variables:
 
