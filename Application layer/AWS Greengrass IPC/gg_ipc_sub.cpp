@@ -6,6 +6,11 @@
 using namespace Aws::Crt;
 using namespace Aws::Greengrass;
 
+namespace
+{
+    const char IPC_TOPIC[] = "test/local_ipc";
+}
+
 class SubscribeResponseHandler : public SubscribeToTopicStreamHandler {
     public:
         virtual ~SubscribeResponseHandler() {}
@@ -15,14 +20,14 @@ class SubscribeResponseHandler : public SubscribeToTopicStreamHandler {
             auto jsonMessage = response->GetJsonMessage();
             if (jsonMessage.has_value() && jsonMessage.value().GetMessage().has_value()) {
                 auto messageString = jsonMessage.value().GetMessage().value().View().WriteReadable();
-                // Handle JSON message.
+                // Handle JSON message
                 std::cout << "Message: " << messageString << std::endl;
             } else {
                 auto binaryMessage = response->GetBinaryMessage();
                 if (binaryMessage.has_value() && binaryMessage.value().GetMessage().has_value()) {
                     auto messageBytes = binaryMessage.value().GetMessage().value();
                     std::string messageString(messageBytes.begin(), messageBytes.end());
-                    // Handle binary message.
+                    // Handle binary message
                     std::cout << "Message: " << messageString << std::endl;
                 }
             }
@@ -60,7 +65,7 @@ class IpcClientLifecycleHandler : public ConnectionLifecycleHandler {
 };
 
 int main() {
-    ApiHandle apiHandle(g_allocator);
+    ApiHandle apiHandle(g_allocator);// Must have apiHandle(g_allocator) to intialize IPC connection
     Io::EventLoopGroup eventLoopGroup(1);
     Io::DefaultHostResolver socketResolver(eventLoopGroup, 64, 30);
     Io::ClientBootstrap bootstrap(eventLoopGroup, socketResolver);
@@ -72,13 +77,12 @@ int main() {
         exit(-1);
     }
 
-    String topic("test/local_ipc");
+    String topic(IPC_TOPIC);
     int timeout = 10;
 
     SubscribeToTopicRequest request;
     request.SetTopic(topic);
 
-    //SubscribeResponseHandler streamHandler;
     auto streamHandler = MakeShared<SubscribeResponseHandler>(DefaultAllocator());
     auto operation = ipcClient.NewSubscribeToTopic(streamHandler);
     auto activate = operation->Activate(request, nullptr);
@@ -86,25 +90,25 @@ int main() {
 
     auto responseFuture = operation->GetResult();
     if (responseFuture.wait_for(std::chrono::seconds(timeout)) == std::future_status::timeout) {
-        std::cerr << "Operation timed out while waiting for response from Greengrass Core." << std::endl;
+        std::cerr << "Operation timed out while waiting for response from Greengrass Core" << std::endl;
         exit(-1);
     }
-    std::cout << "============= check point 33 ============" << std::endl;
+    std::cout << "Get result" << std::endl;
     auto response = responseFuture.get();
     if (!response) {
-        // Handle error.
+        // Handle error
         auto errorType = response.GetResultType();
         if (errorType == OPERATION_ERROR) {
+            // Handle operation error
             auto *error = response.GetOperationError();
-            (void)error;
-            // Handle operation error.
+            (void)error; 
         } else {
-            // Handle RPC error.
+            // Handle RPC error
         }
         exit(-1);
     }
-    std::cout << "============= check point 55 ============" << std::endl;
-    // Keep the main thread alive, or the process will exit.
+    std::cout << "Init IPC subscribe success" << std::endl;
+    // Keep the main thread alive, or the process will exit
     while (true) {
         std::this_thread::sleep_for(std::chrono::seconds(10));
     }
