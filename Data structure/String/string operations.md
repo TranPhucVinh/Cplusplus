@@ -15,7 +15,7 @@ std::cout << displayed_string.length() << std::endl;//13
 const std::string const_str = "const string";
 std::cout << const_str << std::endl;
 ```
-
+**[constexpr](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/README.md#constexpr) can't be used for std::string**.
 ## Define string with lvalue reference/reference declaration
 
 [const std::string& str = "Hello, World !";](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/lvalue.md#define)
