@@ -19,7 +19,7 @@ For MQTT client publish and subscribe message, **aws.greengrass.ipc.mqttproxy** 
 
 Recipe json file of this component is [mqtt_sub.json](mqtt_sub.json)
 
-Source code: [mqtt_sub.cpp](mqtt_sub.cpp). **CMakeLists.txt** file will be like the [local IPC publish/subscribe components]().
+Source code: [mqtt_sub.cpp](mqtt_sub.cpp). **CMakeLists.txt** file will be like the [local IPC publish/subscribe components](https://github.com/TranPhucVinh/Cplusplus/tree/master/Application%20layer/AWS%20Greengrass%20IPC).
 
 Once the component is running, to test it, from publisher side, we can use the **MQTT test client** from **AWS Management console**:
 
