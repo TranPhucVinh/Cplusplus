@@ -60,6 +60,8 @@ Create 2 component's folders **gg_ipc_sub** and **gg_ipc_pub**, the working dire
       ├── aws-iot-device-sdk-cpp-v2 # aws-iot-device-sdk-cpp-v2.git Github repo
       └── sdk-build
 ```
+After successfully building the ``sdk-library`` folder (``aws-iot-device-sdk``), folder ``sdk-ws`` (included ``aws-iot-device-sdk-cpp-v2`` and ``sdk-build``) can be removed.
+
 ``CMakeLists.txt`` of each 2 components:
 ```cmake
 cmake_minimum_required(VERSION 3.1)
