@@ -1,0 +1,34 @@
+{
+  "RecipeFormatVersion": "2020-01-25",
+  "ComponentName": "mqtt_sub",
+  "ComponentVersion": "0.1.0",
+  "ComponentDescription": "My first AWS IoT Greengrass component",
+  "ComponentPublisher": "Amazon",
+  "ComponentConfiguration": {
+    "DefaultConfiguration": {
+      "accessControl": {
+        "aws.greengrass.ipc.mqttproxy": {
+          "mqtt_sub:mqttproxy:1": {
+            "policyDescription": "Allows access to subscribe to test/mqtt",
+            "operations": [
+              "aws.greengrass#SubscribeToIoTCore"
+            ],
+            "resources": [
+              "test/mqtt"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "Manifests": [
+    {
+      "Platform": {
+        "os": "linux"
+      },
+      "Lifecycle": {
+        "run": "{artifacts:path}/mqtt_sub"
+      }
+    }
+  ]
+}
