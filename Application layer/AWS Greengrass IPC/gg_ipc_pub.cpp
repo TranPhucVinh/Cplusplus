@@ -6,6 +6,11 @@
 using namespace Aws::Crt;
 using namespace Aws::Greengrass;
 
+namespace
+{
+    const char IPC_TOPIC[] = "test/local_ipc";
+}
+
 class IpcClientLifecycleHandler : public ConnectionLifecycleHandler {
     void OnConnectCallback() override {
         // Handle connection to IPC service.
@@ -34,8 +39,8 @@ int main() {
         exit(-1);
     }
 
-    String topic("test/local_ipc");
-    String message("Hello, World 1234567");
+    String topic(IPC_TOPIC);
+    String message("Hello, World ! from gg_ipc_pub");
     int timeout = 10;
 
     PublishToTopicRequest request;
@@ -50,13 +55,13 @@ int main() {
     auto operation = ipcClient.NewPublishToTopic();
     auto activate = operation->Activate(request, nullptr);
     activate.wait();
-    std::cout << "============= check point 33 ============" << std::endl;
+
     auto responseFuture = operation->GetResult();
     if (responseFuture.wait_for(std::chrono::seconds(timeout)) == std::future_status::timeout) {
         std::cerr << "Operation timed out while waiting for response from Greengrass Core." << std::endl;
         exit(-1);
     }
-    std::cout << "============= check point 44 ============" << std::endl;
+
     auto response = responseFuture.get();
     if (!response) {
         // Handle error.
@@ -69,6 +74,6 @@ int main() {
             // Handle RPC error.
         }
     }
-    std::cout << "============= check point 55 ============" << std::endl;
+    std::cout << "Publish message successfully to topic " << IPC_TOPIC << std::endl;
     return 0;
 }
