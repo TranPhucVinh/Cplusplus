@@ -1,4 +1,4 @@
-AWS Greengrass IPC is used for local Greengrass components communication.
+Components running on your core device can use the **AWS IoT Greengrass Core interprocess communication**, officially abbreviated as **IPC**, in the AWS IoT Device SDK to communicate with the AWS IoT Greengrass nucleus and other Greengrass components locally. AWS GG IPC is **not meant for components communication through the Internet**, refer to [AWS GG MQTT](https://github.com/TranPhucVinh/Cplusplus/tree/master/Application%20layer/AWS%20Greengrass%20MQTT) instead.
 
 Be not to confuse the Publish/Subscribe of AWS GG IPC to the mechanism of the same name of [AWS GG MQTT](https://github.com/TranPhucVinh/Cplusplus/tree/master/Application%20layer/AWS%20Greengrass%20MQTT) as both are different application layer protocols, which both take advantages of the AWS IoT SDK. 
 
