@@ -2,7 +2,7 @@
 
 Current searching and appending methods implemented in those 2 examples ([Employee management by file](#employee-management-by-file) and [Employee management with OOP](#Employee%20management%20with%20OOP)) are not efficient as generally a file is used to store all information then this file is opened for appending at its end of it (for adding new employee) or searching at each line of the file (for search operation). This generally results in high time complexity. A better solution for that can be:
 * **Display**: Store the data of each employee in a specific file format like JSON, dictionary. The display operation will then read all those files to display in the column
-* **Search**: Arrange the data into a descending or ascending order then perform a search method, e.g binary search
+* **Search**: Arrange the data into a descending or ascending order then perform a search method, e.g binary search. Also refer to the [binary search result for its application](https://github.com/TranPhucVinh/C/blob/master/Algorithms/README.md#binary-search)
 
 # Employee management by file
 
