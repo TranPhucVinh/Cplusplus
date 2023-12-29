@@ -18,6 +18,13 @@ Other OS:
 
 ``g++ main.cpp``
 
+``g++ -o output_file main.cpp``
+
+To compile with mupltiples header files:
+
+* ``g++ -o output_file main.cpp src_1.cpp src_2.cpp``
+* A ``C`` source file can be compiled normally with other ``CPP`` header files: ``g++ -o output_file main.c src.c src.cpp``
+
 As ``G++`` can compile all library belong with to ``GCC`` like ``stdio.h``, ``stdlib.h``, ``string.h``... so all ``GCC`` library and their functions can be included inside a ``CPP`` program.
 
 **Example**
