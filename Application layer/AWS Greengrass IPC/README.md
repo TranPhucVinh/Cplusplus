@@ -20,11 +20,11 @@ Create 2 component's folders **gg_ipc_sub** and **gg_ipc_pub**, the working dire
 |          └── gg_ipc_pub.json
 └── gg_ipc_sub
      ├── artifacts
-      │    └── gg_ipc_sub
-      │           └── 0.1.0
-      │               ├── gg_ipc_sub.cpp
-      │               └── CMakeLists.txt
-      └── recipes
+     │    └── gg_ipc_sub
+     │           └── 0.1.0
+     │               ├── gg_ipc_sub.cpp
+     │               └── CMakeLists.txt
+     └── recipes
          └── gg_ipc_sub.json
 ```
 
