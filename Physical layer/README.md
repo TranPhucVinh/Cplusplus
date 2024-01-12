@@ -1,7 +1,7 @@
 # [Memory](Memory)
 
 * Dynamic memory allocation
-* Pointer
+* Pointer, [function pointer with std::function](Pointer.md#function-pointer-with-stdfunction)
 * Smart pointer: Unique pointer, shared pointer
 * rvalue and lvalue
 
