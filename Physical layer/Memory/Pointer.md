@@ -94,3 +94,28 @@ int main(){
    printf("a: %d\n", a);//9
 }
 ```
+# Function pointer with std::function
+
+``std::function`` from ``functional`` library supports function pointer:
+
+```cpp
+#include <iostream>          
+#include <functional>// std::function
+
+int add_int_numbers(int a, int b){
+	return a+b;
+}
+
+int subtract(int a, int b){
+	return a-b;
+}
+
+int main(){
+	std::function<int(int, int)> p;
+	p = add_int_numbers;
+	std::cout << p(5, 6) << std::endl; // 11
+
+	p = subtract;
+	std::cout << p(5, 6) << std::endl; // -1
+}
+```
