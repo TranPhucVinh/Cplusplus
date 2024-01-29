@@ -93,7 +93,3 @@ int main(){
     } else std::cout << "Unable to open " << FILE_NAME << std::endl;
 }
 ```
-
-# [File IO for database management](File%20IO%20for%20database%20management)
-* [Employee management by file](File%20IO%20for%20database%20management/README.md#Employee%20management%20by%20file)
-* [Employee management with OOP](File%20IO%20for%20database%20management/README.md#Employee%20management%20with%20OOP)
