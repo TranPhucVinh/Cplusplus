@@ -37,7 +37,7 @@ class HTTP_Server {
 		std::vector<int>    http_client_fd_list;
 		std::string 		httpd_hdr_str = "HTTP/1.1 %s\r\nContent-Type: %s\r\nContent-Length: %d\r\n";
 		struct 		        sockaddr_in http_client_addr;
-		char  				*read_file(const char *file_name);
+		void  				response_file(const char *file_name);
 		void				request_handler(std::unique_ptr<HTTP_Client> http_client, int req_buf_sz);
 };
 
@@ -133,20 +133,7 @@ void HTTP_Server::request_handler(std::unique_ptr<HTTP_Client> http_client, int 
 					int fd = open("index.html", O_RDONLY);
 					if (fd > 0){
 						close(fd);//Only open this file to check for its existence
-						char *html = read_file("index.html");
-
-						//HTTP response buffer size
-						int rsp_buf_sz = strlen(html) + httpd_hdr_str.length() + strlen("200 OK") + strlen("text/html") + strlen("\r\n");
-
-						char *res_buf = new char[rsp_buf_sz + 1];
-						bzero(res_buf, rsp_buf_sz);//Delete buffer
-
-						snprintf(res_buf, rsp_buf_sz, httpd_hdr_str.c_str(), "200 OK", "text/html", rsp_buf_sz);
-						strcat(res_buf, "\r\n");
-						strcat(res_buf, html);
-						write(http_client_fd, res_buf, strlen(res_buf));
-						delete res_buf;
-						delete html;
+                        response_file("index.html");
 					} else {
 						char res_buf[100];
 						char no_file[] = "There is no index.html file";
@@ -193,7 +180,7 @@ void HTTP_Server::request_handler(std::unique_ptr<HTTP_Client> http_client, int 
 	}
 }
 
-char *HTTP_Server::read_file(const char *file_name){
+void HTTP_Server::response_file(const char *file_name){
     long file_size;
     FILE *fp;
 	fp = fopen(file_name, "r");
@@ -207,9 +194,20 @@ char *HTTP_Server::read_file(const char *file_name){
 		bzero(buffer, file_size + 1);
 		fread(buffer, file_size, ELEMENT_NUMBERS, fp);
         fclose(fp);
-        return buffer;
+
+        //HTTP response buffer size
+        int rsp_buf_sz = strlen(buffer) + httpd_hdr_str.length() + strlen("200 OK") + strlen("text/html") + strlen("\r\n");
+
+        char *res_buf = new char[rsp_buf_sz + 1];
+        bzero(res_buf, rsp_buf_sz);//Delete buffer
+
+        snprintf(res_buf, rsp_buf_sz, httpd_hdr_str.c_str(), "200 OK", "text/html", rsp_buf_sz);
+        strcat(res_buf, "\r\n");
+        strcat(res_buf, buffer);
+        write(_http_client_fd, res_buf, strlen(res_buf));
+        delete res_buf;
+        delete buffer;
 	} else {
         cout << "Unable to open file " << file_name << endl;
-        return NULL;
     }
 }
