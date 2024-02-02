@@ -87,7 +87,7 @@ Use ``read()`` function to read the whole file into a buffer
 #include <fstream>
 
 using namespace std;
-char buf[358];
+char buf[100];
 int main()
 {
     ifstream if_stream("main.cpp");
