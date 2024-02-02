@@ -80,7 +80,7 @@ while (!fileStreamIn.eof()){
 
 ## Read the whole file
 
-Use ``read()`` function to read the whole file into a buffer
+Use ``read()`` function to read the whole file into a char buffer on stack memory
 
 ```cpp
 #include <iostream>
@@ -97,6 +97,30 @@ int main()
     } else cout << "Open file successfully\n";
     if_stream.read(buf, sizeof(buf));
     cout << buf << endl;
+}
+```
+Read file into a buffer on heap memory initialized with unique pointer:
+```cpp
+#include <iostream>
+#include <fstream>
+#include <memory>
+
+using namespace std;
+
+#define BUFF_SIZE   100 
+
+int main()
+{
+    ifstream ifs("main.cpp");
+    if(!ifs.good()) {
+      cout << "Cannot open file!" << endl;
+      return 1;
+    } else cout << "Open file successfully\n";
+
+    std::unique_ptr<char[]> file_buffer(new char[BUFF_SIZE]);
+
+    ifs.read(file_buffer.get(), BUFF_SIZE);
+    cout << file_buffer.get() << endl;
 }
 ```
 
