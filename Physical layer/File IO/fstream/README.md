@@ -7,7 +7,7 @@
 You can't open input and output file stream (with ``ifstream`` and ``ofstream``) at the same time, this will not give compilation error but result in failure when run
 
 ```c
-//Wrong, must not do it
+//THIS IS WRONG, MUST NOT DO IT. YOU CAN'T OPEN INPUT AND OUTPUT FILESTREAM AT THE SAME TIME
 ifstream fileStreamIn("text.txt");
 ofstream fileStreamOut("text.txt");
 ```
