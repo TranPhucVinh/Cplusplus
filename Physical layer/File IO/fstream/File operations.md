@@ -90,12 +90,12 @@ using namespace std;
 char buf[358];
 int main()
 {
-    ifstream rf("main.cpp");
-    if(!rf) {
+    ifstream if_stream("main.cpp");
+    if(!if_stream) {
       cout << "Cannot open file!" << endl;
       return 1;
     } else cout << "Open file successfully\n";
-    rf.read(buf, sizeof(buf));
+    if_stream.read(buf, sizeof(buf));
     cout << buf << endl;
 }
 ```
