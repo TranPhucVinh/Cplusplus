@@ -3,7 +3,7 @@ A **class constructor** is a special member function of a class that is executed
 
 Every class has at least one constructor. **Constructor** is like a function and is used to express the attribute of an object. Constructor doesn't have returned type like ``void``, ``int``,... and doesn't have return value.
 
-All class constructors and destructors **must be put inside public**. If putting them in private or without public, there will be compilation error.
+All class constructors and destructors **should be put inside public**. If putting them in private, they won't be called when object is initialized.
 
 **Default constructors** have the same name with the class
 
