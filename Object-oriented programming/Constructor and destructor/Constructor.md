@@ -76,7 +76,28 @@ public_number -427810560; private_numer 21946
 Get public and private numbers:
 public_number 1; private_numer 2
 ```
+# private constructor
 
+As private constructor is not called during object initialization, this implementation will call the private constructor inside the publicj constructor:
+
+```cpp
+class classTest{
+	public:
+        classTest(int a)
+        {
+            int b = 1;
+            classTest(a, b);
+        }
+    private:
+        classTest(int a, int b){
+            cout << a+b << endl;
+        }
+};
+
+int main(){
+	classTest obj(12); // 13
+}
+```
 # default keyword
 
 ``default`` keyword, which is supported from ``C++11``, supports performing default operations like setting variables inside the default constructor. This method is useful when having multiple constructor functions:
