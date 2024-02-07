@@ -17,6 +17,44 @@ uniquePtr = std::make_unique<int[]>(2);
 uniquePtr[0] = 123;
 uniquePtr[1] = 456;
 ```
+# 2D array
+```cpp
+#include <iostream>
+#include <memory>
+
+#define ROWS        2
+#define COLUMNS     2
+
+/*
+    For 2D array naming convention, to view its member
+    x: horizontal axis
+    yL vertical axis
+*/
+int main() {
+    std::unique_ptr<std::unique_ptr<int[]>[]> array_2d(new std::unique_ptr<int[]>[ROWS]);
+
+    for (int x = 0; x < ROWS; x++) {
+        array_2d[x] = std::make_unique<int[]>(COLUMNS);
+    }
+
+    int value = 0;
+    for (int x = 0; x < ROWS; x++) {
+        for (int y = 0; y < COLUMNS; y++) {
+            array_2d[x][y] = value++;
+        }
+    }
+
+    // Display the 2D array
+    for (int x = 0; x < ROWS; x++) {
+        for (int y = 0; y < COLUMNS; y++) {
+            std::cout << array_2d[x][y] << " ";
+        }
+        std::cout << std::endl;
+    }
+
+    return 0;
+}
+```
 # [Unique pointer array as function argument](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/Smart%20pointer/Unique%20pointer%20and%20function.md#unique-pointer-array-as-function-argument), using [template](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/Function/Template.md) so that array size is not hardcoded.
 # Unique pointer for char array as string
 
