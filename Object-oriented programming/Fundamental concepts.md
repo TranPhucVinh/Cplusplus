@@ -87,8 +87,8 @@ class classTest{
 ```
 # Types of class variables
 
-* [Instance variables]()
-* [Static variables]()
+* [Instance variables](#instance-variables)
+* [Static variables](#static-variables)
 
 ## Instance variables
 
