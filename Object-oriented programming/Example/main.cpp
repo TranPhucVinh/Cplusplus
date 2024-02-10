@@ -1,8 +1,7 @@
 #include "header.h"
 
 int main(){
-	exampleClass object;
-	object.class_constructor();
+	exampleClass object, *obj_ptr;
     object.add_number(13);
 	object.read_static_var();
 	object.call_private_function();
@@ -10,4 +9,7 @@ int main(){
 
     exampleClass new_object;
     object.call_object_method(new_object);//Call function with the new object
+
+    obj_ptr = &object;// Class object as pointer
+    obj_ptr->add_number(1);
 }

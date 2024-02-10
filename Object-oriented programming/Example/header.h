@@ -12,11 +12,9 @@ class exampleClass
 		static int 	return_int_num();
 		static void print_argument(int argument);
 		int 		instance_var;
-		void 		class_constructor();
 		void 		add_number(int int_param);
 		void 		call_private_function();
 		void 		call_object_method(exampleClass object);
-
   	private:  
     	int 		_int_param;
 		void		display_string();
