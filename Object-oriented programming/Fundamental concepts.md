@@ -111,8 +111,8 @@ using namespace std;
 
 class Header
 {
-  public:
-    static int a;
+  	public:
+    	static int a;
 };
 
 int Header::a = 100;

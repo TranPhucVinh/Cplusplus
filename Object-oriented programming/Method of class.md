@@ -8,9 +8,9 @@
 # Static member methods
 **Static member methods** can only operate on the static variables, static functions and variables and functions outside the class. It can't call non-static variables and non-static functions. Example: Check ``read_static_var()`` function in [header.cpp](Example/header.cpp). Also note that defining function ``read_static_var()`` inside the CPP source file must not have ``static`` storage class.
 
-Static member functions works with variables and functions outside the class like this example:
+Static member method works with variables and functions outside the class like this example:
 
-``head.h``
+``header.h``
 
 ```cpp
 #include <iostream>
@@ -22,17 +22,19 @@ using namespace std;
 class exampleClass
 {
   	public:
-		static int 	return_int_num();
-		static void print_argument(int argument);
+		static int 	static_return_int();
+		static void static_print_argument(int argument);
 };
 #endif
 ```
-``head.cpp``
+``header.cpp``
 ```cpp
-int exampleClass::return_int_num(){
+#include "header.h"
+
+int exampleClass::static_return_int(){
     return 123;
 }
-void exampleClass::print_argument(int argument){
+void exampleClass::static_print_argument(int argument){
     cout << argument << endl;
 }
 ```
@@ -45,10 +47,10 @@ void exampleClass::print_argument(int argument){
 int a = 789;
 main(){
 	exampleClass object;
-	object.print_argument(a);//789
+	object.static_print_argument(a);//789
 
-	int b = object.return_int_num();
-	object.print_argument(b);//123
+	int b = object.static_return_int();
+	object.static_print_argument(b);//123
 }
 ```
 
