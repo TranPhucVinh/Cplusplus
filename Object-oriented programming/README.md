@@ -28,3 +28,5 @@ Binding refers to the process of converting identifiers (such as variable and pe
 **Early binding (compile-time time polymorphism)**: In early binding, compiler (or linker) directly associate an address to the function call. C++ uses early binding by default. 
 
 **Late binding (run time polymorphism)**: In late binding, the compiler adds code that identifies the kind of object at runtime then matches the call with the right function definition. This can be achieved by declaring a [virtual function]().
+
+# [Singleton](Singleton.md)
