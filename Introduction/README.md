@@ -111,6 +111,9 @@ int main()
 	return 0;
 }
 ```
+## When must constexpr be used ?
+
+* [When static member method requires a const char pointer as string](https://github.com/TranPhucVinh/Cplusplus/blob/master/Object-oriented%20programming/Method%20of%20class.md#static-member-methods)
 ## Naming convention for const and constexpr
 
 As a naming convention suggestion, constants are written entirely in UPPER_CASE and use an underscore to separate words. This applies to variables that are constant at compile time and are allocated to static storage, and which would otherwise be pre-processor defines in C. The main areas of use are in [unnamed namespaces](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/Function/Namespace.md#unnamed-namespace) at the top of a file, as static constant class members, and as constant variables in functions.

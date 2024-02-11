@@ -65,6 +65,27 @@ main(){
 
 **Methods take object as parameter**: Check ``call_object_method()`` for the method to take object as parameter in [header.cpp](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/OOP/Example/header.cpp)
 
+For **const char pointer as string**, **static member method** must use [constexpr](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/README.md#constexpr):
+
+```cpp
+class ClassTest
+{
+  	public:
+		static void return_string();
+  	private:  
+		static constexpr const char *_string = "static_string";
+};
+
+void ClassTest::return_string(){
+    cout << _string << endl;
+}
+
+int main () {
+    ClassTest obj;
+    obj.return_string();// static_string
+}
+```
+
 # Calling multiple method at one time
 
 ## Simple call
