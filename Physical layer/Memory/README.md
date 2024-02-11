@@ -71,7 +71,7 @@ int main(){
 }
 ```
 
-# [Pointer](Pointer.md)
+# [Pointer](Pointer)
 
 C only supports pointer while C++ supports pointers and reference ([lvalue reference](#lvalue) and [rvalue reference](#rvalue))
 
