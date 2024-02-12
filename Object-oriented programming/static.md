@@ -185,3 +185,32 @@ int main()
     ClassTest obj;
 }
 ```
+## Must initialize static variables when they're called inside static function pointers which are called by other class method
+
+```cpp
+#define DUMMY_VALUE 123
+
+class ClassTest {
+    public:
+        ClassTest(){
+            void (*p)();
+            p = return_static;
+            p();
+        }
+        static int number;
+
+        // return_static() changes static variable number
+        static void return_static(){
+            number = 4;
+            printf("%d\n", number);
+        }
+};
+
+// Must have this dummy value setup to change/setup static variable number inside return_static() 
+int ClassTest::number = DUMMY_VALUE; 
+
+int main()
+{  
+    ClassTest obj;
+}
+```
