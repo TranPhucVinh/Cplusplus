@@ -4,7 +4,7 @@ Static variables exist as members of the class rather than as an instance in eac
 
 Defining static variables inside the CPP source file (e.g [header.cpp](Example/header.cpp)) must not have **static** storage class. Check [int exampleClass::static_var = 10](https://github.com/TranPhucVinh/Cplusplus/blob/master/Object-oriented%20programming/Example/header.cpp#L8) in [header.cpp](Example/header.cpp) for this implementation.
 
-**We cannot initialize a static member variable inside its class definition**. That's because the definition is a description of how memory is to be allocated, but it doesn't allocate memory.
+**We cannot initialize a static member variable inside its class definition without const keyword**. That's because the definition is a description of how memory is to be allocated, but it doesn't allocate memory.
 
 Static variables can be defined with: ``className::staticVariable = value``, its value can then be changed by a method, like **change_static()** in this example:
 
@@ -48,7 +48,7 @@ int main(){
 }
 ```
 
-You can't initiliaze non-const static member
+You can't initialize non-const static member
 
 ```cpp
 class Header
