@@ -20,6 +20,8 @@ class ClassTest
     	static int a;
         void change_static(){
             ClassTest::a = 123;
+			// Or simply: 
+			// a = 123;
         }
 };
 
