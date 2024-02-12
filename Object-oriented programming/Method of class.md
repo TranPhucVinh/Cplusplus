@@ -5,8 +5,12 @@
 # Non-static member methods
 
 **Non-static member methods** can access all data members (static and non-static variables) of the class. Example: Check ``add_number()`` function in [header.cpp](Example/header.cpp)
+
 # Static member methods
-**Static member methods** can only operate on the static variables, static functions and variables and functions outside the class. It can't call non-static variables and non-static functions. Example: Check ``read_static_var()`` function in [header.cpp](Example/header.cpp). Also note that defining function ``read_static_var()`` inside the CPP source file must not have ``static`` storage class.
+
+## Static member methods can only operate on static variables, static functions and variables and functions outside its class
+
+**Static member methods** can only operate on static variables, static functions and variables and functions outside its class. It can't call non-static variables and non-static functions. Example: Check ``read_static_var()`` function in [header.cpp](Example/header.cpp). Also note that defining function ``read_static_var()`` inside the CPP source file must not have ``static`` storage class.
 
 Use **::** operator to call static method, only static method can be called by that operator:
 
@@ -58,13 +62,14 @@ main(){
 	int b = object.static_return_int();
 	object.static_print_argument(b);//123
 
-	// Only static method can be caled by :: operator
+	// Only static method can be called by :: operator
     exampleClass::static_print_argument(789);// 789
 }
 ```
 
-**Methods take object as parameter**: Check ``call_object_method()`` for the method to take object as parameter in [header.cpp](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/OOP/Example/header.cpp)
+Refer to [header.cpp](https://github.com/TranPhucVinh/Cplusplus/blob/master/Object-oriented%20programming/Example/header.cpp) for static variable and method implementations.
 
+## static constexpr const char
 For **const char pointer as string**, **static member method** must use [constexpr](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/README.md#constexpr):
 
 ```cpp
@@ -85,7 +90,35 @@ int main () {
     obj.return_string();// static_string
 }
 ```
+## Must use static for function pointers to be called inside class method
+```cpp
+#include <stdio.h>
 
+class ClassTest {
+    public:
+        ClassTest(){
+            int (*p)(int, int);
+
+            p = add_int_numbers;
+            printf("%d \n",p(5,6)); //11
+
+            p = subtract;
+            printf("%d \n",p(5,8)); //-3
+        }
+    private:
+        static int add_int_numbers(int a, int b){// Must use static
+            return a+b;
+        }
+        static int subtract(int a, int b){// Must use static
+            return a-b;
+        }
+};
+
+int main()
+{  
+    ClassTest obj;
+}
+```
 # Calling multiple method at one time
 
 ## Simple call
