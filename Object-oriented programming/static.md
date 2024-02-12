@@ -4,7 +4,9 @@ Static variables exist as members of the class rather than as an instance in eac
 
 Defining static variables inside the CPP source file (e.g [header.cpp](Example/header.cpp)) must not have **static** storage class. Check [int exampleClass::static_var = 10](https://github.com/TranPhucVinh/Cplusplus/blob/master/Object-oriented%20programming/Example/header.cpp#L8) in [header.cpp](Example/header.cpp) for this implementation.
 
-**We cannot initialize a static member variable inside its class definition**. That's because the definition is a description of how memory is to be allocated, but it doesn't allocate memory. Static variables can be defined with: ``className::staticVariable = value``
+**We cannot initialize a static member variable inside its class definition**. That's because the definition is a description of how memory is to be allocated, but it doesn't allocate memory.
+
+Static variables can be defined with: ``className::staticVariable = value``, its value can then be changed by a method, like **change_static()** in this example:
 
 **Example**: ``main.cpp``
 
@@ -12,26 +14,35 @@ Defining static variables inside the CPP source file (e.g [header.cpp](Example/h
 #include <iostream>
 using namespace std;
 
-class Header
+class ClassTest
 {
   	public:
     	static int a;
+        void change_static(){
+            ClassTest::a = 123;
+        }
 };
 
-int Header::a = 100;
+int ClassTest::a = 100;
 
 int main(){
-    Header header;
-    cout << Header::a << endl;//100
-    cout << header.a << endl; //100
-    Header::a++;
-    cout << Header::a << endl;//101
-    header.a++;
-    cout << Header::a << endl;//102
+    ClassTest obj1;
+    cout << ClassTest::a << endl;//100
+    cout << obj1.a << endl; //100
 
-    Header header2;
-    cout << Header::a << endl;//102
-    cout << header2.a << endl;//102
+    ClassTest::a++;
+    cout << ClassTest::a << endl;//101
+
+    obj1.a++;
+    cout << ClassTest::a << endl;//102
+
+    ClassTest obj2;
+    cout << ClassTest::a << endl;//102
+    cout << obj2.a << endl;//102
+
+    obj2.change_static();
+    cout << ClassTest::a << endl;//123
+    cout << obj2.a << endl;//123
 }
 ```
 
