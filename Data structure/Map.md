@@ -48,7 +48,15 @@ while (el != Map.end()) {
 	map_index += 1;
 	el++;
 }
-```    
+```
+**Access map element by index/position by using std::advance**
+```cpp
+int map_index = 0;
+std::map<int, std::string>::iterator el = Map.begin();
+
+std::advance(el, map_index);
+std::cout << map_index << ", key: " << el->first << "; value: " << el->second << std::endl;
+```
 # For string as key
 ```cpp
 std::map<std::string, std::string> Map;
