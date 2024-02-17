@@ -21,7 +21,7 @@ Handle GET request:
 * For routing with unhandled route, return ``Not found %s``
 * [HTTP server](multithread_http_server.cpp) starts when there is no HTTP client connected and sending HTTP request, HTTP receiver prints out **Waiting for a TCP sender to connect ...** until a HTTP client is connected.
 * Multithread, with POSIX thread created by pthread, to handle any newly connected HTTP client
-* Count total numbers of connected TCP client and detect disconnected event
+* **Count total numbers of connected TCP client** and **detect disconnected event**
 
 **Program**: 
 * [multithread_http_server.cpp](multithread_http_server.cpp): This example is intended for comprehensive and easy to understand the implementation of HTTP server built on TCP API with OOP.
