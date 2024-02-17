@@ -38,6 +38,16 @@ Map, key 123
 1, key: 123; value: Map, key 123
 2, key: 456; value: Map, key 456
 ```
+**Traverse by iterator**
+```cpp
+int map_index = 0;
+std::map<int, std::string>::iterator el = Map.begin();
+
+while (el != Map.end()) {
+	std::cout << map_index << ", key: " << el->first << "; value: " << el->second << std::endl;
+	el++;
+}
+```    
 # For string as key
 ```cpp
 std::map<std::string, std::string> Map;
