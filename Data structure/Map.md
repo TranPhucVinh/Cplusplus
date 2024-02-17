@@ -9,7 +9,7 @@ A similar data structure to map is a [vector]() including a struct/class object 
 
 # Create a map and read all of its objects
 
-Use [for_each loop](../Introduction/Function/README.md#for-each-loop) to access each element of the map, with ``el.first`` gets the key and el.second gets the value:
+Use [for_each loop](../Introduction/Function/README.md#for-each-loop) to access each element of the map, with **el.first** gets the key and **el.second** gets the value; then get map size by **map::size()**: 
 ```cpp
 #include <iostream>
 #include <map>
@@ -28,6 +28,7 @@ int main()
         std::cout << map_index << ", key: " << el.first << "; value: " << el.second << std::endl;
         map_index += 1;
     }
+	std::cout << "Map size: " << Map.size() << std::endl;// Map size: 3
     return 0;
 }
 ```
