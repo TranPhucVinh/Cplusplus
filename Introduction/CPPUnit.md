@@ -51,6 +51,25 @@ Result
 OK (1 tests)
 ```
 
+# Bazel build setup for CPPUnit
+
+```
+├── main.cpp
+├── WORKSPACE
+└── BUILD
+```
+**BUILD**
+```sh
+cc_binary(
+    name = "main",
+    srcs = ["main.cpp"],
+    linkopts = ["-lcppunit"],
+)
+```
+**Build**:  ``bazel build main``
+
+**Run**: ``bazel run main``
+
 # API
 
 ## CPPUNIT_ASSERT_EQUAL()
