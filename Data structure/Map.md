@@ -45,6 +45,7 @@ std::map<int, std::string>::iterator el = Map.begin();
 
 while (el != Map.end()) {
 	std::cout << map_index << ", key: " << el->first << "; value: " << el->second << std::endl;
+	map_index += 1;
 	el++;
 }
 ```    
