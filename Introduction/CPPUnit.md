@@ -72,6 +72,31 @@ cc_binary(
 
 # API
 
+## TestFixture.h
+
+TestFixture.h definiton on [its official webpage](https://cppunit.sourceforge.net/doc/1.8.0/_test_fixture_8h-source.html):
+
+```cpp
+#ifndef CPPUNIT_TESTFIXTURE_H    // -*- C++ -*-
+#define CPPUNIT_TESTFIXTURE_H
+
+#include <cppunit/Portability.h>
+
+namespace CppUnit {
+    class CPPUNIT_API TestFixture
+    {
+        public:
+            virtual ~TestFixture() {};
+
+            virtual void setUp() {};
+
+            virtual void tearDown() {};
+    };
+
+}
+
+#endif
+```
 ## CPPUNIT_ASSERT_EQUAL()
 
 ```cpp
