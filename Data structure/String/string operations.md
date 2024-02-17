@@ -15,8 +15,9 @@ std::cout << displayed_string.length() << std::endl;//13
 const std::string const_str = "const string";
 std::cout << const_str << std::endl;
 ```
-Assign a string member (by index) to char array, char pointer. From this implementation, we learn that string member can't be assigned directly to a char array/char pointer but must be assigned as a member instead:
+**Assign a string member (by index) to char array, char pointer**:
 ```cpp
+// From this implementation, we learn that string member can't be assigned directly to a char array/char pointer but must be assigned as a member instead
 std::string displayed_string = "Hello World !";
 
 char str_arr[] = {displayed_string[0]};
