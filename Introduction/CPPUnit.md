@@ -4,9 +4,10 @@ CPPUnit is a test framework used for CPP unit testing.
 
 ## Install and setup
 
-Check [libcppunit installation document in Linux Shell](https://github.com/TranPhucVinh/Linux-Shell/blob/master/Bash%20script/Install%20package.md#download-debian-package-from-link-for-used-as-system-library-in-usrlibx86_64-linux-gnu)
-
-After successfully install ``libcppunit`` package, CPPUnit now is available as an external library.
+```sh
+sudo apt-get install libcppunit-dev
+```
+After successfully install **libcppunit** package, CPPUnit now is available as an external library.
 
 ## Implementation
 
