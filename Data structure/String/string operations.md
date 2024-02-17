@@ -147,7 +147,7 @@ int main(){
 }
 ```
 
-**Convert string to char stringArray[100] using c_str()**
+**Convert std::string to char stringArray[100] using c_str()**
 
 ```cpp
 #include <iostream>
