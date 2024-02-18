@@ -40,34 +40,11 @@ displayed_string = "Another new string";
 std::cout << displayed_string << std::endl; //Another new string
 ```
 
-Append a character to a string by **+** operator:
-
-```cpp
-string displayString = "Hello, World ";
-cout << displayString+'!'; //Hello, World !
-```
-**Note**: With ``+`` operator on ``string``, only character is allowed to add. Number are not allow:
-
-```cpp
-//This is wrong and must not be done although this give no compilation error
-cout << displayString + 123;
-```
-**Result**: ``lled after throwing an instance of '!``
-
-Append a reference declaration string with ``+``:
-
-```cpp
-std::string appended = "123";
-const std::string& str = "Hello, World !";//Must define with const
-std::cout << str + appended << std::endl;//Hello, World !123
-std::cout << str + " 456" << std::endl;//Hello, World ! 456
-```
-
 # Update
 
 ## Append string
 
-Using ``append()`` to append string to string:
+Using **append()** to append string to string:
 
 ```cpp
 string displayString = "Hello, World ";
@@ -85,12 +62,28 @@ displayed_string.push_back('A');//Hello World !A
 
 ``string`` type has no member ``pop_back()``.
 
-Using ``+`` to append an existing string (same operation for a new empty string):
+Using **+** operator to add a character to a string (same operation for a new empty string):
 
 ```cpp
 std::string displayString = "Hello, World ";
 displayString += "123";
 std::cout << displayString << endl;//Hello, World 123
+```
+**Note**: With ``+`` operator on ``string``, only character is allowed to add. Number are not allow:
+
+```cpp
+//This is wrong and must not be done although this give no compilation error
+cout << displayString + 123;
+```
+**Result**: ``lled after throwing an instance of '!``
+
+Append a **reference declaration string** with **+** operator:
+
+```cpp
+std::string appended = "123";
+const std::string& str = "Hello, World !";//Must define with const
+std::cout << str + appended << std::endl;//Hello, World !123
+std::cout << str + " 456" << std::endl;//Hello, World ! 456
 ```
 
 ## Conversion
