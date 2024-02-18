@@ -57,6 +57,16 @@ std::map<int, std::string>::iterator el = Map.begin();
 std::advance(el, map_index);
 std::cout << map_index << ", key: " << el->first << "; value: " << el->second << std::endl;
 ```
+**Must not iterate with increment index for std::advance() like this**:
+```cpp
+// This iteration causes segmentation fault
+std::map<int, std::string>::iterator el = Map.begin();
+
+for (int i = 0; i < 3; i++){
+	std::advance(el, i);
+	std::cout << i << ", key: " << el->first << "; value: " << el->second << std::endl;
+}
+```
 # For string as key
 ```cpp
 std::map<std::string, std::string> Map;
