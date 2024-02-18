@@ -49,23 +49,13 @@ while (el != Map.end()) {
 	el++;
 }
 ```
-**Access map element by index/position by using std::advance**
+**Map doesn't have any any API to directly access its element by the specified index/position**, use **std::advance()** instead:
 ```cpp
 int map_index = 0;
 std::map<int, std::string>::iterator el = Map.begin();
 
 std::advance(el, map_index);
 std::cout << map_index << ", key: " << el->first << "; value: " << el->second << std::endl;
-```
-**Must not iterate with increment index for std::advance() like this**:
-```cpp
-// This iteration causes segmentation fault
-std::map<int, std::string>::iterator el = Map.begin();
-
-for (int i = 0; i < 3; i++){
-	std::advance(el, i);
-	std::cout << i << ", key: " << el->first << "; value: " << el->second << std::endl;
-}
 ```
 # For string as key
 ```cpp
