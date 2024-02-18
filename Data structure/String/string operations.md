@@ -15,18 +15,6 @@ std::cout << displayed_string.length() << std::endl;//13
 const std::string const_str = "const string";
 std::cout << const_str << std::endl;
 ```
-**Assign a string member (by index) to char array, char pointer**:
-```cpp
-// From this implementation, we learn that string member can't be assigned directly to a char array/char pointer but must be assigned as a member instead
-std::string displayed_string = "Hello World !";
-
-char str_arr[] = {displayed_string[0]};
-std::cout << str_arr << std::endl;// H
-
-char *str_ptr = new char(1);
-str_ptr[0] = displayed_string[0];
-std::cout << str_arr << std::endl;// H
-```
 **[constexpr](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/README.md#constexpr) can't be used for std::string**.
 ## Define string with lvalue reference/reference declaration
 
