@@ -40,16 +40,7 @@ displayed_string = "Another new string";
 std::cout << displayed_string << std::endl; //Another new string
 ```
 
-Append a reference declaration string with ``+``:
-
-```cpp
-std::string appended = "123";
-const std::string& str = "Hello, World !";//Must define with const
-std::cout << str + appended << std::endl;//Hello, World !123
-std::cout << str + " 456" << std::endl;//Hello, World ! 456
-```
-
-Add character to a string with ``+`` to read:
+Append a character to a string by **+** operator:
 
 ```cpp
 string displayString = "Hello, World ";
@@ -62,6 +53,15 @@ cout << displayString+'!'; //Hello, World !
 cout << displayString + 123;
 ```
 **Result**: ``lled after throwing an instance of '!``
+
+Append a reference declaration string with ``+``:
+
+```cpp
+std::string appended = "123";
+const std::string& str = "Hello, World !";//Must define with const
+std::cout << str + appended << std::endl;//Hello, World !123
+std::cout << str + " 456" << std::endl;//Hello, World ! 456
+```
 
 # Update
 
