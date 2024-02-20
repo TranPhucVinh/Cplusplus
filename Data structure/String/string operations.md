@@ -88,7 +88,7 @@ std::cout << str + " 456" << std::endl;//Hello, World ! 456
 ## std::string as function argument
 Use function argument with lvalue to update string:
 
-```cppp
+```cpp
 void change_str(string &hw){
     hw = "new string";
 }
