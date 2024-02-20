@@ -70,3 +70,4 @@ std::string str = "123";
 std::reverse(str.begin(), str.end());
 std::cout << str; // 321
 ```
+**std::reverse()** returns void, so don't assign it to any variable.
