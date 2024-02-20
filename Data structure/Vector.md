@@ -119,3 +119,5 @@ for (int i = 0; i < vec.size(); i++){
 ```
 
 ``vec[index]`` is used for updating value after this index member is created by ``push_back()``. Must not use ``vec[index]``  to setup/create vector value at ``index``. 
+# Implementations
+* Convert an integer to Roman numeral by using vector tuple: [vector_tuple_integer_to_roman_numeral.cpp](src/vector_tuple_integer_to_roman_numeral.cpp)
