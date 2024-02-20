@@ -3,7 +3,6 @@ Vectors are the same as dynamic arrays with the ability to resize itself automat
 # Create
 
 Create a vector
-
 ```cpp
 #include <iostream>
 #include <vector>
@@ -12,17 +11,20 @@ using namespace std;
  
 int main()
 {
-    vector<int> vec;
- 
-    //For first time setup value for vector, push_back() must be used
-    vec.push_back(12);
-    vec.push_back(34);
+    vector<int> vec{10, 20, 30};
    
     //Get vector size by std::vector::size
     for (int i = 0; i < vec.size(); i++){
         cout << vec[i] << endl;
     }
 }
+```
+Member can be set with **push_back()**:
+```cpp
+vector<int> vec;
+ 
+vec.push_back(12);
+vec.push_back(34);
 ```
 Init by index:
 
