@@ -54,46 +54,11 @@ An iterator is an object (like a pointer) that points to an element inside the c
 Iterators are used to point at the memory addresses of STL containers.
 
 Implementation: [Iterator in std::array](https://github.com/TranPhucVinh/Cplusplus/blob/master/Data%20structure/Array.md#iterator-in-stdarray)
-## Algorithm
-[for_each()](https://github.com/TranPhucVinh/Cplusplus/tree/master/Introduction/Function#for_each)
+## [Algorithm](Algorithm.md)
+* [for_each()](https://github.com/TranPhucVinh/Cplusplus/tree/master/Introduction/Function#for_each)
+* std::min()
+* std::sort()
 
-``std::min()``
-```cpp
-#include <iostream>
-#include <algorithm>//For min_element
-
-using namespace std;
-
-int main() {
-	int a = std::min(12, 34);
-	cout << a << endl;
-}
-```
-``std::sort()`` for sorting an array with **Time Complexity** of **O(N*logN)**
-```cpp
-#include <iostream>
-#include <algorithm>    // std::sort
-
-#define SIZE 6
-
-int array[SIZE] = {34, 12, 135, 45, 1, 9};
-
-int main(){
-    std::cout << "Array before: \n";
-    for (int i=0; i < SIZE; i++){
-		std::cout << array[i] << " ";
-	}
-    std::cout << "\n";
-
-	std::sort(array, array + SIZE);
-
-    std::cout << "Array after: \n";
-    for (int i=0; i < SIZE; i++){
-		std::cout << array[i] << " ";
-	}
-    std::cout << "\n";
-}
-```
 # Header file
 
 ## hpp file
