@@ -85,7 +85,7 @@ The above implementation is similar to **std::map<int, std::string, std::less<>>
 ```cpp
 std::map<int, std::string, std::less<>> Map;
 ```
-To arrange the map from the greatest key value (int) to the lowest one, as descending order, use **std::greater<>**
+To arrange the map from the greatest key value (int) to the lowest one, as **descending order**, use **std::greater<>**
 ```cpp
 std::map<int, std::string, std::greater<>> Map;
 Map[456] = "Map, key 456";
@@ -100,6 +100,12 @@ while (el != Map.end()) {
 	map_index += 1;
 	el++;
 }
+```
+**Result**
+```
+0, key: 456; value: Map, key 456
+1, key: 123; value: Map, key 123
+2, key: 1; value: Map, key 1
 ```
 # For string as key
 ```cpp
