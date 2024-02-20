@@ -63,3 +63,10 @@ int main(){
     std::cout << "\n";
 }
 ```
+# std::reverse()
+Reverse a sequence, e.g a string
+```cpp
+std::string str = "123";
+std::reverse(str.begin(), str.end());
+std::cout << str; // 321
+```
