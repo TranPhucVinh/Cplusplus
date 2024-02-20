@@ -85,7 +85,21 @@ const std::string& str = "Hello, World !";//Must define with const
 std::cout << str + appended << std::endl;//Hello, World !123
 std::cout << str + " 456" << std::endl;//Hello, World ! 456
 ```
+## std::string as function argument
+Use function argument with lvalue to update string:
 
+```cppp
+void change_str(string &hw){
+    hw = "new string";
+}
+
+int main(){
+	   string str = "Hello, World !";
+    cout << str << "; " << str.size() << endl;
+   	change_str(str); //Hello, World ! 14
+    cout << str << "; " << str.size() << endl;
+}
+```
 ## Conversion
 
 ``std::to_string`` is supported sinced C++11. Convert any data type like int, float to ``std::string`` using ``to_string()``:
