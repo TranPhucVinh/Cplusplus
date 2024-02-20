@@ -1,3 +1,10 @@
+/*
+There are rules for 3 characters:
+	* I can only be placed before V or X, represents subtract one, so IV (5-1) = 4 and 9 is IX (10-1)=9.
+	* X can only be placed before L or C represents subtract ten, so XL (50-10) = 40 and XC (100-10)=90.
+	* C can only be placed before D or M represents subtract hundred, so CD (500-100)=400 and CM (1000-100)= 900.
+By those 3 rules, will take 4, 9, 40, 90, 400 and 900 as special characters, which are defined inside the Roman_Numerals vector tuple
+*/
 #include <iostream>
 #include <string.h>
 #include <vector>
