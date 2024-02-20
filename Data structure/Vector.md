@@ -24,7 +24,14 @@ int main()
     }
 }
 ```
+Init by index:
 
+```cpp
+vector<int> vec(2);// Must have size initialization
+   
+vec[0] = 12;
+vec[1] = 34;
+```
 ## const char pointer as member of a vector
 
 ```cpp
