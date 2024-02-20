@@ -102,7 +102,7 @@ int main(){
 ```
 ## Conversion
 
-**std::to_string()** is supported sinced C++11. Convert data type like int, float to ``std::string`` using ``to_string()``; for **const char*** to **std::string**, simply use explicit cast with **std::string()**:
+**std::to_string()**, which is supported sinced C++11, is used to convert data type like int, float to **std::string()**; for **const char*** to **std::string**, simply use explicit cast with **std::string()**:
 ```cpp
 #include <iostream>
 
