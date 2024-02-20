@@ -32,6 +32,18 @@ vector<int> vec(2);// Must have size initialization
 vec[0] = 12;
 vec[1] = 34;
 ```
+For vector defined inside a class, with known size:
+```cpp
+class ClassTest{
+    public:
+        ClassTest(){
+            vec[0] = 12;
+            vec[1] = 34;
+        }
+    private:
+        vector<int> vec = vector<int>(2);
+};
+```
 ## const char pointer as member of a vector
 
 ```cpp
