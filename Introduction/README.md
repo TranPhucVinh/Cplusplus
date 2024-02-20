@@ -69,6 +69,31 @@ int main() {
 	cout << a << endl;
 }
 ```
+``std::sort()`` for sorting an array with **Time Complexity** of **O(N*logN)**
+```cpp
+#include <iostream>
+#include <algorithm>    // std::sort
+
+#define SIZE 6
+
+int array[SIZE] = {34, 12, 135, 45, 1, 9};
+
+int main(){
+    std::cout << "Array before: \n";
+    for (int i=0; i < SIZE; i++){
+		std::cout << array[i] << " ";
+	}
+    std::cout << "\n";
+
+	std::sort(array, array + SIZE);
+
+    std::cout << "Array after: \n";
+    for (int i=0; i < SIZE; i++){
+		std::cout << array[i] << " ";
+	}
+    std::cout << "\n";
+}
+```
 # Header file
 
 ## hpp file
