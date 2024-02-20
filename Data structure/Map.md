@@ -57,6 +57,50 @@ std::map<int, std::string>::iterator el = Map.begin();
 std::advance(el, map_index);
 std::cout << map_index << ", key: " << el->first << "; value: " << el->second << std::endl;
 ```
+## std::map is an ordered list of member arranged by ascending order of their keys
+```cpp
+std::map<int, std::string> Map;
+Map[456] = "Map, key 456";
+Map[1] = "Map, key 1";
+Map[123] = "Map, key 123";
+// Map will then arrange them to {Map[1], Map[123], Map[456]}
+
+std::map<int, std::string>::iterator el = Map.begin();// key: 1; value: Map, key 1
+std::cout << "key: " << el->first << "; value: " << el->second << std::endl;
+
+int map_index = 0;
+while (el != Map.end()) {
+	std::cout << map_index << ", key: " << el->first << "; value: " << el->second << std::endl;
+	map_index += 1;
+	el++;
+}
+/*
+	Result of thw while() loop:
+	0, key: 1; value: Map, key 1
+	1, key: 123; value: Map, key 123
+	2, key: 456; value: Map, key 456
+*/
+```
+The above implementation is similar to **std::map<int, std::string, std::less<>>** (**std::less<>** for arranging the map from the lowest key value (``int``) to the greatest one):
+```cpp
+std::map<int, std::string, std::less<>> Map;
+```
+To arrange the map from the greatest key value (int) to the lowest one, as descending order, use **std::greater<>**
+```cpp
+std::map<int, std::string, std::greater<>> Map;
+Map[456] = "Map, key 456";
+Map[1] = "Map, key 1";
+Map[123] = "Map, key 123";
+
+std::map<int, std::string>::iterator el = Map.begin();
+
+int map_index = 0;
+while (el != Map.end()) {
+	std::cout << map_index << ", key: " << el->first << "; value: " << el->second << std::endl;
+	map_index += 1;
+	el++;
+}
+```
 # For string as key
 ```cpp
 std::map<std::string, std::string> Map;
@@ -83,41 +127,6 @@ std::cout << "Map after inserting\n";
 for (auto &el: Map){
     std::cout << el.first << " " << el.second << std::endl;
 }
-```
-# Arrange the map
-
-Arrange the map from the greatest key value (int) to the lowest one
-
-```cpp
-std::map<int, std::string, std::greater<>> Map;
-Map[1] = "A";
-Map[2] = "A";
-Map[3] = "A";
-
-for (auto &el: Map){
-    std::cout << el.first << " " << el.second << std::endl;
-}
-```
-```
-3 A
-2 A
-1 A
-```
-Arrange the map from the lowest key value (int) to the greatest one
-```cpp
-std::map<int, std::string, std::less<>> Map;
-Map[1] = "A";
-Map[2] = "A";
-Map[3] = "A";
-
-for (auto &el: Map){
-		std::cout << el.first << " " << el.second << std::endl;
-}
-```
-```
-1 A
-2 A
-3 A
 ```
 # Implementations
 **Convert a valid Roman numerals to integer**: [roman_numerals_and_integer_conversion.cpp](roman_numerals_and_integer_conversion.cpp)
