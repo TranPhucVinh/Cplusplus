@@ -82,6 +82,15 @@ if (!ret) cout << str;
 else cout << "Not equal";
 ```
 **Result**: ``Hello``
+### stoi()
+Convert string to int
+```cpp
+int stoi (string s, size_t* position = 0, int base = 10);
+```
+```cpp
+std::string number = "123";
+std::cout << stoi(number, 0, 10) << std::endl;
+```
 # stringstream
 
 ``stringstream`` is a stream that doesn't do IO operation. It is used to read and write string
