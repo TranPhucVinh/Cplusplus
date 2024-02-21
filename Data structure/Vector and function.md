@@ -28,3 +28,19 @@ int main()
     // vec{110, 120, 130}
 }
 ```
+# Function returns vector
+```cpp
+vector<int> returnVector(){
+    vector<int> _vec{123, 456, 789};
+    return _vec;
+}
+
+int main()
+{
+    vector<int> vec = returnVector();
+
+    for (int i = 0; i < vec.size(); i++){
+        cout << vec[i] << endl;
+    }
+}
+```
