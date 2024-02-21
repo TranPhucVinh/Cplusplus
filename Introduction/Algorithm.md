@@ -71,3 +71,29 @@ std::reverse(str.begin(), str.end());
 std::cout << str; // 321
 ```
 **std::reverse()** returns void, so don't assign it to any variable.
+# std::remove()
+
+Remove all occurence of a member in a sequence
+
+**Remove all member has value VALUE in an array**
+```cpp
+#define VALUE  20
+
+int array[] = {10,20,30,30,20,10,10,20};
+
+for (int i = 0; i < 8; i++){
+	std::cout << array[i] << " ";
+}
+std::cout <<"\n";
+
+int *ptr_begin = array;
+int* ptr_end = array + sizeof(array)/sizeof(int); 
+
+std::remove(ptr_begin, ptr_end, VALUE);
+
+// After removing 3 20 members, there are 5 member left in array
+for (int i = 0; i < 5; i++){
+	std::cout << array[i] << " ";
+}
+std::cout <<"\n";
+```
