@@ -73,9 +73,9 @@ std::cout << str; // 321
 **std::reverse()** returns void, so don't assign it to any variable.
 # std::remove()
 
-Remove all occurence of a member in a sequence
+Remove all occurence of a member in a sequence, e.g array, vector,..
 
-**Remove all member has value VALUE in an array**
+**Remove all member, which has value VALUE in an array**
 ```cpp
 #define VALUE  20
 
@@ -97,3 +97,18 @@ for (int i = 0; i < 5; i++){
 }
 std::cout <<"\n";
 ```
+For vector:
+```cpp
+std::vector<int> vec{10,20,30,30,20,10,10,20};
+for (int i = 0; i < vec.size(); i++){
+	std::cout << vec[i] << " ";
+}
+std::cout <<"\n";
+
+std::remove(vec.begin(), vec.end(), VALUE);
+
+for (int i = 0; i < vec.size(); i++){
+	std::cout << vec[i] << " ";
+}// Result: 10 30 30 10 10 ? ? ? i.e size of vector vec is unchanged after calling std::remove()
+```
+**Note**: From the array and vector implementations above, we can see that using **std::remove()** don't change the array/vector size.
