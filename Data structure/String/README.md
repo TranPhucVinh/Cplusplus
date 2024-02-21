@@ -67,7 +67,6 @@ Find if a string is matched with ``str``(as a substring), start finding from ind
 string str = "Hello, World !";
 if ( std::size_t found = str.find("Hello") != string::npos) cout << str << endl;
 ```
-
 ### string::compare()
 
 ```cpp
@@ -90,6 +89,18 @@ int stoi (string s, size_t* position = 0, int base = 10);
 ```cpp
 std::string number = "123";
 std::cout << stoi(number, 0, 10) << std::endl;
+```
+### substr()
+```cpp
+string substr (size_t pos = 0, size_t len = npos);// Split from position "pos" with "npos" of characters
+string substr (size_t pos = index);// Split from position "pos=index" till the end
+```
+```cpp
+#define START_POSITION          2
+#define TOTAL_CHARS_TO_SPLIT    5
+std::string str = "Hello,World !";
+std::string sub_str_1 = str.substr(START_POSITION, TOTAL_CHARS_TO_SPLIT);// llo,W
+std::string sub_str_2 = str.substr(1);// Split from index "1" till the end of str; Result: "ello,World !"
 ```
 # stringstream
 
