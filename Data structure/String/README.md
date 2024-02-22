@@ -82,7 +82,7 @@ else cout << "Not equal";
 ```
 **Result**: ``Hello``
 ### stoi()
-Convert string to int, return the first occurence int numbers inside the given ``string s`` **if and only if** ``string s`` starts with numbers:
+Convert string to int; return the first occurence int numbers inside the given ``string s`` **if and only if** ``string s`` starts with numbers:
 ```cpp
 int stoi (string s, size_t* position = 0, int base = 10);
 ```
