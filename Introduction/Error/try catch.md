@@ -70,7 +70,7 @@ printf("Program keeps running as throw error is caught\n");
 Invalid number: Invalid number throw runtime_error
 Program keeps running as throw error is caught
 ```
-# catch (...) except all thrown data types
+# catch (...) will accept all thrown data types
 ```c
 int main()
 {
