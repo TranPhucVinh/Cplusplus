@@ -82,13 +82,14 @@ else cout << "Not equal";
 ```
 **Result**: ``Hello``
 ### stoi()
-Convert string to int
+Convert string to int, return the first occurence int numbers inside the given ``string s``:
 ```cpp
 int stoi (string s, size_t* position = 0, int base = 10);
 ```
 ```cpp
 std::string number = "123";
 std::cout << stoi(number, 0, 10) << std::endl;
+std::cout << stoi("12a34") << std::endl;// 12
 ```
 ### substr()
 ```cpp
