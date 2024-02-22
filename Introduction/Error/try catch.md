@@ -87,3 +87,13 @@ int main()
     }
 }
 ```
+E.g: Handle invalid [stoi()]() convert:
+
+```cpp
+try {
+    return std::stoi("abc12");
+}
+catch (...) {
+    cout << "Invalid convert with stoi()\n";
+}
+```
