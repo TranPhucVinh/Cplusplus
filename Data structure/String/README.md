@@ -82,7 +82,7 @@ else cout << "Not equal";
 ```
 **Result**: ``Hello``
 ### stoi()
-Convert string to int, return the first occurence int numbers inside the given ``string s``:
+Convert string to int, return the first occurence int numbers inside the given ``string s`` **if and only if** ``string s`` starts with numbers:
 ```cpp
 int stoi (string s, size_t* position = 0, int base = 10);
 ```
@@ -90,6 +90,10 @@ int stoi (string s, size_t* position = 0, int base = 10);
 std::string number = "123";
 std::cout << stoi(number, 0, 10) << std::endl;
 std::cout << stoi("12a34") << std::endl;// 12
+```
+```cpp
+// This will give error: 'std::invalid_argument'
+stoi("abc123");// MUST NOT DO THIS
 ```
 ### substr()
 ```cpp
