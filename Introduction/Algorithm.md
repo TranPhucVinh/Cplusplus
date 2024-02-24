@@ -1,3 +1,5 @@
+# std::find()
+**std::find()** returns the first occurrence of a given element in a container. We can use this function with vectors and keep searching for the given element repeatedly till the end to find all the occurrences.
 # std::min()
 ```cpp
 #include <iostream>
