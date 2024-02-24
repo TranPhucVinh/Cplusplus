@@ -38,7 +38,7 @@ int main () {}
 ### Basic operations
 
 * [Create and Read](string%20operations.md#create-and-read)
-* Update: [Append](string%20operations.md#append-string), [std::string as function argument](/string%20operations.md#stdstring-as-function-argument), [converse other data type to string](string%20operations.md#conversion)
+* Update: [Append](string%20operations.md#append-string), [std::string as function argument](/string%20operations.md#stdstring-as-function-argument), [convert other data type to string](string%20operations.md#conversion)
 * [Delete](string%20operations.md#delete)
 
 ### Other operation
