@@ -96,7 +96,19 @@ int main()
     return 0;
 }
 ```
+# Read
+Find a member by **std::find()** (from algorithm library)
+```cpp
+vector<int> vec{10, 20, 30};
 
+vector<int>::iterator element;
+
+element = std::find(vec.begin(), vec.end(), 30);
+
+if (element != vec.end()) {
+    std::cout << "Element 30 found at " << element - vec.begin() << " position \n";// Element 30 found at 2 position
+}  else std::cout << "Element not found.\n";
+```
 # Update
 
 Update the value of vector:
