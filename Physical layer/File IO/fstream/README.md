@@ -52,13 +52,7 @@ File is close !!
 ```
 ## tellg()
 
-``tellg()`` tells the positon of the current cursor
-
-``file.txt``
-
-```
-123 Hello, World !
-```
+``tellg()`` tells the position of the current cursor
 
 ``main.c``
 

@@ -12,6 +12,7 @@
 #include <vector>
 #include <algorithm> // find()
 #include <memory>
+#include <fstream>
 
 using namespace std;
 
@@ -169,33 +170,23 @@ void HTTP_Server::request_handler(std::unique_ptr<HTTP_Client> http_client, int 
 }
 
 void HTTP_Server::response_file(const char *file_name){
-    long file_size;
-    FILE *fp;
-	fp = fopen(file_name, "r");
-	if (fp){
-		fseek(fp, 0L, SEEK_END);//Set file position from index 0 to the end of file
-		file_size = ftell(fp);//Then get the file size
-		fseek(fp, 0L, SEEK_SET);//Return file position back to the beginning
+    ifstream ifs(file_name);
+    if(!ifs.good()) {
+      cout << "Cannot open file!" << endl;
+    } else cout << "Open file successfully\n";
 
-		char *buffer;
-		buffer = new char[file_size + 1];
-		bzero(buffer, file_size + 1);
-		fread(buffer, file_size, ELEMENT_NUMBERS, fp);
-        fclose(fp);
+    std::unique_ptr<char[]> file_buffer(new char[BUFFSIZE]);
 
-        //HTTP response buffer size
-        int rsp_buf_sz = strlen(buffer) + httpd_hdr_str.length() + strlen("200 OK") + strlen("text/html") + strlen("\r\n");
+    ifs.read(file_buffer.get(), BUFFSIZE);
 
-        char *res_buf = new char[rsp_buf_sz + 1];
-        bzero(res_buf, rsp_buf_sz);//Delete buffer
+	//HTTP response buffer size
+	int rsp_buf_sz = strlen(buffer) + httpd_hdr_str.length() + strlen("200 OK") + strlen("text/html") + strlen("\r\n");
 
-        snprintf(res_buf, rsp_buf_sz, httpd_hdr_str.c_str(), "200 OK", "text/html", rsp_buf_sz);
-        strcat(res_buf, "\r\n");
-        strcat(res_buf, buffer);
-        write(_http_client_fd, res_buf, strlen(res_buf));
-        delete res_buf;
-        delete buffer;
-	} else {
-        cout << "Unable to open file " << file_name << endl;
-    }
+	char *res_buf = new char[rsp_buf_sz + 1];
+	bzero(res_buf, rsp_buf_sz);//Delete buffer
+
+	snprintf(res_buf, rsp_buf_sz, httpd_hdr_str.c_str(), "200 OK", "text/html", rsp_buf_sz);
+	strcat(res_buf, "\r\n");
+	strcat(res_buf, buffer);
+	write(_http_client_fd, res_buf, strlen(res_buf));
 }
