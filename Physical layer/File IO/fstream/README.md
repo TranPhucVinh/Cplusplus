@@ -76,7 +76,7 @@ cout << data; //3 Hello, World !
 
 ``fstream::seekg(2)`` only reading in one line.
 
-**Searching information with seekg()**
+Example: **Read file line-by-line with index started by seekg()**:
 
 ``text.txt``
 
