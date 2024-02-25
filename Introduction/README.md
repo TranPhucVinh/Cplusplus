@@ -46,7 +46,7 @@ int main()
 STL is standard template library. It consists of three components:
 * [Container](https://github.com/TranPhucVinh/Cplusplus/blob/master/Data%20structure/README.md#container)
 * [Iterator](#interator)
-* [Algorithm](#algorithm)
+* [Algorithms](https://github.com/TranPhucVinh/Cplusplus/tree/master/Algorithms)
 ## Iterator
 
 An iterator is an object (like a pointer) that points to an element inside the container. We can use iterators to move through the contents of the container. 
@@ -54,10 +54,6 @@ An iterator is an object (like a pointer) that points to an element inside the c
 Iterators are used to point at the memory addresses of STL containers.
 
 Implementation: [Iterator in std::array](https://github.com/TranPhucVinh/Cplusplus/blob/master/Data%20structure/Array.md#iterator-in-stdarray)
-## [Algorithm](Algorithm.md)
-* [for_each()](https://github.com/TranPhucVinh/Cplusplus/tree/master/Introduction/Function#for_each)
-* std::min()
-* std::sort()
 
 # Header file
 
