@@ -64,8 +64,6 @@ main() {
 	fileStreamIn.close();
 }
 ```
-
-
 **Problem solved**
 
 ```cpp

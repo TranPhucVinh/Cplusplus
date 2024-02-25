@@ -5,9 +5,9 @@
 * getline()
 * setw()
 
-# fstream
+# [fstream](fstream)
 
-Library [fstream](fstream)
+Library [fstream](fstream) includes:
 
 * ``ofstream``: output file streams
 * ``ifstream``: input file streams
@@ -56,7 +56,7 @@ int main(){
 
 ``std::filesystem::directory_iterator``: an iterator to the contents of the directory
 
-## List out all files inside directory dir_name
+## List out all files inside a directory
 
 ```cpp
 #include <string>

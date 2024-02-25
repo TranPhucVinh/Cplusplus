@@ -1,10 +1,10 @@
 # File operations
 
-* ``fstream`` for two operations ``input`` and ``output`` at the same time.
-* ``ifstream`` for input operation, used for **reading**
-* ``ofstream`` for output operation, used for **creating** and **writing**
+* **fstream** for two operations **input** and **output** at the same time.
+* **ifstream** for input operation, used for **reading**
+* **ofstream** for output operation, used for **creating** and **writing**
 
-You can't open input and output file stream (with ``ifstream`` and ``ofstream``) at the same time, this will not give compilation error but result in failure when run
+You can't open input and output file stream (with **ifstream** and **ofstream**) at the same time, this will not give compilation error but result in failure when run
 
 ```c
 //THIS IS WRONG, MUST NOT DO IT. YOU CAN'T OPEN INPUT AND OUTPUT FILESTREAM AT THE SAME TIME
@@ -16,7 +16,7 @@ So it means that you can't edit the content of a single line belong to an openin
 
 File operations with ``fstream`` includes:
 * [Create new file](File%20operations.md#create-new-file)
-* [Read data from file](File%20operations.md#read-data-from-file): [Issue with <<](File%20operations.md#-caused-reading-separated-by-spaces) and [the method to read the whole file](File%20operations.md#read-the-whole-file)
+* [Read data from file](File%20operations.md#read-data-from-file): [Issue with <<](File%20operations.md#-caused-reading-separated-by-spaces), [Read the whole file](File%20operations.md#read-the-whole-file): Read into char array on stack memory, read into a buffer on heap memory initialized with unique pointer 
 * [Write data to file](File%20operations.md#write-data-to-file)
 
 # API
