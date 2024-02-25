@@ -97,7 +97,7 @@ int main()
     cout << buf << endl;
 }
 ```
-Read file into a buffer on heap memory initialized with unique pointer:
+Read a number of characters of a file into a buffer on heap memory initialized with unique pointer:
 ```cpp
 #include <iostream>
 #include <fstream>
