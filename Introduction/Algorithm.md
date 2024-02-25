@@ -72,6 +72,13 @@ std::string str = "123";
 std::reverse(str.begin(), str.end());
 std::cout << str; // 321
 ```
+Reverse a string from its beginning to a specific index, e.g ``4``:
+```cpp
+std::string str = "123456789";
+std::string::iterator index = str.begin() + 4;
+std::reverse(str.begin(), index);
+std::cout << str; // 432156789
+```
 **std::reverse()** returns void, so don't assign it to any variable.
 # std::remove()
 
