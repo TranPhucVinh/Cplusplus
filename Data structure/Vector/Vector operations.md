@@ -1,5 +1,3 @@
-Vectors are the same as dynamic arrays with the ability to resize itself automatically when an element is inserted or deleted.
-
 # Create
 
 Create a vector
@@ -29,7 +27,7 @@ vec.push_back(34);
 Init by index:
 
 ```cpp
-vector<int> vec(2);// Must have size initialization
+vector<int> vec(2);// Must have size initialization before setting them by index
    
 vec[0] = 12;
 vec[1] = 34;
@@ -111,7 +109,7 @@ if (element != vec.end()) {
 ```
 # Update
 
-Update the value of vector:
+Update vector at specific by index
 
 ```cpp
 vector<int> vec;
@@ -131,7 +129,3 @@ for (int i = 0; i < vec.size(); i++){
     cout << vec[i] << endl;
 }
 ```
-
-``vec[index]`` is used for updating value after this index member is created by ``push_back()``. Must not use ``vec[index]``  to setup/create vector value at ``index``. 
-# Implementations
-* Convert an integer to Roman numeral by using vector tuple: [vector_tuple_integer_to_roman_numeral.cpp](src/vector_tuple_integer_to_roman_numeral.cpp)
