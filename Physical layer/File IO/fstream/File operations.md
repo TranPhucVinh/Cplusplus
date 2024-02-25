@@ -8,7 +8,7 @@ Open a file (created if not existed) and write data to that file
 
 using namespace std;
 
-main() {
+int main() {
 	ofstream fileStreamOut;
 	fileStreamOut.open("text.txt");
 
@@ -52,7 +52,7 @@ An inefficient way to solve the problem:
 
 using namespace std;
 
-main() {
+int main() {
 	ifstream fileStreamIn("file.txt");
 	int word1;
 	string word2;
@@ -76,9 +76,9 @@ while (!fileStreamIn.eof()){
 }
 ```
 
-## Read the whole file
+## Read a number of characters of a file into a buffer
 
-Use ``read()`` function to read the whole file into a char buffer on stack memory
+Use **read()** function to read a number of characters of a file into a buffer on stack memory:
 
 ```cpp
 #include <iostream>
@@ -97,7 +97,7 @@ int main()
     cout << buf << endl;
 }
 ```
-Read a number of characters of a file into a buffer on heap memory initialized with unique pointer:
+Implement heap memory initialized with unique pointer:
 ```cpp
 #include <iostream>
 #include <fstream>

@@ -16,7 +16,7 @@ So it means that you can't edit the content of a single line belong to an openin
 
 File operations with ``fstream`` includes:
 * [Create new file](File%20operations.md#create-new-file)
-* [Read data from file](File%20operations.md#read-data-from-file): [Issue with <<](File%20operations.md#-caused-reading-separated-by-spaces), [Read the whole file](File%20operations.md#read-the-whole-file): Read into char array on stack memory, read into a buffer on heap memory initialized with unique pointer 
+* [Read data from file](File%20operations.md#read-data-from-file): [Issue with <<](File%20operations.md#-caused-reading-separated-by-spaces), [Read a number of characters of a file into a buffer](File%20operations.md#read-a-number-of-characters-of-a-file-into-a-buffer): Read into char array on stack memory, read into a buffer on heap memory initialized with unique pointer 
 * [Write data to file](File%20operations.md#write-data-to-file)
 
 # API
@@ -31,7 +31,7 @@ File operations with ``fstream`` includes:
 
 using namespace std;
 
-main() {
+int main() {
 	ofstream fileStreamOut("text.txt");
 	fileStreamOut << "Hello, World !";
 	if (fileStreamOut.is_open()) cout << "The file is open" << endl;

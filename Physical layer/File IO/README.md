@@ -9,13 +9,13 @@
 
 Library [fstream](fstream) includes:
 
-* ``ofstream``: output file streams
-* ``ifstream``: input file streams
-* ``fstream``: file stream with two operation input and output
+* **ofstream**: output file streams
+* **ifstream**: input file streams
+* **fstream**: file stream with two operation input and output
 
 # cstdio
 
-``cstdio`` is corresponded to ``stdio.h``. All functions of ``stdio.h`` existed in ``cstdio``.
+**cstdio** is corresponded to **stdio.h** in GCC. All functions of ``stdio.h`` existed in ``cstdio``.
 
 ## Using printf()
 
