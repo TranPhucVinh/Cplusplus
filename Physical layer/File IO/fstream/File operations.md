@@ -121,7 +121,21 @@ int main()
     cout << file_buffer.get() << endl;
 }
 ```
+## Read the whole file without knowing its size
+```cpp
+const char *filename = "main.cpp";
 
+std::ifstream ifs(filename, std::ios::ate);
+size_t file_sz = ifs.tellg(); 
+cout << file_sz << endl;
+
+ifs.seekg(2);// Revert ifs back to index 0
+
+std::unique_ptr<char[]> file_buffer(new char[file_sz]);
+
+ifs.read(file_buffer.get(), file_sz);
+cout << file_buffer.get() << endl;
+```
 # Write data to file
 
 Write with ``fstream()``
