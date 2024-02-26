@@ -20,7 +20,7 @@ std::cout << const_str << std::endl;
 
 [const std::string& str = "Hello, World !";](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/lvalue.md#define)
 
-## Define string with formatted string for used in snprintf()
+## Define char array as string with formatted std::string for used in snprintf()
 ```cpp
 std::string displayed_string = "String: %s ";
 char buffer[50];
