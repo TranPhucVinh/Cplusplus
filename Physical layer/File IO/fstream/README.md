@@ -20,7 +20,12 @@ File operations with ``fstream`` includes:
 * [Write data to file](File%20operations.md#write-data-to-file)
 
 # API
-
+## std::ios::ate
+Flag **std::ios::ate** of **std::ifstream** set the stream's position indicator to the end of the stream on opening.
+```cpp
+std::ifstream ifs(filename, std::ios::ate);
+```
+This flag is used to [read the whole file without knowing its size](File%20operations.md#read-the-whole-file-without-knowing-its-size)
 ## is_open()
 
 ``is_open()`` will check file opened status:
