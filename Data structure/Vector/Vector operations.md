@@ -107,6 +107,20 @@ if (element != vec.end()) {
     std::cout << "Element 30 found at " << element - vec.begin() << " position \n";// Element 30 found at 2 position
 }  else std::cout << "Element not found.\n";
 ```
+Find all occurrence of a member:
+```cpp
+vector<int> vec{10, 20, 30, 1, 2, 4, 30, 4, 5, 30, 12, 30, 30, 4, 30};
+
+vector<int>::iterator iter;
+iter = find(vec.begin(), vec.end(), 30); 
+  
+   // Check if the element was found 
+   cout << "Element 30 occurred at indices: "; 
+   while (iter != vec.end()) { 
+       cout << iter - vec.begin() << " "; 
+       iter = std::find(iter + 1, vec.end(), 30); 
+   } 
+```
 # Update
 
 Update vector at specific by index
