@@ -12,10 +12,9 @@ Find if a string is matched with ``str``(as a substring), start finding from ind
 * If no matches were found, the function returns ``string::npos``
 
 ```c
-#include <string>//string::npos
-
-string str = "Hello, World !";
-if ( std::size_t index = str.find("Hello") != string::npos) cout << str << endl;
+string str = "123 Hello123456Hello789Hello";
+std::size_t index = str.find("Hello");
+if ( index != string::npos) cout << index << endl;// 4
 ```
 # compare()
 
