@@ -63,4 +63,7 @@ std::unique_ptr<char[]> strPtr{new char[40]};
 
 strcpy(strPtr.get(), "Hello, World !");
 std::cout << strPtr.get() << std::endl;//Hello, World !
+
+std::cout << sizeof(strPtr.get()) << std::endl;//8; must not use sizeof() to get size of strPtr.get()
+std::cout << strlen(strPtr.get()) << std::endl;//14; must use strlen() to get size of strPtr.get()
 ```
