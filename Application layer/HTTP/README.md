@@ -16,10 +16,10 @@ Program: [thingsboard_telemetry_suspend_resume_by_internet_status.cpp](thingsboa
 **Multithread HTTP server built on TCP API, with OOP structure**
 
 Handle GET request:
-* Return a text/plain string for route ``/``
-* Return HTML as the content of file ``index.html`` for route ``/getfile``. If file ``index.html`` not existed, return text/plain ``File index.html not existed``.
+* Return HTML as the content of file ``index.html`` for route ``/``. If file ``index.html`` not existed, return text/plain ``File index.html not existed``.
 * For routing with unhandled route, return ``Not found %s``
 * [HTTP server](multithread_http_server.cpp) starts when there is no HTTP client connected and sending HTTP request, HTTP receiver prints out **Waiting for a TCP sender to connect ...** until a HTTP client is connected.
+* Read data sent from POST request
 * Multithread, with POSIX thread created by pthread, to handle any newly connected HTTP client
 * **Count total numbers of connected TCP client** and **detect disconnected event**
 
