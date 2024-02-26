@@ -10,7 +10,7 @@
 * [find()](#stringfind)
 * [compare()](#stringcompare)
 * [stoi(): convert string to int]()
-* [substr()]
+* [substr()](string%20API.md#substr)
 # stringstream
 
 ``stringstream`` is a stream that doesn't do IO operation. It is used to read and write string
