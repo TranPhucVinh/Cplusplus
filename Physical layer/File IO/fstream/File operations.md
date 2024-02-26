@@ -129,7 +129,7 @@ std::ifstream ifs(filename, std::ios::ate);
 size_t file_sz = ifs.tellg(); 
 cout << file_sz << endl;
 
-ifs.seekg(2);// Revert ifs back to index 0
+ifs.seekg(0);// Revert ifs back to index 0
 
 std::unique_ptr<char[]> file_buffer(new char[file_sz]);
 
