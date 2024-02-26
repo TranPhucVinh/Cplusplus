@@ -13,6 +13,29 @@ Library [fstream](fstream) includes:
 * **ifstream**: input file streams
 * **fstream**: file stream with two operation input and output
 
+# filesystem
+
+``filesystem`` is supported since C++17
+
+``std::filesystem::path``: represents a path
+
+``std::filesystem::directory_iterator``: an iterator to the contents of the directory
+
+## List out all files inside a directory
+
+```cpp
+#include <string>
+#include <iostream>
+#include <filesystem>
+namespace fs = std::filesystem;
+
+int main()
+{
+    std::string path = "dir_name";
+    for (const auto &entry : fs::directory_iterator(path))
+        std::cout << entry.path() << std::endl;
+}
+```
 # cstdio
 
 **cstdio** is corresponded to **stdio.h** in GCC. All functions of ``stdio.h`` existed in ``cstdio``.
@@ -45,30 +68,6 @@ int main(){
 	cout << "Enter string: ";
 	fgets(displayString, 20, stdin);
 	cout << displayString;
-}
-```
-
-# filesystem
-
-``filesystem`` is supported since C++17
-
-``std::filesystem::path``: represents a path
-
-``std::filesystem::directory_iterator``: an iterator to the contents of the directory
-
-## List out all files inside a directory
-
-```cpp
-#include <string>
-#include <iostream>
-#include <filesystem>
-namespace fs = std::filesystem;
-
-int main()
-{
-    std::string path = "dir_name";
-    for (const auto &entry : fs::directory_iterator(path))
-        std::cout << entry.path() << std::endl;
 }
 ```
 # File I/O with unistd
