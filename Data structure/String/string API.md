@@ -16,6 +16,21 @@ string str = "123 Hello123456Hello789Hello";
 std::size_t index = str.find("Hello");
 if ( index != string::npos) cout << index << endl;// 4
 ```
+Found all substring cccurrence inside a string:
+```cpp
+int found = 0;
+string str = "123 Hello123456Hello789Hello";
+std::size_t index = str.find("Hello", 0);
+
+cout << "Substring \"Hello\" occurred at indices: "; 
+while (index != string::npos) { 
+    found += 1;
+    cout << index << " ";
+    index = str.find("Hello", index + 1);
+} 
+cout << endl;
+cout << "Total found: " << found << endl;
+```
 # compare()
 
 ```cpp
