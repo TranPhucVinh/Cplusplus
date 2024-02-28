@@ -25,7 +25,7 @@ std::string displayString = "Hello, World ";
 displayString += "123";
 std::cout << displayString << endl;//Hello, World 123
 ```
-**Note**: With ``+`` operator on ``string``, only character is allowed to add. Number are not allow:
+**Note**: With **+** operator on **std::string**, numbers are not allow:
 
 ```cpp
 //This is wrong and must not be done although this give no compilation error
@@ -82,7 +82,12 @@ int main(){
     std::cout << displayedString << std::endl;// Hello, World !456 12.340000NAME
 }
 ```
+For **char** (a single character) with **std::to_string()**, its ASCII value is added:
 
+```cpp
+std::string displayedString = "Hello, World !";
+displayedString += std::to_string('a');// Hello, World !97
+```
 Convert ``string`` to ``const char*`` using ``c_str()``:
 
 ```cpp
