@@ -29,6 +29,5 @@ string str = "POST / HTTP/1.1\r\nHost: localhost\r\nContent-Type: application/x-
 ```
 The HTTP data from the POST request always lies in the 5th index, so to parse for it, we need to find the 5th "\r\n" first then split the whole POST request started from that 5th "\r\n" index.
 
-**Program**: 
-* [multithread_http_server.cpp](multithread_http_server.cpp): This example is intended for comprehensive and easy to understand the implementation of HTTP server built on TCP API with OOP.
-* [multithread_http_server](multithread_http_server): This example is intended for inheritance for other CPP HTTP server implementation.
+**Program**: [multithread_http_server.cpp](multithread_http_server.cpp)
+
