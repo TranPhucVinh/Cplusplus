@@ -1,5 +1,5 @@
 # Constructor overloading
-We can have multiple constructors in one class, where each constructor can have arguments. This is known as **constructor overloading**, which is quite similar to [function overloading](https://github.com/TranPhucVinh/Cplusplus/tree/master/Introduction/Function#function-overloading).
+We can have **multiple constructors in one class**, where each constructor can have arguments. This is known as **constructor overloading**, which is quite similar to [function overloading](https://github.com/TranPhucVinh/Cplusplus/tree/master/Introduction/Function#function-overloading).
 
 ```cpp
 #include <iostream>
@@ -149,7 +149,7 @@ public_number 3; private_numer 4
 In this program, calling ``class_test object_1`` will call the default constructor (setup by ``class_test() = default``) to setup default value for variables.
 # Implicit conversion, conversion constructor and explicit keyword
 ## Implicit conversion, conversion constructors
-For multiple constructors, beside the setting this argument [in the traditional way](#multiple-constructors-in-one-class-with-arguments), CPP supports implicit conversion which allow setting this constructor argument value by the assignment operator (``=``):
+For multiple constructors, beside the setting their arguments [as constructor-overloading as the traditional way](#constructor-overloading), CPP supports **implicit conversion** which allows setting this constructor argument value by the assignment operator (``=``):
 ```cpp
 #include <iostream>
 
@@ -177,7 +177,7 @@ int main(){
 ```
 All the constructors implemented in the above example are **conversion constructors**. **Conversion constructors** are constructors that convert types of its parameter into a type of the class.
 ## explicit keyword
-**Explicit keyword** will block CPP compiler from back so that you're force to use the [traditional way](#multiple-constructors-in-one-class-with-arguments) to set up constructor value:
+**Explicit keyword** will **block CPP compiler from implicit conversion** so that you're forced to use the [constructor overloading (as the traditional way)](#constructor-overloading) to set up constructor value:
 ```cpp
 class classTest{
 	public:
