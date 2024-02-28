@@ -88,6 +88,11 @@ const std::string& str = "Hello, World !";//Must define with const
 std::cout << str + appended << std::endl;//Hello, World !123
 std::cout << str + " 456" << std::endl;//Hello, World ! 456
 ```
+## Append string at a specific index by std::string::insert()
+```cpp
+string displayString = "124";
+cout << displayString.insert(2, "3") << endl; // 1234
+```
 ## std::string as function argument: Use function argument with lvalue to update string
 
 ```cpp
