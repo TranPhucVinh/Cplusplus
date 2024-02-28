@@ -69,7 +69,61 @@ cc_binary(
 **Build**:  ``bazel build main``
 
 **Run**: ``bazel run main``
+# Test script and main source code in separated files
+**test_script.cpp**
+```cpp
+#include <cppunit/extensions/HelperMacros.h>
+#include <cppunit/ui/text/TestRunner.h>
+#include <unistd.h>
 
+class TestClass : public CppUnit::TestFixture
+{
+	void display_string()
+	{
+		while(1){
+            std::cout << "Hello, World !\n";
+            sleep(1);
+        }
+	}
+
+	CPPUNIT_TEST_SUITE(TestClass);
+	CPPUNIT_TEST(display_string);
+	CPPUNIT_TEST_SUITE_END();
+};
+
+CPPUNIT_TEST_SUITE_REGISTRATION(TestClass);
+```
+**main.cpp**
+```cpp
+#include <cppunit/extensions/HelperMacros.h>
+#include <cppunit/ui/text/TestRunner.h>
+#include <unistd.h>
+
+int main()
+{
+	CPPUNIT_NS::Test *suite = CPPUNIT_NS::TestFactoryRegistry::getRegistry().makeTest();//Get the top level suite from the registry
+	CppUnit::TextUi::TestRunner runner;
+	runner.addTest(suite);//Add test suite
+	runner.run();//Run test suite
+	return 0;
+}
+```
+**BUILD**
+```sh
+cc_binary(
+    name = "test_script",
+    srcs = ["test_script.cpp"],
+    deps = [
+        ":library_name",        
+    ],
+)
+
+cc_library(
+    name = "library_name",
+    srcs = ["main.cpp"],
+    linkopts = ["-lcppunit"],
+)
+```
 # API
 
 ## TestFixture.h
