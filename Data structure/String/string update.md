@@ -1,4 +1,4 @@
-## Append string at the last index
+# Append string at the last index
 
 Using **append()** to append string to string:
 
@@ -41,12 +41,12 @@ const std::string& str = "Hello, World !";//Must define with const
 std::cout << str + appended << std::endl;//Hello, World !123
 std::cout << str + " 456" << std::endl;//Hello, World ! 456
 ```
-## Append string at a specific index by std::string::insert()
+# Append string at a specific index by std::string::insert()
 ```cpp
 string displayString = "124";
 cout << displayString.insert(2, "3") << endl; // 1234
 ```
-## std::string as function argument: Use function argument with lvalue to update string
+# std::string as function argument: Use function argument with lvalue to update string
 
 ```cpp
 void change_str(string &hw){
@@ -60,7 +60,7 @@ int main(){
     cout << str << "; " << str.size() << endl;
 }
 ```
-## Conversion
+# Conversion
 
 **std::to_string()**, which is supported sinced C++11, is used to convert data type like int, float to **std::string**; for **const char*** to **std::string**, simply use explicit cast with **std::string()**:
 ```cpp
