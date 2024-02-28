@@ -195,11 +195,16 @@ cout << str;
 
 # Delete
 
-To clear a ``string``, using ``clear()``:
+To clear a ``string``, use **clear()** and **erase()**:
 
 ```cpp
 string displayed_string = "Hello World !";
 cout << displayed_string << endl;//Hello World !
 displayed_string.clear();
+cout << displayed_string << endl;//(NULL)
+```
+```cpp
+cout << displayed_string << endl;//Hello World !
+displayed_string.erase();
 cout << displayed_string << endl;//(NULL)
 ```
