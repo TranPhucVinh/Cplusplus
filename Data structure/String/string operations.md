@@ -45,7 +45,7 @@ std::cout << displayed_string << std::endl; //Another new string
 
 # Update
 
-## Append string
+## Append string at the last index
 
 Using **append()** to append string to string:
 
