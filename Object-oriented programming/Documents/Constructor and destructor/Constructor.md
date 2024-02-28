@@ -193,6 +193,7 @@ class classTest{
 };
 
 int main(){
+	// MUST NOT DO THIS. THIS GIVES COMPILATION ERROR
     classTest object1 = std::string("Display string"); //Compilation error
     classTest object2 = 19; //Compilation error
 	classTest object3 = {4, 5}; //Compilation error
