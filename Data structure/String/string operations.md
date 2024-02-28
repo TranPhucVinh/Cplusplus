@@ -208,3 +208,11 @@ cout << displayed_string << endl;//Hello World !
 displayed_string.erase();
 cout << displayed_string << endl;//(NULL)
 ```
+Delete **len** characters from index **idx**:
+```cpp
+string& string ::erase(size_type idx, size_type len)
+```
+```cpp
+displayed_string.erase(1, 1);// Delete 1 character from index 1
+cout << displayed_string << endl;// Hllo World !
+```
