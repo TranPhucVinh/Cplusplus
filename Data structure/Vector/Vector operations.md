@@ -95,7 +95,17 @@ int main()
 }
 ```
 # Read
-Find a member by **std::find()** (from algorithm library)
+## Read all vector's members by raw pointer
+
+```cpp
+vector<int> numbers{2,7,11,15};
+int *ptr;// = &numbers[0];
+for (int i = 0; i < numbers.size(); i++){
+    ptr = &numbers[i];
+    cout << *ptr << endl;
+}
+```
+## Find a member by std::find() (from algorithm library)
 ```cpp
 vector<int> vec{10, 20, 30};
 
