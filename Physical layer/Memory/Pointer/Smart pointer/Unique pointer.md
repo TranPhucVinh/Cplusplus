@@ -79,7 +79,7 @@ The direct ``std::unique_ptr<>(new)`` declaration allow using [custom deleter]()
 
 # Using std::move to completely move value from 2 unique pointers
 
-In this example, we can see the object with address ``0x7fff13475d50`` can only be point at one time respectively by ``uniquePtr1`` and ``uniquePtr2``.
+In this example, we can see the object with address ``0x7fff13475d50`` can only be pointed at one time respectively by ``uniquePtr1`` and ``uniquePtr2``.
 	
 ```cpp
 std::unique_ptr<int> uniquePtr1 = std::make_unique<int>(123);
@@ -97,12 +97,12 @@ std::cout << *uniquePtr2 << std::endl;//123
 
 /*
 	After std::move() uniquePtr1 to uniquePtr2, uniquePtr1 will lost all of its 
-	value. Accessing it from now result in segmentation fault
+	value. Accessing it from now results in segmentation fault
 */
 // std::cout << &uniquePtr1 << std::endl;//Segmentation fault
 // std::cout << *uniquePtr1 << std::endl;//Segmentation fault
 ```
-# Using .get() to copy unique pointer value to normal pointer
+# Using .get() to copy unique pointer value to raw pointer
 ```cpp
 int *p;
 std::unique_ptr<int> uniquePtr = std::make_unique<int>(123);
@@ -130,6 +130,7 @@ class classTest{
         void displayString() {
             std::cout << "Hello, World !\n";
         }
+        int number;
 };
 
 int main(){
@@ -137,12 +138,15 @@ int main(){
 
     // As object is an unique pointer so it access the class member by ->
     object->displayString();
+    object->number = 12;
+    std::cout << object->number << endl;
 	std::cout << "Program finished\n";
 }
 ```
 ```
 Constructor of classTest
 Hello, World !
+12
 Program finished
 Destructor of classTest
 ```
