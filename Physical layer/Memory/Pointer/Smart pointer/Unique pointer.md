@@ -2,7 +2,7 @@
 
 [A unique pointer is a pointer which can only point to an object at a time](Unique%20pointer.md#using-stdmove-to-completely-move-value-from-2-unique-pointers). We can assign a different object by removing the current one from the unique pointer. With that feature, we will use unique pointer when we want to have single ownership (exclusive) of a resource.
 
-Unique pointer is supported since **C++11**. Include ``<memory>`` to use it. ``std::make_unique()`` is supported since **C++14**.
+Unique pointer is supported since **C++11**. Include ``<memory>`` to use it. **std::make_unique()** is supported since **C++14**.
 
 # Unique pointer allows setting value to its dereference
 

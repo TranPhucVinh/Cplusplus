@@ -99,7 +99,7 @@ int main()
 
 ```cpp
 vector<int> numbers{2,7,11,15};
-int *ptr;// = &numbers[0];
+int *ptr;
 for (int i = 0; i < numbers.size(); i++){
     ptr = &numbers[i];
     cout << *ptr << endl;
