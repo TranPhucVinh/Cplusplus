@@ -27,9 +27,9 @@ int main()
 { 
     LinkedList *node_0, *node_1, *node_2;
 
-	node_0 = new LinkedList[sizeof(LinkedList)];
-    node_1 = new LinkedList[sizeof(LinkedList)];
-    node_2 = new LinkedList[sizeof(LinkedList)];
+	node_0 = new LinkedList;
+    node_1 = new LinkedList;
+    node_2 = new LinkedList;
 
     node_0->value = 123;
     node_0->insert_next_node(node_1, 456);
