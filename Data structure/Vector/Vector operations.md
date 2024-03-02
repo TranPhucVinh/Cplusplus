@@ -17,6 +17,8 @@ int main()
     }
 }
 ```
+**Note**: Vector members are stored on heap memory, so it doesn't lose its value [when being returned from a function](Vector%20and%20function.md#function-returns-vector).
+
 Member can be set with **push_back()**:
 ```cpp
 vector<int> vec;
