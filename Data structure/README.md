@@ -9,7 +9,10 @@ String document will include
 * [std::string](https://github.com/TranPhucVinh/Cplusplus/tree/master/Introduction/Data%20structure/String#stdstring)
 * [stringstream](https://github.com/TranPhucVinh/Cplusplus/tree/master/Introduction/Data%20structure/String#stringstream)
 # Linked list
-* [Implement a linked list by class and raw pointer](src/linked_list_raw_ptr.cpp)
+Create and read all members of a linked list by:
+* [Raw pointer](src/linked_list_raw_ptr.cpp)
+* [Shared pointer](src/linked_list_shared_ptr.cpp). Unique pointer can't be used to traverse the linked list created by it.
+
 # JSON
 
 Implement [JSON](JSON) with [nlohmann/json](https://github.com/nlohmann/json) library.

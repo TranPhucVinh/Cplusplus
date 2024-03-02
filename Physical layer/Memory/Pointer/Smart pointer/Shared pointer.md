@@ -23,3 +23,5 @@ int main(){
     std::cout << sharedPtr_2.use_count() << std::endl;//2, same as sharedPtr_1
 }
 ```
+# Implementations
+* [Create and read all members of a linked list by shared pointer]()
