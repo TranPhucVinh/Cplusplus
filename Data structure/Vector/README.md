@@ -5,7 +5,7 @@ Vectors are the same as dynamic arrays with the ability to resize itself automat
 **Create**: 
 * Multiple ways to define a vector 
 * const char pointer as member of a vector
-* Class object as member of a vector
+* Class object as a member of a vector
 
 **Read**: Find a member by **std::find()**
 
