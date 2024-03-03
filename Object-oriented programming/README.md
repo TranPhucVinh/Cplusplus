@@ -3,7 +3,7 @@
 * [Method of class](Method%20of%20class.md): [Private method](), [non-static member methods]() and [static member methods]()
 * [Encapsulation](#encapsulation)
 * [Constructor and destructor](Constructor%20and%20destructor): Constructor overloading, default keyword
-* [this pointer](this%20pointer.md)
+* [this pointer](Documents/this%20pointer.md)
 * [Inheritance](Inheritance): [Basic inheritance example as polymorphism](Inheritance/README.md#basic-inheritance-example), [generalization](Inheritance/README.md#generalization), [protect method](Inheritance/README.md#protect-method), [Header files with class and public method](Inheritance#header-files-with-class-and-public-method), [multilevel inheritance]() and [multiple inheritance]()
 * [Virtual function](Inheritance/Virtual%20function.md): [When to use virtual function ?](Inheritance/Virtual%20function.md#when-to-use-virtual-function-), [virtual function definition](Virtual%20function.md#virtual-function-definition) and [implementation](Inheritance/Virtual%20function.md#implementation), [override keyword](Inheritance/Virtual%20function.md#override-keyword), [virtual destructor](Inheritance/Virtual%20function.md#virtual-destructor), [pure virtual function and abstract class](Inheritance/Virtual%20function.md#pure-virtual-function-and-abstract-class)
 * [Binding](#binding): [Early binding]() and [late binding]()
