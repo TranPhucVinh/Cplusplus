@@ -13,6 +13,9 @@ Create and read all members of a linked list by:
 * [Raw pointer with node name](src/linked_list_raw_ptr_with_node_name.cpp)
 * [Shared pointer](src/linked_list_shared_ptr.cpp). Unique pointer can't be used to traverse the linked list created by it.
 
+Reverse a linked list
+* Use stack: Put all member into a stack, then start popping them out (as LIFO) so that the last member of the linked list is now the first one
+* Use recurive: [linked_list_reverse_linked_list_by_recursive.cpp](src/linked_list_reverse_linked_list_by_recursive.cpp)
 # JSON
 
 Implement [JSON](JSON) with [nlohmann/json](https://github.com/nlohmann/json) library.
