@@ -91,7 +91,7 @@ As this pointer is intended for separated class object while static member (func
 Must not call this pointer inside class static function like this:
 
 ```cpp
-//Must not do this,  this give compilation error
+//Must not do this, this give compilation error
 class Header
 {
     public:

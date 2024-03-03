@@ -8,17 +8,22 @@ class LinkedList {
         LinkedList* next_node;
         void insert_node(int value){
             LinkedList* node = new LinkedList;
-            if (!first_node){
-                first_node = node;
-                first_node->value = value;
+            node->value = value;
+            node->next_node = nullptr;
+
+            // This init the first node and set the current node to the first node for later step
+            // to add a new node to the linked list
+            if (!_first_node){
+                _first_node = node;
+                _current_node = node;
             }
             else {
-                node->value = value;
-                this->next_node = node;
+                _current_node->next_node = node;
+                _current_node = _current_node->next_node;
             }
         }
         void display_link_list(){
-            LinkedList *ptr = first_node;
+            LinkedList *ptr = _first_node;
             while(ptr != NULL)
             {        
                 cout << "(" << ptr->value << ") ";
@@ -27,13 +32,23 @@ class LinkedList {
             cout << endl;
         }
         LinkedList(){
-            first_node = nullptr;
+            _first_node = nullptr;
+            _current_node = nullptr;
         }   
+        ~LinkedList(){
+            LinkedList *_current = _first_node;
+            while(_current != NULL)
+            {        
+                LinkedList *_next = _current->next_node;
+                delete _current;
+                _current = _next;
+            }
+        }   
+
     private:
-        LinkedList *first_node;
+        LinkedList *_first_node, *_current_node;
 }; 
 
-// Also add clear
 int main() 
 { 
     LinkedList ll;// Linked list object
