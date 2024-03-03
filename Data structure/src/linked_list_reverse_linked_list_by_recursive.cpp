@@ -51,16 +51,6 @@ class LinkedList {
 
     private:
         LinkedList *_first_node, *_current_node;
-        LinkedList* _reverse(LinkedList *first_node){
-            if (first_node == NULL || first_node->next_node == NULL) return first_node;
-
-            LinkedList* rest = _reverse(first_node->next_node);
-            first_node->next_node->next_node = first_node;
-
-            first_node->next_node = nullptr;
-            return rest;
-        }
-
         void _reverse(LinkedList* prev, LinkedList* current) {
             if (current == nullptr) {
                 // Reached the end of the list, set the head to the last node
