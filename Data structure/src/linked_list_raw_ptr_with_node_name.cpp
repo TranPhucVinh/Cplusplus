@@ -5,7 +5,7 @@ using namespace std;
 class LinkedList { 
     public:
         int value;
-        class LinkedList* next_node;
+        LinkedList* next_node;
         void insert_next_node(LinkedList *next_node, int value){
             next_node->value = value;
             this->next_node = next_node;
@@ -37,5 +37,9 @@ int main()
     node_2->next_node = NULL;
 
     display_link_list(node_0);
+
+    delete node_0;
+    delete node_1;
+    delete node_2;
     return 0; 
 } 

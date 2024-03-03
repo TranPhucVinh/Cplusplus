@@ -10,7 +10,7 @@ String document will include
 * [stringstream](https://github.com/TranPhucVinh/Cplusplus/tree/master/Introduction/Data%20structure/String#stringstream)
 # Linked list
 Create and read all members of a linked list by:
-* [Raw pointer](src/linked_list_raw_ptr.cpp)
+* [Raw pointer with node name](src/linked_list_raw_ptr_with_node_name.cpp)
 * [Shared pointer](src/linked_list_shared_ptr.cpp). Unique pointer can't be used to traverse the linked list created by it.
 
 # JSON
