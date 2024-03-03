@@ -53,7 +53,7 @@ class LinkedList {
         LinkedList *_first_node, *_current_node;
         void _reverse(LinkedList* prev, LinkedList* current) {
             if (current == nullptr) {
-                // Reached the end of the list, set the head to the last node
+                // Reached the end of the list, set the first node to the last node
                 _first_node = prev;
                 return;
             }
