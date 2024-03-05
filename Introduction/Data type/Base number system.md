@@ -8,7 +8,7 @@ cout << int_val << endl;//100 (0b100)
 
 constexpr int b = 3;// Use constexpr to set constant to std::size_t N of std::bitset
 std::bitset<b> int_val = 2;
-cout << int_val << endl;//100 (0b100)
+cout << int_val << endl;//010 (0b010)
 ```
 # hex
 
