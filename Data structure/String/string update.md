@@ -45,6 +45,11 @@ const std::string& str = "Hello, World !";//Must define with const
 std::cout << str + appended << std::endl;//Hello, World !123
 std::cout << str + " 456" << std::endl;//Hello, World ! 456
 ```
+# Append string at first index with + operator
+```cpp
+std::string displayString = "Hello, World ";
+displayString = "123" + displayString;
+```
 # Append string at a specific index by std::string::insert()
 ```cpp
 string displayString = "124";
