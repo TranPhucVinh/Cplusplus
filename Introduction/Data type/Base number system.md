@@ -11,6 +11,24 @@ std::bitset<b> int_val = 2;
 cout << int_val << endl;//010 (0b010)
 ```
 Note: **std::size_t N** must alwasy be const, **std::bitset()** doesn't support variable size
+
+To convert decimal to binary/binary string in CPP, the only way to achieve that is to perform the conversion manually:
+```cpp
+string decToBinaryString(int dec_number) 
+{ 
+    string binary_string;
+    int i = 0; 
+    while (dec_number > 0) { 
+        binary_string += to_string(dec_number % 2);
+        dec_number = dec_number/2; 
+        i++; 
+    } 
+
+    // As we are forming the the binary string by appending, so we need to reverse it
+    reverse(binary_string.begin(), binary_string.end());
+    return binary_string;
+} 
+```
 # hex
 
 ## Print out a hex value
