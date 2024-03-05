@@ -29,6 +29,14 @@ string decToBinaryString(int dec_number)
     return binary_string;
 } 
 ```
+**Implementation**: Given two binary strings a and b, return their sum as a binary string.
+
+If implementing this with **stoull()** to conver the string to binary them start adding 2 number, there will be a limited with a very long binary string like:
+```
+a = "10100000100100110110010000010101111011011001101110111111111101000000101111001110001111100001101"
+b = "110101001011101110001111100110001010100001101011101010000011011011001011101111001100000011011110011"
+```
+The solution for this is to appending the returned string after performing the adding rule of binary value. Source code: [add_binary.cpp](add_binary.cpp)
 # hex
 
 ## Print out a hex value
