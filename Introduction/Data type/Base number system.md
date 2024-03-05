@@ -2,7 +2,8 @@
 CPP supports bitset library to implement binary conversion
 ```cpp
 #include <bitset>
-std::bitset<SZ> int_val = 4;
+#define SZ 3 // Total bits in bit set
+std::bitset<SZ> int_val = 4; // std::bitset<std::size_t N> with N is a constant
 cout << int_val << endl;//100 (0b100)
 ```
 # hex
