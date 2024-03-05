@@ -1,3 +1,10 @@
+# binary
+CPP supports bitset library to implement binary conversion
+```cpp
+#include <bitset>
+std::bitset<SZ> int_val = 4;
+cout << int_val << endl;//100 (0b100)
+```
 # hex
 
 ## Print out a hex value
