@@ -5,6 +5,10 @@ CPP supports bitset library to implement binary conversion
 #define SZ 3 // Total bits in bit set
 std::bitset<SZ> int_val = 4; // std::bitset<std::size_t N> with N is a constant
 cout << int_val << endl;//100 (0b100)
+
+constexpr int b = 3;// Use constexpr to set constant to std::size_t N of std::bitset
+std::bitset<b> int_val = 2;
+cout << int_val << endl;//100 (0b100)
 ```
 # hex
 
