@@ -8,8 +8,8 @@ Get character index of a string and size, length
 std::string displayed_string = "Hello World !";
 
 std::cout << displayed_string[0] << std::endl; //H
-std::cout << displayed_string.size() << std::endl;//13
-std::cout << displayed_string.length() << std::endl;//13
+std::cout << displayed_string.size() << std::endl;//13; not 14 as there is no null delimiter as the last index
+std::cout << displayed_string.length() << std::endl;//13; not 14 as there is no null delimiter as the last index
 
 //Define std::string with const
 const std::string const_str = "const string";
