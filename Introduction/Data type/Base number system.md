@@ -10,6 +10,7 @@ constexpr int b = 3;// Use constexpr to set constant to std::size_t N of std::bi
 std::bitset<b> int_val = 2;
 cout << int_val << endl;//010 (0b010)
 ```
+Note: **std::size_t N** must alwasy be const, **std::bitset()** doesn't support variable size
 # hex
 
 ## Print out a hex value
