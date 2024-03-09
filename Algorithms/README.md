@@ -154,7 +154,7 @@ int main() {
     return 0;
 }
 ```
-For vector:
+**Remove all consecutive duplicates member inside a vector**
 ```cpp
 vector<int> vec = {13, 13, 1, 1, 2, 2, 5, 5, 3, 3, 4, 4, 4};
 
