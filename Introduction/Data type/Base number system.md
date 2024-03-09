@@ -17,11 +17,9 @@ To convert decimal to binary/binary string in CPP, the only way to achieve that 
 string decToBinaryString(int dec_number) 
 { 
     string binary_string;
-    int i = 0; 
     while (dec_number > 0) { 
         binary_string += to_string(dec_number % 2);
         dec_number = dec_number/2; 
-        i++; 
     } 
 
     // As we are forming the the binary string by appending, so we need to reverse it
