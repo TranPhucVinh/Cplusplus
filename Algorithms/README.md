@@ -17,7 +17,7 @@ int main() {
 # std::sort()
 **std::sort()** for sorting an array with **Time Complexity** of **O(N*logN)**
 
-Sorting for array:
+## Sort an array
 ```cpp
 #include <iostream>
 #include <algorithm>    // std::sort
@@ -42,30 +42,26 @@ int main(){
     std::cout << "\n";
 }
 ```
-**Sorting for vector**:
+## Sort a vector
 ```cpp
-#include <iostream>
-#include <vector>
-#include <algorithm>    // std::sort
-
 #define SIZE 6
 
-int main(){
-    std::vector<int> vec{34, 12, 135, 45, 1, 9};
-    std::cout << "Vector before: \n";
-    for (int i=0; i < SIZE; i++){
-		std::cout << vec[i] << " ";
-	}
-    std::cout << "\n";
+std::vector<int> vec{34, 12, 135, 45, 1, 9};
 
-	std::sort(vec.begin(), vec.end());
+std::sort(vec.begin(), vec.end());
 
-    std::cout << "Array after: \n";
-    for (int i=0; i < SIZE; i++){
-		std::cout << vec[i] << " ";
-	}
-    std::cout << "\n";
+for (int i=0; i < SIZE; i++){
+	std::cout << vec[i] << " ";
 }
+```
+## Sort a string array
+```cpp
+string str[] = {"b", "a", "abd", "ab","abc"};
+std::sort(str, str + 5);
+std::cout << endl;
+for (int i=0; i < 5; i++){
+	std::cout << str[i] << " ";
+}// a ab abc abd b
 ```
 # std::reverse()
 Reverse a sequence, e.g a string
