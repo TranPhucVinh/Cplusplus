@@ -154,3 +154,15 @@ int main() {
     return 0;
 }
 ```
+For vector:
+```cpp
+vector<int> vec = {13, 13, 1, 1, 2, 2, 5, 5, 3, 3, 4, 4, 4};
+
+int remove_all_duplicates(vector<int> &vec) {
+    vector<int>::iterator last = std::unique(vec.begin(), vec.end());
+
+    int new_sz = std::distance(vec.begin(), last);// New size
+
+    return new_sz;
+}
+```
