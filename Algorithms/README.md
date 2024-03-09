@@ -119,3 +119,38 @@ for (int i = 0; i < vec.size(); i++){
 }// Result: 10 30 30 10 10 ? ? ? i.e size of vector vec is unchanged after calling std::remove()
 ```
 **Note**: From the array and vector implementations above, we can see that using **std::remove()** don't change the array/vector size.
+## std::unique()
+``std::unique()`` remove all except the first element from every consecutive group of equivalent elements from the range.
+
+Example of an consecutive group: ``{1, 1, 5, 5, 3, 3, 3}``.
+
+**Remove all consecutive duplicates member inside an array**:
+```cpp
+#include <iostream>
+#include <algorithm>
+
+int remove_all_duplicates(int arr[], int arr_sz) {
+    // Use std::unique to move duplicates to the end of the array
+    int* end_ptr = std::unique(arr, arr + arr_sz);
+
+    // Calculate the new array size after removing all duplicates members
+    int new_sz = std::distance(arr, end_ptr);// New size
+
+    return new_sz;
+}
+
+int main() {
+    int array[] = {13, 13, 1, 1, 2, 2, 5, 5, 3, 3, 4, 4, 4};
+    int arr_sz = sizeof(array) / sizeof(int);
+
+    // Remove duplicates
+    int new_sz = remove_all_duplicates(array, arr_sz);
+
+    for (int i = 0; i < new_sz; ++i) {
+        std::cout << array[i] << " ";
+    }
+    std::cout << std::endl;
+
+    return 0;
+}
+```
