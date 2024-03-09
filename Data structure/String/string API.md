@@ -75,8 +75,9 @@ int stoi (string s, size_t* position = 0, int base = 10);
 ```
 ```cpp
 std::string number = "123";
-std::cout << stoi(number, 0, 10) << std::endl;
+std::cout << stoi(number, 0, 10) << std::endl;// 123
 std::cout << stoi("12a34") << std::endl;// 12
+std::cout << stoi("100", 0, 2) << std::endl;// 4; convert binary string 100 to decimal number 0d4
 ```
 ```cpp
 // This will give error: 'std::invalid_argument'

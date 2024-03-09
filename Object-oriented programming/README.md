@@ -1,13 +1,13 @@
 [Fundamental concepts](Fundamental%20concepts.md) include:
 * [Definition of class](Fundamental%20concepts.md#what-is-class-), [define variable and function for a class](Fundamental%20concepts.md#define-variable-and-function-for-a-class), [types of variables in class](Fundamental%20concepts.md#types-of-class-variables)
-* [Method of class](Method%20of%20class.md): [Private method](), [non-static member methods]() and [static member methods]()
+* [Method of class](Documents/Method%20of%20class.md): [Private method](), [non-static member methods]() and [static member methods]()
 * [Encapsulation](#encapsulation)
 * [Constructor and destructor](Constructor%20and%20destructor): Constructor overloading, default keyword
 * [this pointer](Documents/this%20pointer.md)
 * [Inheritance](Inheritance): [Basic inheritance example as polymorphism](Inheritance/README.md#basic-inheritance-example), [generalization](Inheritance/README.md#generalization), [protect method](Inheritance/README.md#protect-method), [Header files with class and public method](Inheritance#header-files-with-class-and-public-method), [multilevel inheritance]() and [multiple inheritance]()
 * [Virtual function](Inheritance/Virtual%20function.md): [When to use virtual function ?](Inheritance/Virtual%20function.md#when-to-use-virtual-function-), [virtual function definition](Virtual%20function.md#virtual-function-definition) and [implementation](Inheritance/Virtual%20function.md#implementation), [override keyword](Inheritance/Virtual%20function.md#override-keyword), [virtual destructor](Inheritance/Virtual%20function.md#virtual-destructor), [pure virtual function and abstract class](Inheritance/Virtual%20function.md#pure-virtual-function-and-abstract-class)
 * [Binding](#binding): [Early binding]() and [late binding]()
-* [const](const.md): [const function](const.md#const-function), [const object](const.md#const-object) and [mutable](const.md#mutable)
+* [const](Documents/const.md): [const function](Documents/const.md#const-function), [const object](Documents/const.md#const-object) and [mutable](Documents/const.md#mutable)
 * [friend](friend.md): [friend class](Documents/friend.md#friend-class), [friend function](friend.md#friend-function): Use [a global function](friend.md#use-a-global-function-as-a-friend-method-to-change-public-and-private-member-of-an-object) and [a class method](friend.md#use-a-class-method-as-a-friend-method-to-change-public-and-private-member-of-an-object) as a friend method to change public and private member of an object.
 
 [Example](Example)

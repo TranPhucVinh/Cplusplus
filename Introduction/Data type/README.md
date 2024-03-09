@@ -1,5 +1,6 @@
 # [Base number system](Base%20number%20system.md)
 
+* [binary](Base%20number%20system.md#binary)
 * [hex](Base%20number%20system.md#hex)
 * [dec](Base%20number%20system.md#dec)
 * [oct](Base%20number%20system.md#oct)

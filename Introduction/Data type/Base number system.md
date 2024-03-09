@@ -1,3 +1,42 @@
+# binary
+CPP supports bitset library to implement binary conversion
+```cpp
+#include <bitset>
+#define SZ 3 // Total bits in bit set
+std::bitset<SZ> int_val = 4; // std::bitset<std::size_t N> with N is a constant
+cout << int_val << endl;//100 (0b100)
+
+constexpr int b = 3;// Use constexpr to set constant to std::size_t N of std::bitset
+std::bitset<b> int_val = 2;
+cout << int_val << endl;//010 (0b010)
+```
+Note: **std::size_t N** must alwasy be const, **std::bitset()** doesn't support variable size
+
+To convert decimal to binary/binary string in CPP, the only way to achieve that is to perform the conversion by looping calculation:
+```cpp
+string decToBinaryString(int dec_number) 
+{ 
+    string binary_string;
+    int i = 0; 
+    while (dec_number > 0) { 
+        binary_string += to_string(dec_number % 2);
+        dec_number = dec_number/2; 
+        i++; 
+    } 
+
+    // As we are forming the the binary string by appending, so we need to reverse it
+    reverse(binary_string.begin(), binary_string.end());
+    return binary_string;
+} 
+```
+**Implementation**: Given two binary strings a and b, return their sum as a binary string.
+
+If implementing this with **stoull()** to conver the string to binary them start adding 2 number, there will be a limited with a very long binary string like:
+```
+a = "10100000100100110110010000010101111011011001101110111111111101000000101111001110001111100001101"
+b = "110101001011101110001111100110001010100001101011101010000011011011001011101111001100000011011110011"
+```
+The solution for this is to appending the returned string after performing the adding rule of binary value. Source code: [add_binary.cpp](add_binary.cpp)
 # hex
 
 ## Print out a hex value

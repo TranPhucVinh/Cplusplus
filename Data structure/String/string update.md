@@ -1,4 +1,4 @@
-# Append string at the last index
+# Append and remove string at the last index
 
 Using **append()** to append string to string:
 
@@ -16,8 +16,12 @@ string displayed_string = "Hello World !";
 displayed_string.push_back('A');//Hello World !A
 ```
 
-``string`` type has no member ``pop_back()``.
-
+Since C++11, ``string`` supports **pop_back()**, which allow removing/popping the last index member out from the string:
+```cpp
+string displayString = "Hello, World";
+displayString.pop_back();
+cout << displayString << endl; //Hello, Worl
+```    
 Using **+** operator to add a character to a string (same operation for a new empty string):
 
 ```cpp
@@ -40,6 +44,11 @@ std::string appended = "123";
 const std::string& str = "Hello, World !";//Must define with const
 std::cout << str + appended << std::endl;//Hello, World !123
 std::cout << str + " 456" << std::endl;//Hello, World ! 456
+```
+# Append string at first index with + operator
+```cpp
+std::string displayString = "Hello, World ";
+displayString = "123" + displayString;
 ```
 # Append string at a specific index by std::string::insert()
 ```cpp
