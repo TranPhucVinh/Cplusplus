@@ -31,9 +31,9 @@ while (index != string::npos) {
 cout << endl;
 cout << "Total found: " << found << endl;
 ```
-**Split a string into substring separated by spaces**:
+**Split a string into substring separated by space**:
 ```cpp
-void reverseWords(string s) {
+void splitStringBySpace(string s) {
     vector<string> all_substr;
     std::size_t index = s.find(" ", 0);
     string sub_str  = s.substr(0, index);
@@ -50,7 +50,7 @@ void reverseWords(string s) {
     all_substr.push_back(sub_str);// Push the last sub_str after the last space to vector all_substr
 
     for (int i = 0; i < all_substr.size(); i++){
-        cout << all_substr[i] << " ";
+        cout << all_substr[i] << endl;
     }
 }
 ```
