@@ -12,6 +12,16 @@ cout << int_val << endl;//010 (0b010)
 ```
 Note: **std::size_t N** must alwasy be const, **std::bitset()** doesn't support variable size
 
+**std::bitset()** will be useful when converting a negative number to binary when specifying the range of bit "1" for two's complement:
+```cpp
+std::bitset<32> int_val = -15;
+cout << int_val << endl;// 11111111111111111111111111110001
+```
+**std::bitset()** has **to_string()** to convert its value to **std::string**:
+```cpp
+std::bitset<32> int_val = 1;
+cout << int_val.to_string() << endl;
+```
 To **convert decimal to binary/binary string** in CPP, the only way to achieve that is to perform the conversion by looping calculation:
 ```cpp
 string decToBinaryString(int dec_number) 
@@ -22,7 +32,7 @@ string decToBinaryString(int dec_number)
         dec_number = dec_number/2; 
     } 
 
-    // As we are forming the the binary string by appending, so we need to reverse it
+    // As we are forming the binary string by appending, so we need to reverse it
     reverse(binary_string.begin(), binary_string.end());
     return binary_string;
 } 
