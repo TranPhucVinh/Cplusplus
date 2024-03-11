@@ -45,7 +45,7 @@ const std::string& str = "Hello, World !";//Must define with const
 std::cout << str + appended << std::endl;//Hello, World !123
 std::cout << str + " 456" << std::endl;//Hello, World ! 456
 ```
-Append a character to a string:
+**Append a character to a string**:
 ```cpp
 std::string displayedString = "Hello, World !";
 displayedString += 'a';// Hello, World !a
