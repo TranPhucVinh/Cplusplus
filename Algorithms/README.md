@@ -78,6 +78,27 @@ std::reverse(str.begin(), index);
 std::cout << str; // 432156789
 ```
 **std::reverse()** returns void, so don't assign it to any variable.
+# std::rotate()
+``std::rotate()`` rotates a sequence. Rotate means moving the first element of a sequence to its end.
+
+```cpp
+std::rotate(first, middle, last);
+```
+* **first**: the beginning of the sequence
+* **middle**: the element that should appear at the beginning of the rotated sequence
+* **last**:	the end of the original sequence
+```cpp
+#include <algorithm>
+
+int arr[] = {5, 1, 4, 3, 7, 6};
+
+std::rotate(arr, arr + 1, arr + 6);
+for (int i = 0; i < 6; i++) cout << arr[i] << " ";// 1 4 3 7 6 5
+```
+Rotate a string:
+```cpp
+std::rotate(str.begin(), str.begin() + 1, str.end());// Middle must not be str[1]
+```
 # std::remove()
 
 Remove all occurence of a member in a sequence, e.g array, vector,..
