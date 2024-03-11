@@ -79,7 +79,7 @@ std::cout << str; // 432156789
 ```
 **std::reverse()** returns void, so don't assign it to any variable.
 # std::rotate()
-``std::rotate()`` rotates a sequence to the left. Left rotate means moving the first element of a sequence to its end.
+``std::rotate()`` rotates a sequence. For **left rotation**, move the first element of a sequence to its end. For **right rotation**, move the last element of a sequence to its first.
 
 ```cpp
 std::rotate(first, middle, last);
@@ -102,6 +102,10 @@ std::rotate(str.begin(), str.begin() + 1, str.end());// Middle must not be str[1
 Left rotate a vector:
 ```cpp
 std::rotate(vect.begin(), vect.begin() + 1, vect.end());
+```
+Right rotate a vector:
+```cpp
+std::rotate(vect.begin(), vect.end() - 1, vect.end());
 ```
 # std::remove()
 
