@@ -79,7 +79,7 @@ std::cout << str; // 432156789
 ```
 **std::reverse()** returns void, so don't assign it to any variable.
 # std::rotate()
-``std::rotate()`` rotates a sequence. Rotate means moving the first element of a sequence to its end.
+``std::rotate()`` rotates a sequence to the left. Left rotate means moving the first element of a sequence to its end.
 
 ```cpp
 std::rotate(first, middle, last);
@@ -95,9 +95,13 @@ int arr[] = {5, 1, 4, 3, 7, 6};
 std::rotate(arr, arr + 1, arr + 6);
 for (int i = 0; i < 6; i++) cout << arr[i] << " ";// 1 4 3 7 6 5
 ```
-Rotate a string:
+Left rotate a string:
 ```cpp
 std::rotate(str.begin(), str.begin() + 1, str.end());// Middle must not be str[1]
+```
+Left rotate a vector:
+```cpp
+std::rotate(vect.begin(), vect.begin() + 1, vect.end());
 ```
 # std::remove()
 
