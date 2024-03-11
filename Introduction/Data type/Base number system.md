@@ -12,7 +12,7 @@ cout << int_val << endl;//010 (0b010)
 ```
 Note: **std::size_t N** must alwasy be const, **std::bitset()** doesn't support variable size
 
-To convert decimal to binary/binary string in CPP, the only way to achieve that is to perform the conversion by looping calculation:
+To **convert decimal to binary/binary string** in CPP, the only way to achieve that is to perform the conversion by looping calculation:
 ```cpp
 string decToBinaryString(int dec_number) 
 { 
