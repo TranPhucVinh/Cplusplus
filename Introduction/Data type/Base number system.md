@@ -109,7 +109,7 @@ int a = 0x11;
 cout << dec << 9 << endl;//9
 cout << dec << a << endl;//17
 ```
-
+Adding number which is bigger than long long size will be impossible with ``+`` operator. A workaround for it is to convert them to string then start adding: [add_numbers_bigger_than_long.cpp](add_numbers_bigger_than_long.cpp)
 # oct
 
 ```c
