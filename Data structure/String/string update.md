@@ -102,6 +102,10 @@ For **char** (a single character) with **std::to_string()**, its ASCII value is 
 std::string displayedString = "Hello, World !";
 displayedString += std::to_string('a');// Hello, World !97
 ```
+Use **std::string()** directly:
+```cpp
+cout << std::string(1, 'a') << endl;// Convert character 'a' to "a"
+```
 Convert ``string`` to ``const char*`` using ``c_str()``:
 
 ```cpp
