@@ -1,4 +1,4 @@
-# One thread function handler to increase a share value
+# 2 threads increase a shared variable
 
 ```cpp
 #include <iostream>
@@ -24,35 +24,28 @@ int main()
 ```
 **Result**: ``share_value after executing 2 threads: 1053188`` (expected ``2000000``)
 
-# std::mutex
+# [std::mutex](Mutex.md)
 
-## lock()
+Use std::mutex for [2 threads increase a shared variable issue]().
 
-```cpp
-void std::mutex::lock()
-```
+# std::atomic
 
-``lock()`` will wait until the mutex is successfully locked.
+An atomic operation is an indivisible operation. CPP atomic provides atomic types and operations that ensure safe access to variables, preventing data races and potential issues in multithreaded code, allowing threads to access and modify variables safely, without explicit locks or synchronization mechanisms.
 
-Use ``std::mutex::lock()`` for [One thread function handler to increase a share value]():
+Use std::atomic to solve the [2 threads increase a shared variable issue]():
 
 ```cpp
 #include <iostream>
 #include <thread>
-#include <mutex>
+#include <atomic>
 
 #define RANGE 1000000
 
-int share_value;
-std::mutex _mutex;
+std::atomic<int> shared_value;
 
 void thread_func()
 {
-    for (int i = 0; i < RANGE; i++) {
-		_mutex.lock();
-		share_value++;
-		_mutex.unlock();
-	}
+    for (int i = 0; i < RANGE; i++) shared_value++;
 }
 
 int main()
@@ -60,104 +53,7 @@ int main()
     std::thread thread_1(thread_func), thread_2(thread_func);
     thread_1.join();
 	thread_2.join();
-	printf("share_value after executing 2 threads: %d\n", share_value);
+	std::cout << shared_value << std::endl;
     return 0;
 }
 ```
-
-## try_lock()
-
-```cpp
-bool std::mutex::try_lock()
-```
-
-``try_lock()`` will check if the mutex is available for locking and return immediately without waiting.
-
-Return:
-* ``true``: Success
-* ``false``: Fail
-
-Use ``std::mutex::try_lock()`` for [One thread function handler to increase a share value]():
-
-```cpp
-void thread_func()
-{
-    for (int i = 0; i < RANGE; i++) {
-		if (_mutex.try_lock()){
-            share_value++;
-            _mutex.unlock();
-        } else printf("Fail to lock mutex\n");
-	}
-}
-//Other operations are like One thread function handler to increase a share value
-```
-**Result**:
-
-```
-...
-Fail to lock mutex
-Fail to lock mutex
-share_value after executing 2 threads: 1987206
-```
-# Timed mutex
-## try_lock_for()
-```cpp
-std::timed_mutex::try_lock_for()
-```
-
-``try_lock_for()`` will try to lock the mutex for a chrono time period. ``try_lock_for()`` will block the program until specified chrono time period has elapsed or the lock is acquired, whichever comes first
-
-Return:
-* ``true``: Success
-* ``false``: Fail
-
-```cpp
-std::timed_mutex tm;
-void thread_func()
-{
-    for (int i = 0; i < RANGE; i++) {
-		if (tm.try_lock_for(std::chrono::seconds(1))){
-            share_value++;
-            tm.unlock();
-        } else printf("Fail to lock mutex\n");
-	}
-}
-//Other operations are like One thread function handler to increase a share value
-```
-**Result**: ``share_value after executing 2 threads: 2000000``
-## try_lock_until()
-Work like [try_lock_for()](#try_lock_for), but the wait time is set from current time.
-```cpp
-std::timed_mutex tm;
-void thread_func()
-{
-	auto now=std::chrono::steady_clock::now();
-	for (int i = 0; i < RANGE; i++) {
-		if (tm.try_lock_until(now + std::chrono::seconds(10))){
-            share_value++;
-			tm.unlock();
-        } else printf("Fail to lock mutex\n");
-	}
-}
-//Other operations are like One thread function handler to increase a share value
-```
-# lock_guard
-**Resource Acquisition Is Initialization**, abbreviated **RAII**, is a C++ programming technique which binds the life cycle of a resource that must be acquired before use, like locked mutex.
-
-The class ``lock_guard`` is a mutex wrapper that provides a convenient RAII-style mechanism for owning a mutex for the duration of a scoped block. The ``lock_guard`` lock of the mutex will be automatically remove when goes out of the scope.
-
-```cpp
-#include <mutex>
-
-std::mutex _mutex;
-
-int share_value;
-
-void thread_func()
-{
-	std::lock_guard<std::mutex> lock(_mutex);
-  for (int i = 0; i < RANGE; i++) share_value++;
-}
-//Other operations are like One thread function handler to increase a share value
-```
-**Result**: ``share_value after executing 2 threads: 2000000``
