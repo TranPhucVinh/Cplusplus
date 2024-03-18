@@ -3,16 +3,9 @@
 # std::find()
 **std::find()** returns the first occurrence of a given element in a container. We can use this function with vectors and keep searching for the given element repeatedly till the end to find all the occurrences.
 # std::min()
+**std::min()** returns the min between 2 arguments
 ```cpp
-#include <iostream>
-#include <algorithm>//For min_element
-
-using namespace std;
-
-int main() {
-	int a = std::min(12, 34);
-	cout << a << endl;
-}
+int a = std::min(12, 34);
 ```
 # std::sort()
 **std::sort()** for sorting an array with **Time Complexity** of **O(N*logN)**
