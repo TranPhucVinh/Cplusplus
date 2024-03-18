@@ -135,6 +135,7 @@ void thread_func()
 //Other operations are like One thread function handler to increase a share value
 ```
 **Result**: ``share_value after executing 2 threads: 2000000``
+
 # std::unique_lock
 
 Use ``unique_lock`` to solve the [One thread function handler to increase a share value](Race%20condition.md#one-thread-function-handler-to-increase-a-share-value) issue:
