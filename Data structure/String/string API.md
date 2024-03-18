@@ -31,29 +31,37 @@ while (index != string::npos) {
 cout << endl;
 cout << "Total found: " << found << endl;
 ```
-## Split a string into substring separated by space
+## Split a string into substrings separated by space
 ```cpp
 void splitStringBySpace(string s) {
     vector<string> all_substr;
-    std::size_t index = s.find(" ", 0);
+    std::size_t index = s.find(' ', 0);
     string sub_str  = s.substr(0, index);
     string new_string = s.substr(index+1);
 
     while (index != string::npos) { 
-        all_substr.push_back(sub_str);
-        
+        if (sub_str != " " && sub_str.size() >= 1) {
+            // cout << "not equal: " << sub_str.size() << endl;
+            all_substr.push_back(sub_str);
+        }
+
         index = new_string.find(" ", 0);
         sub_str  = new_string.substr(0, index);
         new_string = new_string.substr(index+1);
     }
 
-    all_substr.push_back(sub_str);// Push the last sub_str after the last space to vector all_substr
+    if (sub_str != " " && sub_str.size() >= 1) {
+        all_substr.push_back(sub_str);
+    }
 
     for (int i = 0; i < all_substr.size(); i++){
         cout << all_substr[i] << endl;
     }
 }
 ```
+Test cases:
+1. "Hello, World !"
+2. "          H e llo,          world !         "
 # compare()
 
 ```cpp
