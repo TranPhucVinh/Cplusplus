@@ -16,7 +16,7 @@ string str = "123 Hello123456Hello789Hello";
 std::size_t index = str.find("Hello");
 if ( index != string::npos) cout << index << endl;// 4
 ```
-Found all substring cccurrence inside a string:
+## Found all substring occcurrence inside a string
 ```cpp
 int found = 0;
 string str = "123 Hello123456Hello789Hello";
@@ -31,7 +31,7 @@ while (index != string::npos) {
 cout << endl;
 cout << "Total found: " << found << endl;
 ```
-**Split a string into substring separated by space**:
+## Split a string into substring separated by space
 ```cpp
 void splitStringBySpace(string s) {
     vector<string> all_substr;
