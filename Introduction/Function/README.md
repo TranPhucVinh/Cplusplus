@@ -47,8 +47,10 @@ for_each (InputIterator start_iter, InputIterator last_iter, Function fnc);
 
 ```cpp
 #include <iostream>
-#include <array>
+#include <vector>
 #include <algorithm> // for_each()
+
+using namespace std;
 
 // The for_each function handler must have only 1 argument which is the current element in the current iteration
 void display(int a){
@@ -60,11 +62,11 @@ void display_arg(int a){
 int main ()
 {
 	int arr[] = {1, 2, 3};
-	std::array<int, 4> int_arr = {1, 2, 3, 4};
+	vector<int> vect = {1, 2, 3, 4};
 
 	std::for_each(arr, arr + 3, display_arg);
-	std::for_each(int_arr.begin(), int_arr.end(), display);
-	std::for_each(int_arr.begin(), int_arr.end(), display_arg);
+	std::for_each(vect.begin(), vect.end(), display);
+	std::for_each(vect.begin(), vect.end(), display_arg);
 
 	return 0;
 }
