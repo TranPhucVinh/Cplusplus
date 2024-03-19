@@ -58,3 +58,7 @@ int main()
     return 0;
 }
 ```
+**std::atomic_int** can also be used, as **std::atomic_int** is simply as typedef of **std::atomic<int>** 
+```cpp
+std::atomic_int shared_value; 
+```
