@@ -36,3 +36,11 @@ int main()
     return 0;
 }
 ```
+Lambda function in [for_each()](https://github.com/TranPhucVinh/Cplusplus/tree/master/Introduction/Function#for_each):
+```cpp
+vector<int> vect = {1, 2, 3, 4};
+
+std::for_each(vect.begin(), vect.end(), [](int a){ // Lambda function to print out all members of the vector
+	std::cout << a << " ";
+});
+```
