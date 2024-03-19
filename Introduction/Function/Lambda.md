@@ -23,12 +23,12 @@ int main()
 }
 ```
 
-Define function by Lambda:
+Define function by Lambda, **auto** must be used:
 
 ```cpp
 int main()
 {
-	// As this is anonymous function so use auto
+	// As this is anonymous function, auto must be used
 	auto return_int = [](int a){
 		return a;
 	};
