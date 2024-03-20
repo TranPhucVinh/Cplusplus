@@ -5,7 +5,7 @@ std::map<key, value> Map;
 ```
 Map is supported since [C++11](https://github.com/TranPhucVinh/Cplusplus#c11).
 
-A similar data structure to map is a [vector]() including a struct/class object which has key and the value. However, finding a specific member inside that vector require looping all over all member inside that vector while in map, that finding process just simple access the value.
+A similar data structure to map is a [vector]() including a struct/class object which has key and the value. However, finding a specific member inside that vector require looping all over all member inside that vector while **in map, that finding process just simply access the value**.
 
 # Create a map and read all of its objects
 
