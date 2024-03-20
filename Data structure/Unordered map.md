@@ -24,3 +24,19 @@ int main()
     return 0;
 }
 ```
+# Count total duplicate chars inside a string
+```cpp
+std::string str = "1210";
+std::unordered_map<char, int> umap;
+
+for (int i = 0; i < str.size(); i++){
+    umap[str[i]] += 1;
+}
+
+std::unordered_map<char, int>::iterator itr;
+
+for (itr = umap.begin(); itr != umap.end(); itr++) 
+{ 
+    std::cout << itr->first << " appears " << itr->second << " times" << std::endl;
+}
+```
