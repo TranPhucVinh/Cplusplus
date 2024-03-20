@@ -135,4 +135,30 @@ for (auto &el: Map){
 }
 ```
 # Implementations
-**Convert a valid Roman numerals to integer**: [roman_numerals_and_integer_conversion.cpp](roman_numerals_and_integer_conversion.cpp)
+# Use map to count total duplicate numbers inside an array
+```cpp
+#include <iostream>
+#include <map> 
+
+int array[] = {5, 7, 9, 9, 10, 11, 13, 13, 13, 16};
+
+int main()
+{
+	std::map<int, int> Map;
+
+    for (int i = 0; i < sizeof(array)/sizeof(int); i++){
+        Map[array[i]] += 1;
+    }
+
+    std::map<int, int>::iterator itr;
+
+    for (itr=Map.begin(); itr != Map.end(); itr++) 
+    { 
+        std::cout << itr->first << " appears " << itr->second << " times" << std::endl;
+    } 
+
+    return 0;
+}
+```
+## Convert a valid Roman numerals to integer
+[roman_numerals_and_integer_conversion.cpp](roman_numerals_and_integer_conversion.cpp)
