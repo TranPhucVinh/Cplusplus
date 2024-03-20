@@ -140,7 +140,7 @@ for (auto &el: Map){
 #include <iostream>
 #include <map> 
 
-int array[] = {5, 7, 9, 9, 10, 11, 13, 13, 13, 16};
+int array[] = {5, 7, 9, 9, 10, 11, 13, 13, 13, 16, 1,5,-2, -2,-4,0};
 
 int main()
 {
