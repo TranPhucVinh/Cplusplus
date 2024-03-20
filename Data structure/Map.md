@@ -135,7 +135,7 @@ for (auto &el: Map){
 }
 ```
 # Implementations
-# Use map to count total duplicate numbers inside an array
+## Use map to count total duplicate numbers inside an array
 ```cpp
 #include <iostream>
 #include <map> 
