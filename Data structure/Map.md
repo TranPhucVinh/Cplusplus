@@ -135,7 +135,7 @@ for (auto &el: Map){
 }
 ```
 # Implementations
-## Use map to count total duplicate numbers inside an array
+## Count total duplicate numbers inside an array
 ```cpp
 #include <iostream>
 #include <map> 
@@ -160,5 +160,6 @@ int main()
     return 0;
 }
 ```
+## Find common characters in words
 ## Convert a valid Roman numerals to integer
 [roman_numerals_and_integer_conversion.cpp](roman_numerals_and_integer_conversion.cpp)
