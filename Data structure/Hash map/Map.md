@@ -38,7 +38,7 @@ Map, key 123
 1, key: 123; value: Map, key 123
 2, key: 456; value: Map, key 456
 ```
-**Note**: Map key must be unique, if using the same key, it will be overwritten by the latest one
+**Note**: Map key must be unique. If using the same key, it will be overwritten by the latest one
 ```cpp
 Map[1] = "Map, key 1";
 Map[1] = "Map, key 1234";
