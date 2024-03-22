@@ -38,7 +38,21 @@ Map, key 123
 1, key: 123; value: Map, key 123
 2, key: 456; value: Map, key 456
 ```
-**Traverse by iterator**
+**Note**: Map key must be unique, if using the same key, it will be overwritten by the latest one
+```cpp
+Map[1] = "Map, key 1";
+Map[1] = "Map, key 1234";
+Map[123] = "Map, key 123";
+Map[456] = "Map, key 456";
+```
+**Result**
+```
+0, key: 1; value: Map, key 1234
+1, key: 123; value: Map, key 123
+2, key: 456; value: Map, key 456
+Map size: 3
+```
+## Traverse by iterator
 ```cpp
 int map_index = 0;
 std::map<int, std::string>::iterator el = Map.begin();
