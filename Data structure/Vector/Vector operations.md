@@ -135,7 +135,7 @@ iter = find(vec.begin(), vec.end(), 30);
 ```
 # Update
 
-Update vector at specific by index
+## Update vector at specific by index
 
 ```cpp
 vector<int> vec;
@@ -155,3 +155,8 @@ for (int i = 0; i < vec.size(); i++){
     cout << vec[i] << endl;
 }
 ```
+## Update vector size by resize()
+
+# Delete
+
+## Delete vector member at index by erase()
