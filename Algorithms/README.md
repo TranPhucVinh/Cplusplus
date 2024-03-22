@@ -37,13 +37,11 @@ int main(){
 ```
 ## Sort a vector
 ```cpp
-#define SIZE 6
-
 std::vector<int> vec{34, 12, 135, 45, 1, 9};
 
 std::sort(vec.begin(), vec.end());
 
-for (int i=0; i < SIZE; i++){
+for (int i=0; i < vec.size(); i++){
 	std::cout << vec[i] << " ";
 }
 ```

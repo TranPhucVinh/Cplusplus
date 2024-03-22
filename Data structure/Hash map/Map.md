@@ -5,7 +5,7 @@ std::map<key, value> Map;
 ```
 Map is supported since [C++11](https://github.com/TranPhucVinh/Cplusplus#c11).
 
-A similar data structure to map is a [vector]() including a struct/class object which has key and the value. However, finding a specific member inside that vector require looping all over all member inside that vector while **in map, that finding process just simply access the value**.
+A similar data structure to map is a [vector]() including a struct/class object which has key and the value. However, finding a specific member inside that vector require looping over all member inside that vector while **in map, that finding process just simply access the value**.
 
 # Create a map and read all of its objects
 
@@ -57,7 +57,7 @@ std::map<int, std::string>::iterator el = Map.begin();
 std::advance(el, map_index);
 std::cout << map_index << ", key: " << el->first << "; value: " << el->second << std::endl;
 ```
-## std::map is an ordered list of member arranged by ascending order of their keys
+## std::map is an ordered list of member arranged by the ascending order of their keys
 ```cpp
 std::map<int, std::string> Map;
 Map[456] = "Map, key 456";
