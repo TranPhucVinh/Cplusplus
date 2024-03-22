@@ -114,25 +114,13 @@ Map["str_1"] = "Map, key str_1";
 Map["str_2"] = "Map, key str_2";
 Map["str_3"] = "Map, key str_3";
 ```
-# Insert a new member to the map
+# insert() to insert std::pair into map
 
 ```cpp
-std::map<int, std::string> Map;
-Map[1] = "Map, key 1";
-Map[123] = "Map, key 123";
-Map[456] = "Map, key 456";
+std::map<int, int> Map;
 
-std::cout << "Map before inserting\n";
-for (auto &el: Map){
-    std::cout << el.first << " " << el.second << std::endl;
-}
-
-Map.insert(std::make_pair(789, "Newly insert value"));
-
-std::cout << "Map after inserting\n";
-for (auto &el: Map){
-    std::cout << el.first << " " << el.second << std::endl;
-}
+std::pair<int, int> pair_obj(1, 2);
+Map.insert(pair_obj);
 ```
 # Implementations
 ## Count total duplicate numbers inside an array
@@ -140,7 +128,7 @@ for (auto &el: Map){
 #include <iostream>
 #include <map> 
 
-int array[] = {5, 7, 9, 9, 10, 11, 13, 13, 13, 16, 1,5,-2, -2,-4,0};
+int array[] = {5, 7, 9, 9, 10, 11, 13, 13, 13, 16, 1, 5, -2, -2,-4, 0};
 
 int main()
 {
