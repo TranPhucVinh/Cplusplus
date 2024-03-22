@@ -29,7 +29,8 @@ Implement [JSON](JSON) with [nlohmann/json](https://github.com/nlohmann/json) li
 * [Pure virtual function and abstract class in struct](struct.md#pure-virtual-function-and-abstract-class-in-struct)
 # [Stack](Stack)
 * Build stack with array: [stack_with_array.cpp](Stack/stack_with_array.cpp)
-* Build stack with array which support multiple data type by using [template](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/Function/Template.md): [stack_genertic.cpp](Stack/stack_genertic.cpp)
+* Build stack with array which supports multiple data type by using [template](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/Function/Template.md): [stack_generic.cpp](Stack/stack_generic.cpp)
+
 # Queue
 
 Create a queue to store all int variable then read all those value.
