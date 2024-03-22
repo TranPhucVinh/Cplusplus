@@ -1,0 +1,3 @@
+A **hash table**, also known as a **hash map** or a **hash set**, is a data structure that implements an associative array, also called a dictionary, which is an abstract data type that maps keys to values.
+
+A **hashing algorithm** or **hash function**, is a calculation applied to a key, which might be a very large number or a very long string, to transform it to a relatively small indexed number that corresponds to a position in the hash table. 
