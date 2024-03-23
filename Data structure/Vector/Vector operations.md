@@ -159,4 +159,15 @@ for (int i = 0; i < vec.size(); i++){
 
 # Delete
 
-## Delete vector member at index by erase()
+## Delete vector member by erase()
+
+**std::erase()** removes the first encountered value of a sequence, based on the iterator:
+
+```cpp
+#define VALUE 20
+std::vector<int> vec{10,20,30,30,20,10,10,20};
+
+std::vector<int>::iterator vec_iter = std::find(vec.begin(), vec.end(), VALUE);
+
+if (vec_iter != vec.end()) vec.erase(vec_iter);// 10 30 30 20 10 10 20 (the first vector member has value 20 is removed)
+```

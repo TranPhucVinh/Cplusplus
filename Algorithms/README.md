@@ -1,7 +1,7 @@
 # [for_each()](https://github.com/TranPhucVinh/Cplusplus/tree/master/Introduction/Function#for_each)
 
 # std::find()
-**std::find()** returns the first occurrence of a given element in a container. We can use this function with vectors and keep searching for the given element repeatedly till the end to find all the occurrences.
+**std::find()** returns the **first occurrence** of a given element in a container. We can use this function with vectors and keep searching for the given element repeatedly till the end to find all the occurrences.
 # std::min()
 **std::min()** returns the min between 2 arguments
 ```cpp
