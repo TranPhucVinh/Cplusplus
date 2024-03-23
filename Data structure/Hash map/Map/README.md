@@ -136,32 +136,3 @@ std::map<int, int> Map;
 std::pair<int, int> pair_obj(1, 2);
 Map.insert(pair_obj);
 ```
-# Implementations
-## Count total duplicate numbers inside an array
-```cpp
-#include <iostream>
-#include <map> 
-
-int array[] = {5, 7, 9, 9, 10, 11, 13, 13, 13, 16, 1, 5, -2, -2,-4, 0};
-
-int main()
-{
-	std::map<int, int> Map;
-
-    for (int i = 0; i < sizeof(array)/sizeof(int); i++){
-        Map[array[i]] += 1;
-    }
-
-    std::map<int, int>::iterator itr;
-
-    for (itr=Map.begin(); itr != Map.end(); itr++) 
-    { 
-        std::cout << itr->first << " appears " << itr->second << " times" << std::endl;
-    } 
-
-    return 0;
-}
-```
-## Find common characters in words
-## Convert a valid Roman numerals to integer
-[roman_numerals_and_integer_conversion.cpp](roman_numerals_and_integer_conversion.cpp)
