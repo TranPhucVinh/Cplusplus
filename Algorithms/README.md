@@ -58,6 +58,27 @@ for (int i=0; i < 5; i++){
 ```cpp
 std::sort(vec.begin(), vec.end(), std::greater<int>());
 ```
+## Third argument of std::sort()
+**std::sort()** takes the third argument as a comparator function with 2 arguments. This example will arrange the vector in descending order:
+```cpp
+// Everytime calling this function, 2 adjacent members a, b in vec will be arranged so that a > b
+bool customComparator(int a, int b) {
+    return a > b;
+}
+
+int main() {
+    std::vector<int> vec = {5, 2, 9, 3, 7};
+
+    std::sort(vec.begin(), vec.end(), customComparator);
+
+    for (int num : vec) {
+        std::cout << num << " ";
+    }
+    std::cout << std::endl;
+
+    return 0;
+}
+```
 # std::reverse()
 Reverse a sequence, e.g a string
 ```cpp
