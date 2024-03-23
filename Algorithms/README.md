@@ -8,7 +8,7 @@
 int a = std::min(12, 34);
 ```
 # std::sort()
-**std::sort()** for sorting an array with **Time Complexity** of **O(N*logN)**
+**std::sort()** for sorting an array with **Time Complexity** of **O(N*logN)**. By default, std::sort() **sorts the sequence in ascending/non-decreasing order**.
 
 ## Sort an array
 ```cpp
@@ -53,6 +53,10 @@ std::cout << endl;
 for (int i=0; i < 5; i++){
 	std::cout << str[i] << " ";
 }// a ab abc abd b
+```
+## Sort in descending order
+```cpp
+std::sort(vec.begin(), vec.end(), std::greater<int>());
 ```
 # std::reverse()
 Reverse a sequence, e.g a string
