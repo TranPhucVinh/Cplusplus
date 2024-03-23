@@ -76,6 +76,59 @@ for (order_map_itr = ordered_map.begin(); order_map_itr != ordered_map.end(); or
     std::cout << "}" << std::endl;
 }
 ```
+# Sort an array by increasing frequency
+Sort the array in increasing order based on the frequency of the values. If multiple values have the same frequency, sort them in decreasing order.
+
+* Input: nums = [1,1,2,2,2,3]
+* Output: [3,1,1,2,2,2]
+
+* Input: nums = [2,3,1,3,2]
+* Output: [1,3,3,2,2]
+
+* Input: nums = [-1,1,-6,4,5,-6,1,4,1]
+* Output: [5,-1,4,4,-6,-6,1,1,1]
+
+```cpp
+vector<int> frequencySort(vector<int>& nums) {
+    std::map<int, int> Map;
+    std::map<int, vector<int>> ordered_map;// Use vector for case multiple keys have the same freq
+
+    for (int i = 0; i < nums.size(); i++){
+        Map[nums[i]] += 1;
+    }
+
+    std::map<int, int>::iterator itr;
+    std::map<int, vector<int>>::iterator order_map_itr;
+
+    for (itr = Map.begin(); itr != Map.end(); itr++) 
+    { 
+        int key = itr->first;
+        int value = itr->second;
+
+        order_map_itr = ordered_map.find(value);
+        if (order_map_itr != ordered_map.end()) {
+            order_map_itr->second.push_back(key);// Value already exists in order_map_itr
+        } else {
+            ordered_map[value] = {key};// Value doesn't exist in order_map_itr
+        }
+    } 
+
+    vector<int> ret_vec;
+
+    for (order_map_itr = ordered_map.begin(); order_map_itr != ordered_map.end(); order_map_itr++){
+        
+        sort(order_map_itr->second.begin(), order_map_itr->second.end(), std::greater<int>());
+
+        for (int i = 0; i < order_map_itr->second.size(); i++){                
+            for (int j = 0; j < order_map_itr->first; j++){
+                ret_vec.push_back(order_map_itr->second[i]);
+            }
+        }
+    }
+
+    return ret_vec;
+}
+```
 # Find common characters in words
 # Convert a valid Roman numerals to integer
 [roman_numerals_and_integer_conversion.cpp](roman_numerals_and_integer_conversion.cpp)

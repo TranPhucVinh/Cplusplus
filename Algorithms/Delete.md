@@ -1,42 +1,48 @@
 # std::remove()
 
-Remove all occurence of a member in a sequence, e.g array, vector,..
+Remove all occurence of a member in a sequence, e.g array, vector,...
 
-**Remove all member, which has value VALUE in an array**
+**std::remove()** returns the pointer to the end member of the new sequence, which is useful for resizing.
+
+**Remove all member with value VALUE in an array, then resize that array**
 ```cpp
 #define VALUE  20
 
 int array[] = {10,20,30,30,20,10,10,20};
 
 for (int i = 0; i < 8; i++){
-	std::cout << array[i] << " ";
+    std::cout << array[i] << " ";
 }
 std::cout <<"\n";
 
 int *ptr_begin = array;
 int* ptr_end = array + sizeof(array)/sizeof(int); 
 
-std::remove(ptr_begin, ptr_end, VALUE);
+ptr_end = std::remove(ptr_begin, ptr_end, VALUE);
 
-// After removing 3 20 members, there are 5 member left in array
-for (int i = 0; i < 5; i++){
-	std::cout << array[i] << " ";
+int new_sz = std::distance(array, ptr_end);// New size
+
+for (int i = 0; i < new_sz; i++){
+    std::cout << array[i] << " ";
 }
 std::cout <<"\n";
 ```
-For vector:
+**Note**: Call **std::remove()** won't change the vector size,  **std::distance()** must be called to get the new size.
+
+**For vector**:
 ```cpp
 std::vector<int> vec{10,20,30,30,20,10,10,20};
 for (int i = 0; i < vec.size(); i++){
-	std::cout << vec[i] << " ";
+    std::cout << vec[i] << " ";
 }
 std::cout <<"\n";
 
-std::remove(vec.begin(), vec.end(), VALUE);
+std::vector<int>::iterator new_iter = std::remove(vec.begin(), vec.end(), VALUE);
+int new_sz = std::distance(vec.begin(), new_iter);// New size
 
-for (int i = 0; i < vec.size(); i++){
-	std::cout << vec[i] << " ";
-}// Result: 10 30 30 10 10 ? ? ? i.e size of vector vec is unchanged after calling std::remove()
+for (int i = 0; i < new_sz; i++){
+    std::cout << vec[i] << " ";
+}
 ```
 **Note**: From the array and vector implementations above, we can see that using **std::remove()** don't change the array/vector size.
 ## std::unique()
