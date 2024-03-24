@@ -107,6 +107,17 @@ for (int i = 0; i < numbers.size(); i++){
     cout << *ptr << endl;
 }
 ```
+## Read all vector's members by iterator
+```cpp
+vector<int> vec{1, 2, 3, 4, 5};
+
+vector<int>::iterator iter = vec.begin();
+
+while (iter != vec.end()){
+    cout << vec[iter - vec.begin()] << " ";
+    iter += 1;
+}
+```
 ## Find a member by std::find() (from algorithm library)
 ```cpp
 vector<int> vec{10, 20, 30};
