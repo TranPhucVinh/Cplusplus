@@ -65,7 +65,7 @@ while (el != Map.end()) {
 ```
 **Map doesn't have any any API to directly access its element by the specified index/position**, use **std::advance()** instead:
 ```cpp
-int map_index = 0;
+int map_index = 1;
 std::map<int, std::string>::iterator el = Map.begin();
 
 std::advance(el, map_index);
