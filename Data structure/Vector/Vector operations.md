@@ -118,6 +118,11 @@ while (iter != vec.end()){
     iter += 1;
 }
 ```
+**Start reading at the specified index**:
+```cpp
+int index = 2;
+vector<int>::iterator iter = vec.begin() + index;
+```
 ## Find a member by std::find() (from algorithm library)
 ```cpp
 vector<int> vec{10, 20, 30};
