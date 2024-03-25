@@ -120,3 +120,30 @@ while (el != Map.end()) {
 1, key: 123; value: Map, key 123
 2, key: 1; value: Map, key 1
 ```
+# Vector of map
+
+Create a vector to store maps to count total duplicate numbers inside a 2D vector:
+```cpp
+vector<vector<int>> nums = {{3, 3, 1, 1, 2, 4, 2},{1, 2, 2, 3, 3},{3, 4, 4, 5, 6}};
+vector<map<int, int>> Map_Vector;
+
+for (int i = 0; i < nums.size(); i++){
+map<int, int> _Map;
+for (int j = 0; j < nums[i].size(); j++){
+    _Map[nums[i][j]] += 1;
+}
+Map_Vector.push_back(_Map);
+}
+
+int map_index = 0;
+for (int i = 0; i < Map_Vector.size(); i++){
+std::map<int, int>::iterator el = Map_Vector[i].begin();
+cout << "map: " << map_index << endl;
+
+while (el != Map_Vector[i].end()) {
+    std::cout << "key: " << el->first << "; value: " << el->second << std::endl;
+    el++;
+}
+map_index += 1;
+}
+```
