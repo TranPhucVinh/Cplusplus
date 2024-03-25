@@ -85,7 +85,7 @@ for (int i = 0; i < vec.size(); i++){
 
 ## Delete vector member by erase()
 
-**std::erase()** removes the first encountered value of a sequence, based on the iterator:
+**std::erase()** removes the first encountered value of a sequence, based on the iterator. **std::erase() will automatically resize the array after erasing the member**:
 
 ```cpp
 #define VALUE 20
