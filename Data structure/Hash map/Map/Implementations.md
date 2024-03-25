@@ -23,7 +23,7 @@ int main()
     return 0;
 }
 ```
-# Create a map from value, key of an existed map
+# Create a new map with key, value from value, key of an existed map
 With his vector:
 ```cpp
 vector<int> nums = {2,3,1,3,2};
@@ -101,3 +101,13 @@ Sort the array in increasing order based on the frequency of the values. If mult
 * Result: [9,4]
 
 **Program**: [intersection_of_two_arrays.cpp](https://github.com/TranPhucVinh/Cplusplus/blob/master/Data%20structure/Hash%20map/src/intersection_of_two_arrays.cpp)
+# Intersection of multiple arrays
+* Input: nums = [[3,1,2,4,5],[1,2,3,4],[3,4,5,6]]
+* Output: [3,4]
+
+* Input: nums = [[1,2,3],[4,5,6]]
+* Output: []
+
+* Input: nums = [[1,2],[1,2],[1,2],[1,2],[1,2],[1,2],[1,2],[1,2],[1,2],[1,2],[1]]
+* * Output: [1]
+**Program**: [intersection_of_multiple_arrays.cpp](https://github.com/TranPhucVinh/Cplusplus/blob/master/Data%20structure/Hash%20map/src/intersection_of_multiple_arrays.cpp)
