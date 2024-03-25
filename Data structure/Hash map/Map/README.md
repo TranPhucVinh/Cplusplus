@@ -52,6 +52,14 @@ Map[456] = "Map, key 456";
 2, key: 456; value: Map, key 456
 Map size: 3
 ```
+## Define map like a dictionary
+```cpp
+std::map<int, std::string> Map = {
+	{1, "Map, key 1"},
+	{123, "Map, key 123"},
+	{456, "Map, key 456"}
+};
+```
 ## Traverse by iterator
 ```cpp
 int map_index = 0;
