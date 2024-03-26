@@ -26,13 +26,13 @@ int main()
 
 # [std::mutex](Mutex.md)
 
-Use std::mutex for [2 threads increase a shared variable issue]().
+Use [std::mutex::lock](Mutex.md#lock) for [one thread function handler to increase a shared value](#one-thread-function-handler-to-increase-a-shared-value).
 
 # std::atomic
 
 An atomic operation is an indivisible operation. CPP atomic provides atomic types and operations that ensure safe access to variables, preventing data races and potential issues in multithreaded code, allowing threads to access and modify variables safely, without explicit locks or synchronization mechanisms.
 
-Use std::atomic to solve the [2 threads increase a shared variable issue](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Thread/Race%20condition.md#2-threads-increase-a-shared-variable):
+Use std::atomic for [one thread function handler to increase a shared value](#one-thread-function-handler-to-increase-a-shared-value):
 
 ```cpp
 #include <iostream>
