@@ -1,4 +1,4 @@
-# 2 threads increase a shared variable
+# One thread function handler to increase a shared value
 
 ```cpp
 #include <iostream>
@@ -6,11 +6,11 @@
 
 #define RANGE 1000000
 
-int share_value;
+int shared_value;
 
 void thread_func()
 {
-    for (int i = 0; i < RANGE; i++) share_value++;
+    for (int i = 0; i < RANGE; i++) shared_value++;
 }
 
 int main()
@@ -18,7 +18,7 @@ int main()
     std::thread thread_1(thread_func), thread_2(thread_func);
     thread_1.join();
 	thread_2.join();
-	printf("share_value after executing 2 threads: %d\n", share_value);
+	printf("shared_value after executing 2 threads: %d\n", shared_value);
     return 0;
 }
 ```
