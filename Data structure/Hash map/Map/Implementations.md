@@ -89,7 +89,6 @@ Sort the array in increasing order based on the frequency of the values. If mult
 * Output: [5,-1,4,4,-6,-6,1,1,1]
 
 **Program**: [sort_array_by_increasing_freq.cpp](https://github.com/TranPhucVinh/Cplusplus/blob/master/Data%20structure/Hash%20map/src/sort_array_by_increasing_freq.cpp)
-# Find common characters in words
 # Convert a valid Roman numerals to integer
 [roman_numerals_and_integer_conversion.cpp](roman_numerals_and_integer_conversion.cpp)
 # Intersection of two arrays
@@ -112,3 +111,10 @@ Sort the array in increasing order based on the frequency of the values. If mult
 * * Output: [1]
 
 **Program**: [intersection_of_multiple_arrays.cpp](https://github.com/TranPhucVinh/Cplusplus/blob/master/Data%20structure/Hash%20map/src/intersection_of_multiple_arrays.cpp)
+# Find common characters in words (Leetcode 1002)
+* Input: words = ["bella","label","roller"]
+* Output: ["e","l","l"]
+
+* Input: words = ["cool","lock","cook"]
+* Output: ["c","o"]
+This is a similar issue to [Intersection of multiple arrays](): [find_common_char_in_words.cpp]()
