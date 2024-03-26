@@ -6,9 +6,9 @@
 void std::mutex::lock()
 ```
 
-``lock()`` will wait until the mutex is successfully locked.
+**lock()** will wait until the mutex is successfully locked. This function is similar to [pthread_mutex_lock()](https://github.com/TranPhucVinh/C/blob/master/Physical%20layer/Thread/API/Inter-task%20communication.md#pthread_mutex_lock) in GCC.
 
-Use ``std::mutex::lock()`` for [2 threads increase a shared variable issue]():
+Use **std::mutex::lock()** for [one thread function handler to increase a shared value](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Thread/Race%20condition.md#one-thread-function-handler-to-increase-a-shared-value):
 
 ```cpp
 #include <iostream>
@@ -17,14 +17,14 @@ Use ``std::mutex::lock()`` for [2 threads increase a shared variable issue]():
 
 #define RANGE 1000000
 
-int share_value;
+int shared_value;
 std::mutex _mutex;
 
 void thread_func()
 {
     for (int i = 0; i < RANGE; i++) {
 		_mutex.lock();
-		share_value++;
+		shared_value++;
 		_mutex.unlock();
 	}
 }
@@ -34,7 +34,7 @@ int main()
     std::thread thread_1(thread_func), thread_2(thread_func);
     thread_1.join();
 	thread_2.join();
-	printf("share_value after executing 2 threads: %d\n", share_value);
+	printf("shared_value after executing 2 threads: %d\n", shared_value);
     return 0;
 }
 ```
@@ -45,13 +45,13 @@ int main()
 bool std::mutex::try_lock()
 ```
 
-``try_lock()`` will check if the mutex is available for locking and return immediately without waiting.
+**try_lock()** will check if the mutex is available for locking and return immediately without waiting. This function is similar to [pthread_mutex_trylock()](https://github.com/TranPhucVinh/C/blob/master/Physical%20layer/Thread/Documents/Mutex.md#using-pthread_mutex_trylock) in GCC.
 
 Return:
 * ``true``: Success
 * ``false``: Fail
 
-Use ``std::mutex::try_lock()`` for [One thread function handler to increase a share value]():
+In [one thread function handler to increase a shared value](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Thread/Race%20condition.md#one-thread-function-handler-to-increase-a-shared-value), if **mutex::try_lock()** fails to lock the mutex, the thread will handle other task, which results in failing to increase the shared value to **RANGE**:
 
 ```cpp
 void thread_func()
@@ -63,7 +63,7 @@ void thread_func()
         } else printf("Fail to lock mutex\n");
 	}
 }
-//Other operations are like One thread function handler to increase a share value
+// Other operations are like One thread function handler to increase a share value
 ```
 **Result**:
 
@@ -71,7 +71,7 @@ void thread_func()
 ...
 Fail to lock mutex
 Fail to lock mutex
-share_value after executing 2 threads: 1987206
+shared_value after executing 2 threads: 1987206 // Expected: 2000000
 ```
 # Timed mutex
 ## try_lock_for()
