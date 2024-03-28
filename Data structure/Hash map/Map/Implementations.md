@@ -89,6 +89,10 @@ Sort the array in increasing order based on the frequency of the values. If mult
 * Output: [5,-1,4,4,-6,-6,1,1,1]
 
 **Program**: [sort_array_by_increasing_freq.cpp](https://github.com/TranPhucVinh/Cplusplus/blob/master/Data%20structure/Hash%20map/src/sort_array_by_increasing_freq.cpp)
+# Sort characters by decreasing frequency
+* Input s = "tree", Output: "eert"
+* Input: s = "cccaaa", Output: "aaaccc"
+**Program**: This problem is similar to [Sort an array by increasing frequency](#sort-an-array-by-increasing-frequency): [sort_char_by_decreasing_freq.cpp](https://github.com/TranPhucVinh/Cplusplus/blob/master/Data%20structure/Hash%20map/src/sort_char_by_decreasing_freq.cpp)
 # Convert a valid Roman numerals to integer
 [roman_numerals_and_integer_conversion.cpp](roman_numerals_and_integer_conversion.cpp)
 # Intersection of two arrays
