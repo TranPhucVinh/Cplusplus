@@ -109,9 +109,9 @@ head1 a 123
 Display string in head2.c
 head2 a 456
 ```
-# using keyword
+# using keyword for template
 
-The ``using`` keyword is used to:
+In template, the **using** keyword is used to:
 1. Bring a specific member from the namespace into the current scope.
 2. Bring all members from the namespace into the current scope.
 
