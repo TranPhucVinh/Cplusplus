@@ -154,3 +154,11 @@ namespace name_space
 ```
 test.cpp:14:19: error: 'int name_space::number' conflicts with a previous declaration
 ```
+# using keyword is similar to typedef
+
+Define ``std::vector<int>`` as ``Vector_Int`` by using keyword, this is similar to typedef:
+
+```cpp
+using Vector_Int = std::vector<int>;
+Vector_Int vec{10, 20, 30};
+```
