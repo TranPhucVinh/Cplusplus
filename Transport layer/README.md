@@ -22,7 +22,11 @@ If receiving responsed message "N", TCP receiver hasn't reached **MAX_CONNECTION
 
 # Single TCP receiver for multiple TCP senders: Use counting semaphore to limit total number of connected TCP senders
 
-**Features**: Having all features like [Single TCP receiver for multiple TCP senders, handled by multithread](#single-tcp-receiver-for-multiple-tcp-senders-handled-by-multithread), except using counting semaphore to limit the number of connected TCP senders. Set semaphore value to **MAX_CONNECTIONS**, if there are less than **MAX_CONNECTIONS** TCP senders connected to this receiver, create that number of corresponding thread to handle them. Whenever reaching **MAX_CONNECTIONS** TCP senders, TCP receiver will reject any new connection to it.
+**Features**: Having all features like [Single TCP receiver for multiple TCP senders, handled by multithread](#single-tcp-receiver-for-multiple-tcp-senders-handled-by-multithread), except using counting semaphore to limit the number of connected TCP senders. 
+
+Set semaphore value to **MAX_CONNECTIONS**, if there are less than **MAX_CONNECTIONS** TCP senders connected to this receiver, create that number of corresponding thread to handle them. Whenever reaching **MAX_CONNECTIONS** TCP senders, TCP receiver will reject any new connection to it.
+
+The idea of limiting the total number of thread created in the server, generally, is useful when implementing on a limited resources host like an MCU, which doesn't have enough resources/power to spawn up to an infinite number of thread to handle the clients.
 
 **Program**:
 * TCP receiver: [tcp_sgl_rx_multi_sndr_counting_semaphore.cpp](tcp_sgl_rx_multi_sndr_counting_semaphore.cpp)
