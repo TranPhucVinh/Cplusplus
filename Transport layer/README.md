@@ -19,3 +19,11 @@ If receiving responsed message "N", TCP receiver hasn't reached **MAX_CONNECTION
 **Program**:
 * TCP receiver: [tcp_sgl_rx_multi_sndr.cpp](tcp_sgl_rx_multi_sndr.cpp)
 * TCP sender: [tcp_multi_sndr_sgl_rx.cpp](tcp_multi_sndr_sgl_rx.cpp)
+
+# Single TCP receiver for multiple TCP senders: Use counting semaphore to limit total number of connected TCP senders
+
+**Features**: Having all features like [Single TCP receiver for multiple TCP senders, handled by multithread](#single-tcp-receiver-for-multiple-tcp-senders-handled-by-multithread), except using counting semaphore to limit the number of connected TCP senders. Set semaphore value to **MAX_CONNECTIONS**, if there are less than **MAX_CONNECTIONS** TCP senders connected to this receiver, create that number of corresponding thread to handle them. Whenever reaching **MAX_CONNECTIONS** TCP senders, TCP receiver will reject any new connection to it.
+
+**Program**:
+* TCP receiver: [tcp_sgl_rx_multi_sndr_counting_semaphore.cpp](tcp_sgl_rx_multi_sndr_counting_semaphore.cpp)
+* TCP sender: [tcp_multi_sndr_sgl_rx.cpp](tcp_multi_sndr_sgl_rx.cpp)
