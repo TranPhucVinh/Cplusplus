@@ -94,8 +94,6 @@ Sort the array in increasing order based on the frequency of the values. If mult
 * Input: s = "cccaaa", Output: "aaaccc"
 
 **Program**: This problem is similar to [Sort an array by increasing frequency](#sort-an-array-by-increasing-frequency): [sort_char_by_decreasing_freq.cpp](https://github.com/TranPhucVinh/Cplusplus/blob/master/Data%20structure/Hash%20map/src/sort_char_by_decreasing_freq.cpp)
-# Convert a valid Roman numerals to integer
-[roman_numerals_and_integer_conversion.cpp](roman_numerals_and_integer_conversion.cpp)
 # Intersection of two arrays
 
 * nums1 = [1,2,2,1], nums2 = [2,2]
@@ -116,18 +114,44 @@ Sort the array in increasing order based on the frequency of the values. If mult
 * * Output: [1]
 
 **Program**: [intersection_of_multiple_arrays.cpp](https://github.com/TranPhucVinh/Cplusplus/blob/master/Data%20structure/Hash%20map/src/intersection_of_multiple_arrays.cpp)
-# Find common characters in words (Leetcode 1002)
-* Input: words = ["bella","label","roller"]
-* Output: ["e","l","l"]
+# Split the array into distinct element (Leetcode 3046)
 
-* Input: words = ["cool","lock","cook"]
-* Output: ["c","o"]
-This is a similar issue to [Intersection of multiple arrays](): [find_common_char_in_words.cpp]()
-# Find words that can be formed by characters (Leetcode 1160)
-You are given an array of strings words and a string chars. A string is good if it can be formed by characters from chars (each character can only be used once). Return the sum of lengths of all good strings in words.
+You have to split the array into two parts nums1 and nums2 such that both nums1 and nums2 contain distinct elements. Return true if it is possible to split the array, and false otherwise.
 
-* Input: words = ["cat","bt","hat","tree"], chars = "atach". Output: 6. Explanation: The strings that can be formed are "cat" and "hat" so the answer is 3 + 3 = 6.
-* Input: words = ["hello","world","leetcode"], chars = "welldonehoneyr". Output: 10. Explanation: The strings that can be formed are "hello" and "world" so the answer is 5 + 5 = 10.
-* words = 'boygirdlggnh', chars = "usdruypficfbpfbivlrhutcgvyjenlxzeovdyjtgvvfdjzcmikjraspdfp". Output: 0
+* Input: nums = [1,1,2,2,3,4]
+* Output: true
+* Explanation: One of the possible ways to split nums is nums1 = [1,2,3] and nums2 = [1,2,4].
 
-**Program**: [find_words_that_can_be_formed_by_char.cpp](find_words_that_can_be_formed_by_char.cpp)
+* Input: nums = [1,1,1,1]
+* Output: false
+* Explanation: The only possible way to split nums is nums1 = [1,1] and nums2 = [1,1]. Both nums1 and nums2 do not contain distinct elements
+
+Algorithm: 
+* First, if there is any number appear > 2 times, return false
+* Thne find all member that appear 1 time, if that total number % 2 = 0, return true. We don't case about the member that appear 2 times, as they can always be divided
+
+```cpp
+bool isPossibleToSplit(vector<int>& nums) {
+    std::map<int, int> Map;
+
+    for (int i = 0; i < nums.size(); i++){
+        Map[nums[i]] += 1;
+    }
+
+    vector<int> one_mem;
+
+    std::map<int, int>::iterator itr;
+
+    for (itr=Map.begin(); itr != Map.end(); itr++) 
+    { 
+        if (itr->second > 2) return false;
+        if (itr->second == 1) one_mem.push_back(itr->first);
+        // Don't care for member that appear exactly 2, as they can always be divided
+    } 
+
+    if (!(one_mem.size() % 2)) return true;
+    else return false;
+
+    return false;
+}
+```
