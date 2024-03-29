@@ -15,10 +15,14 @@ int main()
     std::cout << Map[123] << std::endl;// Map, key 123
 
     int map_index = 0;
-    for (auto &el: Map){
-        std::cout << map_index << ", key: " << el.first << "; value: " << el.second << std::endl;
+    std::map<int, std::string>::iterator el = Map.begin();
+
+    while (el != Map.end()) {
+        std::cout << map_index << ", key: " << el->first << "; value: " << el->second << std::endl;
         map_index += 1;
+        el++;
     }
+    
 	std::cout << "Map size: " << Map.size() << std::endl;// Map size: 3
     return 0;
 }
@@ -51,16 +55,13 @@ std::map<int, std::string> Map = {
 	{456, "Map, key 456"}
 };
 ```
-## Traverse by iterator
+## Traverse by auto keyword
 ```cpp
-int map_index = 0;
-std::map<int, std::string>::iterator el = Map.begin();
-
-while (el != Map.end()) {
-	std::cout << map_index << ", key: " << el->first << "; value: " << el->second << std::endl;
-	map_index += 1;
-	el++;
+```cpp
+for (auto &el: Map){
+	std::cout << map_index << ", key: " << el.first << "; value: " << el.second << std::endl;
 }
+```
 ```
 **Map doesn't have any any API to directly access its element by the specified index/position**, use **std::advance()** instead:
 ```cpp
