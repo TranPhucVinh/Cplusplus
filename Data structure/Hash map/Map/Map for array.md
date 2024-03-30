@@ -26,7 +26,7 @@ int main()
     return 0;
 }
 ```
-# List all index of a number inside a vector
+# List all indices of a number inside a vector
 ```cpp
 std::map<int, vector<int>> Map;
 
@@ -38,7 +38,7 @@ std::map<int, vector<int>>::iterator itr;
 
 for (itr = Map.begin(); itr != Map.end(); itr++){ 
     std::cout << "Map[" << itr->first << "] = {";
-    for (size_t i = 0; i < itr->second.size(); ++i) {
+    for (int i = 0; i < itr->second.size(); ++i) {
         std::cout << itr->second[i];
         if (i < itr->second.size() - 1) {
             std::cout << ", ";
