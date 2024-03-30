@@ -26,6 +26,27 @@ int main()
     return 0;
 }
 ```
+# List all index of a number inside a vector
+```cpp
+std::map<int, vector<int>> Map;
+
+for (int i = 0; i < vec.size(); i++){
+    Map[vec[i]].push_back(i);
+}
+
+std::map<int, vector<int>>::iterator itr;
+
+for (itr = Map.begin(); itr != Map.end(); itr++){ 
+    std::cout << "Map[" << itr->first << "] = {";
+    for (size_t i = 0; i < itr->second.size(); ++i) {
+        std::cout << itr->second[i];
+        if (i < itr->second.size() - 1) {
+            std::cout << ", ";
+        }
+    }
+    std::cout << "}" << std::endl;
+}
+```
 # Create a new map with key, value from value, key of an existed map
 With this vector:
 ```cpp
