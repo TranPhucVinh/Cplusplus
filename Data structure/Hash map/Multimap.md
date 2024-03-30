@@ -32,3 +32,7 @@ int main()
     return 0;
 }
 ```
+# equal_range()
+```cpp
+std::pair<iterator, iterator> equal_range(const key_type& __x);
+```
