@@ -75,6 +75,27 @@ while (el != Multimap.end()) {
     el++;
 }
 ```
+# lower_bound() and upper_bound()
+``lower_bound(k)`` simply gives the lowerpointing to the immediate next element which is just greater than k, i.e it doesn't point to the last member of key ``k``.
+
+Take the example with [Create a multimap with key, value from value, key of an existed map](#create-a-multimap-with-key-value-from-value-key-of-an-existed-map) source code:
+```cpp
+multimap<int, int>::iterator lower_bound_val = Multimap.lower_bound(2);
+std::cout << "Lower bound; key: " << lower_bound_val->first << "; value: " << lower_bound_val->second << std::endl;// Lower bound; key: 2; value: 2
+
+multimap<int, int>::iterator upper_bound_val = Multimap.upper_bound(2);
+std::cout << "Upper bound; key: " << upper_bound_val->first << "; value: " << upper_bound_val->second << std::endl;// Upper bound; key: 3; value: 0 -> upper_bound doesn't point to the last value of key 2 and gives unexpected result
+```
+
+As returning iterator, ``lower_bound()`` and ``upper_bound()`` is used for iterating:
+```cpp
+multimap<int, int>::iterator lower_bound_val = Multimap.lower_bound(2);
+multimap<int, int>::iterator upper_bound_val = Multimap.upper_bound(2);
+
+for (multimap<int, int>::iterator iter = lower_bound_val; iter!= upper_bound_val; iter++) {
+    std::cout << "Key: " << iter->first << ", Value: " << iter->second << std::endl;
+}
+```
 # equal_range()
 ```cpp
 std::pair<iterator, iterator> equal_range(const key_type& x);
