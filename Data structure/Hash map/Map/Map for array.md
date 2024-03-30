@@ -27,20 +27,17 @@ int main()
 }
 ```
 # Create a new map with key, value from value, key of an existed map
-With his vector:
+With this vector:
 ```cpp
 vector<int> nums = {2,3,1,3,2};
 ```
 We have a map to represent total occurences:
 ```cpp
-Map[1] = 1;
-Map[2] = 2;
-Map[3] = 2;
+Map[1] = 1; Map[2] = 2; Map[3] = 2;
 ```
 Then we map value and key of **Map** to key, value of **ordered_map**:
 ```cpp
-ordered_map[1] = {1}
-ordered_map[2] = {2, 3}
+ordered_map[1] = {1}; ordered_map[2] = {2, 3}
 ```
 ```cpp
 vector<int> nums = {2,3,1,3,2};
