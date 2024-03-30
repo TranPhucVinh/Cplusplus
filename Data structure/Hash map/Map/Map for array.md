@@ -1,16 +1,19 @@
-# Count total duplicate numbers inside an array
+# Count total duplicate elements inside a vector
 ```cpp
 #include <iostream>
 #include <map> 
+#include <vector> 
 
-int array[] = {5, 7, 9, 9, 10, 11, 13, 13, 13, 16, 1, 5, -2, -2,-4, 0};
+using namespace std;
+
+vector<int> vec{5, 7, 9, 9, 10, 11, 13, 13, 13, 16, 1, 5, -2, -2,-4, 0};
 
 int main()
-{
+{ 
 	std::map<int, int> Map;
 
-    for (int i = 0; i < sizeof(array)/sizeof(int); i++){
-        Map[array[i]] += 1;
+    for (int i = 0; i < vec.size(); i++){
+        Map[vec[i]] += 1;
     }
 
     std::map<int, int>::iterator itr;
