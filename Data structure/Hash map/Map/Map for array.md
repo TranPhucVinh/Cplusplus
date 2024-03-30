@@ -18,7 +18,7 @@ int main()
 
     std::map<int, int>::iterator itr;
 
-    for (itr=Map.begin(); itr != Map.end(); itr++) 
+    for (itr = Map.begin(); itr != Map.end(); itr++) 
     { 
         std::cout << itr->first << " appears " << itr->second << " times" << std::endl;
     } 
