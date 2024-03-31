@@ -31,6 +31,11 @@ while (iter != vec.end()){
 int index = 2;
 vector<int>::iterator iter = vec.begin() + index;
 ```
+## Get the last member by back()
+```cpp
+vector<int> vec{10, 20, 30};   
+cout << vec.back() << endl;
+```
 ## Find a member by std::find() (from algorithm library)
 ```cpp
 vector<int> vec{10, 20, 30};
@@ -49,13 +54,12 @@ vector<int> vec{10, 20, 30, 1, 2, 4, 30, 4, 5, 30, 12, 30, 30, 4, 30};
 
 vector<int>::iterator iter;
 iter = find(vec.begin(), vec.end(), 30); 
-  
-   // Check if the element was found 
-   cout << "Element 30 occurred at indices: "; 
-   while (iter != vec.end()) { 
-       cout << iter - vec.begin() << " "; 
-       iter = std::find(iter + 1, vec.end(), 30); 
-   } 
+
+cout << "Element 30 occurred at indices: "; 
+while (iter != vec.end()) { // Check if the element was found 
+    cout << iter - vec.begin() << " "; 
+    iter = std::find(iter + 1, vec.end(), 30); 
+} 
 ```
 # Update
 
