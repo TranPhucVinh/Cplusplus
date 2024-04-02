@@ -99,3 +99,9 @@ std::vector<int>::iterator vec_iter = std::find(vec.begin(), vec.end(), VALUE);
 
 if (vec_iter != vec.end()) vec.erase(vec_iter);// 10 30 30 20 10 10 20 (the first vector member has value 20 is removed)
 ```
+To remove at a specific index:
+```cpp
+int index = 1;
+std::vector<int> vec{10,20,30,30,20,10,10,20};
+vec.erase(vec.begin() + index);
+```
