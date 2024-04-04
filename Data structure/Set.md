@@ -23,8 +23,9 @@ int main() {
 # Use set to check if an array only existed a set of number
 E.g check if array ``arr`` only contains 1,2,3:
 * arr = {1, 2, 3} -> return true;
-* arr= {1, 2, 2,3} -> return true;
-* arr= {1, 2, 2,4} -> return false, as 4 is included
+* arr = {1, 2, 2, 3} -> return true;
+* arr = {1, 2, 2, 4} -> return false, as 4 is included
+* arr = {1, 2} -> return true
 
 ```cpp
 bool checkSet(const std::vector<int>& arr, const std::set<int>& allowedSet) {
@@ -34,21 +35,23 @@ bool checkSet(const std::vector<int>& arr, const std::set<int>& allowedSet) {
         uniqueNumbers.insert(num);
     }
 
-    return uniqueNumbers == allowedSet;
+    return uniqueNumbers <= allowedSet;
 }
 
 int main() {
-    std::vector<int> arr1 = {1, 2, 3};
-    std::set<int> allowedSet1 = {1, 2, 3};
-    std::cout << std::boolalpha << checkSet(arr1, allowedSet1) << std::endl; // Output: true
+    std::set<int> allowedSet = {1, 2, 3};
+
+    std::vector<int> arr1  {1, 2, 3};
+    std::cout << std::boolalpha << checkSet(arr1, allowedSet) << std::endl; // Output: true
 
     std::vector<int> arr2 = {1, 2, 2, 3};
-    std::set<int> allowedSet2 = {1, 2, 3};
-    std::cout << std::boolalpha << checkSet(arr2, allowedSet2) << std::endl; // Output: true
+    std::cout << std::boolalpha << checkSet(arr2, allowedSet) << std::endl; // Output: true
 
     std::vector<int> arr3 = {1, 2, 2, 4};
-    std::set<int> allowedSet3 = {1, 2, 3};
-    std::cout << std::boolalpha << checkSet(arr3, allowedSet3) << std::endl; // Output: false
+    std::cout << std::boolalpha << checkSet(arr3, allowedSet) << std::endl; // Output: false
+
+    std::vector<int> arr4 = {1, 2};
+    std::cout << std::boolalpha << checkSet(arr4, allowedSet) << std::endl; // Output: false
 
     return 0;
 }
