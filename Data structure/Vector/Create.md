@@ -32,6 +32,13 @@ vector<int> vec(2);// Must have size initialization before setting them by index
 vec[0] = 12;
 vec[1] = 34;
 ```
+Initialize vector and init all value
+```cpp
+#define VEC_SZ      2
+#define INIT_VAL    0
+
+vector<int> vec(VEC_SZ, INIT_VAL);
+```
 For vector defined inside a class, with known size:
 ```cpp
 class ClassTest{
