@@ -61,6 +61,22 @@ while (iter != vec.end()) { // Check if the element was found
     iter = std::find(iter + 1, vec.end(), 30); 
 } 
 ```
+## Overloading operator
+
+Overloading ``==``, ``>``, ``<``, ``>=`` and ``<=`` are defined for all CPP containers: vector, set,... where:
+
+* ``==``: Checks if the contents of lhs and rhs are equal, that is, whether lhs.size() == rhs.size() and each element in lhs has equivalent element in rhs at the same position.
+* ``>``, ``<``, ``>=`` and ``<=``: Both start checking at the first element then move to the next one if the first passed the condition.
+
+```cpp
+vector<int> vec1{1, 2, 3}, vec2{1, 2, 4}; // vec1 < vec2
+```
+```cpp
+vector<int> vec1{3}, vec2{1, 2, 4};   // vec1 > vec2 as vec1[0] > vec2[0]
+```
+```cpp
+vector<int> vec1{3, 0, 0}, vec2{1, 2, 4}; // vec1 > vec2
+```
 # Update
 
 ## Update vector at specific by index
