@@ -17,12 +17,18 @@ int main()
 ```
 **Note**: Vector members are stored on heap memory, so it doesn't lose its value [when being returned from a function](Vector%20and%20function.md#function-returns-vector).
 
-# Member can be set with push_back()
+# Set up vector member 
+Use **push_back()**
 ```cpp
 vector<int> vec;
  
 vec.push_back(12);
 vec.push_back(34);
+```
+Use **emplace_back()**
+```cpp
+vec.emplace_back(12);
+vec.emplace_back(34);
 ```
 Init by index:
 
