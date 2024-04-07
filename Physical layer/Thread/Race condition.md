@@ -62,36 +62,3 @@ int main()
 ```cpp
 std::atomic_int shared_value; 
 ```
-# std::promise and std::future
-
-* **std::promise** is a template class that allows you to store a value or an exception that will be made available in the future.
-* **std::future** is a template class that represents a value that may not be available yet but will be available at some point in the future.
-
-In this example, t2 will wait for 5 seconds to get the "future" value ``futureObj`` from ``t1``:
-```cpp
-#include <iostream>
-#include <thread>
-#include <future>
-
-int main() {
-    std::promise<int> promiseObj;
-    std::future<int> futureObj = promiseObj.get_future();
-
-    std::thread t1([&promiseObj]() {
-        // Simulating some computation
-        std::this_thread::sleep_for(std::chrono::milliseconds(5000));
-        promiseObj.set_value(42);
-    });
-
-    std::thread t2([&futureObj]() {
-        // This line could potentially block forever
-        int result = futureObj.get();
-        std::cout << "Result from future: " << result << std::endl;
-    });
-
-    t1.join();
-    t2.join();
-
-    return 0;
-}
-```
