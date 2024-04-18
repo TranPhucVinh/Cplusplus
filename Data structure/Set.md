@@ -34,6 +34,26 @@ for (std::set<int>::iterator it = Set.begin(); it != Set.end(); ++it) {
 }
 // Result: 1 2
 ```
+# Read set value at the specific index
+```cpp
+int main() {
+    std::set<int> Set = {3, 1, 4, 1, 5, 9, 2, 6}; // Define a set with some initial values
+    // Set: 1 2 3 4 5 6 9
+
+    std::cout << read_by_index(Set, 6) << std::endl;// 9
+    
+    return 0;
+}
+
+int read_by_index(std::set<int> Set, int index){
+    int _index = 0;
+    for (std::set<int>::iterator it = Set.begin(); it != Set.end(); ++it) {
+        if (_index == index) return *it;
+        else _index += 1;
+    }
+    return -1;
+}
+```
 # Use set to check if an array only existed a set of number
 E.g check if array ``arr`` only contains 1,2,3:
 * arr = {1, 2, 3} -> return true;
