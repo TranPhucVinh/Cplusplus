@@ -20,6 +20,20 @@ int main() {
     return 0;
 }
 ```
+# Add member to a set
+**insert()**:
+```cpp
+std::set<int> Set;
+Set.insert(1);
+Set.insert(1);// This is duplicated so it won't be inserted to Set
+Set.insert(2);
+
+std::cout << "Set size: " << Set.size() << std::endl;// Set size: 7
+for (std::set<int>::iterator it = Set.begin(); it != Set.end(); ++it) {
+    std::cout << *it << " ";
+}
+// Result: 1 2
+```
 # Use set to check if an array only existed a set of number
 E.g check if array ``arr`` only contains 1,2,3:
 * arr = {1, 2, 3} -> return true;
