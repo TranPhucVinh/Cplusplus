@@ -62,37 +62,11 @@ E.g check if array ``arr`` only contains 1,2,3:
 * arr = {1, 2} -> return true
 * arr = {3} -> return true
 
-```cpp
-bool checkSet(const std::vector<int>& arr, const std::set<int>& allowedSet) {
-    std::set<int> uniqueNumbers;
+Program: [set_check_if_array_existed_a_set_of_numbers.cpp]()
+# Find all missing numbers in a strictly increasing order array
 
-    for (int num : arr) {
-        if (allowedSet.find(num) == allowedSet.end()) {
-            return false; // If any element is not found in the set, return false
-        }
-    }
+* arr = [2,3,4,7,11], the missing numbers are {1, 5, 6, 8, 9, 10}
+* arr = [5,6,7,8,9], the missing numbers are {1, 2, 3, 4}
+* arr = [1,2,3,4]: No missing
 
-    return uniqueNumbers.size() <= allowedSet.size();
-}
-
-int main() {
-    std::set<int> allowedSet = {1, 2, 3};
-
-    std::vector<int> arr1  {1, 2, 3};
-    std::cout << std::boolalpha << checkSet(arr1, allowedSet) << std::endl; // Output: true
-
-    std::vector<int> arr2 = {1, 2, 2, 3};
-    std::cout << std::boolalpha << checkSet(arr2, allowedSet) << std::endl; // Output: true
-
-    std::vector<int> arr3 = {1, 2, 2, 4};
-    std::cout << std::boolalpha << checkSet(arr3, allowedSet) << std::endl; // Output: false
-
-    std::vector<int> arr4 = {1, 2};
-    std::cout << std::boolalpha << checkSet(arr4, allowedSet) << std::endl; // Output: true
-
-    std::vector<int> arr5 = {3};
-    std::cout << std::boolalpha << checkSet(arr5, allowedSet) << std::endl; // Output: true
-
-    return 0;
-}
-```
+Program: [set_find_missing_numbers_in_increasing_order_array.cpp]()
