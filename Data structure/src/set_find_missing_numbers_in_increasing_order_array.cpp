@@ -41,7 +41,7 @@ int main(void) {
 	vector<int> vect = {2,3,4,7,11};
     std::set<int> missing_numbers;
     for (int i = 0; i < vect.size(); i++){
-        if (vect[i] > i+1){
+        if (vect[i] > i){
             // As the finding process result in duplicate number, use set to avoid that
             for (int j = i+1; j < vect[i]; j++){
                 search_number(j, vect, 0, vect.size()-1);
