@@ -112,7 +112,7 @@ Source code:
 * [gg_ipc_sub.cpp](gg_ipc_sub.cpp)
 * [gg_ipc_pub.cpp](gg_ipc_pub.cpp)
 
-Finally deploy those subscribe and publish components:
+Finally, deploy those subscribe and publish components:
 
 ```sh
 sudo /greengrass/v2/bin/greengrass-cli deployment create --recipeDir $(pwd)/recipes --artifactDir $(pwd)/artifacts --merge "gg_ipc_sub=0.1.0"
