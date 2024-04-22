@@ -16,6 +16,7 @@ std::cout <<"\n";
 std::vector<int>::iterator new_iter = std::remove(vec.begin(), vec.end(), VALUE);
 int new_sz = std::distance(vec.begin(), new_iter);// New size
 
+// 10 30 30 10 10
 for (int i = 0; i < new_sz; i++){
     std::cout << vec[i] << " ";
 }
