@@ -1,19 +1,20 @@
 #include <iostream>
 #include <cmath> 
+#include <vector> 
 
 using namespace std;
 class LinkedList { 
     public:
         int value;
         LinkedList* next_node;
-        void insert_next_node(LinkedList *next_node, int value){
-            next_node->value = value;
-            this->next_node = next_node;
-        }
+        void insert_next_node(LinkedList *next_node, int value);
+        void display_link_list();
+        
+        // LinkedList* vector_to_linkedlist(vector<int> vec);
 }; 
 
-void display_link_list(LinkedList *first_node){
-    LinkedList *ptr = first_node;
+void LinkedList::display_link_list(){
+    LinkedList *ptr = this;
 
     while(ptr != NULL)
 	{        
@@ -21,6 +22,11 @@ void display_link_list(LinkedList *first_node){
 		ptr = ptr->next_node;
     }
 	printf("\n");
+}
+
+void LinkedList::insert_next_node(LinkedList *next_node, int value){
+    next_node->value = value;
+    this->next_node = next_node;
 }
 
 int main() 
@@ -36,7 +42,7 @@ int main()
     node_1->insert_next_node(node_2, 789);
     node_2->next_node = NULL;
 
-    display_link_list(node_0);
+    node_0->display_link_list();
 
     delete node_0;
     delete node_1;
