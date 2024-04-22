@@ -40,7 +40,7 @@ int new_sz = std::distance(array, ptr_end);// New size
 
 Example of an consecutive group: ``{1, 1, 5, 5, 3, 3, 3}``.
 
-**Remove all consecutive duplicates member inside an array**:
+**Remove all consecutive duplicates member, except the first occurrence, inside an array**:
 ```cpp
 #include <iostream>
 #include <algorithm>
@@ -65,12 +65,12 @@ int main() {
     for (int i = 0; i < new_sz; ++i) {
         std::cout << array[i] << " ";
     }
-    std::cout << std::endl;
+    std::cout << std::endl;// 13 1 2 5 3 4
 
     return 0;
 }
 ```
-**Remove all consecutive duplicates member inside a vector, then resize it**
+**Remove all consecutive duplicates member, except the first occurrence, inside a vector, then resize it**
 ```cpp
 vector<int> vec = {13, 13, 1, 1, 2, 2, 5, 5, 3, 3, 4, 4, 4};
 
@@ -90,7 +90,7 @@ int main() {
     for (int i = 0; i < vec.size(); ++i) {
         std::cout << vec[i] << " ";
     }
-    std::cout << std::endl;
+    std::cout << std::endl;// 13 1 2 5 3 4
 
     return 0;
 }
