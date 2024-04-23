@@ -1,6 +1,6 @@
 # Create
 * Create a vector
-* Set member with push_back()
+* Set member with **push_back()**
 * const char pointer as member of a vector
 * Class object as member of a vector
 
@@ -100,7 +100,12 @@ for (int i = 0; i < vec.size(); i++){
 }
 ```
 ## Update vector size by resize()
-
+## Insert new value to vector at the specific index, use insert()
+```cpp
+vector<int> numbers{1, 2, 3};
+numbers.insert(numbers.begin(), 4);// 4 1 2 3
+numbers.insert(numbers.begin() + 2, 5);// 4 1 5 2 3
+```
 # Delete
 
 ## Delete vector member by erase()
