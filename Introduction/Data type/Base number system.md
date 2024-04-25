@@ -100,7 +100,13 @@ cout << lastByte << endl;//garbage_value; Print out garbage_value as this is the
 cout << firstByte << endl;//garbage_value; Print out garbage_value as this is the parsing error of std::cout, use printf() instead
 printf("0x%x 0x%x\n", lastByte, firstByte);//0x34 0x12   
 ```
-
+# uint8_t 
+**uint8_t** is a special integer type in CPP as std::cout will treat it as a character symbol when printing out. In order to print out the number value, use **unsigned()**:
+```cpp
+uint8_t val = 48;
+std::cout << val << "\n";// Character '0'
+std::cout << unsigned(val) << "\n";// 48
+```
 # dec
 
 ```c
