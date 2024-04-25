@@ -134,3 +134,10 @@ printf("%c\n", *a_c);//a
 printf("%c\n", *a_cpp);//a
 ```
 ``reinterpret_cast`` for pointer to access to class object value: [reinterpret_cast_for_class_object.cpp](reinterpret_cast_for_class_object.cpp)
+
+Use ``reinterpret_cast`` to convert an array of uint8_t to a double number (based on IEEE 754 standard):
+```cpp
+std::vector<uint8_t> _spi_rx_buf = {0, 0, 0, 0, 0, 144, 69, 64};
+
+double temp_value = *(reinterpret_cast<double*>(&_spi_rx_buf[0]));
+```
