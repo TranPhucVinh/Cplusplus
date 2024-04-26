@@ -51,16 +51,27 @@ int main () {
 }
 ```
 # namespace in header file
-``header.h``
+For **namespace** to be used in header files, [constexpr](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/README.md#constexpr) must be used to avoid multiple definition issue, i.e to follow ODR.
+
+**header.h**
 ```cpp
 #include <iostream>
 
 namespace hdr_file
 {
-    int a = 123;
-    void display_string(){
+    constexpr int a = 123;
+    void display_string();
+}
+```
+
+**header.cpp**
+```cpp
+#include "header.h"
+
+namespace hdr_file {
+    void display_string() {
         std::cout << "Display string in header file\n";
-   }
+    }
 }
 ```
 ``main.cpp``
