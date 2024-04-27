@@ -80,7 +80,7 @@ int main() {
 }
 ```
 # std::reverse()
-Reverse a sequence, e.g a string
+Reverse a sequence, e.g string, vector
 ```cpp
 std::string str = "123";
 std::reverse(str.begin(), str.end());
@@ -92,6 +92,12 @@ std::string str = "123456789";
 std::string::iterator index = str.begin() + 4;
 std::reverse(str.begin(), index);
 std::cout << str; // 432156789
+```
+```cpp
+vector<int> vec{1, 2, 3, 4, 5};
+
+vector<int>::iterator iter = vec.begin();
+std::reverse(vec.begin(), vec.end());
 ```
 **std::reverse()** returns void, so don't assign it to any variable.
 # std::rotate()
