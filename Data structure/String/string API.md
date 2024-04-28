@@ -31,26 +31,25 @@ while (index != string::npos) {
 cout << endl;
 cout << "Total found: " << found << endl;
 ```
-## Split a string into substrings separated by space
+## Split a string into substrings by a delimiter, e.g a space
 ```cpp
-void splitStringBySpace(string s) {
+void splitStringByDelimiter(string s, string delim) {
     vector<string> all_substr;
-    std::size_t index = s.find(' ', 0);
+    std::size_t index = s.find(delim, 0);
     string sub_str  = s.substr(0, index);
     string new_string = s.substr(index+1);
 
     while (index != string::npos) { 
-        if (sub_str != " " && sub_str.size() >= 1) {
-            // cout << "not equal: " << sub_str.size() << endl;
+        if (sub_str != delim && sub_str.size() >= 1) {
             all_substr.push_back(sub_str);
         }
 
-        index = new_string.find(" ", 0);
+        index = new_string.find(delim, 0);
         sub_str  = new_string.substr(0, index);
         new_string = new_string.substr(index+1);
     }
 
-    if (sub_str != " " && sub_str.size() >= 1) {
+    if (sub_str != delim && sub_str.size() >= 1) {
         all_substr.push_back(sub_str);
     }
 
