@@ -1,6 +1,6 @@
 # [Array](Array.md)
 # [Vector](Vector)
-# String
+# [String](String)
 
 String document will include
 
