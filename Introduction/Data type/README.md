@@ -4,6 +4,19 @@
 * [hex](Base%20number%20system.md#hex)
 * [dec](Base%20number%20system.md#dec)
 * [oct](Base%20number%20system.md#oct)
+# float
+Format a floating-point number to print with a specific number of decimal places
+```cpp
+#include <iostream>
+#include <iomanip> // Include the header for std::setprecision
+
+int main() {
+    double number = 3.14159;
+    std::cout << std::fixed << std::setprecision(2) << number << std::endl;// 3.14
+
+    return 0;
+}
+```
 # [Explicit type conversion](Explicit%20type%20conversion.md)
 Beside conventional [explicit type conversion](https://github.com/TranPhucVinh/C/blob/master/Introduction/Data%20type/Type%20conversion.md#explicit-type-conversion) performed in C, CPP supports explicit type conversion with ``cast``:
 
