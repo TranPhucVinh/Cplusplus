@@ -6,7 +6,7 @@
 * Update: [Append](string%20operations.md#append-string), [std::string as function argument](string%20operations.md#stdstring-as-function-argument), [convert other data type to string](string%20operations.md#conversion)
 * [Delete](string%20operations.md#delete)
 
-## API
+## [API](string%20API.md)
 * [find()](#stringfind): [Found all substring occcurrence inside a string](), [Split a string into substring separated by space]()
 * [compare()](#stringcompare)
 * [stoi(): convert string to int]()
