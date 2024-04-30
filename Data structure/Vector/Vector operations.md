@@ -131,3 +131,10 @@ int index = 1;
 std::vector<int> vec{10,20,30,30,20,10,10,20};
 vec.erase(vec.begin() + index);
 ```
+**Delete in range**
+```cpp
+ std::vector<int> vec{0, 1, 2, 3, 4, 5, 6, 7};
+
+int index_start = 2, index_end = 4;
+vec.erase(vec.begin() + index_start, vec.begin() + index_end);// 0 1 4 5 6 7
+```
