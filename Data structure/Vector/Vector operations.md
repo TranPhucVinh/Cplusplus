@@ -110,6 +110,11 @@ numbers.insert(numbers.begin() + 2, 5);// 4 1 5 2 3
 
 ## Delete vector member by erase()
 
+```cpp
+vector_name.erase(position);  // delete at specific position
+vector_name.erase(starting_position, ending_position);    // delete in range
+```
+
 **std::erase()** removes the first encountered value of a sequence, based on the iterator. **std::erase() will automatically resize the array after erasing the member**:
 
 ```cpp
