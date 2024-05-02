@@ -76,6 +76,23 @@ int main()
  ``std::thread::detach()`` is useful to avoid blocking the thread by ``std::thread::join()`` while still trying to have its run independently. Some of  ``std::thread::detach()`` implementations:
 * [Run 2 thread, which include while(1), independently](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Thread/Fundamental%20concepts.md#stdthreadjoin-will-block-the-process-if-this-thread-has-while1)
 * [Multithread HTTP server built on TCP API]()
+# Thread function handler with lvalue, std::ref()
+**std::ref()** is a function used to pass lvalue variable as an argument to CPP thread:
+```cpp
+void thread_func(int &a)
+{
+    a += 1;
+}
+
+int main()
+{
+    int a = 1;
+    std::thread thread_obj(thread_func, a);
+    thread_obj.join();
+    std::cout << a << std::endl;// 2
+    return 0;
+}
+```
 # Create a thread inside a class
 ```cpp
 #include <iostream>
