@@ -142,4 +142,4 @@ Almost all operators can be overloaded like:
 * Class member access operators (.(dot), .* (pointer to member operator))
 * Ternary or conditional (?:)
 # Applications of operator overloading
-* Operator overloading in vector for comparison: ==, >, <, <= and >=
+* [Operator overloading in vector for comparison: ==, >, <, <= and >=](https://github.com/TranPhucVinh/Cplusplus/blob/master/Data%20structure/Vector/Vector%20operations.md#operator-overloading)
