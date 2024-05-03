@@ -1,6 +1,6 @@
 Vectors are the same as dynamic arrays with the ability to resize itself automatically when an element is inserted or deleted.
 
-# [Vector operations]()
+# [Vector operations](Vector%20operations.md)
 
 **Create**: 
 * Multiple ways to define a vector 
