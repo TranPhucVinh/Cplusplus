@@ -176,4 +176,5 @@ As lvalue reference is supported in C++, we still need to use pointer for a vari
 * Address updated
 * Set to NULL
 # Applications
-[Suspend and resume threads by OOP](../Thread/README.md#suspend-and-resume-threads): [suspend_thread](../Thread/suspend_and_resume_threads_oop.cpp#L23) and [resume_thread](../Thread/suspend_and_resume_threads_oop.cpp#L18) methods must be defined by lvalue.
+* [Suspend and resume threads by OOP](../Thread/README.md#suspend-and-resume-threads): [suspend_thread](../Thread/suspend_and_resume_threads_oop.cpp#L23) and [resume_thread](../Thread/suspend_and_resume_threads_oop.cpp#L18) methods must be defined by lvalue.
+* [To change value of a vector as a function argument, lvalue must be used](https://github.com/TranPhucVinh/Cplusplus/blob/master/Data%20structure/Vector/Vector%20and%20function.md#vector-as-function-argument)
