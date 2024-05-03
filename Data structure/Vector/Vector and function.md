@@ -13,7 +13,7 @@ int main()
     readVector(vec);
 }
 ```
-Change value of a vector by a function: [lvalue](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/lvalue.md) **must be used**
+Change value of a vector as a function argument: [lvalue](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/lvalue.md) **must be used**
 ```cpp
 void updateVector(vector<int> &vec){
 	for (int i = 0; i < vec.size(); i++){
