@@ -51,7 +51,7 @@ Please note that the [const reference](https://github.com/TranPhucVinh/Cplusplus
 
 So for the complex number of class Complex, the ``+`` overloading operator function now is ``operator+``:
 ```cpp
-Complex operator+ (Complex const& obj)
+Complex operator+ (Complex& obj)
 {
     Complex result;
     result.real = real + obj.real;
@@ -80,7 +80,7 @@ class Complex {
 
         // This is automatically called when '+' is used with
         // between two Complex objects
-        Complex operator+ (Complex const& obj)
+        Complex operator+ (Complex& obj)
         {
             Complex result;
             result.real = real + obj.real;
