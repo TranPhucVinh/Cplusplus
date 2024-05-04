@@ -26,15 +26,5 @@ To suspend and resume between 2 threads with OOP, check [suspend_and_resume_thre
 Race condition document includes: 
 * [2 threads increase a shared variable](Race%20condition.md#2-threads-increase-a-shared-variable)
 
-[std::mutex](Race%20condition.md#stdmutex) for **One thread function handler to increase a share value** issue: 
-* [std::mutex::lock()](Race%20condition.md#lock)
-* [std::mutex::try_lock()](Race%20condition.md#try_lock)
-
-[Timed mutex](Race%20condition.md#timed-mutex) for **One thread function handler to increase a share value** issue: 
-* [std::timed_mutex::try_lock_for()]()
-
-[lock_guard](Race%20condition.md#lock_guard) for **One thread function handler to increase a share value** issue.
-
-[Condition variable](Condition%20variable.md): [2 threads with mutex where thread 1 allows thread 2 to run](Condition%20variable.md#2-threads-with-mutex-where-thread-1-allows-thread-2-to-run) and APIs
-
-**Semaphore**: ``semaphore`` library is only supported in C++20. Before that, GCC ``semaphore.h`` library is used in G++.
+* [Mutex and condition variable](Documents/Mutex.md)
+* **Semaphore**: ``semaphore`` library is only supported in C++20. Before that, GCC ``semaphore.h`` library is used in G++.
