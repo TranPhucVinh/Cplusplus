@@ -1,3 +1,25 @@
+# Setup value for a 2-D vector
+```cpp
+void setup_2d_vector(){
+    int n;
+    cin >> n;
+    
+    vector<vector<int>> two_d_vec(n);
+    
+    for (int i = 0; i < n; i++){
+        int one_d_vec_sz;
+        cin >> one_d_vec_sz;
+        vector<int> one_d_vec(one_d_vec_sz);
+        
+        for (int j = 0; j < one_d_vec_sz; j++){
+            cin >> one_d_vec[j];
+        }
+
+        // Must not use push_back(): two_d_vec.push_back(one_d_vec);
+        two_d_vec[i] = one_d_vec;
+    }
+}
+```
 # Count pairs of similar strings
 
 Two strings are similar if they consist of the same characters.
