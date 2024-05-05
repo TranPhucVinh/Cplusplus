@@ -62,3 +62,8 @@ int main()
 ```cpp
 std::atomic_int shared_value; 
 ```
+# Producer and consumer problem
+
+Given a buffer, i.e a vector, where the **producer thread** writes data to it for every TIME_INTERVAL seconds. The **consumer thread** will pop out the data from that buffer to read, whenever that buffer isn't empty. A synchronization mechanism like [condition variable](Mutex.md#condition-variable) is needed to apply so that the **consumer thread** can know when to start reading from the buffer, e.g whenever the **consumer thread** has written data to the buffer, instead of checking the buffer for the data repeatedly.
+
+**Program**: [producer_consumer.cpp](../src/producer_consumer.cpp)

@@ -25,6 +25,5 @@ To suspend and resume between 2 threads with OOP, check [suspend_and_resume_thre
 # [Race condition](Race%20condition.md)
 Race condition document includes: 
 * [2 threads increase a shared variable](Race%20condition.md#2-threads-increase-a-shared-variable)
-
 * [Mutex and condition variable](Documents/Mutex.md)
 * **Semaphore**: ``semaphore`` library is only supported in C++20. Before that, GCC ``semaphore.h`` library is used in G++.
