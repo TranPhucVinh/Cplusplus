@@ -173,6 +173,31 @@ int main()
 	c3.print();
 }
 ```
+# Overload built-in operator <<
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class ClassTest {
+    public:
+        int a;
+        ClassTest(){
+            a = 123;
+        }
+};
+
+ostream &operator<< (ostream &os, ClassTest obj)
+{
+    return os << obj.a << endl;
+}
+
+int main()
+{
+	ClassTest c1;
+    cout << c1;
+}
+```
 # What operators can be overloaded ?
 Almost all operators can be overloaded like:
 * [Unary operators](https://github.com/TranPhucVinh/C/blob/master/Introduction/Variable/README.md#unary-operators)
