@@ -11,7 +11,13 @@
 * [Operator overloading](Documents/Operator%20overloading.md)
 * [friend](friend.md): [friend class](Documents/friend.md#friend-class), [friend function](friend.md#friend-function): Use [a global function](friend.md#use-a-global-function-as-a-friend-method-to-change-public-and-private-member-of-an-object) and [a class method](friend.md#use-a-class-method-as-a-friend-method-to-change-public-and-private-member-of-an-object) as a friend method to change public and private member of an object.
 
-[Example](Example)
+**Simple class exmaple**: Build a class which includes:
+* Constructor ``class_constructor()``
+* Public function ``add_number(int int_param)`` to add the passed parameter ``int_param`` with ``_int_param ``, a private variable
+
+* [example_header.h](src/example_header.h)
+* [example_header.cpp](src/example_header.cpp)
+* [example_main.cpp](src/example_main.cpp)
 
 # Encapsulation
 Encapsulation is defined as the wrapping up of data and information in a single unit. 
