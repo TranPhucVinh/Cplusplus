@@ -30,4 +30,8 @@ Binding refers to the process of converting identifiers (such as variable and pe
 
 **Late binding (run time polymorphism)**: In late binding, the compiler adds code that identifies the kind of object at runtime then matches the call with the right function definition. This can be achieved by declaring a [virtual function]().
 
-# [Singleton](Singleton.md)
+# Singleton
+
+A **singleton class** is a class which can have only one object or instance at a time. In other words, **we can instantiate only one instance of the singleton class**. The new variable also points to the initial instance created if we attempt to instantiate the Singleton class after the first time.
+
+**Program**: [singleton.cpp](src/singleton.cpp)

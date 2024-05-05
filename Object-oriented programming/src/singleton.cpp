@@ -1,6 +1,3 @@
-A **singleton class** is a class which can have only one object or instance at a time. In other words, **we can instantiate only one instance of the singleton class**. The new variable also points to the initial instance created if we attempt to instantiate the Singleton class after the first time.
-
-```cpp
 #include <iostream>
 using namespace std;
 
@@ -53,4 +50,3 @@ int main()
     obj_2->display_string();
     cout << "Address of obj_2: " << obj_2 << endl;
 }
-```
