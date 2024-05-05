@@ -49,7 +49,7 @@ However, creating std::thread without ``std::thread::join()`` results in error:
 //This program gives error when running
 int main()
 {
-    std::thread thread_obj(thread_func);// Don't call thread_obj.join() after this results in error
+    std::thread thread_obj(thread_func);
     return 0;
 }
 ```

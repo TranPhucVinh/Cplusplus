@@ -87,7 +87,7 @@ void thread_func()
 
 Use ``unique_lock`` to solve the [One thread function handler to increase a share value](Race%20condition.md#one-thread-function-handler-to-increase-a-share-value) issue:
 
-**Program**: [mutex_unique_lock.cpp]()
+**Program**: [mutex_unique_lock.cpp](../src/mutex_unique_lock.cpp)
 
 **Result**: ``share_value after executing 2 threads: 6000000``
 

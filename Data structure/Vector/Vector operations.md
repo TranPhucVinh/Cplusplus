@@ -107,7 +107,11 @@ numbers.insert(numbers.begin(), 4);// 4 1 2 3
 numbers.insert(numbers.begin() + 2, 5);// 4 1 5 2 3
 ```
 # Delete
-
+## Remove the last member of the vector by pop_back()
+```cpp
+void std::vector<int>::pop_back()
+```
+Removes last element of the vector then shrinks the vector's size by one.
 ## Delete vector member by erase()
 
 ```cpp
