@@ -107,3 +107,6 @@ int main()
     return 0;
 }
 ```
+# vector mustn't be used inside a union
+
+Vector mustn't be used inside a union due to certain restrictions on union members. The reason is that ``std::vector`` manages dynamic memory internally, and unions in C/C++ have constraints on the types of data they can contain
