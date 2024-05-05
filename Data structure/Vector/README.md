@@ -2,7 +2,7 @@ Vectors are the same as dynamic arrays with the ability to resize itself automat
 
 # [Vector operations](Vector%20operations.md)
 
-**Create**: 
+[Create](Create.md): 
 * Multiple ways to define a vector 
 * const char pointer as member of a vector
 * Class object as a member of a vector
