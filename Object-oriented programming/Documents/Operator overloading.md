@@ -42,14 +42,13 @@ To have ``+`` operator as the overloading operator for those complex number in c
 
 The syntax for the overloading operator function is:
 ```cpp
-<class_name> operator<operator_symbol> (<class_name> const& <class_object>)
+<class_name> operator<operator_symbol> (<class_name> <class_object>)
 {
     //Definition goes here
 }
 ```
-Please note that the [const reference](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/const%20reference.md) is required here.
 
-So for the complex number of class Complex, the ``+`` overloading operator function now is ``operator+``:
+So for the complex number of class Complex, the **+** overloading operator function now is **operator+**:
 ```cpp
 Complex operator+ (Complex& obj)
 {
@@ -78,8 +77,7 @@ class Complex {
             cout << this->real << " + i" << this->img << '\n';
         }
 
-        // This is automatically called when '+' is used with
-        // between two Complex objects
+        // This is automatically called when '+' is used between two Complex objects
         Complex operator+ (Complex& obj)
         {
             Complex result;
@@ -88,6 +86,42 @@ class Complex {
             return result;
         }
 };
+
+int main()
+{
+	Complex c1(1, 2), c2(3, 4);
+    c1.print();
+    c2.print();
+	Complex c3 = c1 + c2;
+	c3.print();
+}
+```
+**Note**: In this case, as we use an object, i.e a complex number, to add to another object (another complex number), so the operator overloading for **+** only takes 1 argument. For an operator overloading for **+** to add 2 complex numbers, this function must be defined in this way:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Complex {
+    public:
+        int real, img;
+        Complex(int r = 0, int i = 0)
+        {
+            real = r;
+            img = i;
+        }
+        void print() { 
+            cout << this->real << " + i" << this->img << '\n';
+        }
+};
+
+Complex operator+ (Complex &complex_1, Complex &complex_2)
+{
+    Complex _complex;
+    _complex.real = complex_1.real + complex_2.real;
+    _complex.img = complex_1.img + complex_2.img;
+    return _complex;
+}
 
 int main()
 {
