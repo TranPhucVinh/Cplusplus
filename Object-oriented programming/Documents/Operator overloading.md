@@ -59,6 +59,9 @@ Complex operator+ (Complex& obj)
 }
 ```
 So the full program is:
+
+<details>
+	
 ```cpp
 #include <iostream>
 using namespace std;
@@ -96,8 +99,12 @@ int main()
 	c3.print();
 }
 ```
+</details>
+
 **Note**: In this case, as we use an object, i.e a complex number, to add to another object (another complex number), so the operator overloading for **+** only takes 1 argument. For an operator overloading for **+** to add 2 complex numbers, this function must be defined in this way:
 
+<details>
+	
 ```cpp
 #include <iostream>
 using namespace std;
@@ -132,6 +139,8 @@ int main()
 	c3.print();
 }
 ```
+</details>
+
 # Using [friend](https://github.com/TranPhucVinh/Cplusplus/blob/master/Object-oriented%20programming/friend.md) method when the objects of the overloading operator function try to access to the private member
 ```cpp
 class Complex {
