@@ -55,7 +55,7 @@ int main()
 ```
 When running this program, there will be error: **terminate called without an active exception**
 
-## [``std::thread::join()`` will block the process if this thread has while(1)](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Thread/Fundamental%20concepts.md#stdthreadjoin-will-block-the-process-if-this-thread-has-while1)
+## [``std::thread::join()`` will block the process if this thread has while(1)](Fundamental%20concepts.md#stdthreadjoin-will-block-the-process-if-this-thread-has-while1)
 ## ``std::thread::detach()``
 ``std::thread::detach()`` separate the thread of execution from the thread object, allowing execution to continue independently. Any allocated resources will be freed once the thread exits.
 ```cpp

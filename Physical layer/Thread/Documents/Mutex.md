@@ -106,9 +106,12 @@ Thread 2 isn't ready to run
 // Loop forever
 ```
 
-**Problem solved**: 
+**Problem solved**: We can use the following condition variable to solve that problem
+* ``void std::condition_variable::wait(std::unique_lock<std::mutex>& lock)``
+* ``void wait(std::unique_lock<std::mutex>& lock, Predicate stop_waiting)``
+* ``std::condition_variable::wait_for()``
 
-Use condition variable wait function
+## ``void std::condition_variable::wait(std::unique_lock<std::mutex>& lock)``
 
 ```cpp
 void std::condition_variable::wait(std::unique_lock<std::mutex>& lock);
@@ -118,7 +121,7 @@ void std::condition_variable::wait(std::unique_lock<std::mutex>& lock);
 
 **Program**: [condition_variable_wait.cpp](../src/condition_variable_wait.cpp)
 
-## void wait(std::unique_lock<std::mutex>& lock, Predicate stop_waiting)
+## ``void wait(std::unique_lock<std::mutex>& lock, Predicate stop_waiting)``
 ```cpp
 template<class Predicate>
 void wait(std::unique_lock<std::mutex>& lock, Predicate stop_waiting);
@@ -145,7 +148,7 @@ void thread_func_2(){
     }
 }
 ```
-## std::condition_variable::wait_for()
+## ``std::condition_variable::wait_for()``
 
 ```cpp
 //Other parts are like in void wait(std::unique_lock<std::mutex>& lock) example
