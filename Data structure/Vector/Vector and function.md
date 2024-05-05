@@ -1,5 +1,5 @@
 # Vector as function argument
-Function read all vector member, as its argument:
+## Function read all vector member, as its argument
 ```cpp
 void readVector(vector<int> vec){
 	for (int i = 0; i < vec.size(); i++){
@@ -13,7 +13,8 @@ int main()
     readVector(vec);
 }
 ```
-Change value of a vector as a function argument: [lvalue](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/lvalue.md) **must be used**
+## Change value of a vector as a function argument
+To change value of a vector as a function argument, [lvalue](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/lvalue.md) **must be used**
 ```cpp
 void updateVector(vector<int> &vec){
 	for (int i = 0; i < vec.size(); i++){
