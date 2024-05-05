@@ -50,7 +50,7 @@ The syntax for the overloading operator function is:
 
 So for the complex number of class Complex, the **+** overloading operator function now is **operator+**:
 ```cpp
-Complex operator+ (Complex& obj)
+Complex operator+ (Complex obj)
 {
     Complex result;
     result.real = real + obj.real;
@@ -81,7 +81,7 @@ class Complex {
         }
 
         // This is automatically called when '+' is used between two Complex objects
-        Complex operator+ (Complex& obj)
+        Complex operator+ (Complex obj)
         {
             Complex result;
             result.real = real + obj.real;
@@ -122,7 +122,7 @@ class Complex {
         }
 };
 
-Complex operator+ (Complex &complex_1, Complex &complex_2)
+Complex operator+ (Complex complex_1, Complex complex_2)
 {
     Complex _complex;
     _complex.real = complex_1.real + complex_2.real;
