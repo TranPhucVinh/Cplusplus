@@ -119,6 +119,31 @@ int main()
     cout << c1;
 }
 ```
+# Overload built-in operator > or < (less than or greater than operators)
+```cpp
+#include <iostream>
+using namespace std;
+
+class ClassTest {
+    public:
+        int _a;
+        ClassTest(int a){
+            _a = a;
+        }
+};
+
+bool operator> (ClassTest obj_1, ClassTest obj_2)
+{
+    if (obj_1._a > obj_2._a) return true;
+    else return false;
+}
+
+int main()
+{
+	ClassTest obj_1(1), obj_2(2);
+    cout << (obj_1 > obj_2);// 0 (as false)
+}
+```
 # What operators can be overloaded ?
 Almost all operators can be overloaded like:
 * [Unary operators](https://github.com/TranPhucVinh/C/blob/master/Introduction/Variable/README.md#unary-operators)
