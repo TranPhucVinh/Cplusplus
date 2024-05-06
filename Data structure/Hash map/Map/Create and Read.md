@@ -119,6 +119,21 @@ while (el != Map.end()) {
 1, key: 123; value: Map, key 123
 2, key: 1; value: Map, key 1
 ```
+# Function pointer as map value
+```cpp
+void display_1(){
+    cout << "display 1\n";
+}
+int main()
+{
+    std::map<int, void (*)()> Function_Pointer_Map;
+    Function_Pointer_Map[1] = display_1;
+
+    // Use () to call the function 
+    Function_Pointer_Map[1]();// display_1() is called
+    return 0;
+}
+```
 # Vector of map
 
 Create a vector to store maps to count total duplicate numbers inside a 2D vector:
