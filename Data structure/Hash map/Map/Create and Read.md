@@ -120,6 +120,7 @@ while (el != Map.end()) {
 2, key: 1; value: Map, key 1
 ```
 # Function pointer as map value
+**A single function**
 ```cpp
 void display_1(){
     cout << "display 1\n";
@@ -131,6 +132,27 @@ int main()
 
     // Use () to call the function 
     Function_Pointer_Map[1]();// display_1() is called
+    return 0;
+}
+```
+**Function as a class method**
+```cpp
+class Map_Func_Ptr{
+    private:
+        std::map<int, void (Map_Func_Ptr::*)()> EXECUTE_FUNC;
+        void display_1(){
+            cout << "display 1\n";
+        }
+    public:
+        Map_Func_Ptr(){
+            EXECUTE_FUNC[1] = &Map_Func_Ptr::display_1;
+            (this->*EXECUTE_FUNC[1])();
+        }
+};
+
+int main()
+{
+    Map_Func_Ptr map_func_ptr;
     return 0;
 }
 ```
