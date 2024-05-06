@@ -57,11 +57,9 @@ std::map<int, std::string> Map = {
 ```
 ## Traverse by auto keyword
 ```cpp
-```cpp
 for (auto &el: Map){
 	std::cout << map_index << ", key: " << el.first << "; value: " << el.second << std::endl;
 }
-```
 ```
 **Map doesn't have any any API to directly access its element by the specified index/position**, use **std::advance()** instead:
 ```cpp
