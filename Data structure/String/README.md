@@ -36,7 +36,7 @@ int main() {
 
 After forming with ``ss2.str()``, ``ss2`` can't be appended with ``<<``
 
-**Forming stringstream when using int and uint8_t**:
+## Forming stringstream when using int and uint8_t
 
 ```c
 stringstream ss1, ss2;
@@ -82,6 +82,25 @@ int main() {
 
     ss >> c;
     cout << c << endl;//World
+}
+```
+## Floating point format with stringstream
+```cpp
+#include <iostream>
+#include <iomanip> // Include for std::fixed and std::setprecision
+#include <string>
+
+int main() {
+    std::string displayedString;
+    double number = 12.34;
+
+    std::stringstream stream;
+    stream << std::fixed << std::setprecision(2) << number;    // Format the number with 2 decimal places
+    displayedString += stream.str();
+
+    std::cout << displayedString << std::endl;
+
+    return 0;
 }
 ```
 # Char array for string
