@@ -9,7 +9,7 @@ cout << displayString.append("!") << endl; //Hello, World !
 cout << displayString.append("!") << endl; //Hello, World !!
 ```
 
-Using ``push_back()``:
+Using **push_back()**:
 
 ```cpp
 string displayed_string = "Hello World !";
