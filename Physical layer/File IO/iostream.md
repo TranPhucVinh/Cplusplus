@@ -10,17 +10,7 @@ main(){
 }
 ```
 
-``\n`` and ``endl`` is the same. ``endl: endline``
-
-Or define:
-
-```cpp
-#include <iostream>
-
-main(){
-	std::cout << "Hello, World!" << std::endl;
-}
-```
+``\n`` and ``endl`` is the same. ``endl`` stands for endline.
 
 By default ``iostream`` doesn't support printing out with formating like ``printf()``.
 
@@ -82,24 +72,23 @@ int main(){
 
 **Input**: ``Hello, World !`` **Output**: ``Hello,``
 
-## std::cin in foor loop
+## Infinite for loop for std::cin
 
 ```c
-#include <iostream>
-#include <fstream>
-
-using namespace std;
-
 int number;
-
-main() {
-	for(;cin >> number;){
-		cout << "Hello";
-	}
+for(;cin >> number;){
+	cout << "Entered: " << number << endl;
 }
 ```
-
-Result: Infinite loop if entering valid number, break if entering invalid value
+**Result**
+```
+1
+Entered: 1
+2
+Entered: 2
+...
+```
+This infinite loop will break if entering invalid value.
 
 # getline()
 
