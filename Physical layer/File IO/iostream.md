@@ -89,6 +89,30 @@ Entered: 2
 ...
 ```
 This infinite loop will break if entering invalid value.
+## Infinite while loop for std::cin to print out the entered int number
+If entering the invalid value, like string, error message is poped out: ``Invalid input. Please enter a valid integer``
+```cpp
+#include <iostream>
+#include <limits> // std::numeric_limits
+
+using namespace std;
+
+int main(){
+	int number;
+	while(1){
+		cout << "Enter number: ";
+		if (!(cin >> number)) {
+			cout << "Invalid input. Please enter a valid integer." << endl;
+			cin.clear();// Clear the error state of cin
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');// Clear the input buffer up to the newline character (removing the invalid input)
+			continue; // Exit with error
+		}
+
+		cout << "Number: " << number << endl;
+	}
+}
+```
+In this example, the ``cin.clear()`` and ``cin.ignore()`` are mandatorily required to clean up the invalid buffer. Without them, after entering the invalid number, while(1) will keep popping out error message **Invalid input. Please enter a valid integer**.
 
 # getline()
 
