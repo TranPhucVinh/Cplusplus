@@ -104,7 +104,7 @@ int main(){
 		if (!(cin >> number)) {
 			cout << "Invalid input. Please enter a valid integer." << endl;
 			cin.clear();// Clear the error state of cin
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');// Clear the input buffer up to the newline character (removing the invalid input)
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');// Clear the input buffer up to the newline character "\n" (removing the invalid input)
 			continue; // Exit with error
 		}
 
@@ -198,6 +198,8 @@ int main(){
 	cout << "The whole sentence is: " << sentence << endl;
 }
 ```
+In this case, ``cin.ignore(numeric_limits<streamsize>::max(), '\n')`` will clear the input buffer up to the newline character (\n). This ensures that any leftover characters (including the newline character) from the input stream are discarded before we proceed to read the sentence using getline.
+
 **This is an error program. Must not implement it in project**
 ```cpp
 // THIS IMPLEMENTATION IS WRONG AS IT'S INTENTIONALLY USED FOR THE DEMONSTRATION TO THE NEED OF cin.clear() and cin.ignore()
