@@ -174,9 +174,33 @@ int main(){
 }
 ```
 
-## Problem with getline()
-
+## Read the entered int and string
 ```cpp
+#include <iostream>
+#include <limits> // std::numeric_limits
+
+using namespace std;
+
+int number;
+string sentence;
+
+int main(){
+	cout << "Enter int number: ";
+	cin >> number;
+
+	cin.clear();// Clear the error state of cin
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');// Clear the input buffer up to the newline character (removing the invalid input)
+
+	cout << "Enter your sentence: ";
+	getline(cin, sentence);
+
+	cout << "Entered numer: " << number << endl;
+	cout << "The whole sentence is: " << sentence << endl;
+}
+```
+**This is an error program. Must not implement it in project**
+```cpp
+// THIS IMPLEMENTATION IS WRONG AS IT'S INTENTIONALLY USED FOR THE DEMONSTRATION TO THE NEED OF cin.clear() and cin.ignore()
 #include <iostream>
 
 using namespace std;
@@ -195,35 +219,7 @@ int main(){
 }
 ```
 
-After entering the int ``number`` and press enter, ``age`` value will appear then the programm stop as after entering ``ENTER``. This happens because ``getline()`` stops executing as knowing that ``ENTER`` has been pressed.
-
-**Problem solved**
-
-Using ``cin.ignore(1)``: Ignore the last entering character, in this case is ``ENTER``
-
-```cpp
-cout << "Enter age: ";
-cin >> age;
-cout << "Enter your sentence: ";
-cin.ignore(1); 
-getline(cin, sentence);
-
-cout << "Entered numer: " << age << endl;
-cout << "The whole sentence is: " << sentence << endl;
-```
-
-Using ``cin >> ws``: ``cin >> ws`` after ``cin`` statement tells the compiler to ignore buffer and also to discard all the whitespaces before the actual content of string or character array.
-
-```cpp
-cout << "Enter age: ";
-cin >> age;
-cout << "Enter your sentence: ";
-cin >> ws;
-getline(cin, sentence);
-
-cout << "Entered numer: " << age << endl;
-cout << "The whole sentence is: " << sentence << endl;
-```
+After entering the int ``number`` and press enter, ``age`` value will appear then the programm stop as after entering ``ENTER`` (``\n``). This happens because ``getline()`` stops executing as knowing that ``ENTER``  (``\n``) has been pressed.
 
 # setw()
 
