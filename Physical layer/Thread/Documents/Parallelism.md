@@ -1,3 +1,11 @@
+# Thread safety
+A function is thread-safe when it can be invoked or accessed concurrently by multiple threads without causing unexpected behavior, race conditions, or data corruption.
+
+Safety level of a thread can fall into 3 categories:
+* Unsafe: Take all race condition as the example for unsafe threads.
+* **Thread safe, Serializable**: Use a single mutex to protect all the resource from concurrent thread execution. 
+* **Thread safe, MT-Safe**: Use a mutex for every single source to protect it from concurrent thread execution. 
+
 # std::promise and std::future
 
 * **std::promise** is a template class that allows you to store a value or an exception that will be made available in the future.
