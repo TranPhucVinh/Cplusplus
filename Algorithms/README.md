@@ -3,11 +3,11 @@
 * std::find()
 * std::min()
 * std::lower_bound() and std::upper_bound()
-
-# std::sort()
+# Update
+## std::sort()
 **std::sort()** for sorting an array with **Time Complexity** of **O(N*logN)**. By default, std::sort() **sorts the sequence in ascending/non-decreasing order**.
 
-## Sort an array
+### Sort an array
 ```cpp
 #include <iostream>
 #include <algorithm>    // std::sort
@@ -32,7 +32,7 @@ int main(){
     std::cout << "\n";
 }
 ```
-## Sort a vector
+### Sort a vector
 ```cpp
 std::vector<int> vec{34, 12, 135, 45, 1, 9};
 
@@ -42,7 +42,7 @@ for (int i=0; i < vec.size(); i++){
 	std::cout << vec[i] << " ";
 }
 ```
-## Sort a string array
+### Sort a string array
 ```cpp
 string str[] = {"b", "a", "abd", "ab","abc"};
 std::sort(str, str + 5);
@@ -51,11 +51,11 @@ for (int i=0; i < 5; i++){
 	std::cout << str[i] << " ";
 }// a ab abc abd b
 ```
-## Sort in descending order
+### Sort in descending order
 ```cpp
 std::sort(vec.begin(), vec.end(), std::greater<int>());
 ```
-## Third argument of std::sort()
+### Third argument of std::sort()
 **std::sort()** takes the third argument as a comparator function with 2 arguments. This example will arrange the vector in descending order:
 ```cpp
 // Everytime calling this function, 2 adjacent members a, b in vec will be arranged so that a > b
@@ -76,7 +76,7 @@ int main() {
     return 0;
 }
 ```
-# std::reverse()
+## std::reverse()
 Reverse a sequence, e.g string, vector
 ```cpp
 std::string str = "123";
@@ -97,7 +97,7 @@ vector<int>::iterator iter = vec.begin();
 std::reverse(vec.begin(), vec.end());
 ```
 **std::reverse()** returns void, so don't assign it to any variable.
-# std::rotate()
+## std::rotate()
 ``std::rotate()`` rotates a sequence. For **left rotation**, move the first element of a sequence to its end. For **right rotation**, move the last element of a sequence to its first.
 
 ```cpp
