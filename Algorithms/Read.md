@@ -31,3 +31,4 @@ int main () {
     return 0;
 }
 ```
+**std::lower_bound()** and **std::upper_bound()** has the complexity of O(log2(N)+1) which is faster than binary search of the complexity of O(log(n))
