@@ -1,12 +1,9 @@
-# [for_each()](https://github.com/TranPhucVinh/Cplusplus/tree/master/Introduction/Function#for_each)
+# Read
+* for_each()
+* std::find()
+* std::min()
+* std::lower_bound() and std::upper_bound()
 
-# std::find()
-**std::find()** returns the **first occurrence** of a given element in a container. We can use this function with vectors and keep searching for the given element repeatedly till the end to find all the occurrences.
-# std::min()
-**std::min()** returns the min between 2 arguments
-```cpp
-int a = std::min(12, 34);
-```
 # std::sort()
 **std::sort()** for sorting an array with **Time Complexity** of **O(N*logN)**. By default, std::sort() **sorts the sequence in ascending/non-decreasing order**.
 
