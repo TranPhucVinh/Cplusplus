@@ -14,13 +14,10 @@ bool found = false;// Mark if the target is found
 int search_number(int target, vector<int> num_vec, int start_index, int end_index) {
     int middle = 0;
     if (start_index == end_index) {
-        if (target == num_vec[start_index]){
-            found = true;
-            return start_index;
-        } else {
-            found = false;
-            return start_index;
-        }
+        if (target == num_vec[start_index]) found = true;
+        else found = false;
+
+        return start_index;
     }
     middle = (start_index + end_index)/2;// Middle index
     if (target == num_vec[middle]) {
@@ -36,7 +33,7 @@ int search_number(int target, vector<int> num_vec, int start_index, int end_inde
     return 0;
 }
 
-#define TARGET 1
+#define TARGET 35
 
 int main(){
     vector<int> num_vec = {1, 2, 5, 12, 34};
@@ -44,8 +41,14 @@ int main(){
     if (found) cout << TARGET << " found at " << ret;
     else {
         // When ret is 0, TARGET is < lower bound of the array
-        if (!ret) cout << TARGET << " isn't found as it is less than the lower bound\n";
-        if (ret == num_vec.size() - 1) cout << TARGET << " isn't found as it is bigger than the upper bound\n";
+        if (!ret) {
+            cout << TARGET << " isn't found as it is less than the lower bound\n";
+            return 0;
+        }
+        if (ret == num_vec.size() - 1) {
+            cout << TARGET << " isn't found as it is bigger than the upper bound\n";
+            return 0;
+        }
 
         cout << TARGET << " isn't found while it inside range [lower bound, upper bound]\n";
     }
