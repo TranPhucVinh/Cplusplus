@@ -31,10 +31,12 @@ int main () {
     target = 3;// Inside the number range of vec_num but doesn't exist
     low = std::lower_bound(vec_num.begin(), vec_num.end(), target);// 5
     up = std::upper_bound(vec_num.begin(), vec_num.end(), target);// 5
+    if (*low != target) std::cout << target << " doesn't existed in vec_num\n";
 
     target = 5;// out of range of vec_num
     low = std::lower_bound(vec_num.begin(), vec_num.end(), target);// 7
     up = std::upper_bound(vec_num.begin(), vec_num.end(), target);// 7
+    if (*low != target) std::cout << target << " doesn't existed in vec_num\n";
 
     return 0;
 }
