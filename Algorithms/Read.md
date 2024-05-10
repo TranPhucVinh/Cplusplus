@@ -28,9 +28,9 @@ int main () {
     std::cout << "lower_bound at position " << (low - vec_num.begin()) << '\n';
     std::cout << "upper_bound at position " << (up - vec_num.begin()) << '\n';
 
-    target = 4;// Inside the number range of vec_num but doesn't exist
+    target = 3;// Inside the number range of vec_num but doesn't exist
     low = std::lower_bound(vec_num.begin(), vec_num.end(), target);// 5
-    up = std::upper_bound(vec_num.begin(), vec_num.end(), target);// 7
+    up = std::upper_bound(vec_num.begin(), vec_num.end(), target);// 5
 
     target = 5;// out of range of vec_num
     low = std::lower_bound(vec_num.begin(), vec_num.end(), target);// 7
