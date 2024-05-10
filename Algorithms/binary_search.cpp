@@ -33,7 +33,7 @@ int search_number(int target, vector<int> num_vec, int start_index, int end_inde
     return 0;
 }
 
-#define TARGET 35
+#define TARGET 13
 
 int main(){
     vector<int> num_vec = {1, 2, 5, 12, 34};
@@ -45,7 +45,7 @@ int main(){
             cout << TARGET << " isn't found as it is less than the lower bound\n";
             return 0;
         }
-        if (ret == num_vec.size() - 1) {
+        if ( (ret == num_vec.size() - 1) && (TARGET > num_vec[num_vec.size() - 1]) ) {
             cout << TARGET << " isn't found as it is bigger than the upper bound\n";
             return 0;
         }
