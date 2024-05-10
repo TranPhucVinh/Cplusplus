@@ -16,17 +16,25 @@ In a sorted array with duplicated number, std::lower_bound() and std::upper_boun
 #include <algorithm>    // std::lower_bound, std::upper_bound
 #include <vector>       // std::vector
 
-#define TARGET 2 // first index is 2, last index is 4
-
 int main () {
-    std::vector<int> vec_num = {1, 1, 1, 2, 2, 3, 3};
+    std::vector<int> vec_num = {1, 1, 1, 2, 2, 4, 4};
 
     std::vector<int>::iterator low, up;
-    low = std::lower_bound(vec_num.begin(), vec_num.end(), TARGET);
-    up = std::upper_bound(vec_num.begin(), vec_num.end(), TARGET);
 
-    std::cout << "lower_bound at position " << (low - vec_num.begin()) << '\n'; // 3
-    std::cout << "upper_bound at position " << (up - vec_num.begin()) << '\n';  // 5
+    int target = 2;// first index is 2, last index is 4
+    low = std::lower_bound(vec_num.begin(), vec_num.end(), target);
+    up = std::upper_bound(vec_num.begin(), vec_num.end(), target);
+
+    std::cout << "lower_bound at position " << (low - vec_num.begin()) << '\n';
+    std::cout << "upper_bound at position " << (up - vec_num.begin()) << '\n';
+
+    target = 4;// Inside the number range of vec_num but doesn't exist
+    low = std::lower_bound(vec_num.begin(), vec_num.end(), target);// 5
+    up = std::upper_bound(vec_num.begin(), vec_num.end(), target);// 7
+
+    target = 5;// out of range of vec_num
+    low = std::lower_bound(vec_num.begin(), vec_num.end(), target);// 7
+    up = std::upper_bound(vec_num.begin(), vec_num.end(), target);// 7
 
     return 0;
 }
