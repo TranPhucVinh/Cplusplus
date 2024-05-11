@@ -36,7 +36,7 @@ int main() {
 
 After forming with ``ss2.str()``, ``ss2`` can't be appended with ``<<``
 
-**Forming stringstream when using int and uint8_t**:
+## Forming stringstream when using int and uint8_t
 
 ```c
 stringstream ss1, ss2;
@@ -84,6 +84,28 @@ int main() {
     cout << c << endl;//World
 }
 ```
+## Floating point format with stringstream
+```cpp
+#include <iostream>
+#include <iomanip> // Include for std::fixed and std::setprecision
+#include <string>
+
+int main() {
+    std::string displayedString;
+    double number = 12.34;
+
+    std::stringstream stream;
+    stream << std::fixed << std::setprecision(2) << number;    // Format the number with 2 decimal places
+    displayedString += stream.str();
+
+    std::cout << displayedString << std::endl;
+
+    return 0;
+}
+```
+# Applications
+* Parse a complex number with this format "1+1i", "123+-456i",... into their real and img part (e.g real = 123, imagine = -456); and do multiply between 2 complex numbers: [string_complex_number_parsing.cpp](src/string_complex_number_parsing.cpp)
+
 # Char array for string
 
 ```cpp

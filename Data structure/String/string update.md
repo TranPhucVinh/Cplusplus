@@ -9,7 +9,7 @@ cout << displayString.append("!") << endl; //Hello, World !
 cout << displayString.append("!") << endl; //Hello, World !!
 ```
 
-Using ``push_back()``:
+Using **push_back()**:
 
 ```cpp
 string displayed_string = "Hello World !";
@@ -97,6 +97,8 @@ int main(){
     std::cout << displayedString << std::endl;// Hello, World !456 12.340000NAME
 }
 ```
+For **float number** 12.34 to have only 2 decimal places, instead of being ``12.340000`` like with ``to_string()``, [stringstream must be used](https://github.com/TranPhucVinh/Cplusplus/blob/master/Data%20structure/String/README.md#floating-point-format-with-stringstream)
+
 For **char** (a single character) with **std::to_string()**, its ASCII value is added:
 
 ```cpp

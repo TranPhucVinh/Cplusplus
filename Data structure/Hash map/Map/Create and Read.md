@@ -57,11 +57,9 @@ std::map<int, std::string> Map = {
 ```
 ## Traverse by auto keyword
 ```cpp
-```cpp
 for (auto &el: Map){
 	std::cout << map_index << ", key: " << el.first << "; value: " << el.second << std::endl;
 }
-```
 ```
 **Map doesn't have any any API to directly access its element by the specified index/position**, use **std::advance()** instead:
 ```cpp
@@ -120,6 +118,43 @@ while (el != Map.end()) {
 0, key: 456; value: Map, key 456
 1, key: 123; value: Map, key 123
 2, key: 1; value: Map, key 1
+```
+# Function pointer as map value
+**A single function**
+```cpp
+void display_1(){
+    cout << "display 1\n";
+}
+int main()
+{
+    std::map<int, void (*)()> Function_Pointer_Map;
+    Function_Pointer_Map[1] = display_1;
+
+    // Use () to call the function 
+    Function_Pointer_Map[1]();// display_1() is called
+    return 0;
+}
+```
+**Function as a class method**
+```cpp
+class Map_Func_Ptr{
+    private:
+        std::map<int, void (Map_Func_Ptr::*)()> EXECUTE_FUNC;
+        void display_1(){
+            cout << "display 1\n";
+        }
+    public:
+        Map_Func_Ptr(){
+            EXECUTE_FUNC[1] = &Map_Func_Ptr::display_1;
+            (this->*EXECUTE_FUNC[1])();
+        }
+};
+
+int main()
+{
+    Map_Func_Ptr map_func_ptr;
+    return 0;
+}
 ```
 # Vector of map
 
