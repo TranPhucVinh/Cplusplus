@@ -19,9 +19,9 @@ int main() {
 
 Or: ``ofstream fileStreamOut("text.txt");``
 
-# Read data from file
+# Read file into std::string
 
-## << caused reading separated by spaces 
+## << causes reading to be separated by spaces
 
 ``text.txt``
 ```
@@ -44,36 +44,18 @@ fileStream.close();
 
 The same issue happens with ``ifstream()``. That’s because the ``>>`` operator reads a string only until it encounters a white space character (such as a space or line break). 
 
-An inefficient way to solve the problem:
-
-```cpp
-#include <iostream>
-#include <fstream>
-
-using namespace std;
-
-int main() {
-	ifstream fileStreamIn("file.txt");
-	int word1;
-	string word2;
-	int word3;
-	while (fileStreamIn >> word1 >> word2 >> word3)
-	{
-		cout << word1 << " " <<  word2 << " " << word3 << endl;
-	}
-	fileStreamIn.close();
-}
-```
 **Problem solved**
 
 ```cpp
 string data;
-ifstream fileStreamIn("README.md");
+ifstream fileStreamIn("main.cpp");
 
 while (!fileStreamIn.eof()){
-	getline(fileStreamIn, data);
-	cout << data << endl;
+    string _data;
+    getline(fileStreamIn, _data);
+    data += _data + "\n";
 }
+cout << data;
 ```
 
 ## Read a number of characters of a file into a buffer
