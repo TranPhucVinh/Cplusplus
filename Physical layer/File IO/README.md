@@ -71,7 +71,7 @@ int main(){
 }
 ```
 # File I/O with unistd
-
+## Read a file into std::string
 As [read()](https://github.com/TranPhucVinh/C/blob/master/Physical%20layer/File%20IO/System%20call/README.md#fundamental-concepts) of unistd.h requires ``char *buffer`` buffer, to read a file's content into ``std::string``:
 ```cpp
 #include <iostream>
@@ -92,7 +92,7 @@ int main(){
     } else std::cout << "Unable to open " << FILE_NAME << std::endl;
 }
 ```
-**Read file into a vector of char**:
+## Read file into a vector of char
 ```cpp
 #define FILE_NAME   "README.md"
 #define BUFFER_SIZE  10
@@ -111,7 +111,7 @@ int main(){
     } else std::cout << "Unable to open " << FILE_NAME << std::endl;
 }
 ```
-**Dynamically read the whole file into a vector inside a loop, without knowing the file size**
+## Dynamically read the whole file into a vector inside a loop, without knowing the file size
 ```cpp
 #include <iostream>
 #include <vector>
