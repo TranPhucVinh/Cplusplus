@@ -8,7 +8,7 @@
 
 ## [API](string%20API.md)
 * [find()](#stringfind): [Found all substring occcurrence inside a string](), [Split a string into substring separated by space]()
-* [compare()](#stringcompare)
+* [compare()](string%20API.md#compare)
 * [stoi(): convert string to int]()
 * [substr()](string%20API.md#substr)
 # stringstream
