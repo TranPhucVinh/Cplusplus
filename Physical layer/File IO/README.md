@@ -92,3 +92,22 @@ int main(){
     } else std::cout << "Unable to open " << FILE_NAME << std::endl;
 }
 ```
+**Read file into a vector of char**:
+```cpp
+#define FILE_NAME   "README.md"
+#define BUFFER_SIZE  10
+
+int fd;
+
+int main(){
+    vector<char> vec_buff(BUFFER_SIZE);
+
+    fd = open(FILE_NAME, O_RDONLY);
+    if (fd > 0){
+        read(fd, vec_buff.data(), BUFFER_SIZE);
+        for (int i = 0; i < BUFFER_SIZE; i++){
+           cout << vec_buff[i];
+        }
+    } else std::cout << "Unable to open " << FILE_NAME << std::endl;
+}
+```
