@@ -72,7 +72,7 @@ int main(){
 ```
 # File I/O with unistd
 
-As [write()](https://github.com/TranPhucVinh/C/blob/master/Physical%20layer/File%20IO/System%20call/README.md#fundamental-concepts) of unistd.h requires ``char*`` buffer to read, to read the file into ``std::string``:
+As [read()](https://github.com/TranPhucVinh/C/blob/master/Physical%20layer/File%20IO/System%20call/README.md#fundamental-concepts) of unistd.h requires ``char *buffer`` buffer, to read a file's content into ``std::string``:
 ```cpp
 #include <iostream>
 #include <unistd.h> // read()
