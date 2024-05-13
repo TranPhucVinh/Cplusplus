@@ -100,11 +100,19 @@ for (int i = 0; i < vec.size(); i++){
 }
 ```
 ## Update vector size by resize()
-## Insert new value to vector at the specific index, use insert()
+## Insert new value to a vector at a specific index, use insert()
 ```cpp
 vector<int> numbers{1, 2, 3};
 numbers.insert(numbers.begin(), 4);// 4 1 2 3
 numbers.insert(numbers.begin() + 2, 5);// 4 1 5 2 3
+```
+## Convert vector<char> to std::string
+```cpp
+std::vector<char> vec_char = {'H', 'e', 'l', 'l', 'o'};
+    
+std::string str_char = std::string(vec_char.begin(), vec_char.end());;
+
+std::cout << str_char << std::endl;// Hello
 ```
 # Delete
 ## Remove the last member of the vector by pop_back()
