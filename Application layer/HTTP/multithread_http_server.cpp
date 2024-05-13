@@ -36,11 +36,14 @@ class HTTP_Server {
 	private:
 		int 				_http_server_fd;
 		int 				_http_client_fd;//fd of the connected HTTP client
-		std::vector<int>    http_client_fd_list;
-		std::string 		httpd_hdr_str = "HTTP/1.1 %s\r\nContent-Type: %s\r\nContent-Length: %d\r\n";
+		vector<int>    http_client_fd_list;
+        string 		httpd_hdr_str = "HTTP/1.1 %s\r\nContent-Type: %s\r\nContent-Length: %d\r\n";
+		string 		_httpd_hdr_str = "HTTP/1.1 %s\r\nContent-Type: %s\r\nContent-Length: %d\r\n";
 		struct 		        sockaddr_in http_client_addr;
 		void  				response_file(const char *file_name);
-		void				request_handler(std::unique_ptr<HTTP_Client> http_client, int req_buf_sz);
+		void				request_handler(unique_ptr<HTTP_Client> http_client, int req_buf_sz);
+        void                http_response(int http_client_fd, const char *content_type, const char *content);
+        void 				get_request(string uri, int http_client_fd);
 };
 
 int main(){ 
@@ -137,35 +140,9 @@ void HTTP_Server::request_handler(std::unique_ptr<HTTP_Client> http_client, int 
 			string get_method = first_line_request.substr(0, 3);// Cut 3 char for "GET"
 			string post_method = first_line_request.substr(0, 4);// Cut 4 char for "POST"
 
-			if (!get_method.compare("GET")){
+			if (get_method == "GET"){
 				string uri = first_line_request.substr(3, 3);
-				if (!uri.compare(" / ")){
-					int fd = open("index.html", O_RDONLY);
-					if (fd > 0){
-						close(fd);//Only open this file to check for its existence
-						response_file("index.html");
-					} else {
-						char res_buf[100];
-						char no_file[] = "There is no index.html file";
-						snprintf(res_buf, sizeof(res_buf), httpd_hdr_str.c_str(), "200 OK", "text/html", sizeof(no_file));
-						strcat(res_buf, "\r\n");
-						strcat(res_buf, no_file);
-						
-						write(http_client_fd, res_buf, sizeof(res_buf));
-					}
-				} else {
-                    strtok(_req_buf.get(), " ");
-        			char* not_found_uri    = strtok(NULL, " ");
-
-					char no_uri[50];
-					char res_buf[100] = {0};
-					int sz = sprintf(no_uri, "Not found %s", not_found_uri);
-					snprintf(res_buf, sizeof(res_buf), httpd_hdr_str.c_str(), "200 OK", "text/html", sz);
-					strcat(res_buf, "\r\n");
-					strcat(res_buf, no_uri);
-					write(http_client_fd, res_buf, sizeof(res_buf));
-					cout << no_uri << endl;
-				}
+				get_request(uri, http_client_fd);
 			} 
             if (!post_method.compare("POST")){
 				int found = 0;
@@ -194,6 +171,24 @@ void HTTP_Server::request_handler(std::unique_ptr<HTTP_Client> http_client, int 
 	}
 }
 
+void HTTP_Server::get_request(string uri, int http_client_fd){
+    if (!uri.compare(" / ")){
+        int fd = open("index.html", O_RDONLY);
+        if (fd > 0){
+            close(fd);//Only open this file to check for its existence
+            response_file("index.html");
+        } else {
+            // When having no index.html file, Content-Type must be text/html
+			const char *no_file = "There is no index.html file";
+			http_response(http_client_fd, "text/html", no_file);
+        }
+    } else {
+        char no_uri[50];// URL not found handler
+		sprintf(no_uri, "Not found %s", uri.c_str());
+		http_response(http_client_fd, "text/html", (const char*)no_uri);
+    }
+}
+
 void HTTP_Server::response_file(const char *file_name){
     ifstream ifs(file_name, std::ios::ate);
     if(!ifs.good()) {
@@ -217,4 +212,19 @@ void HTTP_Server::response_file(const char *file_name){
 	strcat(res_buf.get(), "\r\n");
 	strcat(res_buf.get(), file_buffer.get());
 	write(_http_client_fd, res_buf.get(), strlen(res_buf.get()));
+}
+
+/*
+    HTTP response include: content_type, response content
+*/
+void HTTP_Server::http_response(int http_client_fd, const char *content_type, const char *content){
+    int rsp_buf_sz = _httpd_hdr_str.length() + strlen("200 OK") + strlen(content_type) + strlen("\r\n") + strlen(content);
+    char *res_buf = new char[rsp_buf_sz + 1];
+    bzero(res_buf, rsp_buf_sz);//Delete buffer
+
+    snprintf(res_buf, rsp_buf_sz, _httpd_hdr_str.c_str(), "200 OK", content_type, strlen(content));
+    strcat(res_buf, "\r\n");
+    strcat(res_buf, content);
+    write(http_client_fd, res_buf, rsp_buf_sz);
+    delete res_buf;
 }
