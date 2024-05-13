@@ -111,3 +111,57 @@ int main(){
     } else std::cout << "Unable to open " << FILE_NAME << std::endl;
 }
 ```
+**Dynamically read the whole file into a vector inside a loop, without knowing the file size**
+```cpp
+#include <iostream>
+#include <vector>
+#include <unistd.h>
+#include <fcntl.h>
+
+#define FILE_NAME   "README.md"
+#define BUFFER_SIZE  10
+
+using namespace std;
+
+int fd;
+
+int main(){
+    vector<char> vec_buff(BUFFER_SIZE);
+
+    fd = open(FILE_NAME, O_RDONLY);
+    if (fd < 0){
+        std::cout << "Unable to open " << FILE_NAME << std::endl;
+    }
+
+    std::size_t totalReadBytes = 0;
+
+    /*
+        As we don't close FILE_NAME after each read() in the loop, the next call of
+        read() will start at the location where the previous read() ends.
+    */
+    while (true) {
+        // Read into the buffer starting from the current end position
+        int bytesRead = read(fd, vec_buff.data() + totalReadBytes, vec_buff.size() - totalReadBytes);
+        
+        if (bytesRead == -1) {
+            std::cout << "Error reading file\n";
+            break;
+        } else if (bytesRead == 0) {
+            break;// End of data
+        }
+
+        totalReadBytes += bytesRead;
+
+        if (totalReadBytes == vec_buff.size()) {
+            vec_buff.resize(vec_buff.size() * 2);// Double the buffer size
+        }
+    }
+
+    vec_buff.resize(totalReadBytes);
+
+    for (int i = 0; i < vec_buff.size(); i++){
+        cout << vec_buff[i];
+    }
+    close (fd);
+}
+```
