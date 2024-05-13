@@ -19,11 +19,11 @@ Handle GET request:
 * Return HTML as the content of file ``index.html`` for route ``/``. If file ``index.html`` not existed, return text/plain ``File index.html not existed``.
 * For routing with unhandled route, return ``Not found %s``
 * [HTTP server](multithread_http_server.cpp) starts when there is no HTTP client connected and sending HTTP request, HTTP receiver prints out **Waiting for a TCP sender to connect ...** until a HTTP client is connected.
-* Read data sent from POST request
+* Read data sent of a POST request from embedded device, Linux process, **not from Web browser (with AJAX)**
 * Multithread, with POSIX thread created by pthread, to handle any newly connected HTTP client
 * **Count total numbers of connected TCP client** and **detect disconnected event**
 
-To **parse for content from the POST request**, with this HTTP POST request from HTTP client:
+To **parse for content from a POST request of an embedded device or a Linux Process**:
 ```cpp
 string str = "POST / HTTP/1.1\r\nHost: localhost\r\nContent-Type: application/x-www-form-urlencoded\r\nContent-Length: 26\r\n\r\nHello, World !, index: 217\r\n";
 ```
