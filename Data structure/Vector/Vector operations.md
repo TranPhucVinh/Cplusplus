@@ -110,7 +110,7 @@ numbers.insert(numbers.begin() + 2, 5);// 4 1 5 2 3
 ```cpp
 std::vector<char> vec_char = {'H', 'e', 'l', 'l', 'o'};
     
-std::string str_char = std::string(vec_char.begin(), vec_char.end());;
+std::string str_char = std::string(vec_char.begin(), vec_char.end());
 
 std::cout << str_char << std::endl;// Hello
 ```
