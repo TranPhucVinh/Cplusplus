@@ -32,16 +32,15 @@ class TCP_Receiver {
 		TCP_Receiver(int port, bool reuse_address, int max_pending, int max_connections);
 		bool 				is_new_tcp_sender_connected();
         bool                reached_max_connections(); // Check wheter MAX_CONNECTIONS number of TCP sender have connected 
-		void 				tcp_sender_thread_handling();
         void                register_connection_to_handler();
 	private:
         int                 _total_connected_sndr_fd;// Total connected TCP sender fd
         int                 _max_connections;
 		int 				_receiver_fd;
 		int 				_sender_fd;//fd of the connected TCP sender
-		std::vector<int>    _sender_fd_list;
+		vector<int>         _sender_fd_list;
 		struct 		        sockaddr_in _sender_addr;
-        void				read_tcp_sender_msg(std::unique_ptr<TCP_Sender> tcp_sender, int req_buf_sz);
+        void				read_tcp_sender_msg(unique_ptr<TCP_Sender> tcp_sender, int req_buf_sz);
 };
 
 int main(){ 
@@ -114,13 +113,11 @@ bool TCP_Receiver::is_new_tcp_sender_connected(){
     Check wheter MAX_CONNECTIONS number of TCP sender have connected 
 */
 bool TCP_Receiver::reached_max_connections(){
-    if (_total_connected_sndr_fd <= _max_connections)
-    {
+    if (_total_connected_sndr_fd <= _max_connections) {
         write(_sender_fd, "N", sizeof("N"));
         return false;
     }
-    else
-    {
+    else {
         write(_sender_fd, "Y", sizeof("Y"));
         close(_sender_fd);
         _total_connected_sndr_fd -= 1;// Reset _total_connected_sndr_fd to its previous value
@@ -128,7 +125,7 @@ bool TCP_Receiver::reached_max_connections(){
     }
 }
 
-void TCP_Receiver::register_connection_to_handler(){
+void TCP_Receiver::register_connection_to_handler() {
     char ip_str[30];
 	inet_ntop(AF_INET, &(_sender_addr.sin_addr.s_addr), ip_str, INET_ADDRSTRLEN);
 	_sender_fd_list.push_back(_sender_fd);
@@ -136,19 +133,19 @@ void TCP_Receiver::register_connection_to_handler(){
 	cout << " connected with IP " << ip_str;
 	cout << "; " << _sender_fd_list.size() << " TCP senders have connected now\n";
 
-	std::unique_ptr<TCP_Sender> tcp_sender = std::make_unique<TCP_Sender>();
+	unique_ptr<TCP_Sender> tcp_sender = make_unique<TCP_Sender>();
 
 	tcp_sender->_sender_fd = _sender_fd;
 	strcpy(tcp_sender->ip_str, ip_str);
 
-	std::thread tcp_sender_thread(&TCP_Receiver::read_tcp_sender_msg, this, std::move(tcp_sender), BUFFSIZE);
+	thread tcp_sender_thread(&TCP_Receiver::read_tcp_sender_msg, this, move(tcp_sender), BUFFSIZE);
 	tcp_sender_thread.detach();
 }
 
 /*
 	req_buf_sz: Request buffer size	
 */
-void TCP_Receiver::read_tcp_sender_msg(std::unique_ptr<TCP_Sender> tcp_sender, int req_buf_sz){
+void TCP_Receiver::read_tcp_sender_msg(unique_ptr<TCP_Sender> tcp_sender, int req_buf_sz){
 	int _sender_fd;
 	char req_buf[req_buf_sz];// Buffer for HTTP request from HTTP client
 	bzero(req_buf, req_buf_sz);//Delete buffer
@@ -157,10 +154,10 @@ void TCP_Receiver::read_tcp_sender_msg(std::unique_ptr<TCP_Sender> tcp_sender, i
 	while(1){
 		int bytes_received = read(_sender_fd, req_buf, req_buf_sz);
         if (bytes_received > 0) {
-            printf("Message of TCP sender with fd %d: %s", _sender_fd, req_buf);
-        } else {
-            auto pos = find(_sender_fd_list.begin(), _sender_fd_list.end(), _sender_fd);
-			if(pos != _sender_fd_list.end()){
+            cout << "Message of TCP sender with fd " << _sender_fd << ": " << req_buf;
+        } else if (bytes_received == 0) {
+            vector<int>::iterator pos = find(_sender_fd_list.begin(), _sender_fd_list.end(), _sender_fd);
+			if(pos != _sender_fd_list.end()) {
 				_sender_fd_list.erase(pos);
 			}
 			printf("TCP sender with fd %d and IP %s is disconnected\n", _sender_fd, tcp_sender->ip_str);
@@ -169,6 +166,6 @@ void TCP_Receiver::read_tcp_sender_msg(std::unique_ptr<TCP_Sender> tcp_sender, i
             printf("_total_connected_sndr_fd %d\n", _total_connected_sndr_fd);
 			close(_sender_fd);
             break;
-        }
+        } else cout << "Connection error\n";
     }
 }
