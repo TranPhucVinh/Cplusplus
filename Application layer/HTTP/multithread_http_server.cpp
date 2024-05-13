@@ -36,14 +36,18 @@ class HTTP_Server {
 	private:
 		int 				_http_server_fd;
 		int 				_http_client_fd;//fd of the connected HTTP client
-		vector<int>    http_client_fd_list;
-        string 		httpd_hdr_str = "HTTP/1.1 %s\r\nContent-Type: %s\r\nContent-Length: %d\r\n";
-		string 		_httpd_hdr_str = "HTTP/1.1 %s\r\nContent-Type: %s\r\nContent-Length: %d\r\n";
+		vector<int>         http_client_fd_list;
+        
 		struct 		        sockaddr_in http_client_addr;
-		void  				response_file(const char *file_name);
+
+		string 		        _httpd_hdr_str = "HTTP/1.1 %s\r\nContent-Type: %s\r\nContent-Length: %d\r\n";
+
 		void				request_handler(unique_ptr<HTTP_Client> http_client, int req_buf_sz);
         void                http_response(int http_client_fd, const char *content_type, const char *content);
         void 				get_request(string uri, int http_client_fd);
+
+        string  			read_file(const char *file_name);
+        vector<string>      split_string_by_delim(string s, string delim);
 };
 
 int main(){ 
@@ -122,7 +126,7 @@ void HTTP_Server::http_client_thread_handling(){
 */
 void HTTP_Server::request_handler(std::unique_ptr<HTTP_Client> http_client, int req_buf_sz){
 	int http_client_fd;
-    string req_buf;
+    string req_buf_str;
 
 	std::unique_ptr<char[]> _req_buf{new char[req_buf_sz]};// Buffer for HTTP request from HTTP client
 	bzero(_req_buf.get(), req_buf_sz);//Delete buffer
@@ -132,31 +136,22 @@ void HTTP_Server::request_handler(std::unique_ptr<HTTP_Client> http_client, int 
 		int bytes_received = read(http_client_fd, _req_buf.get(), req_buf_sz);
 		if (bytes_received > 0) {
 			cout << "New HTTP client with socket fd: " << http_client_fd << "\n";
-            req_buf = string(_req_buf.get());
+            req_buf_str = string(_req_buf.get());
 
-			size_t rn_index = req_buf.find("\r\n"); // Find \r\n inside req_buf
-            string first_line_request = req_buf.substr(0, rn_index);//
+			size_t get_request_index = req_buf_str.find("GET");
+			size_t post_request_index = req_buf_str.find("POST");
 
-			string get_method = first_line_request.substr(0, 3);// Cut 3 char for "GET"
-			string post_method = first_line_request.substr(0, 4);// Cut 4 char for "POST"
-
-			if (get_method == "GET"){
-				string uri = first_line_request.substr(3, 3);
+			if (get_request_index != string::npos) {
+				vector<string> _req_buf_vec = split_string_by_delim(req_buf_str, " ");
+				string uri =  _req_buf_vec[1];
 				get_request(uri, http_client_fd);
-			} 
-            if (!post_method.compare("POST")){
-				int found = 0;
-                std::size_t newline_index = req_buf.find("\r\n", 0);
+			}
 
-				while (newline_index != string::npos) { 
-					found += 1;
-					if (found == 5) {
-						std::string http_client_data = req_buf.substr(newline_index);
-						cout << "HTTP client data: " << http_client_data << endl;
-						break;
-					}
-					newline_index = req_buf.find("\r\n", newline_index + 1); 
-				}
+            if (post_request_index != string::npos) {
+				vector<string> _req_buf_vec = split_string_by_delim(req_buf_str, " ");
+				string uri =  _req_buf_vec[1];
+				vector<string> _post_req_data = split_string_by_delim(_req_buf_vec[4], "\r\n\r\n");
+                cout << "POST request data: " << _post_req_data[1].erase(0, 3) << endl;
             }
 		} else {
 			auto pos = find(http_client_fd_list.begin(), http_client_fd_list.end(), http_client_fd);
@@ -172,11 +167,12 @@ void HTTP_Server::request_handler(std::unique_ptr<HTTP_Client> http_client, int 
 }
 
 void HTTP_Server::get_request(string uri, int http_client_fd){
-    if (!uri.compare(" / ")){
+    if (uri == "/"){
         int fd = open("index.html", O_RDONLY);
         if (fd > 0){
             close(fd);//Only open this file to check for its existence
-            response_file("index.html");
+            string html_file = read_file("index.html");
+			http_response(http_client_fd, "text/html", html_file.c_str());
         } else {
             // When having no index.html file, Content-Type must be text/html
 			const char *no_file = "There is no index.html file";
@@ -187,31 +183,6 @@ void HTTP_Server::get_request(string uri, int http_client_fd){
 		sprintf(no_uri, "Not found %s", uri.c_str());
 		http_response(http_client_fd, "text/html", (const char*)no_uri);
     }
-}
-
-void HTTP_Server::response_file(const char *file_name){
-    ifstream ifs(file_name, std::ios::ate);
-    if(!ifs.good()) {
-      cout << "Cannot open file!" << endl;
-    } else cout << "Open file successfully\n";
-
-    size_t file_sz = ifs.tellg(); 
-    ifs.seekg(0);// Revert ifs back to index 0
-
-    std::unique_ptr<char[]> file_buffer(new char[file_sz]);
-
-    ifs.read(file_buffer.get(), file_sz);
-
-	//HTTP response buffer size
-	int rsp_buf_sz = strlen(file_buffer.get()) + httpd_hdr_str.length() + strlen("200 OK") + strlen("text/html") + strlen("\r\n");
-
-    std::unique_ptr<char[]> res_buf(new char[rsp_buf_sz + 1]);
-	bzero(res_buf.get(), rsp_buf_sz);//Delete buffer
-
-	snprintf(res_buf.get(), rsp_buf_sz, httpd_hdr_str.c_str(), "200 OK", "text/html", file_sz);
-	strcat(res_buf.get(), "\r\n");
-	strcat(res_buf.get(), file_buffer.get());
-	write(_http_client_fd, res_buf.get(), strlen(res_buf.get()));
 }
 
 /*
@@ -227,4 +198,47 @@ void HTTP_Server::http_response(int http_client_fd, const char *content_type, co
     strcat(res_buf, content);
     write(http_client_fd, res_buf, rsp_buf_sz);
     delete res_buf;
+}
+
+string HTTP_Server::read_file(const char *file_name){
+    string data;
+    ifstream ifs(file_name);
+
+	if(!ifs.good()) {
+		cout << "File" << file_name << "doesn't exist\n";
+		return "NULL";
+    }
+
+    while (!ifs.eof()){
+        string _data;
+        getline(ifs, _data);
+        data += _data + "\n";
+    }
+    return data;
+}
+
+/*
+	Split string by delimiter
+*/
+vector<string> HTTP_Server::split_string_by_delim(string s, string delim) {
+    vector<string> all_substr;
+    std::size_t index = s.find(delim, 0);
+    string sub_str  = s.substr(0, index);
+    string new_string = s.substr(index+1);
+
+    while (index != string::npos) { 
+        if (sub_str != delim && sub_str.size() >= 1) {
+            all_substr.push_back(sub_str);
+        }
+
+        index = new_string.find(delim, 0);
+        sub_str  = new_string.substr(0, index);
+        new_string = new_string.substr(index+1);
+    }
+
+    if (sub_str != delim && sub_str.size() >= 1) {
+        all_substr.push_back(sub_str);
+    }
+
+    return all_substr;
 }
