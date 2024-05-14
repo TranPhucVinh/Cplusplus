@@ -35,7 +35,7 @@ class HTTP_Server {
 	private:
 		int 				_http_server_fd;
 		int 				_http_client_fd;//fd of the connected HTTP client
-		vector<int>         http_client_fd_list;
+		vector<int>         _http_client_fd_list;
         
 		struct 		        sockaddr_in http_client_addr;
 
@@ -43,6 +43,7 @@ class HTTP_Server {
 
 		string 				read_http_request(int http_client_fd, int init_buf_sz);
 		void				request_handler(unique_ptr<HTTP_Client> http_client, int req_buf_sz);
+		void				close_http_client(unique_ptr<HTTP_Client> http_client);
 
         void                http_response(int http_client_fd, const char *content_type, const char *content);
         void 				get_request(string uri, int http_client_fd);
@@ -120,13 +121,26 @@ bool HTTP_Server::is_new_http_client_connected(){
 	else return false;
 }
 
-void HTTP_Server::http_client_thread_handling(){
+void HTTP_Server::close_http_client(unique_ptr<HTTP_Client> http_client) {
+	int http_client_fd;
+	http_client_fd = http_client->_http_client_fd;
+
+	vector<int>::iterator pos = find(_http_client_fd_list.begin(), _http_client_fd_list.end(), http_client_fd);
+	if(pos != _http_client_fd_list.end()){
+		_http_client_fd_list.erase(pos);
+	}
+	printf("HTTP client with fd %d and IP %s is disconnected\n", http_client_fd, http_client->ip_str);
+	printf("Totally %ld HTTP clients are connected now\n", _http_client_fd_list.size());
+	close(http_client_fd);
+}
+
+void HTTP_Server::http_client_thread_handling() {
 	char ip_str[30];
 	inet_ntop(AF_INET, &(http_client_addr.sin_addr.s_addr), ip_str, INET_ADDRSTRLEN);
-	http_client_fd_list.push_back(_http_client_fd);
+	_http_client_fd_list.push_back(_http_client_fd);
 	cout << "New HTTP client with fd " << _http_client_fd;
 	cout << " connected with IP " << ip_str;
-	cout << "; " << http_client_fd_list.size() << " HTTP clients have connected now\n";
+	cout << "; " << _http_client_fd_list.size() << " HTTP clients have connected now\n";
 
 	unique_ptr<HTTP_Client> http_client = make_unique<HTTP_Client>();
 
@@ -146,7 +160,7 @@ string HTTP_Server::read_http_request(int http_client_fd, int init_buf_sz){
         int bytesRead = read(http_client_fd, _req_buf.data() + totalReadBytes, _req_buf.size() - totalReadBytes);
         
         if (bytesRead == -1) {
-            perror("Error reading file:");
+            perror("Error reading file");
             cout << "\n";
             break;
         } else if (bytesRead == 0) {
@@ -193,15 +207,11 @@ void HTTP_Server::request_handler(unique_ptr<HTTP_Client> http_client, int init_
             cout << "HTTP POST request:\n";
 			cout << endl;
 			cout << req_buf_str << endl << endl;
+
+			close_http_client(move(http_client));
 		}
 	} else if (req_buf_str.size() == 0) {
-		vector<int>::iterator pos = find(http_client_fd_list.begin(), http_client_fd_list.end(), http_client_fd);
-		if (pos != http_client_fd_list.end()) {
-			http_client_fd_list.erase(pos);
-		}
-		printf("HTTP client with fd %d and IP %s is disconnected\n", http_client_fd, http_client->ip_str);
-		printf("Totally %ld HTTP clients are connected now\n", http_client_fd_list.size());
-		close(http_client_fd); 
+		close_http_client(move(http_client)); 
 	}
 }
 
