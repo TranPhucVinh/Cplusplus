@@ -16,11 +16,10 @@
 
 using namespace std;
 
-#define REUSEADDR		    true
-#define ELEMENT_NUMBERS     1
-#define MAXPENDING 		    5
-#define BUFFSIZE 		    256
-#define PORT 			    8000
+#define REUSEADDR		    	true
+#define MAXPENDING 		    	5
+#define INIT_BUFF_SZ 		    500 // Initial buffer size to read a HTTP request
+#define PORT 			    	8000
 
 class HTTP_Client {	
 	public:
@@ -42,7 +41,9 @@ class HTTP_Server {
 
 		string 		        _httpd_hdr_str = "HTTP/1.1 %s\r\nContent-Type: %s\r\nContent-Length: %d\r\n";
 
+		string 				read_http_request(int http_client_fd, int init_buf_sz);
 		void				request_handler(unique_ptr<HTTP_Client> http_client, int req_buf_sz);
+
         void                http_response(int http_client_fd, const char *content_type, const char *content);
         void 				get_request(string uri, int http_client_fd);
 
@@ -100,6 +101,21 @@ bool HTTP_Server::is_new_http_client_connected(){
 	socklen_t http_client_length;
 	http_client_length = sizeof(http_client_addr);//Get address size of sender
 	_http_client_fd = accept(_http_server_fd, (struct sockaddr *) &http_client_addr, &http_client_length);
+
+    int flags = fcntl(_http_client_fd, F_GETFL);// Get current flag status of the _http_client_fd
+    if (flags == -1) {
+        perror("fcntl F_GETFL");
+        exit(EXIT_FAILURE);
+    }
+
+    // Set new flag status for the _http_client_fd, include: the current ones + O_NONBLOCK
+    // O_NONBLOCK must be used. Without it, read() of read_http_request() will block permanently
+    // after reading add the HTTP request
+    if (fcntl(_http_client_fd, F_SETFL, flags | O_NONBLOCK) == -1) {
+        perror("fcntl F_SETFL");
+        exit(EXIT_FAILURE);
+    }
+
 	if (_http_client_fd > 0) return true;
 	else return false;
 }
@@ -112,57 +128,80 @@ void HTTP_Server::http_client_thread_handling(){
 	cout << " connected with IP " << ip_str;
 	cout << "; " << http_client_fd_list.size() << " HTTP clients have connected now\n";
 
-	std::unique_ptr<HTTP_Client> http_client = std::make_unique<HTTP_Client>();
+	unique_ptr<HTTP_Client> http_client = make_unique<HTTP_Client>();
 
 	http_client->_http_client_fd = _http_client_fd;
 	strcpy(http_client->ip_str, ip_str);
 
-	std::thread http_client_thread(&HTTP_Server::request_handler, this, std::move(http_client), BUFFSIZE);
+	thread http_client_thread(&HTTP_Server::request_handler, this, move(http_client), INIT_BUFF_SZ);
 	http_client_thread.detach();
+}
+
+string HTTP_Server::read_http_request(int http_client_fd, int init_buf_sz){
+	size_t totalReadBytes = 0;
+	vector<char> _req_buf(init_buf_sz);
+
+	while (true) {
+        // Read into the buffer starting from the current end position
+        int bytesRead = read(http_client_fd, _req_buf.data() + totalReadBytes, _req_buf.size() - totalReadBytes);
+        
+        if (bytesRead == -1) {
+            perror("Error reading file:");
+            cout << "\n";
+            break;
+        } else if (bytesRead == 0) {
+			break;// end of data
+        }
+
+        totalReadBytes += bytesRead;
+
+        if (totalReadBytes == _req_buf.size()) {
+            _req_buf.resize(_req_buf.size() * 2);// Double the buffer size
+        }
+    }
+
+	_req_buf.resize(totalReadBytes);
+
+	string req_buf_str = string(_req_buf.begin(), _req_buf.end());
+
+	return req_buf_str;
 }
 
 /*
 	req_buf_sz: Request buffer size	
 */
-void HTTP_Server::request_handler(std::unique_ptr<HTTP_Client> http_client, int req_buf_sz){
+void HTTP_Server::request_handler(unique_ptr<HTTP_Client> http_client, int init_buf_sz){
 	int http_client_fd;
     string req_buf_str;
 
-	std::unique_ptr<char[]> _req_buf{new char[req_buf_sz]};// Buffer for HTTP request from HTTP client
-	bzero(_req_buf.get(), req_buf_sz);//Delete buffer
-
 	http_client_fd = http_client->_http_client_fd;
-	while(1){
-		int bytes_received = read(http_client_fd, _req_buf.get(), req_buf_sz);
-		if (bytes_received > 0) {
-			cout << "New HTTP client with socket fd: " << http_client_fd << "\n";
-            req_buf_str = string(_req_buf.get());
+	req_buf_str = read_http_request(http_client_fd, init_buf_sz);
 
-			size_t get_request_index = req_buf_str.find("GET");
-			size_t post_request_index = req_buf_str.find("POST");
+	if (req_buf_str.size() > 0) {
+		cout << "New HTTP client with socket fd: " << http_client_fd << "\n";
 
-			if (get_request_index != string::npos) {
-				vector<string> _req_buf_vec = split_string_by_delim(req_buf_str, " ");
-				string uri =  _req_buf_vec[1];
-				get_request(uri, http_client_fd);
-			}
+		size_t get_request_index = req_buf_str.find("GET");
+		size_t post_request_index = req_buf_str.find("POST");
 
-            if (post_request_index != string::npos) {
-				vector<string> _req_buf_vec = split_string_by_delim(req_buf_str, " ");
-				string uri =  _req_buf_vec[1];
-				vector<string> _post_req_data = split_string_by_delim(_req_buf_vec[4], "\r\n\r\n");
-                cout << "POST request data: " << _post_req_data[1].erase(0, 3) << endl;
-            }
-		} else {
-			auto pos = find(http_client_fd_list.begin(), http_client_fd_list.end(), http_client_fd);
-			if(pos != http_client_fd_list.end()){
-				http_client_fd_list.erase(pos);
-			}
-			printf("HTTP client with fd %d and IP %s is disconnected\n", http_client_fd, http_client->ip_str);
-			printf("Totally %ld HTTP clients are connected now\n", http_client_fd_list.size());
-			close(http_client_fd); 
-			break;
+		if (get_request_index != string::npos) {
+			vector<string> _req_buf_vec = split_string_by_delim(req_buf_str, " ");
+			string uri =  _req_buf_vec[1];
+			get_request(uri, http_client_fd);
 		}
+
+		if (post_request_index != string::npos) {
+            cout << "HTTP POST request:\n";
+			cout << endl;
+			cout << req_buf_str << endl << endl;
+		}
+	} else if (req_buf_str.size() == 0) {
+		vector<int>::iterator pos = find(http_client_fd_list.begin(), http_client_fd_list.end(), http_client_fd);
+		if (pos != http_client_fd_list.end()) {
+			http_client_fd_list.erase(pos);
+		}
+		printf("HTTP client with fd %d and IP %s is disconnected\n", http_client_fd, http_client->ip_str);
+		printf("Totally %ld HTTP clients are connected now\n", http_client_fd_list.size());
+		close(http_client_fd); 
 	}
 }
 
