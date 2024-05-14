@@ -25,3 +25,10 @@ Handle GET request:
 
 **Program**: [multithread_http_server.cpp](multithread_http_server.cpp)
 
+For the HTTP server to send the HTTP response, like with POST request, to the HTTP client, e.g AJAX on the webpage, simply add those lines of code into the POST request handler:
+```cpp
+if (post_request_index != string::npos) {
+        string http_post_req = "HTTP server response with content-type application/x-www-form-urlencoded to Web browser";
+        http_response(http_client_fd, "application/x-www-form-urlencoded", http_post_req.c_str());
+}
+```
