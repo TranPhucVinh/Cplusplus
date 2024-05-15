@@ -31,3 +31,13 @@ The idea of limiting the total number of thread created in the server, generally
 **Program**:
 * TCP receiver: [tcp_sgl_rx_multi_sndr_counting_semaphore.cpp](tcp_sgl_rx_multi_sndr_counting_semaphore.cpp)
 * TCP sender: [tcp_multi_sndr_sgl_rx.cpp](tcp_multi_sndr_sgl_rx.cpp)
+# A UDP sender sends string to a UDP receiver
+* Based on the UDP mechanism, a [UDP sender](src/udp_sgl_sndr_sgl_rx.cpp) can start normally without the need of an existing UDP receiver. UDP sender doesn't need to connect to the targeted UDP receiver (by **connect()**) before sending message.
+* Simply start the [UDP receiver](src/udp_sgl_rx_sgl_sndr.cpp) then both **UDP sender** and **receiver** can start exchanging message.
+
+**Note**: A UDP server can't detect how many UDP clients are connected to it. Users might need to design the message sent from UDP client to UDP server with specific types of ID so that the UDP server can detect the clients to count.
+
+**Program**: 
+* **Feature**: UDP sender reads the typed-in message from stdin then sends that message to any UDP receivers listening to it.
+* UDP receiver (UDP single receiver for a single UDP sender): [udp_sgl_rx_sgl_sndr.c](src/udp_sgl_rx_sgl_sndr.cpp)
+* UDP sender (UDP single sender for a single UDP receiver): [udp_sgl_sndr_sgl_rx.c](src/udp_sgl_sndr_sgl_rx.cpp)
