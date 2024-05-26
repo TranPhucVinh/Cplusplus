@@ -1,7 +1,7 @@
 # Read
 * for_each()
 * std::find()
-* std::min()
+* [std::min()](Read.md#stdmin); [std::min_element() and std::max_element()](Read.md#stdmin_element-and-stdmax_element)
 * std::lower_bound() and std::upper_bound()
 # Update
 ## std::sort()

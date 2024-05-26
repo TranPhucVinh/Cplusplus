@@ -7,6 +7,25 @@
 ```cpp
 int a = std::min(12, 34);
 ```
+# std::min_element() and std::max_element()
+Return min and max member of a sequence:
+```cpp
+#include <iostream>
+#include <algorithm>    // std::min_element, std::max_element
+#include <vector>
+
+using namespace std;
+
+int main () {
+    vector<int> vect = {3, 7, 2, 5, 6, 4, 9};
+
+    vector<int>::iterator min_iter = std::min_element(vect.begin(), vect.end());
+    vector<int>::iterator max_iter = std::max_element(vect.begin(), vect.end());
+
+    std::cout << "max number: " << *max_iter << '\n';
+    std::cout << "min number: "  << *min_iter << '\n';
+}
+```
 # std::lower_bound() and std::upper_bound()
 
 In a sorted array with duplicated number, std::lower_bound() and std::upper_bound() will return the index of a duplicated number in range [first,last) 
