@@ -1,3 +1,28 @@
+# Find the max number of a 2D array, along with its index
+```cpp
+vector<int> max_vec;
+vector<vector<int>> max_vec_index;
+
+vector<int> findPeakGrid(vector<vector<int>>& mat) {
+    // Find the max element inside each array mat[i] then put them into max_vec
+    // Find the corresponding index of that max element then put them into max_vec_index
+    for (int i = 0; i < mat.size(); i++){
+        vector<int>::iterator max_iter = std::max_element(mat[i].begin(), mat[i].end());
+        int max_index = std::distance(mat[i].begin(), max_iter);
+
+        vector<int> vec_index = {i, max_index};
+
+        max_vec.push_back(*max_iter);
+        max_vec_index.push_back(vec_index);
+    }
+
+    // Find the max element of max_vec and return its index
+    vector<int>::iterator max_iter = std::max_element(max_vec.begin(), max_vec.end());
+    int max_index = std::distance(max_vec.begin(), max_iter);
+
+    return max_vec_index[max_index];
+}
+```
 # Find the difference of two arrays
 
 * nums1 = [1,2,3], nums2 = [2,4,6]
