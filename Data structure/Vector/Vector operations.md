@@ -61,7 +61,7 @@ while (iter != vec.end()) { // Check if the element was found
     iter = std::find(iter + 1, vec.end(), 30); 
 } 
 ```
-## Operator overloading
+## Comparison operator overloading
 
 Overloading ``==``, ``>``, ``<``, ``>=`` and ``<=`` are defined for all CPP containers: vector, set,... where:
 
