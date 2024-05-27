@@ -8,7 +8,7 @@
 int a = std::min(12, 34);
 ```
 # std::min_element() and std::max_element()
-Return min and max member of a sequence:
+Return min and max member of a sequence, along with their index:
 ```cpp
 #include <iostream>
 #include <algorithm>    // std::min_element, std::max_element
@@ -22,8 +22,13 @@ int main () {
     vector<int>::iterator min_iter = std::min_element(vect.begin(), vect.end());
     vector<int>::iterator max_iter = std::max_element(vect.begin(), vect.end());
 
-    std::cout << "max number: " << *max_iter << '\n';
-    std::cout << "min number: "  << *min_iter << '\n';
+    int min_index = std::distance(vect.begin(), min_iter);
+    int max_index = std::distance(vect.begin(), max_iter);
+
+    std::cout << "max number: " << *max_iter << " at index " << max_index << '\n';
+    std::cout << "min number: " << *min_iter << " at index " << min_index << '\n';
+
+    return 0;
 }
 ```
 # std::lower_bound() and std::upper_bound()
