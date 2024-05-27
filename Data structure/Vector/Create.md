@@ -72,7 +72,16 @@ for (int i = 0; i < vec.size(); i++){
     cout << vec[i] << endl;
 }
 ```
+# Merged 2D vector into a 1D one
+Beside the naive approach to loop through every member of the 2D vector to push_back() them to the 1d vector, **insert()** function can be used. **reserve()** must be used to pre-allocated the size of the 1d vector from the 2D ones:
+```cpp
+std::vector<int> merged_vector;
+merged_vector.reserve(matrix.size() * matrix[0].size());
 
+for (int i = 0; i < matrix.size(); i++) {
+    merged_vector.insert(merged_vector.end(), matrix[i].begin(), matrix[i].end());
+}
+```
 # Class object as member of a vector
 
 ```cpp
