@@ -34,7 +34,7 @@ Implement [JSON](JSON) with [nlohmann/json](https://github.com/nlohmann/json) li
 * [Inheritance with struct](struct.md#inheritance-with-struct)
 * [Pure virtual function and abstract class in struct](struct.md#pure-virtual-function-and-abstract-class-in-struct)
 # [Stack](Stack)
-* Build stack with array: [stack_with_array.cpp](Stack/stack_with_array.cpp)
+* Build stack with array: [stack_with_array.cpp](src/stack_with_array.cpp)
 * Build stack with array which supports multiple data type by using [template](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/Function/Template.md): [stack_generic.cpp](Stack/stack_generic.cpp)
 
 # Queue
