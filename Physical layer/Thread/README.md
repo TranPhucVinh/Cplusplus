@@ -1,4 +1,4 @@
-# [Fundamental concepts](Fundamental%20concepts.md)
+# [Fundamental concepts](Documents/Fundamental%20concepts.md)
 
 ``class thread`` is available since C++11.
 
@@ -9,10 +9,10 @@ Compile: ``g++ main.cpp -std=c++11 -pthread``
 std::thread thread_object(callback);
 ```
 
-* [Create thread](Create%20thread.md): [Create a simple thread](Create%20thread.md#create-a-simple-thread), [create a thread inside a class]() and [create a thread with thread function handler as class method]()
-* [Thread function with argument](Fundamental%20concepts.md#thread-function-with-argument): [Thread function with one argument](Fundamental%20concepts.md#thread-function-with-multiple-arguments) and [Thread function with multiple arguments](Fundamental%20concepts.md#thread-function-with-multiple-arguments)
-* [Delay inside thread](Fundamental%20concepts.md#delay-inside-thread)
-* [Thread is blocked by while(1)](Fundamental%20concepts.md##thread-is-blocked-by-while1), compare with the [corresponded issue in GCC PThread](https://github.com/TranPhucVinh/C/tree/master/Physical%20layer/Thread#thread-is-blocked-by-while1).
+* [Create thread](Documents/Create%20thread.md): [Create a simple thread](Documents/Create%20thread.md#create-a-simple-thread), [create a thread inside a class](Documents/Create%20thread.md#create-a-thread-inside-a-class) and [create a thread with thread function handler as class method](Documents/Create%20thread.md#create-a-thread-with-thread-function-handler-as-class-method)
+* [Thread function with argument](Documents/Fundamental%20concepts.md#thread-function-with-argument): [Thread function with one argument](Documents/Fundamental%20concepts.md#thread-function-with-multiple-arguments) and [Thread function with multiple arguments](Documents/Fundamental%20concepts.md#thread-function-with-multiple-arguments)
+* [Delay inside thread](Documents/Fundamental%20concepts.md#delay-inside-thread)
+* [std::thread::join() will block the process if this thread has while(1)](Documents/Fundamental%20concepts.md#stdthreadjoin-will-block-the-process-if-this-thread-has-while1), compare with the [corresponded issue in GCC PThread](https://github.com/TranPhucVinh/C/tree/master/Physical%20layer/Thread#thread-is-blocked-by-while1).
 
 # Suspend and resume threads
 
