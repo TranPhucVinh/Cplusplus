@@ -1,6 +1,5 @@
 # Define
-
-lvalue reference is defined with ``int &``
+**lvalue** or **lvalue reference**, which is defined with **&**, e.g **int &a**, stores the address of another variable.
 
 By using ``&b`` reference declaration, ``&b`` will store the address of ``a`` (as ``&a``). As ``b`` is declared as lvalue reference, it becomes an alternative name for ``a``.
 
@@ -41,7 +40,7 @@ std::cout << &a << " " << &b << std::endl;//0x72fe04 0x72fe04
 int c = 10;
 b = c;
 std::cout << a << " " << b << std::endl; //10 10
-std::cout << &a << " " << &b << std::endl;//0x72fe04 0x72fe04
+std::cout << &a << " " << &b << " " << &c << std::endl;//0x72fe04 0x72fe04 0x7fffaa
 ```
 ## Can't assign const to lvalue
 ```cpp
