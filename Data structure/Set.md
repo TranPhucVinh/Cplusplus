@@ -1,7 +1,7 @@
 # Define set
-std::set is an associative container that contains a sorted set of unique object
+**std::set** is an associative container that contains a sorted set of unique object
 
-CPP set doesn't support accessing elements by index using the [] operator. Sets are implemented as binary search trees or hash tables, which do not have a linear ordering like arrays or vectors.
+**std::set** doesn't support accessing elements by index using the [] operator. Sets are implemented as binary search trees or hash tables, which do not have a linear ordering like arrays or vectors.
 
 To print all elements of a set, you need to iterate over the set using iterators or range-based for loops:
     
