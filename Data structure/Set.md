@@ -54,6 +54,12 @@ int read_by_index(std::set<int> Set, int index){
     return -1;
 }
 ```
+# Remove value from set
+
+```cpp
+int numberToRemove = 1;
+Set.erase(numberToRemove);
+```
 # Use set to check if an array only existed a set of number
 E.g check if array ``arr`` only contains 1,2,3:
 * arr = {1, 2, 3} -> return true;
