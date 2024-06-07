@@ -54,6 +54,14 @@ int read_by_index(std::set<int> Set, int index){
     return -1;
 }
 ```
+# Check if a number existed in set
+```cpp
+std::set<int> Set; // Then define that Set
+int value; // Then define that value
+if (Set.find(value) == Set.end()) {
+    cout << "Not found " << value;
+} else cout << "Found " << value;
+```
 # Remove value from set
 
 ```cpp
