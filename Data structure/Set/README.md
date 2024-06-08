@@ -56,8 +56,8 @@ int read_by_index(std::set<int> Set, int index){
 ```
 # Find index of a number in set
 ```cpp
-std::set<int> Set = {1, 2, 3, 4, 5, 6, 9}; // Then define that Set
-int value = 5; // Then define that value
+std::set<int> Set = {1, 2, 3, 4, 5, 6, 9};
+int value = 5;
 std::set<int>::iterator it = Set.find(value);
 if (it == Set.end()) {
     std::cout << "Not found " << value;
