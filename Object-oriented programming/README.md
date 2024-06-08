@@ -1,5 +1,5 @@
-[Fundamental concepts](Fundamental%20concepts.md) include:
-* [Definition of class](Documents/Fundamental%20concepts.md#what-is-class-), [define variable and function for a class](Documents/Fundamental%20concepts.md#define-variable-and-function-for-a-class-use-class-object-as-a-pointer), [types of variables in class](Fundamental%20concepts.md#types-of-class-variables)
+[Fundamental concepts](Documents/Fundamental%20concepts.md) include:
+* [Definition of class](Documents/Fundamental%20concepts.md#what-is-class-), [define variable and function for a class](Documents/Fundamental%20concepts.md#define-variable-and-function-for-a-class-use-class-object-as-a-pointer), [types of variables in class](Documents/Fundamental%20concepts.md#types-of-class-variables); [struct](Documents/Fundamental%20concepts.md#struct)
 * [Method of class](Documents/Method%20of%20class.md): [Private method](), [non-static member methods]() and [static member methods]()
 * [Encapsulation](#encapsulation)
 * [Constructor and destructor](Constructor%20and%20destructor): Constructor overloading, default keyword

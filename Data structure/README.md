@@ -26,13 +26,7 @@ Reverse a linked list
 
 Implement [JSON](JSON) with [nlohmann/json](https://github.com/nlohmann/json) library.
 
-# struct
 
-``struct`` in CPP can be treated as a class as it supports all class feature: public, private, constructor, destructor, inheritance, polymorphism, virtual function and abstract class.
-
-* [A struct works like a class](struct.md#a-struct-works-like-a-class)
-* [Inheritance with struct](struct.md#inheritance-with-struct)
-* [Pure virtual function and abstract class in struct](struct.md#pure-virtual-function-and-abstract-class-in-struct)
 # [Stack](Stack)
 * Build stack with array: [stack_with_array.cpp](src/stack_with_array.cpp)
 * Build stack with vector: [stack_with_vector.cpp](src/stack_with_vector.cpp)

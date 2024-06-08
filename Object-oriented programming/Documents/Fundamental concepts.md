@@ -96,3 +96,11 @@ class classTest{
 * Instance variables can be accessed **only by creating objects**.
 
 ## [Static variables](static.md#static-variables)
+
+# struct
+
+``struct`` in CPP can be treated as a class as it supports all class feature: public, private, constructor, destructor, inheritance, polymorphism, virtual function and abstract class.
+
+* [A struct works like a class](struct.md#a-struct-works-like-a-class)
+* [Inheritance with struct](struct.md#inheritance-with-struct)
+* [Pure virtual function and abstract class in struct](struct.md#pure-virtual-function-and-abstract-class-in-struct)
