@@ -61,7 +61,7 @@ int value = 5;
 std::set<int>::iterator it = Set.find(value);
 if (it == Set.end()) {
     std::cout << "Not found " << value;
-} else std::cout << "Found " << value << " at " << *it;
+} else std::cout << "Found " << value << " at " << *it; // Found 5 at 5
 ```
 # Remove value from set
 

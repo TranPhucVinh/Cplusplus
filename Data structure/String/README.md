@@ -103,8 +103,7 @@ int main() {
     return 0;
 }
 ```
-# Applications
-* Parse a complex number with this format "1+1i", "123+-456i",... into their real and img part (e.g real = 123, imagine = -456); and do multiply between 2 complex numbers: [string_complex_number_parsing.cpp](string_complex_number_parsing.cpp)
+# [Implementations](Implementations.md)
 
 # Char array for string
 
