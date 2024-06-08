@@ -78,6 +78,10 @@ E.g check if array ``arr`` only contains 1,2,3:
 * arr = {3} -> return true
 
 Program: [set_check_if_array_existed_a_set_of_numbers.cpp]()
+# Clear the whole set
+```cpp
+Set.clear();
+```
 # Find all missing numbers in a strictly increasing order array
 
 * arr = [2,3,4,7,11], the missing numbers are {1, 5, 6, 8, 9, 10}
