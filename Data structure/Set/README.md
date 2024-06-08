@@ -28,7 +28,7 @@ Set.insert(1);
 Set.insert(1);// This is duplicated so it won't be inserted to Set
 Set.insert(2);
 
-std::cout << "Set size: " << Set.size() << std::endl;// Set size: 7
+std::cout << "Set size: " << Set.size() << std::endl;// Set size: 2
 for (std::set<int>::iterator it = Set.begin(); it != Set.end(); ++it) {
     std::cout << *it << " ";
 }
