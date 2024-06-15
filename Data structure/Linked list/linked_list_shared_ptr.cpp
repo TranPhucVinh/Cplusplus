@@ -1,26 +1,46 @@
 #include <iostream>
 #include <memory> 
+#include <vector> 
 
 using namespace std;
+
 class LinkedList { 
     public:
         int value;
-        std::shared_ptr<LinkedList> next_node;
-        void insert_next_node(std::shared_ptr<LinkedList> next_node, int value){
+        shared_ptr<LinkedList> next_node;
+        void insert_next_node(shared_ptr<LinkedList> next_node, int value){
             next_node->value = value;
             this->next_node = next_node;
         }
 }; 
 
-void display_link_list(std::shared_ptr<LinkedList> first_node){
-    std::shared_ptr<LinkedList> ptr = first_node;
+void display_link_list(shared_ptr<LinkedList> first_node){
+    shared_ptr<LinkedList> ptr = first_node;
 
     while(ptr != NULL)
 	{        
 		printf("(%d) ", ptr->value);
 		ptr = ptr->next_node;
     }
-	printf("\n");
+	cout << endl;
+}
+
+vector<int> linked_list_to_vector(shared_ptr<LinkedList> first_node){
+	vector<int> ll_vector;
+	shared_ptr<LinkedList> ptr = first_node;
+
+    while(ptr != NULL)
+	{        
+		ll_vector.push_back(ptr->value);
+		ptr = ptr->next_node;
+    }
+
+    for (int i = 0; i < ll_vector.size(); i++){
+		cout << ll_vector[i] << " ";
+    }
+	cout << endl;
+
+	return ll_vector;
 }
 
 int main() 
@@ -35,5 +55,6 @@ int main()
     node_2->next_node = NULL;
 
     display_link_list(node_0);
+	linked_list_to_vector(node_0);
     return 0; 
 } 

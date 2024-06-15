@@ -6,7 +6,12 @@ Linked list with node name, implemented by raw pointer:
 
 **Program**: [Raw pointer with node name](linked_list_raw_ptr_with_node_name.cpp)
 
-Create and read all members of a linked list by **shared pointer**: [Shared pointer](linked_list_shared_ptr.cpp). Unique pointer can't be used to traverse the linked list created by it.
+Shared pointer for linked list:
+* Create and read all members of a linked list
+* Convert a linked list to a vector
+Program: [linked_list_shared_ptr.cpp](linked_list_shared_ptr.cpp) 
+
+Unique pointer can't be used to traverse the linked list created by it.
 
 Reverse a linked list
 * Use stack: Put all member into a stack, then start popping them out (as LIFO) so that the last member of the linked list is now the first one
