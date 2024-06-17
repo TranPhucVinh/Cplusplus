@@ -11,6 +11,8 @@ Vectors are the same as dynamic arrays with the ability to resize itself automat
 
 **Update**: Update vector at specific by index
 
+**Delete**: Delete vector member by erase(); Remove the last member of the vector by pop_back()
+
 # [Vector and function]()
 # Implementations
 * Convert an integer to Roman numeral by using **vector tuple**: [vector_tuple_integer_to_roman_numeral.cpp](vector_tuple_integer_to_roman_numeral.cpp)
