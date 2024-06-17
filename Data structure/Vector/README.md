@@ -7,7 +7,11 @@ Vectors are the same as dynamic arrays with the ability to resize itself automat
 * const char pointer as member of a vector
 * Class object as a member of a vector
 
-**Read**: Find a member by **std::find()**
+**Read**: 
+* Read all vector member by raw pointer and iterator
+* Get the last member by **back()**
+* Find a member by **std::find()**
+* Comparison operator overloading: Overloading ==, >, <, >= and <= are defined for vectors
 
 **Update**: Update vector at specific by index
 
