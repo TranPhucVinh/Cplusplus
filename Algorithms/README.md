@@ -97,7 +97,7 @@ vector<int> vec {1, 2, 3, 4, 5, 6, 7, 8, 9};
 vector<int>::iterator iter = vec.begin();
 std::reverse(vec.begin(), vec.end()); // 9 8 7 6 5 4 3 2 1
 ```
-Reverse from ``START`` to ``END`` index of a vector:
+Reverse a vector from ``START`` to ``END`` index:
 ```cpp
 #define START 3
 #define END   6
