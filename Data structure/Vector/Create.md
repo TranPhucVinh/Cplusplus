@@ -72,16 +72,7 @@ for (int i = 0; i < vec.size(); i++){
     cout << vec[i] << endl;
 }
 ```
-# Merged 2D vector into a 1D one
-Beside the naive approach to loop through every member of the 2D vector to push_back() them to the 1d vector, **insert()** function can be used. **reserve()** must be used to pre-allocated the size of the 1d vector from the 2D ones:
-```cpp
-std::vector<int> merged_vector;
-merged_vector.reserve(matrix.size() * matrix[0].size());
 
-for (int i = 0; i < matrix.size(); i++) {
-    merged_vector.insert(merged_vector.end(), matrix[i].begin(), matrix[i].end());
-}
-```
 # Class object as member of a vector
 
 ```cpp
@@ -121,3 +112,28 @@ int main()
 # vector mustn't be used inside a union
 
 Vector mustn't be used inside a union due to certain restrictions on union members. The reason is that ``std::vector`` manages dynamic memory internally, and unions in C/C++ have constraints on the types of data they can contain
+# Concatenate vectors
+## Merged 2D vector into a 1D one
+Beside the naive approach to loop through every member of the 2D vector to push_back() them to the 1d vector, **insert()** function can be used. **reserve()** must be used to pre-allocated the size of the 1d vector from the 2D ones:
+```cpp
+std::vector<int> merged_vector;
+merged_vector.reserve(matrix.size() * matrix[0].size());
+
+for (int i = 0; i < matrix.size(); i++) {
+    merged_vector.insert(merged_vector.end(), matrix[i].begin(), matrix[i].end());
+}
+```
+## Concatenate 2 vectors
+std::vector container doesn't support direct addition with operator+, as the operator overloading, for concatenating two vectors. To concatenate two vectors, you need to manually append the elements of one vector to the other:
+```cpp
+vector<int> vec_1 {1, 2, 3};
+vector<int> vec_2 {4, 5, 6};
+
+vector<int> vec_3;
+
+vec_3.reserve(vec_1.size() + vec_2.size()); // Reserve space for the combined size to avoid multiple reallocations
+
+vec_3.insert(vec_3.end(), vec_1.begin(), vec_1.end()); // Insert elements from the first vector
+
+vec_3.insert(vec_3.end(), vec_2.begin(), vec_2.end()); // Insert elements from the second vector
+```
