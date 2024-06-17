@@ -90,12 +90,28 @@ std::string::iterator index = str.begin() + 4;
 std::reverse(str.begin(), index);
 std::cout << str; // 432156789
 ```
+Reverse the whole vector:
 ```cpp
-vector<int> vec{1, 2, 3, 4, 5};
+vector<int> vec {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
 vector<int>::iterator iter = vec.begin();
-std::reverse(vec.begin(), vec.end());
+std::reverse(vec.begin(), vec.end()); // 9 8 7 6 5 4 3 2 1
 ```
+Reverse from ``START`` to ``END`` index of a vector:
+```cpp
+#define START 3
+#define END   6
+
+vector<int> vec {1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+vector<int>::iterator iter, start_iter, end_iter;
+iter = vec.begin();
+start_iter  = iter + START;
+end_iter    = iter + END;
+
+std::reverse(start_iter, end_iter);
+```
+
 **std::reverse()** returns void, so don't assign it to any variable.
 ## std::rotate()
 ``std::rotate()`` rotates a sequence. For **left rotation**, move the first element of a sequence to its end. For **right rotation**, move the last element of a sequence to its first.
