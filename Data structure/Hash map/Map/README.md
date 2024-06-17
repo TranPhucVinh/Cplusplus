@@ -17,3 +17,14 @@ std::map<int, int> Map;
 std::pair<int, int> pair_obj(1, 2);
 Map.insert(pair_obj);
 ```
+# Delete map member
+
+```cpp
+std::map erase(<key>);
+```
+```cpp
+std::map<int, std::string> Map;
+Map[1] = "Map, key 1";
+
+Map.erase(1); // Member with key 1 is erased
+```
