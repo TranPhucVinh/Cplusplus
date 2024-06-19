@@ -69,6 +69,10 @@ if (it == Set.end()) {
 int numberToRemove = 1;
 Set.erase(numberToRemove);
 ```
+# Clear the whole set
+```cpp
+Set.clear();
+```
 # Use set to check if an array only existed a set of number
 E.g check if array ``arr`` only contains 1,2,3:
 * arr = {1, 2, 3} -> return true;
@@ -77,15 +81,11 @@ E.g check if array ``arr`` only contains 1,2,3:
 * arr = {1, 2} -> return true
 * arr = {3} -> return true
 
-Program: [set_check_if_array_existed_a_set_of_numbers.cpp]()
-# Clear the whole set
-```cpp
-Set.clear();
-```
+Program: [set_check_if_array_existed_a_set_of_numbers.cpp](set_check_if_array_existed_a_set_of_numbers.cpp)
 # Find all missing numbers in a strictly increasing order array
 
 * arr = [2,3,4,7,11], the missing numbers are {1, 5, 6, 8, 9, 10}
 * arr = [5,6,7,8,9], the missing numbers are {1, 2, 3, 4}
 * arr = [1,2,3,4]: No missing
 
-Program: [set_find_missing_numbers_in_increasing_order_array.cpp]()
+Program: [set_find_missing_numbers_in_increasing_order_array.cpp](set_find_missing_numbers_in_increasing_order_array.cpp)
