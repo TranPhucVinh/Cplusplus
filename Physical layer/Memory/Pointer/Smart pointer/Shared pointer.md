@@ -23,5 +23,23 @@ int main(){
     std::cout << sharedPtr_2.use_count() << std::endl;//2, same as sharedPtr_1
 }
 ```
+Shared pointer inside class:
+```cpp
+class MyLinkedList {
+public:
+    MyLinkedList() {
+        sharedPtr_1 = std::make_shared<int>(123);
+        std::cout << &sharedPtr_1 << std::endl;//0x72fdf0
+	    std::cout << *sharedPtr_1 << std::endl;//123
+
+    }
+private:
+    shared_ptr<int> sharedPtr_1;
+};
+
+int main(){
+   MyLinkedList* obj = new MyLinkedList();
+}
+```
 # Implementations
 * [Create and read all members of a linked list by shared pointer]()
