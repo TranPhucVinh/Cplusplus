@@ -2,7 +2,28 @@ Create a 2x3 vector:
 ```cpp
 vector<vector<int>> two_d_vec = {{1, 2, 3}, {4, 5, 6}};
 ```
-# Setup value for a 2-D vector
+# Setup value for a 2D vector
+Define a 2D vector:
+```cpp
+int m = 2;
+int n = 3;
+
+std::vector<std::vector<int>> two_d_vec(n, std::vector<int>(m));
+
+for (int i = 0; i < n; i++) {
+    for (int j = 0; j < m; j++) {
+        two_d_vec[i][j] = i * m + j;
+    }
+}
+
+for (int i = 0; i < n; i++) {
+    for (int j = 0; j < m; j++) {
+        std::cout << two_d_vec[i][j] << " ";
+    }
+    std::cout << std::endl;
+}
+```
+Enter value for each member of the 2D vector
 ```cpp
 void setup_2d_vector(){
     int n;
