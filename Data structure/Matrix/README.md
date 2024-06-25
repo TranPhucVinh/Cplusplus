@@ -1,6 +1,25 @@
 # Main diagonal and antidiagonal 
 * The main diagonal of a matrix is the list of entries a[i][j] such that i = j
 * The antidiagonal, which only **available inside a square matrix** of size N, is the list of entries a[i][j] such that i+j = N-1 where 0 <= i, j < N
+# Transpose of a matrix
+Transposing a matrix involves swapping the element at position (i,j) with the element at position (j,i). This converts rows into columns. 
+
+$$
+A = 
+\begin{bmatrix}
+a & b & c \\
+d & e & f \\
+\end{bmatrix}
+$$
+
+$$
+A^T = 
+\begin{bmatrix}
+a & d \\
+b & e \\
+c & f \\
+\end{bmatrix}
+$$
 
 # Saddle point
 
