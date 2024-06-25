@@ -5,7 +5,7 @@
 Transposing a matrix involves swapping the element at position (i,j) with the element at position (j,i). This converts rows into columns. 
 
 $$
-A = 
+A(3, 2) = 
 \begin{bmatrix}
 a & b & c \\
 d & e & f \\
@@ -13,7 +13,7 @@ d & e & f \\
 $$
 
 $$
-A^T = 
+A^T = A(2, 3) =
 \begin{bmatrix}
 a & d \\
 b & e \\

@@ -1,3 +1,7 @@
+Create a 2x3 vector:
+```cpp
+vector<vector<int>> two_d_vec = {{1, 2, 3}, {4, 5, 6}};
+```
 # Setup value for a 2-D vector
 ```cpp
 void setup_2d_vector(){
