@@ -21,6 +21,33 @@ c & f \\
 \end{bmatrix}
 $$
 
+```cpp
+#include <iostream>
+#include <vector>
+ 
+using namespace std;
+
+#define m 2
+#define n 3
+
+int main() {
+    vector<vector<int>> A = {{1, 2, 3}, {4, 5, 6}}; // A(m,n) = A(2,3)
+    vector<vector<int>> A_T(n, vector<int>(m)); // A_T(n,m) = A_T(3,2)
+
+    for (int i = 0; i < m; i++){
+        for (int j = 0; j < n; j++){
+            A_T[j][i] = A[i][j];
+        }
+    }
+
+    for (int i = 0; i < n; i++){        
+        for (int j = 0; j < m; j++){
+            cout << A_T[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+```
 # Saddle point
 
 In a square matrix with n * n size, a saddle point is an element of the matrix such that it is the minimum element in its row and the maximum in its column. 
