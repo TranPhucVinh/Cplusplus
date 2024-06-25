@@ -59,6 +59,10 @@ class ClassTest{
         vector<int> vec = vector<int>(2);
 };
 ```
+# reserve()
+
+**reserve()** is used to allocate memory for a specified number of elements in advance, but it does not change the actual size of the vector. The size of the vector remains zero until elements are actually added using **push_back()** or other similar methods.
+
 # const char pointer as member of a vector
 
 ```cpp
