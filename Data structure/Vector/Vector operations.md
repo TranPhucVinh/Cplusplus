@@ -115,6 +115,19 @@ std::string str_char = std::string(vec_char.begin(), vec_char.end());
 std::cout << str_char << std::endl;// Hello
 ```
 # Delete
+## Remove the whole vector by clear()
+Remove the whole vector then assign new values to that newly deleted vector:
+
+```cpp
+vector<int> vec1{1, 2, 3}, vec2{4, 5, 6};
+for (int i = 0; i < vec1.size(); i++) cout << vec1[i] << " ";
+cout << endl;
+
+vec1.clear();
+vec1 = vec2;
+
+for (int i = 0; i < vec1.size(); i++) cout << vec1[i] << " ";
+```
 ## Remove the last member of the vector by pop_back()
 ```cpp
 void std::vector<int>::pop_back()
