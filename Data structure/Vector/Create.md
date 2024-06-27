@@ -135,6 +135,7 @@ vector<int> vec_2 {4, 5, 6};
 
 vector<int> vec_3;
 
+// Calling reserve() isn't mandatory
 vec_3.reserve(vec_1.size() + vec_2.size()); // Reserve space for the combined size to avoid multiple reallocations
 
 vec_3.insert(vec_3.end(), vec_1.begin(), vec_1.end()); // Insert elements from the first vector
