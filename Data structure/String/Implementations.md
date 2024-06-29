@@ -1,6 +1,14 @@
 # Complex number parsing
 Parse a complex number with this format "1+1i", "123+-456i",... into their real and img part (e.g real = 123, imagine = -456); and do multiply between 2 complex numbers: [string_complex_number_parsing.cpp](src/string_complex_number_parsing.cpp)
+# Multiply strings
+* num1 = "2", num2 = "3", result = "6"
+* num1 = "123", num2 = "456", result = "56088"
 
+A naive approach is to convert 2 number to number then start the multiplying. This approaches will fail for the numbers bigger than the long long size.
+
+The best approach for this problem is to "multiplying manually", i.e: 123 x 456 = (3 * 456) + (2 * 456 * 10) + (1 * 456 * 100). As traversing the string, we need to reverse the 2 number string at first to multiply manually. 
+
+Program: [multiply_string.cpp](multiply_string.cpp)
 # Longest substring without repeating characters
 
 Leetcode 3: Given a string s, find the length of the longest substring without repeating characters.
