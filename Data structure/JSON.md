@@ -35,3 +35,27 @@ int main() {
     return 0;
 }
 ```
+For [thingsboard_telemetry.cpp](thingsboard_telemetry.cpp), with JSON formed by map:
+```cpp
+
+void telemetry() {
+    // Other parts are same with thingsboard_telemetry.cpp
+    while (1){
+        // Other parts are same with thingsboard_telemetry.cpp
+        
+        map<string, int> json;
+        json["unix_tcp_client"] = send_number;
+
+        send_json = map_to_json(json);
+        
+        string http_request = form_http_request(send_json);
+
+        // Other parts are same with thingsboard_telemetry.cpp
+
+        if (wsz == http_request.size()) send_number += 1;
+        else cout << "Fail to send HTTP request\n" << endl;
+        sleep(1);
+    }
+    // Other parts are same with thingsboard_telemetry.cpp
+}
+```
