@@ -1,43 +1,37 @@
-Use [nlohmann/json](https://github.com/nlohmann/json) library.
-
-Install on Ubuntu 20.04
-
-```sh
-sudo apt-get install nlohmann-json3-dev
-```
-
-# Implementations
-
-* [Create](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/Data%20structure/JSON/Implementations.md#create-and-read-a-json-object)
-* [Read](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/Data%20structure/JSON/Implementations.md#read-json-element)
-* [Update](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/Data%20structure/JSON/Implementations.md#update-json-element)
-
-# API
-
-### items(), key() and value()
+# Create a JSON string from map
 
 ```cpp
-iteration_proxy<iterator> items() noexcept;
-iteration_proxy<const_iterator> items() const noexcept;
-```
+#include <iostream>
+#include <map>
 
-This function allows accessing iterator::key() and iterator::value() during range-based for loops. In these loops, a reference to the JSON values is returned, so there is no access to the underlying iterator.
+using namespace std;
 
-### ValueType value()
+string map_to_json(map<string, int> json) {
+    map<string, int>::iterator el = json.begin();
+    string json_str = "{";
 
-```cpp
-template<class ValueType>
-ValueType value(const typename object_t::key_type& key, ValueType&& default_value) const;
-```
+    while (el != json.end()) {
+        if (el != json.begin()) {
+           json_str.append(",");
+        }
+        json_str.append("\"");
+        json_str.append(el->first);
+        json_str.append("\":");
+        json_str.append(to_string(el->second));
+        el++;
+    }
+    json_str.append("}");
+    return json_str;
+}
 
-Returns either a copy of an object's element at the specified key key or a given default value if no element with key key exists.
-
-The function is basically equivalent to executing:
-
-```cpp
-try {
-   return at(key);
-} catch(out_of_range) {
-   return default_value;
+int main() {
+    map<string, int> json;
+    json["field_1"] = 123;
+    json["field_2"] = 456;
+    json["field_3"] = 789;
+    string json_str = map_to_json(json);
+    
+	cout << json_str << endl;
+    return 0;
 }
 ```

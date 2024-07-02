@@ -5,8 +5,7 @@ Use [for_each loop](../Introduction/Function/README.md#for-each-loop) to access 
 #include <iostream>
 #include <map>
 
-int main()
-{
+int main() {
     std::map<int, std::string> Map;
     Map[1] = "Map, key 1";
     Map[123] = "Map, key 123";
