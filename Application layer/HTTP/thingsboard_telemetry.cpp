@@ -1,96 +1,102 @@
 #include <iostream>
-#include <stdio.h>
 #include <unistd.h>
-#include <fcntl.h>
-#include <string.h>// bcopy()
-#include <netinet/tcp.h>
+#include <string.h>
+#include <string.h>
 #include <sys/socket.h>
-#include <sys/types.h>
-#include <netinet/in.h>
 #include <netdb.h>
 
 #define DEBUG
-#define HOST          "ec2-18-142-177-27.ap-southeast-1.compute.amazonaws.com"
-#define PORT          9090
-#define TOKEN         "47DF5DqQgOvw2J9jSlKK"
+#define HOST          "demo.thingsboard.io"
+#define PORT          80
+#define TOKEN         "nX6blKRMdInsacwbg583"
 #define BUFFSIZE      500
 
 char        response_buffer[BUFFSIZE];
 int         send_number = 0;
 
-std::string form_http_request(std::string data);
+using namespace std;
 
-int         socket_connect(char *host, in_port_t port);
+string form_http_request(string data);
+
+int         socket_connect(const char *host, int port);
 void        telemetry();
 
-int main()
-{
+int main() {
     telemetry();
     return 0;
 }
 
-int socket_connect(const char *host, in_port_t port){
-	struct hostent *hp;
-	struct sockaddr_in addr;
-	int sock_fd;     
+int socket_connect(const char *host, int port) {
+	int socket_fd;
 
-	if((hp = gethostbyname(host)) == NULL){
-		herror("gethostbyname");
+    struct addrinfo hints;
+    memset(&hints, 0, sizeof(hints));
+    hints.ai_family = AF_INET;
+    hints.ai_socktype = SOCK_STREAM;
+
+    struct addrinfo *response;
+    int err = getaddrinfo(host, NULL, &hints, &response);
+    if(err != 0 || response == NULL) {
+		printf("DNS lookup failed err=%d res=%p\n", err, response);
 		exit(1);
 	}
-	bcopy(hp->h_addr, &addr.sin_addr, hp->h_length);
-	addr.sin_port = htons(port);
-	addr.sin_family = AF_INET;
-	sock_fd = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
 
-	if(sock_fd == -1){
-		perror("setsockopt");
+    struct sockaddr *addr;
+    addr = response->ai_addr;
+    ((struct sockaddr_in *)addr)->sin_port = htons(port);
+
+	socket_fd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+    
+	if(socket_fd == -1){
+		perror("socket_fd");
 		exit(1);
 	}
 	
-	if(connect(sock_fd, (struct sockaddr *)&addr, sizeof(struct sockaddr_in)) == -1){
-        std::cout << "Fail to connect to " << host << std::endl;
+	if(connect(socket_fd, addr, sizeof(struct sockaddr_in)) == -1){
+		perror("connect");
 		exit(1);
 	}
-	return sock_fd;
+
+	return socket_fd;
 }
 
-std::string form_http_request(std::string data){
-	static std::string http_request;
+string form_http_request(string data){
+	string http_request;
 
-    http_request = std::string("POST /api/v1/") + TOKEN + std::string("/telemetry HTTP/1.1\r\nHost: ") + HOST + std::string("\r\nContent-Type: application/json");
+    http_request = string("POST /api/v1/") + TOKEN + string("/telemetry HTTP/1.1\r\nHost: "); 
+    http_request += HOST + string("\r\nContent-Type: application/json");
     http_request += "\r\nContent-Length: " + std::to_string(data.size()) + "\r\n\r\n" + data + "\r\n";
 	return http_request;
 }
 
-void telemetry(){
+void telemetry() {
 	int client_fd;
-    std::string send_json;
+    string send_json;
 
     while (1){
         // As socket_connect(HOST, PORT) is inside while(1) loop, when Internet gets disconnected
         // program stops immediatetly
         client_fd = socket_connect(HOST, PORT);
         
-        send_json = "{'unix_tcp_client':" + std::to_string(send_number) + "}";
+        send_json = "{'unix_tcp_client':" + to_string(send_number) + "}";
         
-        std::string http_request = form_http_request(send_json);
+        string http_request = form_http_request(send_json);
 
         #ifdef DEBUG    
-            std::cout << http_request << std::endl;
+            cout << http_request << endl;
         #endif
         int wsz = write(client_fd, http_request.c_str(), http_request.size());//wsz: write size
         
         #ifdef DEBUG    
             while(read(client_fd, response_buffer, BUFFSIZE - 1) != 0){
-                std::cout << response_buffer << std::endl;
-                bzero(response_buffer, BUFFSIZE);
+                cout << response_buffer << endl;
+                // bzero(response_buffer, BUFFSIZE);
                 break;
             }
         #endif
 
         if (wsz == http_request.size()) send_number += 1;
-        else std::cout << "Fail to send HTTP request\n" << std::endl;
+        else cout << "Fail to send HTTP request\n" << endl;
         sleep(1);
     }
     shutdown(client_fd, SHUT_RDWR); 
