@@ -7,7 +7,7 @@
 * [Delete](string%20operations.md#delete)
 
 ## [API](string%20API.md)
-* [find()](#stringfind): [Found all substring occcurrence inside a string](), [Split a string into substring separated by space]()
+* [find()](#stringfind): [Found all substring occcurrence inside a string](string%20API.md#found-all-substring-occcurrence-inside-a-string), [Split a string into substring separated by space](string%20API.md#split-a-string-into-substrings-by-a-delimiter-eg-a-space)
 * [compare()](string%20API.md#compare)
 * [stoi(): convert string to int]()
 * [substr()](string%20API.md#substr)
