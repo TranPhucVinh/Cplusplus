@@ -33,7 +33,7 @@ cout << "Total found: " << found << endl;
 ```
 ## Split a string into substrings by a delimiter, e.g a space
 ```cpp
-void splitStringByDelimiter(string s, string delim) {
+vector<string> splitStringByDelimiter(string s, string delim) {
     vector<string> all_substr;
     std::size_t index = s.find(delim, 0);
     string sub_str  = s.substr(0, index);
@@ -56,11 +56,29 @@ void splitStringByDelimiter(string s, string delim) {
     for (int i = 0; i < all_substr.size(); i++){
         cout << all_substr[i] << endl;
     }
+    return all_substr;
 }
 ```
 Test cases:
 1. "Hello, World !"
 2. "          H e llo,          world !         "
+
+# Form a full string from substrings
+Reform the original full string from substrings which are separated from that orignal string by space
+```cpp
+// Take splitStringByDelimiter() from "Split a string into substrings by a delimiter" as the input
+string formStringFromSubstr(vector<string> all_substr) {
+    string full_str;
+    for (int i = 0; i < all_substr.size(); i++){
+        full_str += all_substr[i] + " ";
+        // cout << all_substr[i] << endl;
+    }
+    full_str.erase(full_str.size() - 1, 1);// Delete the last " " character of full_str
+
+    cout << full_str << endl;
+    return full_str;
+}
+```
 # compare()
 
 ```cpp
