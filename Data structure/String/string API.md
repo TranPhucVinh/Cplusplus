@@ -106,6 +106,13 @@ std::cout << stoi("100", 0, 2) << std::endl;// 4; convert binary string 100 to d
 // This will give error: 'std::invalid_argument'
 stoi("abc123");// MUST NOT DO THIS
 ```
+To convert only the string which contains only numbers, use ``all_of()`` to check:
+```cpp
+std::string number = "123a";
+
+if (all_of(number.begin(), number.end(), ::isdigit)) std::cout << stoi(number) << std::endl;
+else std::cout << "String doesn't contain only numbers";
+```
 # substr()
 ```cpp
 string substr (size_t pos = 0, size_t len = npos);// Split from position "pos" with "npos" of characters
