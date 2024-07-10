@@ -102,3 +102,18 @@ std::string str = "Hello,World !";
 std::string sub_str_1 = str.substr(START_POSITION, TOTAL_CHARS_TO_SPLIT);// llo,W
 std::string sub_str_2 = str.substr(1);// Split from index "1" till the end of str; Result: "ello,World !"
 ```
+# replace()
+``replace()`` is used to replace a substring of a string, start at index i, with the length of ``length``:
+```cpp
+std::string str = "Hello, World!";
+
+// Indices to replace from (i) and to (j)
+int i = 7;
+int j = 12;
+
+std::string replacement = "Universe";// Replacement string
+
+str.replace(i, j - i, replacement);
+
+std::cout << "Modified string: " << str << std::endl;// Modified string: Hello, Universe!
+```
