@@ -4,7 +4,7 @@
 * [hex](Base%20number%20system.md#hex)
 * [dec](Base%20number%20system.md#dec)
 * [oct](Base%20number%20system.md#oct)
-# float
+# Float
 Format a floating-point number to print with a specific number of decimal places
 ```cpp
 #include <iostream>
@@ -37,6 +37,13 @@ double price = stod(num_str) * (discount)/100.0;
 stringstream price_ss;
 price_ss << std::fixed << std::setprecision(2) << price;
 cout << price_ss.str() << endl; // 2658129.12
+```
+# isdigit()
+Check if a character is a digit number
+```cpp
+char a = 'a', b = '1';
+cout << std::isdigit(a) << endl; // 0 (false)
+cout << std::isdigit(b) << endl; // 1 (true)
 ```
 # [Explicit type conversion](Explicit%20type%20conversion.md)
 Beside conventional [explicit type conversion](https://github.com/TranPhucVinh/C/blob/master/Introduction/Data%20type/Type%20conversion.md#explicit-type-conversion) performed in C, CPP supports explicit type conversion with ``cast``:
