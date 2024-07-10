@@ -118,3 +118,13 @@ int main() {
     return 0;
 }
 ```
+## Split a string to substring separated by spaces
+```cpp
+string data = "a bc cd Hello World";
+istringstream iss(data);
+string substr;
+
+while (iss >> substr) { 
+	cout << substr << endl;
+}
+```
