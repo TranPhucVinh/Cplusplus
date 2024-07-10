@@ -64,18 +64,16 @@ Test cases:
 2. "          H e llo,          world !         "
 
 # Form a full string from substrings
-Reform the original full string from substrings which are separated from that orignal string by space
+Reform the original full string from substrings which are separated from that original string by space
 ```cpp
 // Take splitStringByDelimiter() from "Split a string into substrings by a delimiter" as the input
 string formStringFromSubstr(vector<string> all_substr) {
     string full_str;
     for (int i = 0; i < all_substr.size(); i++){
         full_str += all_substr[i] + " ";
-        // cout << all_substr[i] << endl;
     }
     full_str.erase(full_str.size() - 1, 1);// Delete the last " " character of full_str
 
-    cout << full_str << endl;
     return full_str;
 }
 ```
