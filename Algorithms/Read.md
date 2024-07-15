@@ -66,3 +66,15 @@ int main () {
 }
 ```
 **std::lower_bound()** and **std::upper_bound()** has the complexity of O(log2(N)+1) which is faster than binary search of the complexity of O(log(n))
+# all_of()
+Check member of a sequence in a range for a specific condition
+```cpp
+std::all_of(start_index, end_index, bool_function_for_conditional_check);
+```
+
+```cpp
+vector<int> vec1 = {2, 4, 6}, vec2 = {1, 3, 5, 7};
+
+cout << std::all_of(vec1.begin(), vec1.end(), [](int i){return i%2;}) << endl; // 0 (false) as all vec1 members are even numbers
+cout << std::all_of(vec2.begin(), vec2.end(), [](int i){return i%2;}) << endl; // 1 (true) as all vec2 members are odd numbers
+```

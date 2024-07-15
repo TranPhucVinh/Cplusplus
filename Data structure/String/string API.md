@@ -33,7 +33,7 @@ cout << "Total found: " << found << endl;
 ```
 ## Split a string into substrings by a delimiter, e.g a space
 ```cpp
-void splitStringByDelimiter(string s, string delim) {
+vector<string> splitStringByDelimiter(string s, string delim) {
     vector<string> all_substr;
     std::size_t index = s.find(delim, 0);
     string sub_str  = s.substr(0, index);
@@ -56,11 +56,27 @@ void splitStringByDelimiter(string s, string delim) {
     for (int i = 0; i < all_substr.size(); i++){
         cout << all_substr[i] << endl;
     }
+    return all_substr;
 }
 ```
 Test cases:
 1. "Hello, World !"
 2. "          H e llo,          world !         "
+
+# Form a full string from substrings
+Reform the original full string from substrings which are separated from that original string by space
+```cpp
+// Take splitStringByDelimiter() from "Split a string into substrings by a delimiter" as the input
+string formStringFromSubstr(vector<string> all_substr) {
+    string full_str;
+    for (int i = 0; i < all_substr.size(); i++){
+        full_str += all_substr[i] + " ";
+    }
+    full_str.erase(full_str.size() - 1, 1);// Delete the last " " character of full_str
+
+    return full_str;
+}
+```
 # compare()
 
 ```cpp
@@ -90,6 +106,13 @@ std::cout << stoi("100", 0, 2) << std::endl;// 4; convert binary string 100 to d
 // This will give error: 'std::invalid_argument'
 stoi("abc123");// MUST NOT DO THIS
 ```
+To convert only the string which contains only numbers, use ``all_of()`` to check:
+```cpp
+std::string number = "123a";
+
+if (all_of(number.begin(), number.end(), ::isdigit)) std::cout << stoi(number) << std::endl;
+else std::cout << "String doesn't contain only numbers";
+```
 # substr()
 ```cpp
 string substr (size_t pos = 0, size_t len = npos);// Split from position "pos" with "npos" of characters
@@ -101,4 +124,19 @@ string substr (size_t pos = index);// Split from position "pos=index" till the e
 std::string str = "Hello,World !";
 std::string sub_str_1 = str.substr(START_POSITION, TOTAL_CHARS_TO_SPLIT);// llo,W
 std::string sub_str_2 = str.substr(1);// Split from index "1" till the end of str; Result: "ello,World !"
+```
+# replace()
+``replace()`` is used to replace a substring of a string, start at index i, with the length of ``length``:
+```cpp
+std::string str = "Hello, World!";
+
+// Indices to replace from (i) and to (j)
+int i = 7;
+int j = 12;
+
+std::string replacement = "Universe";// Replacement string
+
+str.replace(i, j - i, replacement);
+
+std::cout << "Modified string: " << str << std::endl;// Modified string: Hello, Universe!
 ```
