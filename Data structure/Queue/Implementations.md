@@ -52,7 +52,7 @@ We can also see that with i >= k - 1, we can start outputing the max element of 
 ```cpp
 void printKMax(int arr[], int arr_sz, int k){
     std::deque<int> dq;
-    int interval = k - 1;
+
     for (int i = 0; i < arr_sz; i++) {
             if (dq.empty()) dq.push_back(i);
             if (dq.front() <= i - k) dq.pop_front();
