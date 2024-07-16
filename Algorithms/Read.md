@@ -8,7 +8,7 @@
 int a = std::min(12, 34);
 ```
 # std::min_element() and std::max_element()
-Return min and max member of a sequence, along with their index:
+Return min and max member of a sequence, along with their index in a vector
 ```cpp
 #include <iostream>
 #include <algorithm>    // std::min_element, std::max_element
@@ -30,6 +30,13 @@ int main () {
 
     return 0;
 }
+```
+For array
+```cpp
+int arr[] = {3, 7, 2, 5, 6, 4, 9};
+int *max_element = std::max_element(arr, arr + sizeof(arr)/sizeof(int));
+
+cout << *max_element << endl;// 9
 ```
 # std::lower_bound() and std::upper_bound()
 
