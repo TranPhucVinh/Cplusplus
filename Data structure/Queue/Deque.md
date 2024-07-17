@@ -68,3 +68,8 @@ std::deque<int> dq = {1, 2, 3};
 dq.pop_back();// 1 2
 dq.pop_front();// 2
 ```
+Delete member at a specific index:
+```cpp
+int index = 2;
+dq.erase(dq.begin() + index);// 1 2 4 5
+```
