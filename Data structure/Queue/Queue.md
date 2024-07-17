@@ -41,6 +41,7 @@ int main() {
     cout << "The last value of queue: " << _queue.back() << endl;
 	display_queue(_queue);
 
+	cout << "Size: " << _queue.size() << endl;// Size: 3
 	return 0;
 }
 ```
