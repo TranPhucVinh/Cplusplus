@@ -5,7 +5,7 @@ value_type std::queue::front(); // View the first value of the queue
 ```
 
 ```cpp
-value_type std::queue::back(); // View the first value of the queue
+value_type std::queue::back(); // View the last value of the queue
 ```
 
 ```cpp
