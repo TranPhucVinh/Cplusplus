@@ -35,6 +35,12 @@ Insert element at the front
 std::deque<int> dq = {1, 2}; // 1 2
 dq.push_front(3);// 3 1 2
 ```
+## Insert member at a specific index
+```cpp
+std::deque<int> dq = {1, 2, 3, 4, 5};
+int index = 2;
+dq.insert(dq.begin() + index, 123);// 1 2 123 3 4 5
+```
 # Read
 
 * ``[]`` and **at()**: Read element at specified index
