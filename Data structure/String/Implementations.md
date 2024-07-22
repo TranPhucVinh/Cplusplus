@@ -9,6 +9,59 @@ A naive approach is to convert 2 number to number then start the multiplying. Th
 The best approach for this problem is to "multiplying manually", i.e: 123 x 456 = (3 * 456) + (2 * 456 * 10) + (1 * 456 * 100). As traversing the string, we need to reverse the 2 number string at first to multiply manually. 
 
 Program: [multiply_strings.cpp](multiply_strings.cpp)
+# Time conversion in AM/PM format
+* 12:01:00PM -> 12:01:00
+* 12:01:00AM -> 00:01:00
+* 07:05:45PM -> 19:05:45
+* 12:45:54PM -> 12:45:54
+
+<details>
+  
+```cpp
+vector<string> splitStringByDelimiter(string s, string delim) {
+    vector<string> all_substr;
+    std::size_t index = s.find(delim, 0);
+    string sub_str  = s.substr(0, index);
+    string new_string = s.substr(index+1);
+
+    while (index != string::npos) { 
+        if (sub_str != delim && sub_str.size() >= 1) {
+            all_substr.push_back(sub_str);
+        }
+
+        index = new_string.find(delim, 0);
+        sub_str  = new_string.substr(0, index);
+        new_string = new_string.substr(index+1);
+    }
+
+    if (sub_str != delim && sub_str.size() >= 1) {
+        all_substr.push_back(sub_str);
+    }
+
+    return all_substr;
+}
+
+string timeConversion(string s) {
+    string twenty_4hr_clock;
+
+    vector<string> all_substr = splitStringByDelimiter(s, ":");
+    std::string clock =  all_substr[2].substr(2, 2);
+    int hour = stoi(all_substr[0]);
+    if (clock == "AM") {
+        if (hour == 12) return "00:" + all_substr[1] + ":" + all_substr[2].substr(0, 2);
+        else return s.substr(0, 8);// Test case: 06:40:03AM -> 06:40:03
+    }
+    else {
+        if (hour == 12 && all_substr[1].substr(0, 2) == "00" && all_substr[2].substr(0, 2) == "00")
+        return "00:00:00AM";
+
+        if (hour < 12) hour +=12;
+    }
+    twenty_4hr_clock = std::to_string(hour) + ":" + all_substr[1] + ":" + all_substr[2].substr(0, 2);
+    return twenty_4hr_clock;
+}
+```
+</details>
 # Longest substring without repeating characters
 
 Leetcode 3: Given a string s, find the length of the longest substring without repeating characters.
