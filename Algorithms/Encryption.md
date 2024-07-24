@@ -42,6 +42,6 @@ flowchart LR
 In A's side, A receives B(x) then decrypts it to get a message named H(x1). A also receives EH(B) then decrypts it by B's public key to have the message named x2. If H(x1) = x2, the message is actually signed by B as B is the only people to have his private key which is used to encrypt the message ``x``. The full flow for A to verify the digital signature will be:
 ```mermaid
 flowchart LR
-    A["B(x)"] -- Decrypt  --> B[x1] -- Hash function H(x) --> C["Hashed message: H(x1)"]
-    D["Encrypted hashed: EH(B)"] --> Decrypt by B's public key --> E["Hashed message: x2"]
+    A["B(x)"] -- Decrypt --> B[x1] -- Hash function H(x) --> C["Hashed message: H(x1)"]
+    D["Encrypted hashed: EH(B)"] -- Decrypt by B's public key --> E["Hashed message: x2"]
 ```
