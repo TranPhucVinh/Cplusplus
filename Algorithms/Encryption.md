@@ -45,3 +45,11 @@ flowchart LR
     A["B(x)"] -- Decrypt --> B[x1] -- Hash function H(x) --> C["Hashed message: H(x1)"]
     D["Encrypted hashed: EH(B)"] -- Decrypt by B's public key --> E["Hashed message: x2"]
 ```
+# Public Key Certification
+Continue with the digital signature above where A is a customer and B is a bank. Suppose that initially, A init this whole digital signature process with B is a fraudulent bank, who pretends to be a real bank. By just basing on the public key, A has no way to know that. That's why Public Key Certification comes into play.
+
+Binding a public key to a particular entity is typically done by a **Certification Authority** (**CA**), whose job is to validate identities and issue certificates. A CA has the following roles:
+1. A CA verifies that an entity (a person, a router, and so on) is who it says it is. There are no mandated procedures for how certification is done. When dealing with a CA, one must trust the CA to have performed a suitably rigorous identity verification
+2. Once the CA verifies the identity of the entity, the CA creates a certificate that binds the public key of the entity to the identity. The certificate contains the public key and globally unique identifying information about the owner of the public key (for example, a human name or an IP address). The certificate is digitally signed by the CA.
+
+Public key certification is used in many popular secure networking protocols, including IPsec and SSL.
