@@ -21,3 +21,18 @@ Cryptographic hash function can be used for both error correction code and digit
 * Checksum
 * MD5
 * SHA
+# Digital signature
+Form the communication between A (who keeps B's public key) and B (who keeps the private key), B nees to prove that he is the real B, not someone pretends to be B. That can be acheived by using digital signature.
+
+For B communication with A by using public key encryption, there can be 2 ways:
+* A sends B his public key while he keeps his own private key. B to A communication will then follow the encryption flow like from A to B.
+* B encrypts his message by his private key then sends to A. A decrypts that encrypted message by B's public key. That's way is not secure as a man-in-the-middle, who had B's public key before can decrypt B's encrypted message.
+
+For digital signature, suppose that A and B has already setup a secure communication channel, in order for B to prove to A he's really B, the digital signature will take the following flow in B's side:
+```mermaid
+flowchart LR
+    A[message: x] -- Hash function H(x) --> B["Hashed message: H(x)"] -- Encrypt by B's private key --> Encrypted hashed: EH(B)
+```
+* Hash function: MD5, SHA,...
+* To encrypt the hashed message H(x) by B's private key, the same public key encryption algo like RSA or other algo like DSA (digital signature algorithm) can be used.
+* EH(B) denotes the encrypted hash message as the digital message of B.
