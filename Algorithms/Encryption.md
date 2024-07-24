@@ -31,8 +31,8 @@ For B communication with A by using public key encryption, there can be 2 ways:
 For digital signature, suppose that A and B has already setup a secure communication channel, in order for B to prove to A he's really B, the digital signature will take the following flow in B's side:
 ```mermaid
 flowchart LR
-    A[message: x] -- Hash function H(x) --> B["Hashed message: H(x)"] -- Encrypt by B's private key --> Encrypted hashed: EH(B)
+    A[message: x] -- Hash function H(x) --> B["Hashed message: H(x)"] -- Encrypt by B's private key --> C["Encrypted hashed: EH(B)"]
 ```
 * Hash function: MD5, SHA,...
 * To encrypt the hashed message H(x) by B's private key, the same public key encryption algo like RSA or other algo like DSA (digital signature algorithm) can be used.
-* EH(B) denotes the encrypted hash message as the digital message of B.
+* **EH(B)** denotes the encrypted hash message as the digital message of B.
