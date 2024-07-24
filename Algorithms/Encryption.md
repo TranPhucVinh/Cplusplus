@@ -32,7 +32,9 @@ For digital signature, suppose that A and B has already setup a secure communica
 ```mermaid
 flowchart LR
     A[message: x] -- Hash function H(x) --> B["Hashed message: H(x)"] -- Encrypt by B's private key --> C["Encrypted hashed: EH(B)"]
+    A[message: x] -- Encrypt by public key encryption --> D["Encrypted message for A: B(x)"]
 ```
 * Hash function: MD5, SHA,...
 * To encrypt the hashed message H(x) by B's private key, the same public key encryption algo like RSA or other algo like DSA (digital signature algorithm) can be used.
 * **EH(B)** denotes the encrypted hash message as the digital message of B.
+* **B(x)** denotes the encrypted message from the orignal one ``x`` that B wants to send to A. The encryption method for B(x) are 2 ways mention earlier.
