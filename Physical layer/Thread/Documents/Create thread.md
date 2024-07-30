@@ -71,7 +71,7 @@ int main()
     return 0;
 }
 ```
-**Result**: (NULL/print out nothing)
+**Result**: NULL/print out nothing as main() thread doesn't wait for thread_obj to finish.
 
  ``std::thread::detach()`` is useful to avoid blocking the thread by ``std::thread::join()`` while still trying to have its run independently. Some of  ``std::thread::detach()`` implementations:
 * [Run 2 thread, which include while(1), independently](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Thread/Fundamental%20concepts.md#stdthreadjoin-will-block-the-process-if-this-thread-has-while1)
