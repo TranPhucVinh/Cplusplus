@@ -26,6 +26,7 @@ int main(){
 	object.hello(); //Hello World
 	cout << object.publicNumber << endl; //10
 
+	// cout << object.privateNumber << endl; // As privateNumber is private variable, this line will give error
 	obj_ptr = &object;
 	obj_ptr->hello(); //Hello World
 	cout << obj_ptr->publicNumber << endl; //10
@@ -61,30 +62,6 @@ obj_ptr->hello(); //Hello World
 cout << obj_ptr->publicNumber << endl; //10
 ```
 
-## Private variables
-
-Private variables are available only inside the class function definition (check [examples](https://github.com/TranPhucVinh/Cplusplus/tree/master/Introduction/OOP/Example) for that implementation), class object is unable to access it
-
-In the example above, class object ``object`` is unable to read private variable ``privateNumer``:
-
-```cpp
-private:
-    int privateNumer = 20; //Unable to read that value outside
-```
-
-So this will give error: ``cout << object.privateNumber << endl;``
-
-Any members defined out specified **public** or **private** are **private** by default:
-```cpp
-class classTest{
-    int privateNumer; //This is a private member
-	public:
-		int publicNumber;
-		void displayStringhello(){
-            publicNumber = 123;
-		}
-};
-```
 # Types of class variables
 
 * [Instance variables](#instance-variables)
