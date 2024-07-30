@@ -64,15 +64,13 @@ cout << obj_ptr->publicNumber << endl; //10
 
 # Types of class variables
 
-* [Instance variables](#instance-variables)
-* [Static variables](#static-variables)
+* **Instance variables**
+* [Static variables](static.md#static-variables)
 
-## Instance variables
+**Instance variables**
 
 * Instance variables are **created when an object of the class is created** and **destroyed when the object is destroyed**.
 * Instance variables can be accessed **only by creating objects**.
-
-## [Static variables](static.md#static-variables)
 
 # struct
 
