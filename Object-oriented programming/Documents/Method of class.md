@@ -1,6 +1,20 @@
 # Private methods
 
-**Private methods** can't be access outside the class internal definition and can only be called from outisde the class by public functions. Check ``call_private_function()`` function in [header.cpp](Example/header.cpp)
+**Private methods**, i.e variables and functions, can't be access outside the class internal definition and can only be called from outisde the class by public functions. Check ``call_private_function()`` function in [header.cpp](Example/header.cpp)
+
+**Private variables** are available only inside the class function definition (check [examples](https://github.com/TranPhucVinh/Cplusplus/tree/master/Introduction/OOP/Example) for that implementation), class object is unable to access it
+
+Any members defined out specified **public** or **private** are **private** by default:
+```cpp
+class classTest{
+    int privateNumer; //This is a private member
+	public:
+		int publicNumber;
+		void displayStringhello(){
+            publicNumber = 123;
+		}
+};
+```
 
 # Non-static member methods
 
