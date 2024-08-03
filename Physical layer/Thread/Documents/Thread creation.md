@@ -169,3 +169,23 @@ int main()
     return 0;
 }
 ```
+# Delay inside thread
+
+Delay inside thread with ``sleep_for()`` and ``chrono``:
+
+```cpp
+void thread_func()
+{
+    while (1){
+        std::cout << "Hello, World !" << std::endl;
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+    }
+}
+
+int main()
+{
+    std::thread thread_obj(thread_func);
+    thread_obj.join();
+    return 0;
+}
+```
