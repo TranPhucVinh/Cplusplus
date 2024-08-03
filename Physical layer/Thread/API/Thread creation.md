@@ -84,7 +84,7 @@ Hello, World !
 ....
 ```
 # ``std::thread::detach()``
-``std::thread::detach()`` separate the thread of execution from the thread object, allowing execution to continue independently. Any allocated resources will be freed once the thread exits.
+``std::thread::detach()`` detaches the thread it specifies from the main thread, allowing execution to continue independently. Any allocated resources will be freed once the thread exits.
 ```cpp
 void thread_func()
 {
