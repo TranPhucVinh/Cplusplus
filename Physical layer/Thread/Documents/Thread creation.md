@@ -27,31 +27,15 @@ Or using pointer:
 std::thread *thread_obj = new std::thread(thread_func);
 thread_obj->join();
 ```
-Multiple arguments can be passed into thread function handler:
-```cpp
-void thread_func(int num1, int num2, int num3, int num4)
-{
-    std::cout << num1 + num2 + num3 + num4 << std::endl;
-}
-
-int main()
-{
-    std::thread thread_obj(thread_func, 1, 2, 3, 4);
-    thread_obj.join();
-    return 0;
-}
-```
 
 # Thread function handler with lvalue, std::ref()
 **std::ref()** is a function used to pass lvalue variable as an argument to CPP thread:
 ```cpp
-void thread_func(int &a)
-{
+void thread_func(int &a) {
     a += 1;
 }
 
-int main()
-{
+int main() {
     int a = 1;
     std::thread thread_obj(thread_func, a);
     thread_obj.join();
@@ -64,7 +48,7 @@ int main()
 #include <iostream>
 #include <thread>
 
-void display_string(){
+void display_string() {
 	while (1){
         std::cout << "Hello, World !" << std::endl;
         std::this_thread::sleep_for(std::chrono::seconds(1));
