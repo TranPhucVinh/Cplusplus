@@ -37,7 +37,7 @@ void thread_func(int &a) {
 
 int main() {
     int a = 1;
-    std::thread thread_obj(thread_func, a);
+    std::thread thread_obj(thread_func, std::ref(a));
     thread_obj.join();
     std::cout << a << std::endl;// 2
     return 0;
