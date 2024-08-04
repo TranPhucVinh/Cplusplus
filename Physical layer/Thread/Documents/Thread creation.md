@@ -28,21 +28,6 @@ std::thread *thread_obj = new std::thread(thread_func);
 thread_obj->join();
 ```
 
-# Thread function handler with lvalue, std::ref()
-**std::ref()** is a function used to pass lvalue variable as an argument to CPP thread:
-```cpp
-void thread_func(int &a) {
-    a += 1;
-}
-
-int main() {
-    int a = 1;
-    std::thread thread_obj(thread_func, std::ref(a));
-    thread_obj.join();
-    std::cout << a << std::endl;// 2
-    return 0;
-}
-```
 # Create a thread inside a class
 ```cpp
 #include <iostream>
