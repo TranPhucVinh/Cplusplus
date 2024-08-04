@@ -47,6 +47,21 @@ int main() {
     return 0;
 }
 ```
+# Pointer as thread function argument
+```cpp
+void thread_func(int *a) {
+    *a += 1;
+}
+
+int main() {
+    int a = 1;
+    cout << "Before: " << a << endl;// 1
+    std::thread thread_obj(thread_func, &a);
+    thread_obj.join();
+    cout << "After: " << a << endl;// 2
+    return 0;
+}
+```
 # std::ref() for lvalue thread function argument
 **std::ref()** is a function used to pass lvalue variable as an argument to CPP thread:
 ```cpp
