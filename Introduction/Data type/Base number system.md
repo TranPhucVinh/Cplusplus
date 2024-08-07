@@ -14,8 +14,14 @@ const int c = 3;
 std::bitset<c> val = 2;
 cout << val << endl; //010 (0b010)
 ```
-Note: **std::size_t N** must alwasy be const, **std::bitset()** doesn't support variable size
+Note: **std::size_t N** must alwasy be const, std::bitset() **doesn't support variable size**.
 
+``std::bitset`` is an array which allows access its member by index:
+```cpp
+#define SZ 3 // Total bits in bit set
+std::bitset<SZ> int_val = 4;
+cout << int_val[2] << " " << int_val[1] << " " << int_val[0] << endl;// 1 0 0
+```
 **std::bitset()** will be useful when converting a negative number to binary when specifying the range of bit "1" for two's complement:
 ```cpp
 std::bitset<32> int_val = -15;
