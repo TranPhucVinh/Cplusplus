@@ -29,6 +29,15 @@ cout << bin1.to_ulong() << " " << bin2.to_ulong() << endl;// 7 2
 std::bitset<32> int_val = 1;
 cout << int_val.to_string() << endl;
 ```
+Bit shifting:
+```cpp
+#define SZ 3 // Total bits in bit set
+
+std::bitset<SZ> bin = 0b111;
+cout << (bin << 1) << endl;// 110 (0b110)
+cout << (bin << 2) << endl;// 100 (0b100)
+cout << (bin.to_ulong() << 1) << endl;// 14 = 0b1110
+```
 To **convert decimal to binary/binary string** in CPP, the only way to achieve that is to perform the conversion by looping calculation:
 ```cpp
 string decToBinaryString(int dec_number) 
