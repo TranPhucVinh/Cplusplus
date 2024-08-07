@@ -17,6 +17,13 @@ Note: **std::size_t N** must alwasy be const, **std::bitset()** doesn't support 
 std::bitset<32> int_val = -15;
 cout << int_val << endl;// 11111111111111111111111111110001
 ```
+**Convert a binary bitset number to unsigned long**: Use ``to_ulong()``
+```cpp
+#define SZ 3 // Total bits in bit set
+
+std::bitset<SZ> bin1 = 0b111, bin2("010");
+cout << bin1.to_ulong() << " " << bin2.to_ulong() << endl;// 7 2
+```
 **std::bitset()** has **to_string()** to convert its value to **std::string**:
 ```cpp
 std::bitset<32> int_val = 1;
