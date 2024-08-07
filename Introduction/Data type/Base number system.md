@@ -8,7 +8,11 @@ cout << int_val << endl;//100 (0b100), i.e int_val is displayed in the binary fo
 
 constexpr int b = 3;// Use constexpr to set constant to std::size_t N of std::bitset
 std::bitset<b> int_val = 2;
-cout << int_val << endl;//010 (0b010)
+cout << int_val << endl; //010 (0b010)
+
+const int c = 3;
+std::bitset<c> val = 2;
+cout << val << endl; //010 (0b010)
 ```
 Note: **std::size_t N** must alwasy be const, **std::bitset()** doesn't support variable size
 
