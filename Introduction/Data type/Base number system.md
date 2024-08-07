@@ -4,7 +4,7 @@ CPP supports bitset library to implement binary conversion
 #include <bitset>
 #define SZ 3 // Total bits in bit set
 std::bitset<SZ> int_val = 4; // std::bitset<std::size_t N> with N is a constant
-cout << int_val << endl;//100 (0b100)
+cout << int_val << endl;//100 (0b100), i.e int_val is displayed in the binary format of SZ = 3 characters 
 
 constexpr int b = 3;// Use constexpr to set constant to std::size_t N of std::bitset
 std::bitset<b> int_val = 2;
