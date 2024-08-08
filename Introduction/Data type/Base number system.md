@@ -1,5 +1,5 @@
 # binary
-CPP supports bitset library to implement binary conversion
+CPP supports **bitset library** to implement binary conversion
 ```cpp
 #include <bitset>
 #define SZ 3 // Total bits in bit set
@@ -38,6 +38,12 @@ cout << bin1.to_ulong() << " " << bin2.to_ulong() << endl;// 7 2
 ```cpp
 std::bitset<32> int_val = 1;
 cout << int_val.to_string() << endl;
+```
+To add 2 bitset numbers, they must be converted to int first:
+```cpp
+std::bitset<SZ> bin = 0b111;
+std::bitset<SZ> shift_sz = 0b101;
+cout << shift_sz.to_ullong() + bin.to_ullong() << endl;// 12
 ```
 Bit shifting:
 ```cpp
