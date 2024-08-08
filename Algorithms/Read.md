@@ -1,5 +1,3 @@
-# [for_each()](https://github.com/TranPhucVinh/Cplusplus/tree/master/Introduction/Function#for_each)
-
 # std::find()
 **std::find()** returns the **first occurrence** of a given element in a container. We can use this function with vectors and keep searching for the given element repeatedly till the end to find all the occurrences.
 # std::min()
@@ -40,7 +38,7 @@ cout << *max_element << endl;// 9
 ```
 # std::lower_bound() and std::upper_bound()
 
-In a sorted array with duplicated number, std::lower_bound() and std::upper_bound() will return the index of a duplicated number in range [first,last) 
+In a sorted array with duplicated number, std::lower_bound() and std::upper_bound() will return the index of a duplicated number in range ``[first,last)``
 
 ```cpp
 #include <iostream>     // std::cout

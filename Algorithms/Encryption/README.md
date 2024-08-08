@@ -53,17 +53,4 @@ Binding a public key to a particular entity is typically done by a **Certificati
 2. Once the CA verifies the identity of the entity, the CA creates a certificate that binds the public key of the entity to the identity. The certificate contains the public key and globally unique identifying information about the owner of the public key (for example, a human name or an IP address). The certificate is digitally signed by the CA.
 
 Public key certification is used in many popular secure networking protocols, including IPsec and SSL.
-# SHA 256
 
-When a message of any length < 2^64 bits (for SHA-224 and SHA-256) or < 2^128 bits (for SHA-384 and SHA-512) is input to one of these algorithms, the result is an output called a message digest.
-
-The message digests range in length from 224 to 512 bits, depending on the algorithm. Secure Hash Algorithms are typically used with other cryptographic algorithms, such as digital signature algorithms and keyed-hash authentication codes, the generation of random numbers [RFC4086], or in key derivation functions.
-
-It is computationally infeasible to:
-1. Find a message that corresponds to a given message digest
-2. Find two different messages that produce the same message digest
-
-The algorithm uses:
-1. a message schedule of sixty-four 32-bit words
-2. 8 working variables of 32 bits each
-3. a hash value of 8 32-bit words
