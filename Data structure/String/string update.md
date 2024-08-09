@@ -8,7 +8,10 @@ string displayString = "Hello, World ";
 cout << displayString.append("!") << endl; //Hello, World !
 cout << displayString.append("!") << endl; //Hello, World !!
 ```
-
+**Append ASCII number to string**: With ASCII number ``0``, we must use ``'\0'``:
+```cpp
+displayString.append(1, '\0');
+```
 Using **push_back()**:
 
 ```cpp
@@ -54,6 +57,10 @@ displayedString += 'a';// Hello, World !a
 ```cpp
 std::string displayString = "Hello, World ";
 displayString = "123" + displayString;
+```
+**Append ASCII number to string**: With ASCII number ``0``, we must use ``'\0'``:
+```cpp
+displayString += '\0';
 ```
 # Append string at a specific index by std::string::insert()
 ```cpp
