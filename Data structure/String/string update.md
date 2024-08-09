@@ -76,9 +76,9 @@ void change_str(string &hw){
 
 int main(){
     string str = "Hello, World !";
-    cout << str << "; " << str.size() << endl;
-   	change_str(str); //Hello, World ! 14
-    cout << str << "; " << str.size() << endl;
+    cout << str << "; " << str.size() << endl; // Hello, World ! 14
+   	change_str(str); 
+    cout << str << "; " << str.size() << endl; // new string; 10
 }
 ```
 # Conversion
