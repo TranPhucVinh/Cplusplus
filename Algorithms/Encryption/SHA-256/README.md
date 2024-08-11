@@ -11,4 +11,4 @@ It is computationally infeasible to:
 The algorithm uses:
 1. a message schedule of sixty-four 32-bit words
 2. 8 working variables of 32 bits each
-3. a hash value of 8 32-bit words
+3. a hash value of 8 32-bit words which stores the final SHA256 value
