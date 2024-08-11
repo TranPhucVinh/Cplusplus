@@ -36,6 +36,15 @@ void SHA256::hex_digest(string msg) {
     return_hash();
 }
 
+void SHA256::hex_digest_tmp(string &msg) {
+    vector<vector<bitset<32>>> msg_blocks = message_parsing(msg);
+
+    for (int i = 0; i < msg_blocks.size(); i++) {
+        hash_block_temp(msg_blocks[i]);
+    }
+    return_hash();
+}
+
 void SHA256::return_hash() {
     for (int i = 0; i < 8; i++) {
         cout << hex << setw(8) << setfill('0') << _hash[i];
@@ -43,6 +52,46 @@ void SHA256::return_hash() {
     cout << endl;
 }
 
+void SHA256::hash_block_temp(vector<bitset<32>> &block_word) {
+    vector<bitset<32>> words = block_word;
+
+    uint32_t W[64];
+
+    for (int w_idx = 0; w_idx < 64; w_idx++) {
+        if (w_idx < 16) W[w_idx] = words[w_idx].to_ulong();
+        else {
+            W[w_idx] = (SSIG1(W[w_idx - 2]) + W[w_idx - 7] + SSIG0(W[w_idx-15]) + W[w_idx - 16] ) % 
+                        (long) pow(2, 32);// Must cast to (long) to avoid "Floating point exception"
+        }
+    }
+
+    uint32_t a = _hash[0], b = _hash[1], c = _hash[2], d = _hash[3];
+    uint32_t e = _hash[4], f = _hash[5], g = _hash[6], h = _hash[7];
+
+    for (int w_idx = 0; w_idx < 64; w_idx++) {
+        uint32_t T1 = h + BSIG1(e) + CH(e, f, g) + _sha_256_const[w_idx]+ W[w_idx];
+        T1 = T1 % (long)pow(2, 32);
+            
+        uint32_t T2 = (BSIG0(a) + MAJ(a, b, c)) % (long)pow(2, 32);
+        h = g;
+        g = f;
+        f = e;
+        e = (d + T1) % (long)pow(2, 32);
+        d = c;
+        c = b;
+        b = a;
+        a = (T1+ T2) % (long)pow(2, 32);
+    }
+
+    _hash[0] = (_hash[0]+ a) % (long)pow(2, 32);
+    _hash[1] = (_hash[1]+ b) % (long)pow(2, 32);
+    _hash[2] = (_hash[2]+ c) % (long)pow(2, 32);
+    _hash[3] = (_hash[3]+ d) % (long)pow(2, 32);
+    _hash[4] = (_hash[4]+ e) % (long)pow(2, 32);
+    _hash[5] = (_hash[5]+ f) % (long)pow(2, 32);
+    _hash[6] = (_hash[6]+ g) % (long)pow(2, 32);
+    _hash[7] = (_hash[7]+ h) % (long)pow(2, 32);
+}
 void SHA256::hash_block(vector<bool> msg) {
     vector<bitset<32>> words = parse_block_into_words(msg);
 

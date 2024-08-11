@@ -27,6 +27,49 @@ vector<bool> message_padding(string &msg) {
     return msg_padding;
 }
 
+vector<vector<bitset<32>>> message_parsing(string &msg) {
+    vector<vector<bitset<32>>> msg_blocks;
+    uint64_t msg_sz_bit = msg.length() * 8;
+    uint64_t msg_sz_byte = msg.length();
+    int zero_append_num = total_appened_0(msg_sz_bit);
+
+    int total_sz_bit = msg_sz_bit + 1 + zero_append_num + 64; // this value mod 512 must be 0
+
+    int number_of_block = total_sz_bit / 512;
+
+    bool pad_zero = false;
+
+    for (int i = 0; i < number_of_block; i++) {
+        vector<bitset<32>> block;
+        for (int j = i*64; j < i*64 + 64; j+=4) {
+            bitset<32> word = 0;
+            if (!pad_zero) { // loading the message data part
+                for (int k = j; k < j + 4; k++) {
+                    if (k < msg_sz_byte) { // go until the pointer still in the msg data buffer
+                        word |= msg[k] << (8 * (3 - (k-j))); // big endian
+                    } else { // encounter the end of message buffer, add bit 1, and load some rented zero bit to complete 32 bit word, then minus that rented number to zero_append_num
+                        word |= 0x80 << (8 * (3 - (k-j)));
+                        pad_zero = true;
+                        zero_append_num -= (7 + (3 - (k-j))*8); // This include the 7 zero bit from the byte above and the reminaing bit in left over byte of current 32 bit word
+                        break;
+                    }
+                }
+            } else { // loading the zero padding and finally the total message size
+                if (zero_append_num == 0) { // this case must happen due to all the math logic, and the padding for message size is 64 bit
+                    block.push_back((msg_sz_bit >> 32 & 0xFFFFFFFF));
+                    block.push_back((msg_sz_bit & 0xFFFFFFFF));
+                    break;
+                } else {
+                    zero_append_num -= 32; // pad 32 zero at the time, do nothing and add to the block
+                }
+            }
+            block.push_back(word);
+        }
+        msg_blocks.push_back(block);
+    }
+    return msg_blocks;
+}
+
 // Parse every 512-bit block into 16 32-bit words
 vector<bitset<32>> parse_block_into_words(vector<bool> msg_padding) {
     vector<bitset<32>> words;

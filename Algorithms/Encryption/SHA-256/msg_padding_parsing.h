@@ -14,3 +14,4 @@ vector<bool> message_padding(string &msg);
 
 vector<bitset<32>>      parse_block_into_words(vector<bool> msg_padding);
 vector<vector<bool>>    parse_msg_to_block(vector<bool> msg);// Parse message the blocks of 512 bits
+vector<vector<bitset<32>>> message_parsing(string &msg);
