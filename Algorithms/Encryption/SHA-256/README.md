@@ -12,3 +12,13 @@ The algorithm uses:
 1. a message schedule of sixty-four 32-bit words
 2. 8 working variables of 32 bits each
 3. a hash value of 8 32-bit words which stores the final SHA256 value
+
+Steps to calculate the SHA follow the following orders:
+1. Message Padding and Parsing
+
+# 1. Message Padding and Parsing
+
+The purpose of message padding in SHA-256 is to make the total length of a padded message a multiple of 512. The "big-endian" convention is used when
+expressing 64-bit words, so that within each word the most significant bit is shown in the leftmost bit position.
+
+The padding process of SHA-256 is perfomed as a "1" followed by m "0"s followed by a 64-bit integer appended to the end of the message to produce a padded message of length 512*n. The appended 64-bit integer is the length of the original message. The padded message is then processed by the hash function as n 512-bit.
