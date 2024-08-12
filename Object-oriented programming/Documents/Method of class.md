@@ -27,6 +27,8 @@ class classTest{
 
 ## Simple call
 
+<details>
+	
 ```cpp
 #include <iostream>
 
@@ -51,7 +53,8 @@ int main(){
     ;
 }
 ```
-  
+</details>
+
 ``display_number()`` can be called after ``display_string()`` as ``display_string()`` return object ``new_object`` as having type ``classTest``. ``new_object`` will then be used for calling ``display_number()``.
 
 **Result**
@@ -86,6 +89,7 @@ int main(){
 }
 ```
 ## Using rvalue class object
+<details>
 ```cpp
 #include <iostream>
 #include <typeinfo>
@@ -115,3 +119,4 @@ int main(){
     call_object_method<classTest&&>(move(rval_object));
 }
 ```
+</details>
