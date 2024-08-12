@@ -103,3 +103,10 @@ int main(){
 	object_1.hello(1);//Value: 3
 }
 ```
+# std::copy()
+Copy an array to another one by ``std::copy()``
+```cpp
+int array[3];
+int _array[] = {1, 2, 3};
+std::copy(std::begin(_array), std::end(_array), std::begin(array));
+```
