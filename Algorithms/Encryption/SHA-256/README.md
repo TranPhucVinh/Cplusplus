@@ -81,13 +81,13 @@ W[w_idx] = (SSIG1(W[w_idx - 2]) + W[w_idx - 7] + SSIG0(W[w_idx-15]) + W[w_idx - 
 ```
 
 2. Initialize the working variables:
-```
+```c
 uint32_t a = _hash[0], b = _hash[1], c = _hash[2], d = _hash[3];
 uint32_t e = _hash[4], f = _hash[5], g = _hash[6], h = _hash[7];
 ```
 3. Perform the main hash computation:
 For t = 0 to 63:
-```
+```c
 uint32_t T1 = h + BSIG1(e) + CH(e, f, g) + _sha_256_const[w_idx]+ W[w_idx];
 T1 = T1 % (long)pow(2, 32);
 
@@ -102,7 +102,7 @@ b = a;
 a = (T1+ T2) % (long)pow(2, 32);
 ```
 4. Calculate the hash value of the current message block M[i]
-```
+```c
 _hash[0] = (_hash[0]+ a) % (long)pow(2, 32);
 _hash[1] = (_hash[1]+ b) % (long)pow(2, 32);
 _hash[2] = (_hash[2]+ c) % (long)pow(2, 32);
