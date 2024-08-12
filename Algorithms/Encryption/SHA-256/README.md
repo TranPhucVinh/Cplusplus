@@ -13,6 +13,10 @@ The algorithm uses:
 2. 8 working variables of 32 bits each
 3. a hash value of 8 32-bit words which stores the final SHA256 value
 
+Before calculating SHA, setup functions and constants:
+* Functions: [functions.h](functions.h)
+* SHA-256 uses 64 32-bit constant stored in array ``sha_256_const`` (sha_256_const[0] to sha_256_const[63]):  ``uint32_t sha_256_const[]`` in [sha256.cpp](sha256.cpp)
+
 Steps to calculate the SHA follow the following orders:
 1. Message Padding and Parsing
 
