@@ -31,3 +31,26 @@ Suppose a message has length L < 2^64. Before it is input to the hash function, 
 3. Then append the 64-bit block that is L in binary representation.
 
 After taking the above 3 steps, the length of the message will be a multiple of 512 bits.
+
+**Example**: Suppose the original message is the bit string
+```
+01100001 01100010 01100011 01100100 01100101
+```
+After step (1) this gives:
+```
+01100001 01100010 01100011 01100100 01100101 1
+```
+Since L = 40, the number of bits in the above is 41 and K = 407 "0"s are appended, making the total now 448. This gives the following in hex:
+```
+61626364 65800000 00000000 00000000
+00000000 00000000 00000000 00000000
+00000000 00000000 00000000 00000000
+00000000 00000000
+```
+The 64-bit representation of L = 40 is hex 00000000 00000028. Hence the final padded message is the following hex
+```
+61626364 65800000 00000000 00000000
+00000000 00000000 00000000 00000000
+00000000 00000000 00000000 00000000
+00000000 00000000 00000000 00000028
+```
