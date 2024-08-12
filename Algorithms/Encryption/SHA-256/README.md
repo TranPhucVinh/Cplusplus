@@ -19,7 +19,10 @@ Before calculating SHA, setup **functions**, **constants** and the **initial has
 * Initial SHA-256 hash values: ``uint32_t init_hash[]`` in [sha256.cpp](sha256.cpp)
 
 Steps to calculate the SHA follow the following orders:
-1. Message Padding and Parsing
+1. Message Padding and Parsing: Pad and parse the original message into a new message ``msg_padding``.
+2. Parse the padding message ``msg_padding`` into N blocks of 64 bytes (512 bits) M[i]: M[0] ... M[N-1]
+3. For every message block M[i], parse them into 16 32-bit words M[i][0] ... M[i][15]
+4. Start hash calculation   
 
 # 1. Message Padding and Parsing
 
@@ -59,3 +62,4 @@ The 64-bit representation of L = 40 is hex 00000000 00000028. Hence the final pa
 00000000 00000000 00000000 00000000
 00000000 00000000 00000000 00000028
 ```
+# 4. Start hash calculation   
