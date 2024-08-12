@@ -63,3 +63,54 @@ The 64-bit representation of L = 40 is hex 00000000 00000028. Hence the final pa
 00000000 00000000 00000000 00000028
 ```
 # 4. Start hash calculation   
+The hash calculation finally will return ``uint32_t _hash[8]``. Before starting hash calculation, init ``_hash``: ``_hash = init_hash``
+
+Please note that all addition below include performing modulo 2^32, i.e ``% pow(2, 32)``. This step is to make sure all variables are limited to 32-bit.
+
+For every message block M[i], the hash calculation steps are.
+
+1.Prepare the message schedule W:
+
+For t = 0 to 15:
+```
+W[t] = M[i][t]
+```
+For t = 16 to 63:
+```c
+W[w_idx] = (SSIG1(W[w_idx - 2]) + W[w_idx - 7] + SSIG0(W[w_idx-15]) + W[w_idx - 16] ) % (long) pow(2, 32);
+```
+
+2. Initialize the working variables:
+```
+uint32_t a = _hash[0], b = _hash[1], c = _hash[2], d = _hash[3];
+uint32_t e = _hash[4], f = _hash[5], g = _hash[6], h = _hash[7];
+```
+3. Perform the main hash computation:
+For t = 0 to 63:
+```
+uint32_t T1 = h + BSIG1(e) + CH(e, f, g) + _sha_256_const[w_idx]+ W[w_idx];
+T1 = T1 % (long)pow(2, 32);
+
+uint32_t T2 = (BSIG0(a) + MAJ(a, b, c)) % (long)pow(2, 32);
+h = g;
+g = f;
+f = e;
+e = (d + T1) % (long)pow(2, 32);
+d = c;
+c = b;
+b = a;
+a = (T1+ T2) % (long)pow(2, 32);
+```
+4. Calculate the hash value of the current message block M[i]
+```
+_hash[0] = (_hash[0]+ a) % (long)pow(2, 32);
+_hash[1] = (_hash[1]+ b) % (long)pow(2, 32);
+_hash[2] = (_hash[2]+ c) % (long)pow(2, 32);
+_hash[3] = (_hash[3]+ d) % (long)pow(2, 32);
+_hash[4] = (_hash[4]+ e) % (long)pow(2, 32);
+_hash[5] = (_hash[5]+ f) % (long)pow(2, 32);
+_hash[6] = (_hash[6]+ g) % (long)pow(2, 32);
+_hash[7] = (_hash[7]+ h) % (long)pow(2, 32);
+```
+
+Repeat those 4 setps for all message block M[i]. The SHA-256 value of the original message will be the concatenation of all of ``_hash[0]`` through ``_hash[7]``.
