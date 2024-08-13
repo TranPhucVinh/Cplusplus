@@ -25,7 +25,7 @@ SHA256::SHA256() {
     std::copy(std::begin(init_hash), std::end(init_hash), std::begin(_hash));
 }
 
-void SHA256::hex_digest(string msg) {
+uint32_t* SHA256::hex_digest(string msg) {
     vector<bool> msg_padding = message_padding(msg);
 
     vector<vector<bool>> msg_blocks = parse_msg_to_block(msg_padding);
@@ -33,14 +33,13 @@ void SHA256::hex_digest(string msg) {
     for (int i = 0; i < msg_blocks.size(); i++) {
         hash_block(msg_blocks[i]);
     }
-    return_hash();
-}
 
-void SHA256::return_hash() {
-    for (int i = 0; i < 8; i++) {
-        cout << hex << setw(8) << setfill('0') << _hash[i];
-    }
-    cout << endl;
+    // for (int i = 0; i < 8; i++) {
+    //     cout << hex << setw(8) << setfill('0') << _hash[i];
+    // }
+    // cout << endl;
+    
+    return _hash;
 }
 
 void SHA256::hash_block(vector<bool> msg) {
