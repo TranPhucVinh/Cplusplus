@@ -114,3 +114,14 @@ _hash[7] = (_hash[7]+ h) % (long)pow(2, 32);
 ```
 
 Repeat those 4 setps for all message block M[i]. The SHA-256 value of the original message will be the concatenation of all of ``_hash[0]`` through ``_hash[7]``.
+# Verify
+Verify the SHA-256 calculation steps by OpenSSL command.
+
+Hash a string using SHA-256
+```sh
+echo -n "Hello, World !" | openssl dgst -sha256
+```
+HMAC SHA-256:
+```sh
+echo -n "Hello, World !" | openssl dgst -sha256 -hmac "key"
+```
