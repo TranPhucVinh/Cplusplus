@@ -125,3 +125,6 @@ HMAC SHA-256:
 ```sh
 echo -n "Hello, World !" | openssl dgst -sha256 -hmac "key"
 ```
+While it is **theoretically possible** for **two different inputs to produce the same hash** (this would be called a **collision**), SHA-256 is designed in such a way that finding such a collision is practically impossible with current computational resources. The space of possible hashes (2^256) is so large that the probability of randomly encountering a collision is **astronomically low**.
+
+In practical terms, you can assume that each unique input will have a unique SHA-256 hash.
