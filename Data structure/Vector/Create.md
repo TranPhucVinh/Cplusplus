@@ -16,8 +16,6 @@ int main() {
 ```
 **Note**: Vector members are stored on heap memory, so it doesn't lose its value [when being returned from a function](Vector%20and%20function.md#function-returns-vector).
 
-**vector.data()** returns a pointer to the underlying array used to store the elements of that vector.
-
 # Set up vector member 
 Use **push_back()**
 ```cpp
