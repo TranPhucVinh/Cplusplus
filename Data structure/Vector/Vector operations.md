@@ -36,6 +36,17 @@ vector<int>::iterator iter = vec.begin() + index;
 vector<int> vec{10, 20, 30};   
 cout << vec.back() << endl;
 ```
+## vector.data()
+**vector.data()** returns a pointer to the underlying array used to store the elements of that vector.
+```cpp
+vector<uint8_t> vec1{48, 49};
+vector<uint8_t> vec2{'h', 'a'};
+
+write(STDOUT_FILENO, vec1.data(), vec1.size());
+write(STDOUT_FILENO, vec2.data(), vec2.size());
+
+cout << vec1.data() << " " << vec2.data() << endl;
+```
 ## Find a member by std::find() (from algorithm library)
 ```cpp
 vector<int> vec{10, 20, 30};
