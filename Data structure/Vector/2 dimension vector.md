@@ -23,7 +23,13 @@ for (int i = 0; i < n; i++) {
     std::cout << std::endl;
 }
 ```
-Enter value for each member of the 2D vector
+**Result**:
+```
+0 1
+2 3
+4 5
+```
+**Enter value for each member of the 2D vector**:
 ```cpp
 void setup_2d_vector(){
     int n;
