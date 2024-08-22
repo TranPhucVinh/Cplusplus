@@ -15,8 +15,8 @@ The algorithm uses:
 
 Before calculating SHA, setup **functions**, **constants** and the **initial hash values**:
 * Functions: [functions.h](functions.h)
-* SHA-256 uses 64 32-bit constant stored in array ``sha_256_const`` (sha_256_const[0] to sha_256_const[63]):  ``uint32_t sha_256_const[]`` in [sha256.cpp](sha256.cpp)
-* Initial SHA-256 hash values: ``uint32_t init_hash[]`` in [sha256.cpp](sha256.cpp)
+* SHA-256 uses 64 32-bit constant stored in array ``sha_256_const`` (sha_256_const[0] to sha_256_const[63]): ``uint32_t sha_256_const[]`` in [sha256.cpp](src/sha256.cpp)
+* Initial SHA-256 hash values: ``uint32_t init_hash[]`` in [sha256.cpp](src/sha256.cpp)
 
 Steps to calculate the SHA follow the following orders:
 1. Message Padding and Parsing: Pad and parse the original message into a new message ``msg_padding``.
@@ -128,3 +128,7 @@ echo -n "Hello, World !" | openssl dgst -sha256 -hmac "key"
 While it is **theoretically possible** for **two different inputs to produce the same hash** (this would be called a **collision**), SHA-256 is designed in such a way that finding such a collision is practically impossible with current computational resources. The space of possible hashes (2^256) is so large that the probability of randomly encountering a collision is **astronomically low**.
 
 In practical terms, you can assume that each unique input will have a unique SHA-256 hash.
+# Implementation
+
+* [SHA 256 library](src)
+* SHA 256 calculation for a string: [sha_256_str.cpp](src/sha_256_str.cpp)
