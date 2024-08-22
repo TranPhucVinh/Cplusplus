@@ -128,3 +128,21 @@ int main(){
     return 0;
 }
 ```
+``std::copy()`` for vector as function argument
+```cpp
+void copy_vector(vector<int> _vec) {
+    vector<int> vec(_vec.size()); // Must reserve size for the copied vector
+
+    copy(_vec.begin(), _vec.end(), vec.begin());
+
+    for (int i = 0; i < vec.size(); i++) std::cout << vec[i] << " ";
+    std::cout << std::endl;
+}
+
+int main(){
+    vector<int> _vec = {1, 2, 3};
+    copy_vector(_vec);
+    
+    return 0;
+}
+```
