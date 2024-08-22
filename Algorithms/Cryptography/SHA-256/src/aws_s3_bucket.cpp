@@ -44,6 +44,8 @@ int main() {
 
     get_aws_env_vars(access_key_id, secret_access_key, session_key);
     string cq = form_canon_req(HOST, payload_hash, amz_date(), "GET", "/", "");
+    std::cout << cq << std::endl;
+
     string SigningKey = calculate_signature(secret_access_key, REGION);
     std::cout << SigningKey << std::endl;
 
