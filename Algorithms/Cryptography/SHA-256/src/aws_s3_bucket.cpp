@@ -1,25 +1,76 @@
 #include "sha256.h"
 #include <time.h>
 #include <sys/time.h>
+#include <string.h>
+#include <unistd.h>     // write(), read() and close()
+#include <sys/socket.h> // socket() and connect()
+#include <netdb.h>
+#include <errno.h>
 
 using namespace std;
 
 #define ISO_8061_SZ     64
-#define HOST            "HOST"
+#define YYYYMMDD        8
+#define HOST            "s3.ap-southeast-2.amazonaws.com"
+#define PORT            80
 #define STRING_TO_SIGN  "AWS4-HMAC-SHA256"
-#define REGION         "ap-southeast-1"
+#define REGION          "ap-southeast-2"
 
-char *amz_date();
-string form_canon_req(const char *host, uint32_t* payload_hash, char *amz_date, const char *method,
+string access_key_id, secret_access_key, session_key;
+
+void    get_aws_env_vars(string &access_key_id, string &secret_access_key, string &session_key);
+string  sha_256_to_string(uint32_t* sha_256_hash);
+char   *amz_date();
+char   *yyyymmdd();
+string  form_canon_req(const char *host, uint32_t* payload_hash, char *amz_date, const char *method,
                     const char *uri, const char *querystring);
-string form_string_to_sign(const char *string_to_sign, char *amz_date, const char *region, string canon_req);
+string  form_string_to_sign(const char *string_to_sign, char *amz_date, const char *region, string canon_req);
+string  calculate_signature(string secret_access_key, const char *region);
+
+class HTTP_Client {
+	public:
+		char ip_str[30]; 
+		HTTP_Client(const char *host, in_port_t port);	
+		int write_http_request(std::string http_request);
+		char *read_http_response();
+	private:
+		int _http_client_fd;
+};
 
 int main() {
     string msg = "";
-    SHA256 sha256;
+    SHA256 sha256, hmac;
     uint32_t* payload_hash = sha256.hex_digest(msg);
 
-    form_canon_req(HOST, payload_hash, amz_date(), "GET", "/", "");
+    get_aws_env_vars(access_key_id, secret_access_key, session_key);
+    string cq = form_canon_req(HOST, payload_hash, amz_date(), "GET", "/", "");
+    string SigningKey = calculate_signature(secret_access_key, REGION);
+    string StringToSign = form_string_to_sign(STRING_TO_SIGN, amz_date(), REGION, cq);
+
+    string AWS_Signature_V4 = sha_256_to_string(hmac.hmac_sha_256(SigningKey, StringToSign));
+    string Credential = access_key_id + "/" + string(yyyymmdd()) + "/" + REGION + "/s3/aws4_request,"; // "," is mandatory
+
+    std::string http_request;
+
+    http_request = "GET / HTTP/1.1\r\nHost: ";
+	http_request += string(HOST) + "\r\nx-amz-content-sha256: ";
+    http_request += sha_256_to_string(payload_hash) + "\r\nx-amz-date: ";
+    http_request += string(amz_date()) + "\r\nx-amz-security-token: " + session_key;
+    http_request += "\r\nAuthorization: AWS4-HMAC-SHA256 Credential=" + Credential;
+    http_request += " SignedHeaders=host;x-amz-content-sha256;x-amz-date;x-amz-security-token, Signature=";
+    http_request += AWS_Signature_V4;
+    http_request += "\r\nConnection: close\r\n\r\n";
+    
+    std::cout << http_request << std::endl;
+
+    HTTP_Client http_client(HOST, PORT); 
+    http_client.write_http_request(http_request);
+
+    char* recv_buf = http_client.read_http_response(); 
+    std::string recv_str(recv_buf);
+    std::cout << recv_str << std::endl;
+    delete recv_buf;
+
     return 0;
 }
 
@@ -33,8 +84,21 @@ char *amz_date() {
     _localtime = tv.tv_sec;
 
     _tm = localtime(&_localtime);    
-    string time_str;
     strftime(buffer, ISO_8061_SZ, "%Y%m%dT%H%M%SZ", _tm);
+    return buffer;
+}
+
+char *yyyymmdd() {
+    struct timeval tv;
+    struct tm *_tm;
+    time_t _localtime;
+    char *buffer = new char[YYYYMMDD];
+
+    gettimeofday(&tv, NULL);
+    _localtime = tv.tv_sec;
+
+    _tm = localtime(&_localtime);    
+    strftime(buffer, YYYYMMDD, "%Y%m%d", _tm);
     return buffer;
 }
 
@@ -43,11 +107,7 @@ string form_canon_req(const char *host, uint32_t* payload_hash, char *amz_date,
     
     string cq = "", payload_hash_str = "";
 
-    for (int i = 0; i < 8; i++) {
-        stringstream _stream;
-        _stream << hex << setw(8) << setfill('0') << payload_hash[i];
-        payload_hash_str += _stream.str();
-    }
+    payload_hash_str = sha_256_to_string(payload_hash);
 
     cq += string(method) + "\n" + string(uri);
     cq += "\n" + string(querystring) + "\n";
@@ -70,4 +130,99 @@ string form_string_to_sign(const char *string_to_sign, char *amz_date,
                             const char *region, string canon_req) {
     string _string_to_sign = string(string_to_sign) + "\n";
     _string_to_sign += string(amz_date) + "\n";
+
+    string Scope = string(yyyymmdd()) + "/" + string(region) + "/s3/aws4_request";
+
+    SHA256 canon_req_sha;
+    uint32_t* canon_req_hash = canon_req_sha.hex_digest(canon_req);
+
+    string canon_req_hash_str = sha_256_to_string(canon_req_hash);
+
+    _string_to_sign += Scope + "\n" + canon_req_hash_str;
+    return _string_to_sign;
+}
+
+string calculate_signature(string secret_access_key, const char *region) {
+    SHA256 _obj1, _obj2, _obj3, _obj4;
+    string date_key = sha_256_to_string(_obj1.hmac_sha_256(string("AWS4") + secret_access_key, yyyymmdd()));
+    string date_region_key = sha_256_to_string(_obj2.hmac_sha_256(date_key, region));
+    string date_region_service_key = sha_256_to_string(_obj3.hmac_sha_256(date_region_key, "s3"));
+    string signing_key = sha_256_to_string(_obj4.hmac_sha_256(date_region_service_key, "aws4_request"));
+
+    return signing_key;
+}
+
+void get_aws_env_vars(string &access_key_id, string &secret_access_key, string &session_key) {
+    access_key_id = std::getenv("AWS_ACCESS_KEY_ID");
+    secret_access_key = std::getenv("AWS_SECRET_ACCESS_KEY");
+    session_key = std::getenv("AWS_SESSION_TOKEN");
+}
+
+string sha_256_to_string(uint32_t* sha_256_hash) {
+    string _sha256_str;
+    for (int i = 0; i < 8; i++) {
+        stringstream _stream;
+        _stream << hex << setw(8) << setfill('0') << sha_256_hash[i];
+        _sha256_str += _stream.str();
+    }
+
+    return _sha256_str;
+}
+
+HTTP_Client::HTTP_Client(const char *host, in_port_t port){
+	struct hostent *hp;
+	struct sockaddr_in addr;   
+
+	if((hp = gethostbyname(host)) == NULL){
+        std::cout << "Fail to get host " << host << std::endl;
+		return;
+	}
+	bcopy(hp->h_addr, &addr.sin_addr, hp->h_length);
+	addr.sin_port = htons(port);
+	addr.sin_family = AF_INET;
+	_http_client_fd = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
+
+	if(_http_client_fd == -1){
+		perror("setsockopt");
+		exit(1);
+	}
+	
+	if(connect(_http_client_fd, (struct sockaddr *)&addr, sizeof(struct sockaddr_in)) == -1){
+		perror("connect");
+		exit(1);
+	}
+}
+
+int HTTP_Client::write_http_request(std::string http_request){
+	if (write(_http_client_fd, http_request.c_str(), http_request.size()) < 0){
+	    close(_http_client_fd);
+	    return 0;
+	}
+	return 1;
+}
+
+/* Read HTTP response */
+char *HTTP_Client::read_http_response(){
+	char* recv_buf = NULL;
+	int index = 0;
+	int read_size_chunk = 0;
+	recv_buf = new char[1024];
+	while(1)
+	{
+		read_size_chunk = read(_http_client_fd, &recv_buf[index += read_size_chunk], 1024);
+		if(read_size_chunk > 0)
+		{
+			recv_buf = (char*) realloc(recv_buf, index + read_size_chunk + 1024);
+		}
+		else
+		{
+			recv_buf = (char*) realloc(recv_buf, index + 1);
+			recv_buf[index] = 0;
+			break;
+		}
+	}
+
+	shutdown(_http_client_fd, SHUT_RDWR); 
+	close(_http_client_fd);
+	return recv_buf;
 }
