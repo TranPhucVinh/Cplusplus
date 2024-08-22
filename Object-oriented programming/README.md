@@ -41,3 +41,6 @@ Binding refers to the process of converting identifiers (such as variable and pe
 A **singleton class** is a class which can have only one object or instance at a time. In other words, **we can instantiate only one instance of the singleton class**. The new variable also points to the initial instance created if we attempt to instantiate the Singleton class after the first time.
 
 **Program**: [singleton.cpp](src/singleton.cpp)
+
+# Class for communication protocol message
+* [Parse a communication protocol message by reinterpret_cast a class object](src/parse_protocol_msg_by_reinterpret_cast.cpp)
