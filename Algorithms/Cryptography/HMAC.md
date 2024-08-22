@@ -30,8 +30,8 @@ Compute the inner hash by 3 steps:
 * Step 2: Concatenate the result of step 1 with the original message ``M``
 * Step 3: Put the result in step 2 to the hash function, i.e SHA-256
 
-```c
-Inner_Hash=H((K' XOR ipad) concatenate M)
+```sh
+Inner_Hash=H((K' XOR ipad) concatenate M))
 ```
 ## Outer Hashing, i.e calculate the HMAC
 Compute the outer hash, i.e the final result as HAMC, by 3 steps:
