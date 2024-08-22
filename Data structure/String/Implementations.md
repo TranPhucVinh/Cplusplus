@@ -62,6 +62,7 @@ string timeConversion(string s) {
 }
 ```
 </details>
+
 # Longest substring without repeating characters
 
 Leetcode 3: Given a string s, find the length of the longest substring without repeating characters.
