@@ -10,7 +10,7 @@
 using namespace std;
 
 #define ISO_8061_SZ     64
-#define YYYYMMDD        8
+#define YYYYMMDD        10
 #define HOST            "s3.ap-southeast-2.amazonaws.com"
 #define PORT            80
 #define STRING_TO_SIGN  "AWS4-HMAC-SHA256"
@@ -45,17 +45,20 @@ int main() {
     get_aws_env_vars(access_key_id, secret_access_key, session_key);
     string cq = form_canon_req(HOST, payload_hash, amz_date(), "GET", "/", "");
     string SigningKey = calculate_signature(secret_access_key, REGION);
+    std::cout << SigningKey << std::endl;
+
     string StringToSign = form_string_to_sign(STRING_TO_SIGN, amz_date(), REGION, cq);
 
     string AWS_Signature_V4 = sha_256_to_string(hmac.hmac_sha_256(SigningKey, StringToSign));
+    
     string Credential = access_key_id + "/" + string(yyyymmdd()) + "/" + REGION + "/s3/aws4_request,"; // "," is mandatory
 
-    std::string http_request;
+    string http_request;
 
-    http_request = "GET / HTTP/1.1\r\nHost: ";
-	http_request += string(HOST) + "\r\nx-amz-content-sha256: ";
-    http_request += sha_256_to_string(payload_hash) + "\r\nx-amz-date: ";
-    http_request += string(amz_date()) + "\r\nx-amz-security-token: " + session_key;
+    http_request = "GET / HTTP/1.1\r\nHost: " + string(HOST);
+	http_request += "\r\nx-amz-content-sha256: " + sha_256_to_string(payload_hash);
+    http_request += "\r\nx-amz-date: " + string(amz_date());
+    http_request += "\r\nx-amz-security-token: " + session_key;
     http_request += "\r\nAuthorization: AWS4-HMAC-SHA256 Credential=" + Credential;
     http_request += " SignedHeaders=host;x-amz-content-sha256;x-amz-date;x-amz-security-token, Signature=";
     http_request += AWS_Signature_V4;
@@ -99,13 +102,14 @@ char *yyyymmdd() {
 
     _tm = localtime(&_localtime);    
     strftime(buffer, YYYYMMDD, "%Y%m%d", _tm);
+
     return buffer;
 }
 
 string form_canon_req(const char *host, uint32_t* payload_hash, char *amz_date, 
         const char *method, const char *uri, const char *querystring) {
     
-    string cq = "", payload_hash_str = "";
+    string cq = "", payload_hash_str;
 
     payload_hash_str = sha_256_to_string(payload_hash);
 
@@ -134,11 +138,7 @@ string form_string_to_sign(const char *string_to_sign, char *amz_date,
     string Scope = string(yyyymmdd()) + "/" + string(region) + "/s3/aws4_request";
 
     SHA256 canon_req_sha;
-    uint32_t* canon_req_hash = canon_req_sha.hex_digest(canon_req);
-
-    string canon_req_hash_str = sha_256_to_string(canon_req_hash);
-
-    _string_to_sign += Scope + "\n" + canon_req_hash_str;
+    _string_to_sign += Scope + "\n" + sha_256_to_string(canon_req_sha.hex_digest(canon_req));
     return _string_to_sign;
 }
 
@@ -156,10 +156,15 @@ void get_aws_env_vars(string &access_key_id, string &secret_access_key, string &
     access_key_id = std::getenv("AWS_ACCESS_KEY_ID");
     secret_access_key = std::getenv("AWS_SECRET_ACCESS_KEY");
     session_key = std::getenv("AWS_SESSION_TOKEN");
+
+    if (access_key_id == "") {
+        cout << "There is no AWS_ACCESS_KEY_ID\n";
+        exit(0);
+    }
 }
 
 string sha_256_to_string(uint32_t* sha_256_hash) {
-    string _sha256_str;
+    string _sha256_str = "";
     for (int i = 0; i < 8; i++) {
         stringstream _stream;
         _stream << hex << setw(8) << setfill('0') << sha_256_hash[i];
