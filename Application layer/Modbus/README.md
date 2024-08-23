@@ -13,3 +13,4 @@ For Modbus TCP slave to response data to this master program, use [diagslave](ht
 ```sh
 diagslave -m tcp -p 8000 -a 1
 ```
+For program inheritance and readability, the Modbus frame is better to be formed by a class object. Program: [modbus_tcp_master_class_obj.cpp](modbus_tcp_master_class_obj.cpp)
