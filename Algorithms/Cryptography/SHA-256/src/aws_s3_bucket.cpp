@@ -21,7 +21,7 @@ string access_key_id, secret_access_key, session_key;
 void    get_aws_env_vars(string &access_key_id, string &secret_access_key, string &session_key);
 string  sha_256_to_string(uint32_t* sha_256_hash);
 char   *amz_date();
-char   *yyyymmdd();
+string  yyyymmdd();
 string  form_canon_req(const char *host, uint32_t* payload_hash, char *amz_date, const char *method,
                     const char *uri, const char *querystring);
 string  form_string_to_sign(const char *string_to_sign, char *amz_date, const char *region, string canon_req);
@@ -44,11 +44,7 @@ int main() {
 
     get_aws_env_vars(access_key_id, secret_access_key, session_key);
     string cq = form_canon_req(HOST, payload_hash, amz_date(), "GET", "/", "");
-    std::cout << cq << std::endl;
-
     string SigningKey = calculate_signature(secret_access_key, REGION);
-    std::cout << SigningKey << std::endl;
-
     string StringToSign = form_string_to_sign(STRING_TO_SIGN, amz_date(), REGION, cq);
 
     string AWS_Signature_V4 = sha_256_to_string(hmac.hmac_sha_256(SigningKey, StringToSign));
@@ -93,19 +89,19 @@ char *amz_date() {
     return buffer;
 }
 
-char *yyyymmdd() {
+string yyyymmdd() {
     struct timeval tv;
     struct tm *_tm;
     time_t _localtime;
-    char *buffer = new char[YYYYMMDD];
-
+    // char *buffer = new char[YYYYMMDD];
+    char buffer[YYYYMMDD];
     gettimeofday(&tv, NULL);
     _localtime = tv.tv_sec;
 
     _tm = localtime(&_localtime);    
     strftime(buffer, YYYYMMDD, "%Y%m%d", _tm);
 
-    return buffer;
+    return string(buffer);
 }
 
 string form_canon_req(const char *host, uint32_t* payload_hash, char *amz_date, 
