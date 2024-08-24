@@ -58,3 +58,20 @@ int main(){
 }
 ```
 We must cast to int to display as ``uint8_t`` ist mostly treated as a char type, which can lead to unexpected behavior when printing.
+
+**Must not access vector as class method:**
+```cpp
+// MUST NOT ACCESS vector as class method like this
+int main(){
+	classTest obj;
+    obj.cipher_suites.push_back(12);
+    obj.cipher_suites.push_back(34);
+
+    uint8_t *ptr = reinterpret_cast<uint8_t*>(&obj);  // MUST NOT DO THIS
+
+    for (int i = 0; i < 2; i++) {
+        printf("0x%02X ", ptr[i]);
+    }
+}
+```
+**reinterpret_cast** provides a way to access raw memory, but **std::vector** manages its own memory dynamically. Directly casting and accessing this memory will not give you meaningful information about the vector's content. The internal representation of a std::vector includes pointers, size, and capacity information. Casting this to a uint8_t* won't correctly reflect the actual data stored in the vector.
