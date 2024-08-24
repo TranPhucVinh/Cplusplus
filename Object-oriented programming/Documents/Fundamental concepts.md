@@ -72,6 +72,8 @@ cout << obj_ptr->publicNumber << endl; //10
 * Instance variables are **created when an object of the class is created** and **destroyed when the object is destroyed**.
 * Instance variables can be accessed **only by creating objects**.
 
+CPP **doesn't support** [flexible array member](https://github.com/TranPhucVinh/C/blob/master/Data%20structure/struct/Documents/Fundamental%20concepts.md#flexible-array-member) like in C.
+
 # struct
 
 ``struct`` in CPP can be treated as a class as it supports all class feature: public, private, constructor, destructor, inheritance, polymorphism, virtual function and abstract class.
