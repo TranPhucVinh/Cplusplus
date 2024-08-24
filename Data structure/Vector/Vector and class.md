@@ -34,3 +34,27 @@ int main()
     return 0;
 }
 ```
+# Vector as class method
+```cpp
+#include <iostream>
+#include <vector>
+#include <string.h>
+
+using namespace std;
+
+class classTest{
+public:
+    vector<uint8_t> cipher_suites;
+};
+
+int main(){
+	classTest obj;
+    obj.cipher_suites.push_back(12);
+    obj.cipher_suites.push_back(34);
+
+    for (int i = 0; i < obj.cipher_suites.size(); i++) {
+        cout << (int)obj.cipher_suites[i] << " ";
+    }
+}
+```
+We must cast to int to display as ``uint8_t`` ist mostly treated as a char type, which can lead to unexpected behavior when printing.
