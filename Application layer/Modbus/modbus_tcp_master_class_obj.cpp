@@ -37,6 +37,7 @@ public:
     uint8_t num_of_reg_msb;
     uint8_t num_of_reg_lsb;
 };
+void print_frame(Modbus_Slave *slave);
 
 int main(){
     Modbus_Slave slave;
@@ -61,7 +62,7 @@ int main(){
     slave.num_of_reg_msb   = NUM_OF_REG_MSB;
     slave.num_of_reg_lsb   = NUM_OF_REG_LSB;
 
-    // print_frame(&slave);
+    print_frame(&slave);
     int sender_fd = socket_parameter_init(HOST, PORT);
         
     // Send Modbus TCP frame to server/slave
@@ -92,4 +93,13 @@ int socket_parameter_init(const char *host, int port){
         exit(0);
     } else printf("connect to server success\n");
     return sender_fd;
+}
+
+void print_frame(Modbus_Slave *slave) {
+    const uint8_t *ptr = reinterpret_cast<const uint8_t*>(slave);  // Pointer to the first member
+    int size = sizeof(Modbus_Slave) / sizeof(uint8_t);  // Number of members
+
+    for (int i = 0; i < size; i++) {
+        printf("Byte %d: 0x%02X\n", i + 1, ptr[i]);
+    }
 }
