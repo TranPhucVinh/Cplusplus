@@ -65,9 +65,10 @@ uint32_t* SHA256::hmac_sha_256(string key, string msg) {
 
     SHA256 sha256_1;
 
-    uint32_t *_inner_hash = (uint32_t*) malloc(8 * sizeof(uint32_t));// HMAC SHA-256
-    _inner_hash = sha256_1.hex_digest(inner_str_concat);
-    
+    // uint32_t *_inner_hash = (uint32_t*) malloc(8 * sizeof(uint32_t));// HMAC SHA-256
+    // _inner_hash = sha256_1.hex_digest(inner_str_concat);
+    uint32_t *_inner_hash = sha256_1.hex_digest(inner_str_concat);
+
     char inner_hash_char[32];// Split the 256-bit has into 32 chars
     int _idx = 0;
     for (int i = 0; i < 8; i++) {
