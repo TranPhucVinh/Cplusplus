@@ -18,5 +18,10 @@ Vectors are the same as dynamic arrays with the ability to resize itself automat
 **Delete**: Delete vector member by erase(); Remove the last member of the vector by pop_back()
 
 # [Vector and function]()
+* [Vector as function argument](Vector%20and%20function.md#vector-as-function-argument): [Function read all vector members, as its argument](Vector%20and%20function.md#function-read-all-vector-members-as-its-argument), [change value of a vector as a function argument](Vector%20and%20function.md#change-value-of-a-vector-as-a-function-argument)
+* [Function returns vector](Vector%20and%20function.md#function-returns-vector)
+# [Vector and class](Vector%20and%20class.md)
+* [Class object as member of a vector](Vector%20and%20class.md#class-object-as-member-of-a-vector)
+* [Vector as class method](Vector%20and%20class.md#vector-as-class-method)
 # Implementations
 * Convert an integer to Roman numeral by using **vector tuple**: [vector_tuple_integer_to_roman_numeral.cpp](vector_tuple_integer_to_roman_numeral.cpp)
