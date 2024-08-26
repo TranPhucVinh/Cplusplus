@@ -1,5 +1,5 @@
 # Vector as function argument
-## Function read all vector member, as its argument
+## Function read all vector members, as its argument
 ```cpp
 void readVector(vector<int> vec){
 	for (int i = 0; i < vec.size(); i++){
