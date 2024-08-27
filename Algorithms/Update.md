@@ -50,7 +50,7 @@ for (int i=0; i < 5; i++){
 std::sort(vec.begin(), vec.end(), std::greater<int>());
 ```
 ## Third argument of std::sort()
-**std::sort()** takes the third argument as a comparator function with 2 arguments. This example will arrange the vector in descending order:
+**std::sort()** takes the third argument as a **comparator function with 2 arguments**. This example will arrange the vector in descending order:
 ```cpp
 // Everytime calling this function, 2 adjacent members a, b in vec will be arranged so that a > b
 bool customComparator(int a, int b) {
@@ -67,6 +67,32 @@ int main() {
     }
     std::cout << std::endl;
 
+    return 0;
+}
+```
+## Third argument of std::sort() as member of a class
+The comparator function of std::sort() should be either a static member function in a class or a free function if you're passing it to std::sort. Non-static member functions cannot be passed as comparators to std::sort directly.
+```cpp
+class ClassTest {
+    public:
+
+    static bool customComparator(int a, int b) {
+        return a > b;
+    }
+    void sort_ascending() {
+        std::vector<int> vec = {5, 2, 9, 3, 7};
+        std::sort(vec.begin(), vec.end(), customComparator);
+
+        for (int num : vec) {
+            std::cout << num << " ";
+        }
+        std::cout << std::endl;
+    }
+};
+
+int main() {
+    ClassTest obj;
+    obj.sort_ascending();
     return 0;
 }
 ```
