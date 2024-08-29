@@ -115,6 +115,15 @@ Sort the array in increasing order based on the frequency of the values. If mult
 * Input: s = "cccaaa", Output: "aaaccc"
 
 **Program**: This problem is similar to [Sort an array by increasing frequency](#sort-an-array-by-increasing-frequency): [sort_char_by_decreasing_freq.cpp](https://github.com/TranPhucVinh/Cplusplus/blob/master/Data%20structure/Hash%20map/src/sort_char_by_decreasing_freq.cpp)
+# Top k frequent elements
+Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.
+
+* Input: nums = [1,1,1,2,2,3], k = 2 -> Output: [1,2]
+* Input: nums = [1], k = 1 -> Output: [1]
+
+**Algorithm**: Count how many time a number appear in nums by hashmap ``Map``. Then create ``ordered_map``, a new map with key, value from value, key of ``Map``. As this ``ordered_map`` is an ordered map, the last members will store the most frequence elements.
+
+**Program**:  [top_k_freq_elements.cpp](../src/top_k_freq_elements.cpp)
 # Intersection of two arrays
 
 * nums1 = [1,2,2,1], nums2 = [2,2]
