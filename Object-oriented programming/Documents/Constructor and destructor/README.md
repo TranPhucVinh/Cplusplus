@@ -94,3 +94,38 @@ Hello World
 Destructor
 Call pointer
 ```
+# Destructor won't be called when program terminates abnormally
+When program terminates abnormally, e.g by SIGKILL, destructors for objects won't be called:
+```cpp
+// Self-terminated a process after printing from 0 to ``10
+#include <iostream>
+#include <unistd.h>
+#include <signal.h>   
+
+using namespace std;
+
+class classTest{
+public:
+    classTest(){
+        cout << "Constructor of classTest\n";
+    }
+    ~classTest(){
+        cout << "Destructor of classTest\n";
+    }
+};
+
+int pid;
+int number;
+
+int main(){
+	classTest object;
+
+    pid = getpid();
+    while (1){
+        printf("%d\n", number);
+        if (number == 10) kill(pid, SIGKILL);
+        else number += 1;
+    }
+}
+```
+**Result**: Destructor function won't be called
