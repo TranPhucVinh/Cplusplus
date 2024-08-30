@@ -1,6 +1,4 @@
-# Memory functions
-
-## [Dynamic memory allocation](Dynamic%20memory%20allocation.md)
+# [Dynamic memory allocation](Dynamic%20memory%20allocation.md)
 
 * [new](Dynamic%20memory%20allocation.md#new)
 * [delete](Dynamic%20memory%20allocation.md#delete)
