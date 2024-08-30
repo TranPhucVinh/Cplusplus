@@ -41,13 +41,17 @@ int main() {
     SHA256 sha256, hmac;
 
     string amz_date_str = amz_date();
-    string sha_256_msg_str = sha_256_to_string(move(sha256.hex_digest(msg)));
+    string sha_256_msg_str = sha_256_to_string(sha256.hex_digest(msg));
     get_aws_env_vars(access_key_id, secret_access_key, session_key);
+
     string cq = form_canon_req(HOST, sha_256_msg_str, amz_date_str, "GET", "/", "");
     string SigningKey = calculate_signature(secret_access_key, REGION);
+
     string StringToSign = form_string_to_sign(STRING_TO_SIGN, amz_date_str, REGION, cq);
-    string AWS_Signature_V4 = sha_256_to_string(move(hmac.hmac_sha_256(SigningKey, StringToSign)));    
-    string Credential = access_key_id + "/" + string(yyyymmdd()) + "/" + REGION + "/s3/aws4_request,"; // "," is mandatory
+    cout << "C++ StringToSign " << StringToSign << endl;
+
+    string AWS_Signature_V4 = sha_256_to_string(hmac.hmac_sha_256(SigningKey, StringToSign));    
+    string Credential = access_key_id + "/" + yyyymmdd() + "/" + REGION + "/s3/aws4_request,"; // "," is mandatory
 
     string http_request;
 
@@ -103,6 +107,7 @@ string yyyymmdd() {
     _tm = localtime(&_localtime); 
 
     strftime(buffer, YYYYMMDD, "%Y%m%d", _tm);
+
     return string(buffer);
 }
 
@@ -132,19 +137,21 @@ string form_string_to_sign(const char *string_to_sign, string amz_date,
     string _string_to_sign = string(string_to_sign) + "\n";
     _string_to_sign += amz_date + "\n";
 
-    string Scope = yyyymmdd() + "/" + string(region) + "/s3/aws4_request";
+    string Scope = yyyymmdd() + "/" + region + "/s3/aws4_request";
 
     SHA256 canon_req_sha;
-    _string_to_sign += Scope + "\n" + sha_256_to_string(move(canon_req_sha.hex_digest(canon_req)));
+    _string_to_sign += Scope + "\n" + sha_256_to_string(canon_req_sha.hex_digest(canon_req));
     return _string_to_sign;
 }
 
 string calculate_signature(string secret_access_key, const char *region) {
-    SHA256 _obj1, _obj2, _obj3, _obj4;
-    string date_key = sha_256_to_string(_obj1.hmac_sha_256(string("AWS4") + secret_access_key, yyyymmdd()));
-    string date_region_key = sha_256_to_string(move(_obj2.hmac_sha_256(date_key, region)));
-    string date_region_service_key = sha_256_to_string(move(_obj3.hmac_sha_256(date_region_key, "s3")));
-    string signing_key = sha_256_to_string(move(_obj4.hmac_sha_256(date_region_service_key, "aws4_request")));
+    SHA256 _obj, _obj2, _obj3, _obj4;
+    string date_key = sha_256_to_string(_obj.hmac_sha_256(string("AWS4") + secret_access_key, yyyymmdd()));
+    string date_region_key = sha_256_to_string(_obj2.hmac_sha_256(date_key, region));
+    cout << "C++ date_region_key " << date_region_key << endl;
+
+    string date_region_service_key = sha_256_to_string(_obj3.hmac_sha_256(date_region_key, "s3"));
+    string signing_key = sha_256_to_string(_obj4.hmac_sha_256(date_region_service_key, "aws4_request"));
 
     return signing_key;
 }
