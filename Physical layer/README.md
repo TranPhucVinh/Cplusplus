@@ -45,7 +45,7 @@ sleep(std::chrono::seconds(1));
 
 ## getenv()
 
-Get the environment variable value (setup by [export](https://github.com/TranPhucVinh/Linux-Shell/blob/master/Bash%20script/Variable/Environment%20variable.md#export-command) command:
+Get the environment variable value (setup by [export](https://github.com/TranPhucVinh/Linux-Shell/blob/master/Bash%20script/Variable/Environment%20variable.md#export-command)) command:
 
 ``getenv()`` is available since C++11.
 
