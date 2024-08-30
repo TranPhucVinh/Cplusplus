@@ -10,7 +10,7 @@
 using namespace std;
 
 #define ISO_8061_SZ     64
-#define YYYYMMDD        10
+#define YYYYMMDD        10 // Must be 10 char for YYYYMMDD
 #define HOST            "s3.ap-southeast-2.amazonaws.com"
 #define PORT            80
 #define STRING_TO_SIGN  "AWS4-HMAC-SHA256"
@@ -20,16 +20,15 @@ string access_key_id, secret_access_key, session_key;
 
 void    get_aws_env_vars(string &access_key_id, string &secret_access_key, string &session_key);
 string  sha_256_to_string(unique_ptr<uint32_t[]> sha_256_hash);
-char   *amz_date();
+string  amz_date();
 string  yyyymmdd();
-string  form_canon_req(const char *host, string payload_hash, char *amz_date, const char *method,
+string  form_canon_req(const char *host, string payload_hash, string amz_date, const char *method,
                     const char *uri, const char *querystring);
-string  form_string_to_sign(const char *string_to_sign, char *amz_date, const char *region, string canon_req);
+string  form_string_to_sign(const char *string_to_sign, string amz_date, const char *region, string canon_req);
 string  calculate_signature(string secret_access_key, const char *region);
 
 class HTTP_Client {
 	public:
-		char ip_str[30]; 
 		HTTP_Client(const char *host, in_port_t port);	
 		int write_http_request(std::string http_request);
 		char *read_http_response();
@@ -41,23 +40,22 @@ int main() {
     string msg = "";
     SHA256 sha256, hmac;
 
+    string amz_date_str = amz_date();
     string sha_256_msg_str = sha_256_to_string(move(sha256.hex_digest(msg)));
     get_aws_env_vars(access_key_id, secret_access_key, session_key);
-    string cq = form_canon_req(HOST, sha_256_msg_str, amz_date(), "GET", "/", "");
+    string cq = form_canon_req(HOST, sha_256_msg_str, amz_date_str, "GET", "/", "");
     string SigningKey = calculate_signature(secret_access_key, REGION);
-    string StringToSign = form_string_to_sign(STRING_TO_SIGN, amz_date(), REGION, cq);
-
-    string AWS_Signature_V4 = sha_256_to_string(hmac.hmac_sha_256(SigningKey, StringToSign));
-    
+    string StringToSign = form_string_to_sign(STRING_TO_SIGN, amz_date_str, REGION, cq);
+    string AWS_Signature_V4 = sha_256_to_string(move(hmac.hmac_sha_256(SigningKey, StringToSign)));    
     string Credential = access_key_id + "/" + string(yyyymmdd()) + "/" + REGION + "/s3/aws4_request,"; // "," is mandatory
 
     string http_request;
 
-    http_request = "GET / HTTP/1.1\r\nHost: " + string(HOST);
-	http_request += "\r\nx-amz-content-sha256: " + sha_256_msg_str;
-    http_request += "\r\nx-amz-date: " + string(amz_date());
-    http_request += "\r\nx-amz-security-token: " + session_key;
-    http_request += "\r\nAuthorization: AWS4-HMAC-SHA256 Credential=" + Credential;
+    http_request = "GET / HTTP/1.1\r\nHost: " + string(HOST) + "\r\n";
+	http_request += "x-amz-content-sha256: " + sha_256_msg_str + "\r\n";
+    http_request += "x-amz-date: " + amz_date_str + "\r\n";
+    http_request += "x-amz-security-token: " + session_key + "\r\n";
+    http_request += "Authorization: AWS4-HMAC-SHA256 Credential=" + Credential;
     http_request += " SignedHeaders=host;x-amz-content-sha256;x-amz-date;x-amz-security-token, Signature=";
     http_request += AWS_Signature_V4;
     http_request += "\r\nConnection: close\r\n\r\n";
@@ -75,50 +73,53 @@ int main() {
     return 0;
 }
 
-char *amz_date() {
+string amz_date() {
     struct timeval tv;
-    struct tm *_tm;
-    time_t _localtime;
-    char *buffer = new char[ISO_8061_SZ];
+    struct tm *tm_utc;
+    char buffer[ISO_8061_SZ];
 
+    // Get current time
     gettimeofday(&tv, NULL);
-    _localtime = tv.tv_sec;
 
-    _tm = localtime(&_localtime);    
-    strftime(buffer, ISO_8061_SZ, "%Y%m%dT%H%M%SZ", _tm);
-    return buffer;
+    // Convert time to UTC
+    tm_utc = gmtime(&tv.tv_sec);
+
+    // Format time as ISO 8601
+    if (strftime(buffer, sizeof(buffer), "%Y%m%dT%H%M%SZ", tm_utc) == 0) {
+        throw std::runtime_error("strftime failed");
+    }
+
+    return std::string(buffer);
 }
 
 string yyyymmdd() {
     struct timeval tv;
     struct tm *_tm;
     time_t _localtime;
-    // char *buffer = new char[YYYYMMDD];
     char buffer[YYYYMMDD];
+    
     gettimeofday(&tv, NULL);
     _localtime = tv.tv_sec;
+    _tm = localtime(&_localtime); 
 
-    _tm = localtime(&_localtime);    
     strftime(buffer, YYYYMMDD, "%Y%m%d", _tm);
-
     return string(buffer);
 }
 
-string form_canon_req(const char *host, string payload_hash, char *amz_date, 
+string form_canon_req(const char *host, string payload_hash, string amz_date, 
         const char *method, const char *uri, const char *querystring) {
-    
-    string cq = "";
 
-    cq += string(method) + "\n" + string(uri);
+    string cq = string(method) + "\n" + string(uri);
     cq += "\n" + string(querystring) + "\n";
 
     // Canonical Headers
     cq += "host:" + string(host) + "\n";
     cq += "x-amz-content-sha256:" + payload_hash + "\n";
-    cq += "x-amz-date:" + string(amz_date) + "\n";
+    cq += "x-amz-date:" + amz_date + "\n";
+    cq += "x-amz-security-token:" + session_key + "\n";
 
     // Signed Headers
-    cq += "\nhost;x-amz-content-sha256;x-amz-date\n";
+    cq += "\nhost;x-amz-content-sha256;x-amz-date;x-amz-security-token\n";
 
     // Payload Hash
     cq += payload_hash;
@@ -126,24 +127,24 @@ string form_canon_req(const char *host, string payload_hash, char *amz_date,
     return cq;
 }
 
-string form_string_to_sign(const char *string_to_sign, char *amz_date,
+string form_string_to_sign(const char *string_to_sign, string amz_date,
                             const char *region, string canon_req) {
     string _string_to_sign = string(string_to_sign) + "\n";
-    _string_to_sign += string(amz_date) + "\n";
+    _string_to_sign += amz_date + "\n";
 
-    string Scope = string(yyyymmdd()) + "/" + string(region) + "/s3/aws4_request";
+    string Scope = yyyymmdd() + "/" + string(region) + "/s3/aws4_request";
 
     SHA256 canon_req_sha;
-    _string_to_sign += Scope + "\n" + sha_256_to_string(canon_req_sha.hex_digest(canon_req));
+    _string_to_sign += Scope + "\n" + sha_256_to_string(move(canon_req_sha.hex_digest(canon_req)));
     return _string_to_sign;
 }
 
 string calculate_signature(string secret_access_key, const char *region) {
     SHA256 _obj1, _obj2, _obj3, _obj4;
     string date_key = sha_256_to_string(_obj1.hmac_sha_256(string("AWS4") + secret_access_key, yyyymmdd()));
-    string date_region_key = sha_256_to_string(_obj2.hmac_sha_256(date_key, region));
-    string date_region_service_key = sha_256_to_string(_obj3.hmac_sha_256(date_region_key, "s3"));
-    string signing_key = sha_256_to_string(_obj4.hmac_sha_256(date_region_service_key, "aws4_request"));
+    string date_region_key = sha_256_to_string(move(_obj2.hmac_sha_256(date_key, region)));
+    string date_region_service_key = sha_256_to_string(move(_obj3.hmac_sha_256(date_region_key, "s3")));
+    string signing_key = sha_256_to_string(move(_obj4.hmac_sha_256(date_region_service_key, "aws4_request")));
 
     return signing_key;
 }
