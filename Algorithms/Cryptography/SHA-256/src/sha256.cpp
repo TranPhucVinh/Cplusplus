@@ -21,11 +21,13 @@ SHA256::SHA256() {
     uint32_t init_hash[] = {0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a,
                 0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19};
         
-    std::copy(std::begin(sha_256_const), std::end(sha_256_const), std::begin(_sha_256_const));
-    std::copy(std::begin(init_hash), std::end(init_hash), std::begin(_hash));
+    copy(begin(sha_256_const), end(sha_256_const), begin(_sha_256_const));
+
+    _hash = make_unique<uint32_t[]>(8);
+    copy(init_hash, init_hash + 8, _hash.get());
 }
 
-uint32_t* SHA256::hex_digest(string msg) {
+unique_ptr<uint32_t[]> SHA256::hex_digest(string msg) {
     vector<bool> msg_padding = message_padding(msg);
 
     vector<vector<bool>> msg_blocks = parse_msg_to_block(msg_padding);
@@ -39,10 +41,10 @@ uint32_t* SHA256::hex_digest(string msg) {
     // }
     // cout << endl;
     
-    return _hash;
+    return move(_hash);
 }
 
-uint32_t* SHA256::hmac_sha_256(string key, string msg) {
+unique_ptr<uint32_t[]> SHA256::hmac_sha_256(string key, string msg) {
     if (key.size() < BLOCK_SZ_BYTES) {
         key.resize(BLOCK_SZ_BYTES, '\0'); // Pad key if shorter than 64 bytes
     }
@@ -65,9 +67,7 @@ uint32_t* SHA256::hmac_sha_256(string key, string msg) {
 
     SHA256 sha256_1;
 
-    // uint32_t *_inner_hash = (uint32_t*) malloc(8 * sizeof(uint32_t));// HMAC SHA-256
-    // _inner_hash = sha256_1.hex_digest(inner_str_concat);
-    uint32_t *_inner_hash = sha256_1.hex_digest(inner_str_concat);
+    unique_ptr<uint32_t[]> _inner_hash = sha256_1.hex_digest(inner_str_concat);// HMAC SHA-256
 
     char inner_hash_char[32];// Split the 256-bit has into 32 chars
     int _idx = 0;
