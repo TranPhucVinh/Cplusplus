@@ -89,11 +89,6 @@ unique_ptr<uint32_t[]> SHA256::hmac_sha_256(string key, string msg) {
     SHA256 sha256_2;
     _inner_hash = sha256_2.hex_digest(opad_str_concat);
 
-    // for (int i = 0; i < 8; i++) {
-    //     cout << hex << setw(8) << setfill('0') << _inner_hash[i];
-    // }
-    // cout << endl;
-
     return _inner_hash;
 }
 
