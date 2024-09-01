@@ -1,11 +1,3 @@
-# [Smart pointer](Smart%20pointer)
-
-There are 3 types of smart pointer in CPP:
-
-* [Unique pointer](Smart%20pointer#Unique%20pointer.md) (support since C++14)
-* Share pointer
-* Weak pointer
-
 # nullptr
 
 ``nullptr`` is NULL pointer (or NULL reference) and is available since C++11.
@@ -33,7 +25,7 @@ class classTest{
 		}
 };
 
-int main(){
+int main() {
 	classTest *pointer_object, object;
 	pointer_object = &object;
 	pointer_object->hello(); //Hello World
@@ -82,13 +74,12 @@ Using ``uintptr_t*``:
 
 int a = 8;
 
-void add_value(uintptr_t *a)
-{
+void add_value(uintptr_t *a) {
     *a += 1;
 	return;
 }
 
-int main(){
+int main() {
    printf("a: %d\n", a);//8
    add_value((uintptr_t*)&a);
    printf("a: %d\n", a);//9
@@ -102,11 +93,11 @@ int main(){
 #include <iostream>          
 #include <functional>// std::function
 
-int add_int_numbers(int a, int b){
+int add_int_numbers(int a, int b) {
 	return a+b;
 }
 
-int subtract(int a, int b){
+int subtract(int a, int b) {
 	return a-b;
 }
 

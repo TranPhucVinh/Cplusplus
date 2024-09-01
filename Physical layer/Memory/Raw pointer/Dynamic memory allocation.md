@@ -5,8 +5,7 @@
 ```c
 #include <stdio.h>
 
-int main()
-{  
+int main() {  
 	int *int_number = new int;
 	int *int_array = new int[2];
 	*int_number = 12;
@@ -23,7 +22,6 @@ int *int_number;
 int_number = new int;
 *int_number = 23;
 ```
-# [Unique pointer to dynamically allocate char array as string](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/Pointer/Smart%20pointer/Unique%20pointer%20for%20array.md#unique-pointer-for-char-array-as-string)
 
 # delete
 

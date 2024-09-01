@@ -12,7 +12,16 @@ C only supports pointer while C++ supports pointers and reference ([lvalue refer
 * [nullptr](Pointer.md#nullptr)
 * [Pointer as an object of a class, new keyword](../../Object-oriented%20programming/Fundamental%20concepts.md#define-variable-and-function-for-a-class-use-class-object-as-a-pointer)
 * [uintptr_t](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/Pointer.md#uintptr_t): [Change value of variable by uintptr_t* and uintptr_t&](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/Pointer.md#change-value-of-variable-by-uintptr_t)
-* [Smart pointer](Smart%20pointer): [Unique pointer](Smart%20pointer#Unique%20pointer.md), [shared pointer](Smart%20pointer#Shared%20pointer.md) and weak pointer
+
+# Smart pointer
+
+Smart pointer is a wrapper of a raw pointer. Using smart pointer will automate the process of dynamic allocation then deallocation/free-up for pointer in the heap memory. The deallocation process when using smart pointer will help preventing memory leak.
+
+There are 3 types of smart pointer in CPP:
+
+* [Unique pointer](Unique%20pointer) (support since C++14)
+* Shared pointer
+* Weak pointer
 
 # [lvalue](lvalue.md)
 

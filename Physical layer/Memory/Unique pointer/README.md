@@ -1,11 +1,4 @@
-Smart pointer is a wrapper of a raw pointer. Using smart pointer will automate the process of dynamic allocation then deallocation/free-up for pointer in the heap memory. The deallocation process when using smart pointer will help preventing memory leak.
-
-Smart pointer includes: 
-* [Unique pointer](#unique-pointer)
-* [Shared pointer]()
-* Weak pointer
-
-# [Unique pointer]()
+# [Fundamental concepts]()
 
 * [Fundamental concepts](Unique%20pointer.md#fundamental-concepts)
 * [Unique pointer allows setting value to its deferencing](Unique%20pointer.md#unique-pointer-allows-setting-value-to-its-deferencing)
@@ -14,7 +7,6 @@ Smart pointer includes:
 * [Unique pointer as class object](Unique%20pointer.md#unique-pointer-as-class-object)
 * Unique pointer for array, Unique pointer for char array as string
 * [Unique pointer and function](Unique%20pointer%20and%20function.md): [Function returns a unique pointer](Unique%20pointer%20and%20function.md#function-returns-a-unique-pointer) and [Unique pointer as function argument](Unique%20pointer%20and%20function.md#unique-pointer-as-function-argument)
-# [Shared pointer](Shared%20pointer.md)
 
 # Custom deleter
 
