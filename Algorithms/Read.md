@@ -7,6 +7,7 @@ int a = std::min(12, 34);
 ```
 # std::min_element() and std::max_element()
 Return min and max member of a sequence, along with their index in a vector
+## Use begin() and end() to search for the whole vector
 ```cpp
 #include <iostream>
 #include <algorithm>    // std::min_element, std::max_element
@@ -36,14 +37,38 @@ int *max_element = std::max_element(arr, arr + sizeof(arr)/sizeof(int));
 
 cout << *max_element << endl;// 9
 ```
+## Use begin() and search in range
+Search for min and max number inside [lower_bound, upper_bound]
+```cpp
+int main () {
+    int lower_bound = 2, upper_bound = 5;
+    vector<int> vect = {3, 7, 2, 5, 6, 4, 9};
+
+    vector<int>::iterator min_iter = std::min_element(vect.begin() + lower_bound, vect.begin() + upper_bound);
+    vector<int>::iterator max_iter = std::max_element(vect.begin() + lower_bound, vect.begin() + upper_bound);
+
+    int min_index = std::distance(vect.begin(), min_iter);
+    int max_index = std::distance(vect.begin(), max_iter);
+
+    std::cout << "max number: " << *max_iter << " at index " << max_index << '\n';
+    std::cout << "min number: " << *min_iter << " at index " << min_index << '\n';
+
+    return 0;
+}
+```
+**Result**
+```
+max number: 6 at index 4
+min number: 2 at index 2
+```
 # std::lower_bound() and std::upper_bound()
 
 In a sorted array with duplicated number, std::lower_bound() and std::upper_bound() will return the index of a duplicated number in range ``[first,last)``
 
 ```cpp
-#include <iostream>     // std::cout
+#include <iostream>
 #include <algorithm>    // std::lower_bound, std::upper_bound
-#include <vector>       // std::vector
+#include <vector>
 
 int main () {
     std::vector<int> vec_num = {1, 1, 1, 2, 2, 4, 4};
