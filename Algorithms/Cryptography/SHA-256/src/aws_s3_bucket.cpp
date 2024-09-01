@@ -19,7 +19,8 @@ using namespace std;
 string access_key_id, secret_access_key, session_key;
 
 void    get_aws_env_vars(string &access_key_id, string &secret_access_key, string &session_key);
-string  sha_256_to_string(unique_ptr<uint32_t[]> sha_256_hash);
+string  sha_256_to_string_hex(unique_ptr<uint32_t[]> sha_256_hash);
+string  sha_256_to_string_char(unique_ptr<uint32_t[]> sha_256_hash);
 string  amz_date();
 string  yyyymmdd();
 string  form_canon_req(const char *host, string payload_hash, string amz_date, const char *method,
@@ -41,7 +42,7 @@ int main() {
     SHA256 sha256, hmac;
 
     string amz_date_str = amz_date();
-    string sha_256_msg_str = sha_256_to_string(sha256.hex_digest(msg));
+    string sha_256_msg_str = sha_256_to_string_hex(sha256.hex_digest(msg));
     get_aws_env_vars(access_key_id, secret_access_key, session_key);
 
     string cq = form_canon_req(HOST, sha_256_msg_str, amz_date_str, "GET", "/", "");
@@ -50,7 +51,7 @@ int main() {
     string StringToSign = form_string_to_sign(STRING_TO_SIGN, amz_date_str, REGION, cq);
     cout << "C++ StringToSign " << StringToSign << endl;
 
-    string AWS_Signature_V4 = sha_256_to_string(hmac.hmac_sha_256(SigningKey, StringToSign));    
+    string AWS_Signature_V4 = sha_256_to_string_hex(hmac.hmac_sha_256(SigningKey, StringToSign));    
     string Credential = access_key_id + "/" + yyyymmdd() + "/" + REGION + "/s3/aws4_request,"; // "," is mandatory
 
     string http_request;
@@ -140,18 +141,16 @@ string form_string_to_sign(const char *string_to_sign, string amz_date,
     string Scope = yyyymmdd() + "/" + region + "/s3/aws4_request";
 
     SHA256 canon_req_sha;
-    _string_to_sign += Scope + "\n" + sha_256_to_string(canon_req_sha.hex_digest(canon_req));
+    _string_to_sign += Scope + "\n" + sha_256_to_string_hex(canon_req_sha.hex_digest(canon_req));
     return _string_to_sign;
 }
 
 string calculate_signature(string secret_access_key, const char *region) {
-    SHA256 _obj, _obj2, _obj3, _obj4;
-    string date_key = sha_256_to_string(_obj.hmac_sha_256(string("AWS4") + secret_access_key, yyyymmdd()));
-    string date_region_key = sha_256_to_string(_obj2.hmac_sha_256(date_key, region));
-    cout << "C++ date_region_key " << date_region_key << endl;
-
-    string date_region_service_key = sha_256_to_string(_obj3.hmac_sha_256(date_region_key, "s3"));
-    string signing_key = sha_256_to_string(_obj4.hmac_sha_256(date_region_service_key, "aws4_request"));
+    SHA256 _obj;
+    string date_key = sha_256_to_string_char(_obj.hmac_sha_256(string("AWS4") + secret_access_key, yyyymmdd()));
+    string date_region_key = sha_256_to_string_char(_obj.hmac_sha_256(date_key, region));
+    string date_region_service_key = sha_256_to_string_char(_obj.hmac_sha_256(date_region_key, "s3"));
+    string signing_key = sha_256_to_string_char(_obj.hmac_sha_256(date_region_service_key, "aws4_request"));
 
     return signing_key;
 }
@@ -171,14 +170,38 @@ void get_aws_env_vars(string &access_key_id, string &secret_access_key, string &
     }
 }
 
-string sha_256_to_string(unique_ptr<uint32_t[]> sha_256_hash) {
+/*
+    Convert the hex value from SHA-256 into  
+    their corresponding ASCII character
+*/
+string sha_256_to_string_char(unique_ptr<uint32_t[]> sha_256_hash) {
+    // for (int i = 0; i < 8; i++) {
+    //     cout << hex << setw(8) << setfill('0') << sha_256_hash[i];
+    // }
+    // cout << endl;
+
+    string _sha256_str = "";
+    for (int i = 0; i < 8; i++) {
+        _sha256_str += (char) (sha_256_hash[i] >> 24) & 0xFF;
+        _sha256_str += (char) (sha_256_hash[i] >> 16) & 0xFF;
+        _sha256_str += (char) (sha_256_hash[i] >> 8) & 0xFF;
+        _sha256_str += (char) sha_256_hash[i] & 0xFF;
+    }
+
+    return _sha256_str;
+}
+
+/*
+    Convert the hex value from SHA-256 into  
+    string hex. e.g 0x12ab to "12ab"
+*/
+string sha_256_to_string_hex(unique_ptr<uint32_t[]> sha_256_hash) {
     string _sha256_str = "";
     for (int i = 0; i < 8; i++) {
         stringstream _stream;
         _stream << hex << setw(8) << setfill('0') << sha_256_hash[i];
         _sha256_str += _stream.str();
     }
-
     return _sha256_str;
 }
 
