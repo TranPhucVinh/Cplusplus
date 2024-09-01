@@ -17,9 +17,9 @@ int main(){
 ```
 # Unique pointer as function argument
 
-As a unique pointer only points to an object at a time, passing it as the argument to a function must use [std::move()](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/Smart%20pointer/Unique%20pointer.md#using-stdmove-to-completely-move-value-from-2-unique-pointers) or [lvalue](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/lvalue.md):
+As a unique pointer only points to an object at a time, passing it as the argument to a function must use [std::move()](Fundamental%20concepts.md#using-stdmove-to-completely-move-value-from-2-unique-pointers) or [lvalue](../Reference/lvalue.md).
 
-Using [std::move()](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/Smart%20pointer/Unique%20pointer.md#using-stdmove-to-completely-move-value-from-2-unique-pointers)
+## Use std::move()
 
 ```c
 #include <iostream>
@@ -27,17 +27,17 @@ Using [std::move()](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physic
 
 using namespace std;
 
-void unique_ptr_func(std::unique_ptr<int> uniquePtr){
+void unique_ptr_func(std::unique_ptr<int> uniquePtr) {
     std::cout << *uniquePtr << std::endl;//123
 }
 
-int main(){
+int main() {
 	std::unique_ptr<int> uniquePtr = std::make_unique<int>(123);
 	std::cout << *uniquePtr << std::endl;//123
 	unique_ptr_func(std::move(uniquePtr));
 }
 ```
-Using [lvalue](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/lvalue.md):
+## Use lvalue
 ```cpp
 #include <iostream>
 #include <memory>
@@ -48,7 +48,7 @@ void unique_ptr_func(std::unique_ptr<int> &uniquePtr){
     std::cout << *uniquePtr << std::endl;//123
 }
 
-int main(){
+int main() {
 	std::unique_ptr<int> uniquePtr = std::make_unique<int>(123);
 	std::cout << *uniquePtr << std::endl;//123
 	unique_ptr_func(uniquePtr);
@@ -61,7 +61,7 @@ void unique_ptr_func(std::unique_ptr<int[]> uniquePtr){
 	for (int i = 0; i < 2; i++) std::cout << uniquePtr[i] << std::endl;
 }
 
-int main(){
+int main() {
 	std::unique_ptr<int[]> uniquePtr(new int[2]);
 
 	uniquePtr[0] = 123;
@@ -84,7 +84,7 @@ void func(std::unique_ptr<T[]> array) {
     for (int i = 0; i < arr_size; i++) std::cout << array[i] << std::endl;
 }
 
-int main(){
+int main() {
 	std::unique_ptr<int[]> uniquePtr(new int[ARR_SIZE]);
 
 	uniquePtr[0] = 123;

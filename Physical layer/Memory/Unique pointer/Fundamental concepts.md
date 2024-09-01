@@ -6,7 +6,7 @@ Unique pointer is supported since **C++11**. Include ``<memory>`` to use it. **s
 
 # Unique pointer allows setting value to its dereference
 
-Unlike normal pointer which doesn't allow setting value to its dereferencing, unique pointer allows this operation:
+Unlike raw pointer which doesn't allow setting value to its dereferencing, unique pointer allows this operation:
 ## Use std::make_unique<>()
 
 ```cpp
@@ -15,7 +15,7 @@ Unlike normal pointer which doesn't allow setting value to its dereferencing, un
 
 using namespace std;
 
-int main(){
+int main() {
     std::unique_ptr<int> uniquePtr = std::make_unique<int>(123);
     /*
     	Must not call this, it gives compilation error
@@ -27,7 +27,7 @@ int main(){
 ```
 You cannot use **std::make_unique** with a [custom deleter](). Only the [unique pointer direct method declaration](#use-stdunique_ptrnew-directly) allow [custom deleter]().
 
-## Use std::unique_ptr<>(new) directly, which is similar to [dynamic memory allocation](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/Dynamic%20memory%20allocation.md) with raw pointer
+## Use std::unique_ptr<>(new) directly, which is similar to [dynamic memory allocation](../Raw%20pointer/Dynamic%20memory%20allocation.md) with raw pointer
 ```cpp
 std::unique_ptr<int> uniquePtr;
 uniquePtr = std::unique_ptr<int>(new int(123));

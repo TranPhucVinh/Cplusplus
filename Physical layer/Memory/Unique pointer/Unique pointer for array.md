@@ -55,7 +55,6 @@ int main() {
     return 0;
 }
 ```
-# [Unique pointer array as function argument](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/Smart%20pointer/Unique%20pointer%20and%20function.md#unique-pointer-array-as-function-argument), using [template](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/Function/Template.md) so that array size is not hardcoded.
 # Unique pointer for char array as string
 
 ```cpp
@@ -67,3 +66,4 @@ std::cout << strPtr.get() << std::endl;//Hello, World !
 std::cout << sizeof(strPtr.get()) << std::endl;//8; must not use sizeof() to get size of strPtr.get()
 std::cout << strlen(strPtr.get()) << std::endl;//14; must use strlen() to get size of strPtr.get()
 ```
+# [Unique pointer array as function argument](Unique%20pointer%20and%20function.md#unique-pointer-array-as-function-argument), using [template](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/Function/Template.md) so that array size is not hardcoded.
