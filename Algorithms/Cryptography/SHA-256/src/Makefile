@@ -6,3 +6,7 @@ sha_256_str:
 
 hmac_sha_256:
 	g++ hmac_sha_256.cpp functions.cpp msg_padding_parsing.cpp sha256.cpp
+
+# Add unit test code to unit_test.cpp
+unit_test:
+	g++ unit_test.cpp functions.cpp msg_padding_parsing.cpp sha256.cpp
