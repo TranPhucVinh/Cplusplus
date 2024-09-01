@@ -57,7 +57,7 @@ int main(){
     }
 }
 ```
-We must cast to int to display as ``uint8_t`` ist mostly treated as a char type, which can lead to unexpected behavior when printing.
+We must cast to int to display as ``uint8_t`` is mostly treated as a char type, which can lead to unexpected behavior when printing.
 
 **Must not access vector as class method:**
 ```cpp
