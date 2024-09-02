@@ -175,11 +175,6 @@ void get_aws_env_vars(string &access_key_id, string &secret_access_key, string &
     their corresponding ASCII character
 */
 string sha_256_to_string_char(unique_ptr<uint32_t[]> sha_256_hash) {
-    // for (int i = 0; i < 8; i++) {
-    //     cout << hex << setw(8) << setfill('0') << sha_256_hash[i];
-    // }
-    // cout << endl;
-
     string _sha256_str = "";
     for (int i = 0; i < 8; i++) {
         _sha256_str += (char) (sha_256_hash[i] >> 24) & 0xFF;

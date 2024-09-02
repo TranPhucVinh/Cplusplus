@@ -4,7 +4,27 @@
 
 using namespace std;
 
-string sha_256_to_string(unique_ptr<uint32_t[]> sha_256_hash) {
+/*
+    Convert the hex value from SHA-256 into  
+    their corresponding ASCII character
+*/
+string sha_256_to_string_char(unique_ptr<uint32_t[]> sha_256_hash) {
+    string _sha256_str = "";
+    for (int i = 0; i < 8; i++) {
+        _sha256_str += (char) (sha_256_hash[i] >> 24) & 0xFF;
+        _sha256_str += (char) (sha_256_hash[i] >> 16) & 0xFF;
+        _sha256_str += (char) (sha_256_hash[i] >> 8) & 0xFF;
+        _sha256_str += (char) sha_256_hash[i] & 0xFF;
+    }
+
+    return _sha256_str;
+}
+
+/*
+    Convert the hex value from SHA-256 into  
+    string hex. e.g 0x12ab to "12ab"
+*/
+string sha_256_to_string_hex(unique_ptr<uint32_t[]> sha_256_hash) {
     string _sha256_str = "";
     for (int i = 0; i < 8; i++) {
         stringstream _stream;
@@ -18,13 +38,12 @@ int main() {
     string msg1 = "", msg2 = "msg", msg3 = "key_64_chars";
 
     string key = "key";
-    string key_64_chars = "0b2c9cc2bb3ce0b8f92db192dadb06e60978338051ece09542f34a865a7d3717";
 
     SHA256 obj;// Object for HMAC-SHA256
     unique_ptr<uint32_t[]> hmac_sha256_hash = obj.hmac_sha_256(key, msg1);
 
-    cout << sha_256_to_string(move(hmac_sha256_hash)) << endl;
-    cout << sha_256_to_string(obj.hmac_sha_256(key, msg2)) << endl;
-    cout << sha_256_to_string(obj.hmac_sha_256(key_64_chars, msg3)) << endl;
+    cout << sha_256_to_string_hex(move(hmac_sha256_hash)) << endl;
+    cout << sha_256_to_string_hex(obj.hmac_sha_256(key, msg2)) << endl;
+    cout << sha_256_to_string_hex(obj.hmac_sha_256(sha_256_to_string_char(obj.hmac_sha_256(key, msg2)), msg3)) << endl;
     return 0;
 }
