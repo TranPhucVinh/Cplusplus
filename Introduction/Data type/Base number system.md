@@ -80,7 +80,7 @@ string decToBinaryString(int dec_number)
 ```
 **Implementation**: Given two binary strings a and b, return their sum as a binary string.
 
-If implementing this with **stoull()** to conver the string to binary them start adding 2 number, there will be a limited with a very long binary string like:
+If solving this problem by using **stoull()** to convert the string to binary then start adding them, this will not work with a very long binary string like this:
 ```
 a = "10100000100100110110010000010101111011011001101110111111111101000000101111001110001111100001101"
 b = "110101001011101110001111100110001010100001101011101010000011011011001011101111001100000011011110011"
