@@ -8,7 +8,11 @@ A naive approach is to convert 2 number to number then start the multiplying. Th
 
 The best approach for this problem is to "multiplying manually", i.e: 123 x 456 = (3 * 456) + (2 * 456 * 10) + (1 * 456 * 100). As traversing the string, we need to reverse the 2 number string at first to multiply manually. 
 
-Program: [multiply_strings.cpp](multiply_strings.cpp)
+Program: [multiply_strings.cpp](src/multiply_strings.cpp)
+# Add 2 numbers
+Similar to multiplying string, in order to add 2 number bigger than their data type, we must convert them to string and perform the adding manually.
+
+Program: [add_2_numbers.cpp](src/add_2_numbers.cpp)
 # Time conversion in AM/PM format
 * 12:01:00PM -> 12:01:00
 * 12:01:00AM -> 00:01:00
