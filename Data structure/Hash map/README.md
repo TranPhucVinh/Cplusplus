@@ -20,6 +20,8 @@ int main() {
 }
 ```
 ## string
+``std::hash`` uses the Fowler–Noll–Vo (or FNV) hash function to hash the string
+
 ```cpp
 #include <iostream>
 
