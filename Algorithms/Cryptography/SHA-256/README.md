@@ -132,3 +132,4 @@ In practical terms, you can assume that each unique input will have a unique SHA
 
 * [SHA 256 library](src)
 * SHA 256 calculation for a string: [sha_256_str.cpp](src/sha_256_str.cpp)
+* HTTP request with AWS Signature Version 4 to get all S3 buckets: [aws_s3_bucket.cpp](src/aws_s3_bucket.cpp)
