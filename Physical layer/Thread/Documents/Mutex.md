@@ -30,7 +30,7 @@ Fail to lock mutex
 Fail to lock mutex
 shared_value after executing 2 threads: 1987206 // Expected: 2000000
 ```
-# Use timed mutex [try_lock_for()]()
+## Use timed mutex [try_lock_for()]()
 
 ```cpp
 std::timed_mutex tm;
