@@ -1,5 +1,12 @@
 # Create a simple thread
+``class thread`` is available since C++11.
 
+Compile: ``g++ main.cpp -std=c++11 -pthread``
+
+```cpp
+#include <thread>
+std::thread thread_object(callback);
+```
 ```cpp
 #include <iostream>
 #include <thread>
