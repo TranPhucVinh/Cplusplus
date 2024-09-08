@@ -1,14 +1,5 @@
 # Fundamental concepts
 
-``class thread`` is available since C++11.
-
-Compile: ``g++ main.cpp -std=c++11 -pthread``
-
-```cpp
-#include <thread>
-std::thread thread_object(callback);
-```
-
 * [Create thread](Documents/Create%20thread.md): [Create a simple thread](Documents/Create%20thread.md#create-a-simple-thread), [create a thread inside a class](Documents/Create%20thread.md#create-a-thread-inside-a-class) and [create a thread with thread function handler as class method](Documents/Create%20thread.md#create-a-thread-with-thread-function-handler-as-class-method)
 * [Thread function with argument](Documents/Fundamental%20concepts.md#thread-function-with-argument): [Thread function with one argument](Documents/Fundamental%20concepts.md#thread-function-with-multiple-arguments) and [Thread function with multiple arguments](Documents/Fundamental%20concepts.md#thread-function-with-multiple-arguments)
 * [Delay inside thread](Documents/Thread%20creation.md#delay-inside-thread)
