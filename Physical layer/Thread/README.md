@@ -1,6 +1,6 @@
 # Fundamental concepts
 
-* [Create thread](Documents/Create%20thread.md): [Create a simple thread](Documents/Create%20thread.md#create-a-simple-thread), [create a thread inside a class](Documents/Create%20thread.md#create-a-thread-inside-a-class) and [create a thread with thread function handler as class method](Documents/Create%20thread.md#create-a-thread-with-thread-function-handler-as-class-method)
+* [Create thread](Documents/Thread%20creation.md): [Create a simple thread](Documents/Thread%20creation.md#create-a-simple-thread), [create a thread inside a class](Documents/Thread%20creation.md#create-a-thread-inside-a-class) and [create a thread with thread function handler as class method](Documents/Thread%20creation.md#create-a-thread-with-thread-function-handler-as-class-method)
 * [Thread function with argument](Documents/Fundamental%20concepts.md#thread-function-with-argument): [Thread function with one argument](Documents/Fundamental%20concepts.md#thread-function-with-multiple-arguments) and [Thread function with multiple arguments](Documents/Fundamental%20concepts.md#thread-function-with-multiple-arguments)
 * [Delay inside thread](Documents/Thread%20creation.md#delay-inside-thread)
 * [std::thread::join() will block the process if this thread has while(1)](Documents/Fundamental%20concepts.md#stdthreadjoin-will-block-the-process-if-this-thread-has-while1), compare with the [corresponded issue in GCC PThread](https://github.com/TranPhucVinh/C/tree/master/Physical%20layer/Thread#thread-is-blocked-by-while1).
