@@ -4,11 +4,11 @@ Solve the [one thread function handler to increase a shared value](https://githu
 
 ## Use std::mutex::lock()
 
-**Program**: [mutex_lock.cpp]()
+**Program**: [mutex_lock.cpp](../src/mutex_lock.cpp)
 
 ## Use std::mutex::try_lock()
 
-In [one thread function handler to increase a shared value](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Thread/Race%20condition.md#one-thread-function-handler-to-increase-a-shared-value), if **mutex::try_lock()** fails to lock the mutex, the thread will handle other task, which results in failing to increase the shared value to **RANGE**:
+In [one thread function handler to increase a shared value](../Documents/Race%20condition.md#one-thread-function-handler-to-increase-a-shared-value), if **mutex::try_lock()** fails to lock the mutex, the thread will handle other task, which results in failing to increase the shared value to **RANGE**:
 
 ```cpp
 void thread_func()
@@ -30,7 +30,7 @@ Fail to lock mutex
 Fail to lock mutex
 shared_value after executing 2 threads: 1987206 // Expected: 2000000
 ```
-## Use timed mutex [try_lock_for()]()
+## Use timed mutex [try_lock_for()](../API/Mutex%20and%20semaphore.md#stdmutextry_lock)
 
 ```cpp
 std::timed_mutex tm;
@@ -47,7 +47,7 @@ void thread_func()
 ```
 **Result**: ``share_value after executing 2 threads: 2000000``
 ## Use timed mutex try_lock_until()
-Work like [try_lock_for()](#try_lock_for), but the wait time is set from current time.
+Work like **try_lock_for()**, but the wait time is set from current time.
 ```cpp
 std::timed_mutex tm;
 void thread_func()
