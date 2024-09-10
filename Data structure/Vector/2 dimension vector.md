@@ -5,20 +5,20 @@ vector<vector<int>> two_d_vec = {{1, 2, 3}, {4, 5, 6}};
 # Setup value for a 2D vector
 Define a 2D vector:
 ```cpp
-int m = 2;
-int n = 3;
+int row = 3;
+int column = 2;
 
-std::vector<std::vector<int>> two_d_vec(n, std::vector<int>(m));
+std::vector<std::vector<int>> two_d_vec(row, std::vector<int>(column));
 
-for (int i = 0; i < n; i++) {
-    for (int j = 0; j < m; j++) {
-        two_d_vec[i][j] = i * m + j;
+for (int _row = 0; _row < row; _row++) {
+    for (int _col = 0; _col < column; _col++) {
+        two_d_vec[_row][_col] = _row * column + _col;
     }
 }
 
-for (int i = 0; i < n; i++) {
-    for (int j = 0; j < m; j++) {
-        std::cout << two_d_vec[i][j] << " ";
+for (int _row = 0; _row < row; _row++) {
+    for (int _col = 0; _col < column; _col++) {
+        std::cout << two_d_vec[_row][_col] << " ";
     }
     std::cout << std::endl;
 }
