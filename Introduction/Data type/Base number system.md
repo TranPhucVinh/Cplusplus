@@ -128,7 +128,12 @@ uint8_t value = 0x11;
 cout << std::hex << static_cast<int>(value) << endl; //11
 cout << std::hex << "0x" << static_cast<int>(value) << endl; // 0x11
 ```
-Please note that we use ``static_cast<int>`` only for printing out the value on ``std::hex``.
+Please note that we use ``static_cast<int>`` only for printing out the value on ``std::hex``. It must not be ``static_cast<uint8_t>`` for ``uint8_t value``:
+```cpp
+// This will not print out the hex value of uint8_t value
+uint8_t value = 0x11;
+cout << std::hex << "0x" << static_cast<uint8_t>(value) << endl; // Garbage value
+```
 ## Get first byte and last byte of a 2-byte int variable
 
 ```cpp
