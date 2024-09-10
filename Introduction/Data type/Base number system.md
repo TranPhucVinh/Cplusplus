@@ -114,17 +114,19 @@ If define ``int hex = 100``, then there will be error: ``"hex" is ambiguous C/C+
 ## Print out uint8_t value
 
 ```cpp
+// This will not print out the hex value of uint8_t value
 uint8_t value = 0x11;
 cout << std::hex << value << endl; //Garbage character
 ```
 
 This happens as ``std::hex`` requires printing out ``int`` value.
 
-Problem solved:
+**Problem solved**:
 
 ```cpp
 uint8_t value = 0x11;
 cout << std::hex << static_cast<int>(value) << endl; //11
+cout << std::hex << "0x" << static_cast<int>(value) << endl; // 0x11
 ```
 Please note that we use ``static_cast<int>`` only for printing out the value on ``std::hex``.
 ## Get first byte and last byte of a 2-byte int variable
