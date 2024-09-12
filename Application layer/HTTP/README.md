@@ -23,7 +23,7 @@ Handle GET request:
 * Multithread, with POSIX thread created by pthread, to handle any newly connected HTTP client
 * **Count total numbers of connected TCP client** and **detect disconnected event**
 
-**Program**: [multithread_http_server.cpp](multithread_http_server.cpp)
+**Program**: [HTTP server](HTTP%20server)
 
 For the HTTP server to send the HTTP response, like with POST request, to the HTTP client, e.g AJAX on the webpage, simply add those lines of code into the POST request handler:
 ```cpp
