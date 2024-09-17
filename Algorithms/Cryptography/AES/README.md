@@ -6,5 +6,6 @@ With the message to be encrypted by AES smaller than 16 bytes, padding technique
 
 ```mermaid
 flowchart TD
-    A["Plain text"] --> B["Add round key"] --> C["SubBytes"] --> D["ShiftRows"]
+    A["Plain text"] --> B["Add round key"] --> C["SubBytes"] --> D["ShiftRows"] --> E["MixColumns"] --> F["Add round key"] -- "9 main rounds" --> C
+    F --> G["SubBytes"] --> H["ShiftRows"] --> I["Add round key"] --> J["Encrypted text"]
 ```
