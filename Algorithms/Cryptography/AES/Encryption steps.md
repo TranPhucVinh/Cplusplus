@@ -37,9 +37,9 @@ The steps for all 9 round keys will be:
 
 * w[0] = (54, 68, 61, 74),w[1] = (73, 20, 6D, 79),w[2] = (20, 4B, 75, 6E),w[3] = (67, 20, 46, 75)
 * g(w[3]):
-    • circular byte left shift of w[3]: (20, 46, 75, 67)
-    • Byte Substitution (S-Box): (B7, 5A, 9D, 85)
-    • Adding round constant (01, 00, 00, 00) gives: g(w[3]) = (B6, 5A, 9D, 85)
+    * circular byte left shift of w[3]: (20, 46, 75, 67)
+    * Byte Substitution (S-Box): (B7, 5A, 9D, 85)
+    * Adding round constant (01, 00, 00, 00) gives: g(w[3]) = (B6, 5A, 9D, 85)
 * w[4] = w[0] ⊕ g(w[3]) = (E2, 32, FC, F1)
 * w[5] = w[4] ⊕ w[1] = (91, 12, 91, 88), w[6] = w[5] ⊕ w[2] = (B1, 59, E4, E6), w[7] = w[6] ⊕ w[3] = (D6, 79, A2, 93)
 
@@ -93,19 +93,19 @@ Finite field is applied in CRC and crytography, e.g with symetric encrytion like
 
 In Galois field, numbers are represented as polynomial. E.g $0x57 = x^6 + x^4 + x^2 + x + 1$
 
-Generally, a number in Galois field will be represented as polynomial $A(x) = \Sigma_{i=0}^{n-1} a_i * x_i^i $
+Generally, a number in Galois field will be represented as polynomial $A(x) = \Sigma_{i=0}^{n-1} a_i * x_i^i$
 
 where $a_i$ is 0 or 1
 
-In the polynomial representation, multiplication in GF(2^8) (denoted by •) corresponds with the multiplication of polynomials modulo an irreducible polynomial of degree 8. For the AES algorithm, this irreducible polynomial is $ 0x011b = x^8 + x^4 + x^3 + x + 1$.
+In the polynomial representation, multiplication in GF(2^8) (denoted by •) corresponds with the multiplication of polynomials modulo an irreducible polynomial of degree 8. For the AES algorithm, this irreducible polynomial is $0x011b = x^8 + x^4 + x^3 + x + 1$.
 
-Multiplying 0x57 and 0x83 in GF(2^8) will be: $ (x^6 + x^4 + x^2 + x + 1) • (x^7 + x + 1) = x^{13} + x^{11} + x^9 + x^8 + x^7 + x^7 + x^5 + x^3 + x^2 + x + x^6 + x^4 + x^2 + x + 1 = x^{13} + x^{11} + x^9 + x^8 + x^6 + x^5 + x^4 + x^3 + 1 $
+Multiplying 0x57 and 0x83 in GF(2^8) will be: $(x^6 + x^4 + x^2 + x + 1) • (x^7 + x + 1) = x^{13} + x^{11} + x^9 + x^8 + x^7 + x^7 + x^5 + x^3 + x^2 + x + x^6 + x^4 + x^2 + x + 1 = x^{13} + x^{11} + x^9 + x^8 + x^6 + x^5 + x^4 + x^3 + 1$
 
 All the adding in this multiplying are XORing, not arithmetic or binary adding or ORing. It means that XORing 2 same numbers result in 0, e.g $x^2 + x^2 = 0$
 
 Then, reduce the result with modulo ``0x011b``:
 
-$ (x^{13} + x^{11} + x^9 + x^8 + x^6 + x^5 + x^4 + x^3 + 1) modulo (x^8 + x^4 + x^3 + x + 1) = x^7 + x^6 + 1 $
+$(x^{13} + x^{11} + x^9 + x^8 + x^6 + x^5 + x^4 + x^3 + 1) modulo (x^8 + x^4 + x^3 + x + 1) = x^7 + x^6 + 1$
 
 So 0x57 • 0x83 = 0xc1
 
@@ -113,9 +113,9 @@ Algebra theory states that the modulo operation in Galoise Field is equal to the
 
 ### Coding implementation for GF(2^8) multiplication
 
-With $B(x) = \Sigma_{i=0}^{n-1} b_i * x_i^i $, then A(x) • B(x) = $ \Sigma_{i=0}^{n-1} A(x) * b_i * x_i^i $. The $\Sigma$ operation here is XORing, not arithmetic or binary adding or ORing.
+With $B(x) = \Sigma_{i=0}^{n-1} b_i * x_i^i $, then A(x) • B(x) = $\Sigma_{i=0}^{n-1} A(x) * b_i * x_i^i$. The $\Sigma$ operation here is XORing, not arithmetic or binary adding or ORing.
 
-If b_i = 1, this element will be $ A(x) * x_i^i $. This corresponds to a left shift of ``i`` bits.
+If b_i = 1, this element will be $A(x) * x_i^i$. This corresponds to a left shift of ``i`` bits.
 
 With the lowest bit of b is 1, then ``multiplication result ^= A(x)``, i.e XOR A(x) with the result.
 
