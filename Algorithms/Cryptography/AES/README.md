@@ -2,7 +2,8 @@ AES a symmetric block cipher that can process data blocks of 128 bits (16 bytes)
 
 With the message to be encrypted by AES smaller than 16 bytes, padding technique is required.
 
-# Flowchart
+# Encryption
+Flowchart
 
 ```mermaid
 flowchart TB
@@ -12,3 +13,4 @@ flowchart TB
     R1["Round key i {i = 0 to 8}"] -- "⊕" --> F
     R2["Round key 9 "]  -- "⊕" --> I
 ```
+**Step by step**: [Encryption steps](Encryption%20steps.md)
