@@ -104,7 +104,7 @@ Some test cases:
 
 Leetcode: [8. String to Integer (atoi)](https://leetcode.com/problems/string-to-integer-atoi/description/)
 
-Source code: [string_to_integer.cpp](https://github.com/TranPhucVinh/C/blob/master/Algorithms/src/string_to_integer.cpp)
+Source code: [string_to_integer.cpp](src/string_to_integer.cpp)
 
 # Repeated substring pattern
 
