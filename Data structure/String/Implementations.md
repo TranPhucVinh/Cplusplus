@@ -119,4 +119,4 @@ Given a string **s**, check if it can be constructed by taking a substring of it
 * String **s** length must be divided by the substring size: ``substr_size*k = length``
 From that, we will generate all possible size of the substring then start finding if at least one among them can form the original string **s**.
 
-Source code: [string_repeated_substring_pattern.cpp](https://github.com/TranPhucVinh/C/blob/master/Algorithms/src/string_repeated_substring_pattern.cpp)
+Source code: [repeated_substring_pattern.cpp](src/repeated_substring_pattern.cpp)
