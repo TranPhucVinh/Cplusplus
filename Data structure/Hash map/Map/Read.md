@@ -29,7 +29,7 @@ int main() {
 }
 ```
 # std::map::count()
-* Use ``std::map::count``. It will count elements with a specific key. Return: 1 if the container contains an element whose key is equivalent to k, or zero otherwise.
+``std::map::count`` counts elements with a specific key. Return ``1`` if the container contains an element whose key is equivalent to k, or ``0`` otherwise.
 
 ```cpp
 std::map<int, std::string> Map;
