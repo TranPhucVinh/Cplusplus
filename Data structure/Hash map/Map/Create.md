@@ -54,21 +54,14 @@ std::map<int, std::string> Map = {
 	{456, "Map, key 456"}
 };
 ```
-## Traverse by auto keyword
+# Traverse map by auto keyword
 ```cpp
 for (auto &el: Map){
 	std::cout << map_index << ", key: " << el.first << "; value: " << el.second << std::endl;
 }
 ```
-**Map doesn't have any any API to directly access its element by the specified index/position**, use **std::advance()** instead:
-```cpp
-int map_index = 1;
-std::map<int, std::string>::iterator el = Map.begin();
 
-std::advance(el, map_index);
-std::cout << map_index << ", key: " << el->first << "; value: " << el->second << std::endl;
-```
-## std::map is an ordered list of member arranged by the ascending order of their keys
+# std::map is an ordered list of member arranged by the ascending order of their keys
 ```cpp
 std::map<int, std::string> Map;
 Map[456] = "Map, key 456";
