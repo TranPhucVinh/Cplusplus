@@ -1,5 +1,8 @@
 # std::find()
-**std::find()** returns the **first occurrence** of a given element in a container. We can use this function with vectors and keep searching for the given element repeatedly till the end to find all the occurrences.
+**std::find()**, which comes from from the **Standard Template Library** (**STL**), returns the **first occurrence** of a given element in a container. We can use this function with vectors and keep searching for the given element repeatedly till the end to find all the occurrences.
+
+* For **sequential containers** (like ``std::vector``, ``std::deque``, ``std::list``), find() has time complexity of ``O(n)``, where n is the number of elements in the container. That's because ``std::find()`` works by performing a linear search, meaning it checks each element one by one until it finds a match or reaches the end of the container.
+* For **associative containers** (like std::set, std::map), find() has time Complexity of O(log n), because these containers are implemented as balanced binary trees, so a binary search is performed.
 # std::min()
 **std::min()** returns the min between 2 arguments
 ```cpp
