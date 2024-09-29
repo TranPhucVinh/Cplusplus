@@ -51,6 +51,12 @@ void setup_2d_vector(){
     }
 }
 ```
+# Size of a 2D vector
+``.size()`` of a 2D vector returns the total rows of that vector:
+```cpp
+vector<vector<int>> two_d_vec = {{1, 2, 3}, {4, 5, 6}, {4, 5, 6}};
+cout << two_d_vec.size() << endl; // 3
+```
 # Count pairs of similar strings
 
 Two strings are similar if they consist of the same characters.
