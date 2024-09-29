@@ -6,14 +6,15 @@
 int main() {
     string msg = "1234567890123456";
     string key = "1234567890123456";
-
+    vector<uint8_t> iv(16, 0x0);
     AES aes(key);
-    vector<uint8_t> encrypted_hex = aes.encrypt(msg);
+    aes.cbc_encrypt(msg, iv);
+    // vector<uint8_t> encrypted_hex = aes.encrypt(msg);
     
-    for (int i = 0; i < 16; i++) {
-        cout << hex << "0x" << static_cast<int>(encrypted_hex[i]) << " ";
-    }
-    cout << endl; 
+    // for (int i = 0; i < 16; i++) {
+    //     cout << hex << "0x" << static_cast<int>(encrypted_hex[i]) << " ";
+    // }
+    // cout << endl; 
     
     return 0;
 }

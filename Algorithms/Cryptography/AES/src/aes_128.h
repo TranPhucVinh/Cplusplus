@@ -10,19 +10,21 @@
 #define STATE_ROWS  4 // AES state array has 4 rows
 #define NB          4
 #define AES_ROUNDS  10
+#define BLOCK_SZ    16
 
 using namespace std;
 
 class AES {
 public:
     AES(string encryption_key);
-    vector<uint8_t> encrypt(string plain_txt);
+    vector<uint8_t> cbc_encrypt(string plain_txt, vector<uint8_t> iv);    
 private:
     uint8_t _state_rows, _nb;
     vector<uint8_t> _encryption_key;
     vector<vector<uint8_t>> _round_keys; // All rounds key for the total of AES_ROUNDS rounds
-    vector<uint8_t> string_to_hex_vec(string str);
 
+    vector<uint8_t> string_to_hex_vec(string str);
+    vector<vector<uint8_t>> form_blocks(vector<uint8_t> _hex_msg);
     vector<vector<uint8_t>> column_major_order_transform(vector<uint8_t> _vec);
 
     vector<vector<uint8_t>> add_round_key(vector<vector<uint8_t>> state_array, vector<vector<uint8_t>> key);
@@ -31,10 +33,11 @@ private:
 
     uint8_t aes_gf_mult(uint8_t a, uint8_t b);
     vector<vector<uint8_t>> multiply_matrices(vector<vector<uint8_t>> a, vector<vector<uint8_t>> b);
+    vector<uint8_t> block_encrypt(vector<uint8_t> block);
 };
 
 // AES substitution box (S-box)
-const uint8_t sbox[16][16] = {
+const uint8_t sbox[BLOCK_SZ][BLOCK_SZ] = {
     {0x63, 0x7c, 0x77, 0x7b, 0xf2, 0x6b, 0x6f, 0xc5, 0x30, 0x01, 0x67, 0x2b, 0xfe, 0xd7, 0xab, 0x76},
     {0xca, 0x82, 0xc9, 0x7d, 0xfa, 0x59, 0x47, 0xf0, 0xad, 0xd4, 0xa2, 0xaf, 0x9c, 0xa4, 0x72, 0xc0},
     {0xb7, 0xfd, 0x93, 0x26, 0x36, 0x3f, 0xf7, 0xcc, 0x34, 0xa5, 0xe5, 0xf1, 0x71, 0xd8, 0x31, 0x15},

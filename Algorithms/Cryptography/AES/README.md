@@ -2,7 +2,7 @@ AES a symmetric block cipher that can process data blocks of 128 bits (16 bytes)
 
 With the message to be encrypted by AES smaller than 16 bytes, padding technique is required.
 
-# Encryption
+# Raw AES encryption
 Flowchart
 
 ```mermaid
@@ -13,4 +13,6 @@ flowchart TB
     R1["Round key i {i = 0 to 8}"] -- "⊕" --> F
     R2["Round key 9 "]  -- "⊕" --> I
 ```
-**Step by step**: [Encryption steps](Encryption%20steps.md)
+**Step by step**: [Raw encryption steps](Raw%20encryption%20steps.md)
+# AES encryption mode
+AES encryption in real life application isn't raw ecryption but goes with encryption modes instead. They are **CBC** (Cipher Block Chaining) and **ECB** (Electronic Codebook).

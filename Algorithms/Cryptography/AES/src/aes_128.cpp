@@ -8,9 +8,39 @@ AES::AES(string encryption_key) {
     _round_keys = setup_all_round_keys(_encryption_key);
 }
 
-vector<uint8_t> AES::encrypt(string plain_txt) {
+vector<uint8_t> AES::cbc_encrypt(string plain_txt, vector<uint8_t> iv) {
+    vector<uint8_t> hex_msg = string_to_hex_vec(plain_txt);
+    int lth = hex_msg.size();
+    uint8_t padding = BLOCK_SZ - (lth % BLOCK_SZ);
+
+    for (int i = 0; i < padding; i++) hex_msg.push_back(padding);
+
+    vector<vector<uint8_t>> _block_msg = form_blocks(hex_msg);
+    vector<vector<uint8_t>> encrypted_txt(_block_msg.size(), vector<uint8_t>(BLOCK_SZ));
+
+    for (int i = 0; i < _block_msg.size(); i++) {
+        for (int j = 0; j < BLOCK_SZ; j++) {
+            if (i == 0) {        
+                _block_msg[i][j] = _block_msg[i][j] ^ iv[j];
+            } 
+            else {
+                _block_msg[i][j] = _block_msg[i][j] ^ encrypted_txt[i-1][j];
+            }
+        } 
+        encrypted_txt[i] = block_encrypt(_block_msg[i]);
+
+        for (int j = 0; j < BLOCK_SZ; j++) {
+            cout << hex << "0x" << static_cast<int>(encrypted_txt[i][j]) << " ";
+        }
+        cout << endl;
+    }
+
+    return hex_msg;
+}
+
+vector<uint8_t> AES::block_encrypt(vector<uint8_t> block) {
     // Initial state
-    vector<vector<uint8_t>> state = column_major_order_transform(string_to_hex_vec(plain_txt));
+    vector<vector<uint8_t>> state = column_major_order_transform(block);
     vector<vector<uint8_t>> encryption_key_2d = column_major_order_transform(_encryption_key);
     state = add_round_key(state, encryption_key_2d);
 
@@ -36,6 +66,19 @@ vector<uint8_t> AES::encrypt(string plain_txt) {
     }
 
     return encrypted_hex;
+}
+
+vector<vector<uint8_t>> AES::form_blocks(vector<uint8_t> _hex_msg) {
+    int total_block = _hex_msg.size()/BLOCK_SZ;
+    vector<vector<uint8_t>> _blocks(total_block, vector<uint8_t>(BLOCK_SZ));
+
+    for (int _row = 0; _row < total_block; _row++) {
+        for (int _col = 0; _col < BLOCK_SZ; _col++) {
+            _blocks[_row][_col] = _hex_msg[_row*BLOCK_SZ + _col];
+        }
+    }
+
+    return _blocks;
 }
 
 vector<uint8_t> AES::string_to_hex_vec(string str) {
