@@ -13,6 +13,8 @@ flowchart TB
     R1["Round key i {i = 0 to 8}"] -- "⊕" --> F
     R2["Round key 9 "]  -- "⊕" --> I
 ```
+⊕: XOR operation
+
 **Step by step**: [Raw encryption steps](Raw%20encryption%20steps.md)
 # AES encryption mode
 AES encryption in real life application isn't raw ecryption but goes with encryption modes instead. They are **CBC** (Cipher Block Chaining) and **ECB** (Electronic Codebook).
