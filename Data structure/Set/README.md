@@ -1,5 +1,6 @@
-# Define set
 **std::set** is an associative container that contains a **sorted sequence of non-decreasing order unique objects**
+#  Create and read
+Create a set and read all of its members
 
 **std::set** doesn't support accessing elements by index using the [] operator. Sets are implemented as binary search trees or hash tables, which do not have a linear ordering like arrays or vectors.
 
@@ -19,6 +20,11 @@ int main() {
     // Result: 1 2 3 4 5 6 9
     return 0;
 }
+```
+# Create set from vector
+```cpp
+vector<int> vec = {3, 1, 4, 1, 5, 9, 2, 6};
+set<int> Set(vec.begin(), vec.end()); // 1 2 3 4 5 6 9
 ```
 # Add member to a set
 **insert()**:
