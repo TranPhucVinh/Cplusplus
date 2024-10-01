@@ -13,18 +13,4 @@ AES CBC assumes the plain text message input length is a multiple of k bytes, wh
 # Form message blocks
 After PKCS 7 padding steps, the plain text now is a multiple of 16 bytes. We have to form the message blocks with 16 bytes for each block. Message blocks will be marked as m0, m1, m2,...
 
-```mermaid
-flowchart TB
-    subgraph m0
-        A["m0"] -- "⊕" --> B["IV"] --> C0["AES raw encryption"] --> D0["c0"]
-    end
-    subgraph m1
-        D1["c0"] -- "⊕" --> E["m1"] --> C1["AES raw encryption"] --> D2["c1"]
-    end
-    subgraph m2
-        D3["c1"] -- "⊕" --> E["m2"] --> C2["AES raw encryption"] --> D4["c2"]
-    end
-
-D0-->D1
-D2-->D3
-```
+![](https://gist.github.com/user-attachments/assets/4b476092-6960-4461-92e0-80d5599aa1f5)
