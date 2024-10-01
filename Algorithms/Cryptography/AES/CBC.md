@@ -12,5 +12,5 @@ For AES-128 encryption with CBC mode, it's called AES-CBC-128. AES-CBC-128 inclu
 AES CBC assumes the plain text message input length is a multiple of k bytes, where k bytes is the block size. With AES-128, the block size is 16 bytes. So k is 16. With the input length is ``lth`` bytes, then, this message is padded at the trailing end with ``k-(lth mod k)`` bytes all having value ``k-(lth mod k)``.
 # Form message blocks
 After PKCS 7 padding steps, the plain text now is a multiple of 16 bytes. We have to form the message blocks with 16 bytes for each block. Message blocks will be marked as m0, m1, m2,...
-
-![](https://gist.github.com/user-attachments/assets/4b476092-6960-4461-92e0-80d5599aa1f5)
+# AES-128 raw encryption for each block which includes IV
+![AES-CBC-128-IV](https://private-user-images.githubusercontent.com/30307543/372443084-55dbee1a-7f7e-4f9e-a46e-016f115fac47.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mjc3ODE5MTgsIm5iZiI6MTcyNzc4MTYxOCwicGF0aCI6Ii8zMDMwNzU0My8zNzI0NDMwODQtNTVkYmVlMWEtN2Y3ZS00ZjllLWE0NmUtMDE2ZjExNWZhYzQ3LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDEwMDElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMDAxVDExMjAxOFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTc4YmZkMWQyZDBiNjIxMjhhZDQ4NDcyMWJlNjZlNDdiMTc2ZDJmMDZlZjdhYzZlYTdlYjdhNmVkYjIzMzkzNTcmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.HXSqeX0bYGrDFNl8B6cENWwHCNE8ZopqzQDCvkVjkDA)
