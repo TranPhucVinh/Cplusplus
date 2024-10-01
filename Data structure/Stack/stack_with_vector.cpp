@@ -33,6 +33,10 @@ public:
     int is_empty(){
         return !_stack_vec.size();
     }
+
+    int stack_size() {
+        return _top + 1;
+    }
 };
 
 int main() {
@@ -46,6 +50,8 @@ int main() {
 	stack.push(12);
 	stack.push(15);
 
+    cout << "Stack size: " <<  stack.stack_size() << endl;
+    
     // print stack data 
     while(!stack.is_empty()) {
         std::cout << stack.get_top() << " ";
