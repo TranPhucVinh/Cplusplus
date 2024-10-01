@@ -4,33 +4,35 @@
 using namespace std;
 
 class Stack{
-    private:
-        vector<int> _stack_vec;
-        int 	    _top;
+private:
+    vector<int> _stack_vec;
+    int 	    _top;
 
-    public:
-        Stack(){        
-            _top = -1;
+public:
+    Stack(){        
+        _top = -1;
+    }
+    void pop(){
+        if(!is_empty()) {
+            _top = _top - 1;
+            _stack_vec.pop_back();
+            return;
+        } else {
+            std::cout << "Could not retrieve data, stack is empty\n";
         }
-        int pop(){
-            if(!is_empty()) {
-                int data = _stack_vec[_top];
-                _top = _top - 1;
-                _stack_vec.pop_back();
-                return data;
-            } else {
-                std::cout << "Could not retrieve data, stack is empty\n";
-                return 0;
-            }
-        }
-        void push(int data){
-            _top += 1;   
-            _stack_vec.push_back(data);
-        }
+        return;
+    }
+    void push(int data){
+        _top += 1;   
+        _stack_vec.push_back(data);
+    }
 
-        int is_empty(){
-            return !_stack_vec.size();
-        }
+    int get_top() {
+        return _stack_vec[_top];
+    }
+    int is_empty(){
+        return !_stack_vec.size();
+    }
 };
 
 int main() {
@@ -46,7 +48,8 @@ int main() {
 
     // print stack data 
     while(!stack.is_empty()) {
-        std::cout << stack.pop() << " ";
+        std::cout << stack.get_top() << " ";
+        stack.pop();
     }
     std::cout << std::endl;
 
