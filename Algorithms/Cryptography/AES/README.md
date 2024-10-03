@@ -16,5 +16,8 @@ flowchart TB
 ⊕: XOR operation
 
 **Step by step**: [Raw encryption steps](Raw%20encryption%20steps.md)
+
+[src](src) implementation is AES-128.
+
 # AES encryption mode
 AES encryption in real life application isn't raw ecryption but goes with encryption modes instead. They are **CBC** (Cipher Block Chaining) and **ECB** (Electronic Codebook).
