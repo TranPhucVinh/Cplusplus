@@ -13,5 +13,6 @@ vector<vector<uint8_t>> key_rows(vector<uint8_t> encryption_key);
 void right_rotate(vector<uint8_t> &vec, int rotate_time = 1);
 vector<uint8_t> setup_each_round_key(vector<uint8_t> encryption_key, int _round_index);
 vector<vector<uint8_t>> setup_all_round_keys(vector<uint8_t> encryption_key);
+vector<vector<uint8_t>> add_round_key(vector<vector<uint8_t>> state_array, vector<vector<uint8_t>> key);
 
 #endif

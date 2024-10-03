@@ -100,18 +100,6 @@ vector<vector<uint8_t>> AES::column_major_order_transform(vector<uint8_t> _vec_1
     return _vector_2d;
 }
 
-vector<vector<uint8_t>> AES::add_round_key(vector<vector<uint8_t>> state_array, vector<vector<uint8_t>> key) {
-    vector<vector<uint8_t>> round_key(_state_rows, vector<uint8_t>(_nb));
-
-    for (int _row = 0; _row < _state_rows; _row++) {
-        for (int _col = 0; _col < _nb; _col++) {
-            round_key[_row][_col] = state_array[_row][_col] ^ key[_row][_col];
-        }
-    }
-
-    return round_key;
-}
-
 void AES::substitution_box(vector<vector<uint8_t>> &encrypted_msg) {
     for (int _row = 0; _row < _state_rows; _row++) {
         for (int _col = 0; _col < _nb; _col++) {

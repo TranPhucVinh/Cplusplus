@@ -54,6 +54,18 @@ vector<vector<uint8_t>> setup_all_round_keys(vector<uint8_t> encryption_key) {
     return all_round_keys;
 }
 
+vector<vector<uint8_t>> add_round_key(vector<vector<uint8_t>> state_array, vector<vector<uint8_t>> key) {
+    vector<vector<uint8_t>> round_key(STATE_ROWS, vector<uint8_t>(NB));
+
+    for (int _row = 0; _row < STATE_ROWS; _row++) {
+        for (int _col = 0; _col < NB; _col++) {
+            round_key[_row][_col] = state_array[_row][_col] ^ key[_row][_col];
+        }
+    }
+
+    return round_key;
+}
+
 vector<vector<uint8_t>> key_rows(vector<uint8_t> encryption_key) {
     vector<vector<uint8_t>> _key_rows(STATE_ROWS, vector<uint8_t>(NB));
 

@@ -27,7 +27,6 @@ private:
     vector<vector<uint8_t>> form_blocks(vector<uint8_t> _hex_msg);
     vector<vector<uint8_t>> column_major_order_transform(vector<uint8_t> _vec);
 
-    vector<vector<uint8_t>> add_round_key(vector<vector<uint8_t>> state_array, vector<vector<uint8_t>> key);
     void substitution_box(vector<vector<uint8_t>> &encrypted_msg);
     void shift_row(vector<vector<uint8_t>> &_vec);
 
