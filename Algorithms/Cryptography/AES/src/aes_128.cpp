@@ -9,6 +9,7 @@ AES::AES(string encryption_key) {
 }
 
 vector<uint8_t> AES::cbc_encrypt(string plain_txt, vector<uint8_t> iv) {
+    vector<uint8_t> encrypted_txt;
     vector<uint8_t> hex_msg = string_to_hex_vec(plain_txt);
     int lth = hex_msg.size();
     uint8_t padding = BLOCK_SZ - (lth % BLOCK_SZ);
@@ -16,26 +17,24 @@ vector<uint8_t> AES::cbc_encrypt(string plain_txt, vector<uint8_t> iv) {
     for (int i = 0; i < padding; i++) hex_msg.push_back(padding);
 
     vector<vector<uint8_t>> _block_msg = form_blocks(hex_msg);
-    vector<vector<uint8_t>> encrypted_txt(_block_msg.size(), vector<uint8_t>(BLOCK_SZ));
-
+    vector<vector<uint8_t>> _encrypted_txt(_block_msg.size(), vector<uint8_t>(BLOCK_SZ));
     for (int i = 0; i < _block_msg.size(); i++) {
         for (int j = 0; j < BLOCK_SZ; j++) {
             if (i == 0) {        
                 _block_msg[i][j] = _block_msg[i][j] ^ iv[j];
             } 
             else {
-                _block_msg[i][j] = _block_msg[i][j] ^ encrypted_txt[i-1][j];
+                _block_msg[i][j] = _block_msg[i][j] ^ _encrypted_txt[i-1][j];
             }
         } 
-        encrypted_txt[i] = block_encrypt(_block_msg[i]);
+        _encrypted_txt[i] = block_encrypt(_block_msg[i]);
 
         for (int j = 0; j < BLOCK_SZ; j++) {
-            cout << hex << "0x" << static_cast<int>(encrypted_txt[i][j]) << " ";
+            encrypted_txt.push_back(_encrypted_txt[i][j]);
         }
-        cout << endl;
     }
 
-    return hex_msg;
+    return encrypted_txt;
 }
 
 vector<uint8_t> AES::block_encrypt(vector<uint8_t> block) {
