@@ -1,31 +1,24 @@
-#include <iostream>
-#include <string>
-#include <vector>
+// aes_encrypt calls other headers recursively
 
-// aes_128 and key_expansion call each other recursively
+#ifndef aes_encrypt_h
+#define aes_encrypt_h
 
-#ifndef aes_128_h
-#define aes_128_h
+#include "aes.h"
 
-#define STATE_ROWS  4 // AES state array has 4 rows
-#define NB          4
-#define AES_ROUNDS  10
 #define BLOCK_SZ    16
 
 using namespace std;
 
-class AES {
+class AES_Encrypt {
 public:
-    AES(string encryption_key);
+    AES_Encrypt(uint8_t state_rows, uint8_t nb, string encryption_key);
     vector<uint8_t> cbc_encrypt(string plain_txt, vector<uint8_t> iv);    
-private:
+// private:
     uint8_t _state_rows, _nb;
     vector<uint8_t> _encryption_key;
     vector<vector<uint8_t>> _round_keys; // All rounds key for the total of AES_ROUNDS rounds
 
     vector<uint8_t> string_to_hex_vec(string str);
-    vector<vector<uint8_t>> form_blocks(vector<uint8_t> _hex_msg);
-    vector<vector<uint8_t>> column_major_order_transform(vector<uint8_t> _vec);
 
     void substitution_box(vector<vector<uint8_t>> &encrypted_msg);
     void shift_row(vector<vector<uint8_t>> &_vec);

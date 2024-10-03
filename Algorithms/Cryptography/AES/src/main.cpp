@@ -1,7 +1,4 @@
-#include "aes_128.h"
-
-#include <sstream>
-#include <iomanip>
+#include "aes.h"
 
 int main() {
     string msg = "1234567890123456";

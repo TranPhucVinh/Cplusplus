@@ -1,9 +1,13 @@
-#include "aes_128.h"
-
 // aes_128 and key_expansion call each other recursively
 
 #ifndef key_expansion_h
 #define key_expansion_h
+
+#include "aes_encrypt.h"
+
+#define AES_ROUNDS  10
+
+using namespace std;
 
 const uint8_t round_constants[AES_ROUNDS] = {
     0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x1B, 0x36

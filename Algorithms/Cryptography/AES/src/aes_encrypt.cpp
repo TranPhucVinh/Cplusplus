@@ -1,14 +1,15 @@
-#include "aes_128.h"
+#include "aes_encrypt.h"
 #include "key_expansion.h"
+#include "block_operations.h"
 
-AES::AES(string encryption_key) {
-    _state_rows = STATE_ROWS;
-    _nb = NB;
+AES_Encrypt::AES_Encrypt(uint8_t state_rows, uint8_t nb, string encryption_key) {
+    _state_rows = state_rows;
+    _nb = nb;
     _encryption_key = string_to_hex_vec(encryption_key);
     _round_keys = setup_all_round_keys(_encryption_key);
 }
 
-vector<uint8_t> AES::cbc_encrypt(string plain_txt, vector<uint8_t> iv) {
+vector<uint8_t> AES_Encrypt::cbc_encrypt(string plain_txt, vector<uint8_t> iv) {
     vector<uint8_t> encrypted_txt;
     vector<uint8_t> hex_msg = string_to_hex_vec(plain_txt);
     int lth = hex_msg.size();
@@ -37,7 +38,7 @@ vector<uint8_t> AES::cbc_encrypt(string plain_txt, vector<uint8_t> iv) {
     return encrypted_txt;
 }
 
-vector<uint8_t> AES::block_encrypt(vector<uint8_t> block) {
+vector<uint8_t> AES_Encrypt::block_encrypt(vector<uint8_t> block) {
     // Initial state
     vector<vector<uint8_t>> state = column_major_order_transform(block);
     vector<vector<uint8_t>> encryption_key_2d = column_major_order_transform(_encryption_key);
@@ -67,20 +68,7 @@ vector<uint8_t> AES::block_encrypt(vector<uint8_t> block) {
     return encrypted_hex;
 }
 
-vector<vector<uint8_t>> AES::form_blocks(vector<uint8_t> _hex_msg) {
-    int total_block = _hex_msg.size()/BLOCK_SZ;
-    vector<vector<uint8_t>> _blocks(total_block, vector<uint8_t>(BLOCK_SZ));
-
-    for (int _row = 0; _row < total_block; _row++) {
-        for (int _col = 0; _col < BLOCK_SZ; _col++) {
-            _blocks[_row][_col] = _hex_msg[_row*BLOCK_SZ + _col];
-        }
-    }
-
-    return _blocks;
-}
-
-vector<uint8_t> AES::string_to_hex_vec(string str) {
+vector<uint8_t> AES_Encrypt::string_to_hex_vec(string str) {
     vector<uint8_t> hex_vec;
     for (int i = 0; i < str.size(); i++) {
         hex_vec.push_back((uint8_t) str[i]);
@@ -88,19 +76,7 @@ vector<uint8_t> AES::string_to_hex_vec(string str) {
     return hex_vec;
 }
 
-vector<vector<uint8_t>> AES::column_major_order_transform(vector<uint8_t> _vec_1d) {
-    vector<vector<uint8_t>> _vector_2d(_state_rows, vector<uint8_t>(_nb));
-
-    for (int _row = 0; _row < _state_rows; _row++) {
-        for (int _col = 0; _col < _nb; _col++) {
-            _vector_2d[_row][_col] = _vec_1d[_row + 4*_col];
-        }
-    }
-
-    return _vector_2d;
-}
-
-void AES::substitution_box(vector<vector<uint8_t>> &encrypted_msg) {
+void AES_Encrypt::substitution_box(vector<vector<uint8_t>> &encrypted_msg) {
     for (int _row = 0; _row < _state_rows; _row++) {
         for (int _col = 0; _col < _nb; _col++) {
             encrypted_msg[_row][_col] = sbox[(encrypted_msg[_row][_col] >> 4) & 0xf][encrypted_msg[_row][_col] & 0xf];
@@ -108,14 +84,14 @@ void AES::substitution_box(vector<vector<uint8_t>> &encrypted_msg) {
     }
 }
 
-void AES::shift_row(vector<vector<uint8_t>> &_vec) {
+void AES_Encrypt::shift_row(vector<vector<uint8_t>> &_vec) {
     int rotate_time = 1;// Right rotate 1 byte for 1st row
     right_rotate(_vec[rotate_time], rotate_time); rotate_time += 1;
     right_rotate(_vec[rotate_time], rotate_time); rotate_time += 1;
     right_rotate(_vec[rotate_time], rotate_time);
 }
 
-uint8_t AES::aes_gf_mult(uint8_t a, uint8_t b) {
+uint8_t AES_Encrypt::aes_gf_mult(uint8_t a, uint8_t b) {
     uint8_t result = 0;
     uint8_t carry;
 
@@ -144,7 +120,7 @@ uint8_t AES::aes_gf_mult(uint8_t a, uint8_t b) {
     return result;
 }
 
-vector<vector<uint8_t>> AES::multiply_matrices(vector<vector<uint8_t>> a, vector<vector<uint8_t>> b) {
+vector<vector<uint8_t>> AES_Encrypt::multiply_matrices(vector<vector<uint8_t>> a, vector<vector<uint8_t>> b) {
     vector<vector<uint8_t>> multiply(NB, vector<uint8_t>(NB));
 
     for (int col = 0; col < NB; col++) {
