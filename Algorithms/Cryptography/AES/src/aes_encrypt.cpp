@@ -1,4 +1,7 @@
 #include "aes_encrypt.h"
+
+// Call those headers seperately in aes_encrypt.cpp to
+// avoid recursively header calling in other headers.
 #include "key_expansion.h"
 #include "block_operations.h"
 
@@ -49,7 +52,7 @@ vector<uint8_t> AES_Encrypt::block_encrypt(vector<uint8_t> block) {
     for (int i = 0; i < AES_ROUNDS - 1; i++) {
         substitution_box(state);
         shift_row(state);
-        state = multiply_matrices(mix_column_encrypt, state);
+        state = multiply_matrices(mix_column, state);
 
         state = add_round_key(state, column_major_order_transform(_round_keys[i]));
     }
@@ -69,14 +72,6 @@ vector<uint8_t> AES_Encrypt::block_encrypt(vector<uint8_t> block) {
     return encrypted_hex;
 }
 
-vector<uint8_t> AES_Encrypt::string_to_hex_vec(string str) {
-    vector<uint8_t> hex_vec;
-    for (int i = 0; i < str.size(); i++) {
-        hex_vec.push_back((uint8_t) str[i]);
-    }
-    return hex_vec;
-}
-
 void AES_Encrypt::substitution_box(vector<vector<uint8_t>> &encrypted_msg) {
     for (int _row = 0; _row < _state_rows; _row++) {
         for (int _col = 0; _col < _nb; _col++) {
@@ -90,47 +85,4 @@ void AES_Encrypt::shift_row(vector<vector<uint8_t>> &_vec) {
     right_rotate(_vec[rotate_time], rotate_time); rotate_time += 1;
     right_rotate(_vec[rotate_time], rotate_time); rotate_time += 1;
     right_rotate(_vec[rotate_time], rotate_time);
-}
-
-uint8_t AES_Encrypt::aes_gf_mult(uint8_t a, uint8_t b) {
-    uint8_t result = 0;
-    uint8_t carry;
-
-    // Iterate over each bit of b
-    for (int i = 0; i < 8; i++) {
-        // If the lowest bit of b is set, XOR the current value of a with the result
-        if (b & 1) {
-            result ^= a;
-        }
-
-        // Check if the most significant bit of a is set
-        carry = a & 0x80;
-
-        // Left shift a by 1
-        a <<= 1;
-
-        // Right shift b by 1 to process the next bit
-        b >>= 1;
-
-        // If carry was set, XOR a with 0x1b (which represents the irreducible polynomial)
-        if (carry) {
-            a ^= 0x1b;
-        }
-    }
-
-    return result;
-}
-
-vector<vector<uint8_t>> AES_Encrypt::multiply_matrices(vector<vector<uint8_t>> a, vector<vector<uint8_t>> b) {
-    vector<vector<uint8_t>> multiply(_nb, vector<uint8_t>(_nb));
-
-    for (int col = 0; col < _nb; col++) {
-        for (int _row = 0; _row < _nb; _row++) {
-            multiply[_row][col] = 0;
-            for (int _col = 0; _col < _nb; _col++) {
-                multiply[_row][col] ^= aes_gf_mult(a[_row][_col], b[_col][col]);
-            }
-        }
-    }
-    return multiply;
 }

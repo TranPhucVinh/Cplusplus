@@ -1,4 +1,5 @@
 #include "key_expansion.h"
+#include "block_operations.h"
 
 vector<uint8_t> setup_each_round_key(vector<uint8_t> encryption_key, int _round_index) {
     uint8_t each_round_constants[4] = {round_constants[_round_index], 0x0, 0x0, 0x0};
@@ -76,14 +77,4 @@ vector<vector<uint8_t>> key_rows(vector<uint8_t> encryption_key) {
     }
 
     return _key_rows;
-}
-
-void right_rotate(vector<uint8_t> &vec, int rotate_time) {
-    vector<uint8_t> _tmp_vec(vec.size());
-
-    copy(vec.begin(), vec.end(), _tmp_vec.begin());
-
-    for (int i = 0; i < vec.size(); i++){
-        vec[(i + vec.size() - rotate_time) % vec.size()] = _tmp_vec[i];
-    }
 }

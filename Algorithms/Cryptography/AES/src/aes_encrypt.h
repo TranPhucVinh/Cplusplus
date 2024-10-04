@@ -15,20 +15,16 @@ using namespace std;
 
 class AES_Encrypt {
 public:
-    AES_Encrypt(uint8_t state_rows, uint8_t nb, string encryption_key);
-    vector<uint8_t> cbc_encrypt(string plain_txt, vector<uint8_t> iv);    
-// private:
     uint8_t _state_rows, _nb;
     vector<uint8_t> _encryption_key;
     vector<vector<uint8_t>> _round_keys; // All rounds key for the total of AES_ROUNDS rounds
 
-    vector<uint8_t> string_to_hex_vec(string str);
+    AES_Encrypt(uint8_t state_rows, uint8_t nb, string encryption_key);
+    vector<uint8_t> cbc_encrypt(string plain_txt, vector<uint8_t> iv);    
 
     void substitution_box(vector<vector<uint8_t>> &encrypted_msg);
     void shift_row(vector<vector<uint8_t>> &_vec);
 
-    uint8_t aes_gf_mult(uint8_t a, uint8_t b);
-    vector<vector<uint8_t>> multiply_matrices(vector<vector<uint8_t>> a, vector<vector<uint8_t>> b);
     vector<uint8_t> block_encrypt(vector<uint8_t> block);
 };
 
@@ -53,7 +49,7 @@ const uint8_t sbox[BLOCK_SZ][BLOCK_SZ] = {
 };
 
 // Const matrix (2d vector) for mix column to encrypt
-const vector<vector<uint8_t>> mix_column_encrypt = {
+const vector<vector<uint8_t>> mix_column = {
     {0x2, 0x3, 0x1, 0x1},
     {0x1, 0x2, 0x3, 0x1},
     {0x1, 0x1, 0x2, 0x3},

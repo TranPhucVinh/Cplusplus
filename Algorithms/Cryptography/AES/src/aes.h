@@ -2,6 +2,7 @@
 #define aes_h
 
 #include "aes_encrypt.h"
+#include "aes_decrypt.h"
 #include "key_expansion.h"
 
 #define STATE_ROWS  4 // AES state array has 4 rows
@@ -9,9 +10,9 @@
 
 using namespace std;
 
-class AES: public AES_Encrypt {
+class AES: public AES_Encrypt, public AES_Decrypt {
 public:
-    AES(string encryption_key) : AES_Encrypt(STATE_ROWS, NB, encryption_key) {}
+    AES(string encryption_key) : AES_Encrypt(STATE_ROWS, NB, encryption_key), AES_Decrypt(STATE_ROWS, NB, encryption_key) {}
 };
 
 #endif
