@@ -1,19 +1,21 @@
 # Basic inheritance example
 
 ```cpp
-
 #include <iostream>
 
 using namespace std;
 
 class base_class {
-	public:
-		void display_function(){
-			cout << "base_class display_function()\n";
-		}
-		void base_class_function(){
-			cout << "Base class display function \n";
-		}
+public:
+    base_class() {
+        cout << "base_class constructor\n";
+    }
+    void display_function() {
+        cout << "base_class display_function()\n";
+    }
+    void base_class_function() {
+        cout << "Base class display function \n";
+    }
 };
 
 class derive_class: public base_class{
@@ -30,18 +32,26 @@ class derive_class: public base_class{
 };
 
 int main(){
-	base_class base_class_object;
-	derive_class derive_class_object;
+	base_class base_class_obj;
+	derive_class derive_class_obj;
 	
-	base_class_object.display_function();// base_class display_function()
-	derive_class_object.derive_class_function(); // Derive class function
-	derive_class_object.display_function(); // derive_class display_function()
+	base_class_obj.display_function();// base_class display_function()
+	derive_class_obj.derive_class_function(); // Derive class function
+	derive_class_obj.display_function(); // derive_class display_function()
 
-	//derive_class_object call the base_class_function function, which isn't defined in class derive_class
-	derive_class_object.base_class_function();// Base class display function
+	//derive_class_obj call the base_class_function function, which isn't defined in class derive_class
+	derive_class_obj.base_class_function();// Base class display function
 }
 ```
-
+**Result**
+```
+base_class constructor
+base_class constructor
+base_class display_function()
+Derive class function
+derive_class display_function()
+Base class display function
+```
 ``void display_function()`` are defined in the base_class and in the derived class with different ways. This is known as **polymorphism**, as a function in inheritance can have many form in both the base class and the derive classes.
 
 # protect method
