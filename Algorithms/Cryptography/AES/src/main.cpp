@@ -1,9 +1,10 @@
 #include "aes.h"
 
 int main() {
-    string msg = "1234567890123456";
+    string msg = "1234567890123456abcxyz Hello, World !";
+    // string msg = "1234567890123456";
     string key = "1234567890123456";
-    vector<uint8_t> iv(16, 0x0);
+    vector<uint8_t> iv(38, 0x0);
     AES aes_encrypt(key);
     
     vector<uint8_t> encrypted_txt = aes_encrypt.cbc_encrypt(msg, iv);

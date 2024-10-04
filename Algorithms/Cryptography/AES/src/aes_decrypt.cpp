@@ -17,16 +17,16 @@ void AES_Decrypt::decrypt(vector<uint8_t> encrypted_msg, vector<uint8_t> iv) {
     vector<vector<uint8_t>> _decrypted_txt(_encrypted_block.size(), vector<uint8_t>(BLOCK_SZ));
 
     for (int i = 0; i < _encrypted_block.size(); i++) {
+        _decrypted_txt[i] = block_decrypt(_encrypted_block[i]);
+
         for (int j = 0; j < BLOCK_SZ; j++) {
             if (i == 0) {        
-                _encrypted_block[i][j] = _encrypted_block[i][j] ^ iv[j];
+                _decrypted_txt[i][j] = _decrypted_txt[i][j] ^ iv[j];
             } 
             else {
-                _encrypted_block[i][j] = _encrypted_block[i][j] ^ _decrypted_txt[i-1][j];
+                _decrypted_txt[i][j] = _decrypted_txt[i][j] ^ _encrypted_block[i-1][j];
             }
         } 
-
-        _decrypted_txt[i] = block_decrypt(_encrypted_block[i]);
 
         for (int j = 0; j < BLOCK_SZ; j++) {
             decrypted_txt.push_back(_decrypted_txt[i][j]);
@@ -63,15 +63,13 @@ vector<uint8_t> AES_Decrypt::block_decrypt(vector<uint8_t> _encrypted_block) {
 
     for (int _row = 0; _row < _state_rows; _row++) {
         for (int _col = 0; _col < _nb; _col++) {
-            // cout << hex << "0x" << static_cast<int>(state[_row][_col]) << " ";
-            // cout << (char)(state[_row][_col]) << " ";
             decrypted_hex[_row + 4 * _col] = state[_row][_col];
         }
     }
 
     for (int i = 0; i < decrypted_hex.size(); i++) {
-        cout << hex << "0x" << static_cast<int>(decrypted_hex[i]) << " ";
-        // cout << (char)(decrypted_hex[i]) << " ";
+        // cout << hex << "0x" << static_cast<int>(decrypted_hex[i]) << " ";
+        cout << (char)(decrypted_hex[i]) << " ";
     }
     cout << endl;
 
