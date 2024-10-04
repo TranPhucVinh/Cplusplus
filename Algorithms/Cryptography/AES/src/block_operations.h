@@ -1,3 +1,4 @@
+#include "aes.h"
 #include "aes_encrypt.h"
 
 // aes_encrypt and block_operations call each other recursively

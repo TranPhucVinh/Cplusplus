@@ -1,12 +1,6 @@
 #ifndef aes_h
 #define aes_h
 
-#include <iostream>
-#include <string>
-#include <vector>
-#include <sstream>
-#include <iomanip>
-
 #include "aes_encrypt.h"
 #include "key_expansion.h"
 

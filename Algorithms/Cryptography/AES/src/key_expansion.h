@@ -3,6 +3,7 @@
 #ifndef key_expansion_h
 #define key_expansion_h
 
+#include "aes.h"
 #include "aes_encrypt.h"
 
 #define AES_ROUNDS  10

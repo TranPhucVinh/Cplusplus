@@ -3,7 +3,11 @@
 #ifndef aes_encrypt_h
 #define aes_encrypt_h
 
-#include "aes.h"
+#include <iostream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <iomanip>
 
 #define BLOCK_SZ    16
 

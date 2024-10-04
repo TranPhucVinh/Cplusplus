@@ -28,6 +28,7 @@ vector<uint8_t> AES_Encrypt::cbc_encrypt(string plain_txt, vector<uint8_t> iv) {
                 _block_msg[i][j] = _block_msg[i][j] ^ _encrypted_txt[i-1][j];
             }
         } 
+
         _encrypted_txt[i] = block_encrypt(_block_msg[i]);
 
         for (int j = 0; j < BLOCK_SZ; j++) {
@@ -121,12 +122,12 @@ uint8_t AES_Encrypt::aes_gf_mult(uint8_t a, uint8_t b) {
 }
 
 vector<vector<uint8_t>> AES_Encrypt::multiply_matrices(vector<vector<uint8_t>> a, vector<vector<uint8_t>> b) {
-    vector<vector<uint8_t>> multiply(NB, vector<uint8_t>(NB));
+    vector<vector<uint8_t>> multiply(_nb, vector<uint8_t>(_nb));
 
-    for (int col = 0; col < NB; col++) {
-        for (int _row = 0; _row < NB; _row++) {
+    for (int col = 0; col < _nb; col++) {
+        for (int _row = 0; _row < _nb; _row++) {
             multiply[_row][col] = 0;
-            for (int _col = 0; _col < NB; _col++) {
+            for (int _col = 0; _col < _nb; _col++) {
                 multiply[_row][col] ^= aes_gf_mult(a[_row][_col], b[_col][col]);
             }
         }
