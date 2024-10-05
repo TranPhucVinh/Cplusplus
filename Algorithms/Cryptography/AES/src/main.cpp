@@ -14,6 +14,11 @@ int main() {
     cout << endl; 
     
     AES aes_decrypt(key);
-    aes_decrypt.decrypt(encrypted_txt, iv);
+    vector<uint8_t> decrypted_txt = aes_decrypt.decrypt(encrypted_txt, iv);
+
+    for (int i = 0; i < decrypted_txt.size(); i++) {
+        cout << (char)(decrypted_txt[i]) << " ";
+    }
+    cout << endl;
     return 0;
 }

@@ -16,7 +16,7 @@ public:
     vector<vector<uint8_t>> _round_keys; // All rounds key for the total of AES_ROUNDS rounds
 
     AES_Decrypt(uint8_t state_rows, uint8_t nb, string encryption_key);
-    void decrypt(vector<uint8_t> encrypted_msg, vector<uint8_t> iv);
+    vector<uint8_t> decrypt(vector<uint8_t> encrypted_msg, vector<uint8_t> iv);
     vector<uint8_t> block_decrypt(vector<uint8_t> _encrypted_block);
     void inverse_shift_row(vector<vector<uint8_t>> &_vec);
     void inverse_substitution_box(vector<vector<uint8_t>> &_vec);

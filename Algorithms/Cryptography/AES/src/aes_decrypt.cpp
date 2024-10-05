@@ -10,7 +10,7 @@ AES_Decrypt::AES_Decrypt(uint8_t state_rows, uint8_t nb, string encryption_key) 
     _round_keys = setup_all_round_keys(_encryption_key);
 }
 
-void AES_Decrypt::decrypt(vector<uint8_t> encrypted_msg, vector<uint8_t> iv) {
+vector<uint8_t> AES_Decrypt::decrypt(vector<uint8_t> encrypted_msg, vector<uint8_t> iv) {
     vector<uint8_t> decrypted_txt;
 
     vector<vector<uint8_t>> _encrypted_block = form_blocks(encrypted_msg);
@@ -44,11 +44,7 @@ void AES_Decrypt::decrypt(vector<uint8_t> encrypted_msg, vector<uint8_t> iv) {
         decrypted_txt.resize(decrypted_txt.size() - padding_value);
     }
 
-    for (int i = 0; i < decrypted_txt.size(); i++) {
-        // cout << hex << "0x" << static_cast<int>(decrypted_txt[i]) << " ";
-        cout << (char)(decrypted_txt[i]) << " ";
-    }
-    cout << endl;
+    return decrypted_txt;
 }
 
 vector<uint8_t> AES_Decrypt::block_decrypt(vector<uint8_t> _encrypted_block) {
