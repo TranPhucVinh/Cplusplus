@@ -22,7 +22,7 @@ public:
     void inverse_substitution_box(vector<vector<uint8_t>> &_vec);
 };
 
-// AES invers substitution box (S-box)
+// AES inverse substitution box (S-box)
 // To avoid reversing the S-box which results in high time complexity (by seaching inside the 16x16 array),
 // we use this constant array
 const uint8_t inverse_sbox[BLOCK_SZ][BLOCK_SZ] = {

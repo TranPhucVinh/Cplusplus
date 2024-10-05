@@ -24,6 +24,8 @@ void AES_Decrypt::decrypt(vector<uint8_t> encrypted_msg, vector<uint8_t> iv) {
                 _decrypted_txt[i][j] = _decrypted_txt[i][j] ^ iv[j];
             } 
             else {
+                // As using CBC-128, just only after XORing with _encrypted_block[i-1],
+                // _decrypted_txt can turn back to its plain text
                 _decrypted_txt[i][j] = _decrypted_txt[i][j] ^ _encrypted_block[i-1][j];
             }
         } 
@@ -32,6 +34,21 @@ void AES_Decrypt::decrypt(vector<uint8_t> encrypted_msg, vector<uint8_t> iv) {
             decrypted_txt.push_back(_decrypted_txt[i][j]);
         }
     }
+
+    // Remove the PKCS#7 padding. PKCS#7 padding stores the total padding
+    // value in the last bytes of the decrypted text.  
+    uint8_t padding_value = decrypted_txt.back();
+
+    // Check if padding is valid (value must be between 1 and BLOCK_SZ)
+    if (padding_value > 0 && padding_value <= BLOCK_SZ) {
+        decrypted_txt.resize(decrypted_txt.size() - padding_value);
+    }
+
+    for (int i = 0; i < decrypted_txt.size(); i++) {
+        // cout << hex << "0x" << static_cast<int>(decrypted_txt[i]) << " ";
+        cout << (char)(decrypted_txt[i]) << " ";
+    }
+    cout << endl;
 }
 
 vector<uint8_t> AES_Decrypt::block_decrypt(vector<uint8_t> _encrypted_block) {
@@ -44,7 +61,7 @@ vector<uint8_t> AES_Decrypt::block_decrypt(vector<uint8_t> _encrypted_block) {
         }
     }
 
-    // Initial round key addition
+    // Initial round key
     state = add_round_key(state, column_major_order_transform(_round_keys[AES_ROUNDS - 1]));
 
     // Main decryption rounds
@@ -66,12 +83,6 @@ vector<uint8_t> AES_Decrypt::block_decrypt(vector<uint8_t> _encrypted_block) {
             decrypted_hex[_row + 4 * _col] = state[_row][_col];
         }
     }
-
-    for (int i = 0; i < decrypted_hex.size(); i++) {
-        // cout << hex << "0x" << static_cast<int>(decrypted_hex[i]) << " ";
-        cout << (char)(decrypted_hex[i]) << " ";
-    }
-    cout << endl;
 
     return decrypted_hex;
 }
