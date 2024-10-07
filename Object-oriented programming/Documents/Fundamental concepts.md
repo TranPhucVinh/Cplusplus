@@ -74,6 +74,29 @@ cout << obj_ptr->publicNumber << endl; //10
 
 CPP **doesn't support** [flexible array member](https://github.com/TranPhucVinh/C/blob/master/Data%20structure/struct/Documents/Fundamental%20concepts.md#flexible-array-member) like in C.
 
+# Function pointer as method signature
+```cpp
+#include <iostream>
+#include <functional>
+
+using namespace std;
+
+class classTest{
+public:
+    classTest(function<void (int)> function_ptr, int value) {
+        function_ptr(value);
+    }
+};
+
+void func_int(int a) {
+    cout << a << endl;
+}
+
+int main() {
+    function<void(int)> ptr = func_int;
+	classTest object(ptr, 6);
+}
+```
 # struct
 
 ``struct`` in CPP can be treated as a class as it supports all class feature: public, private, constructor, destructor, inheritance, polymorphism, virtual function and abstract class.
