@@ -117,6 +117,27 @@ int main() {
     cout << a << endl; // 2
 }
 ```
+# Function pointer as class method
+```cpp
+class classTest{
+public:
+    classTest(function<void (int)> function_ptr, int value) {
+        _func_ptr = function_ptr;
+        _func_ptr(value);
+    }
+private:
+    function<void(int)> _func_ptr;
+};
+
+void func_int(int a) {
+    cout << a << endl;
+}
+
+int main() {
+    function<void(int)> ptr = func_int;
+	classTest object(ptr, 6);
+}
+```
 # struct
 
 ``struct`` in CPP can be treated as a class as it supports all class feature: public, private, constructor, destructor, inheritance, polymorphism, virtual function and abstract class.
