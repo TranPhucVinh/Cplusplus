@@ -148,6 +148,16 @@ void HTTP_Server::http_client_handler() {
                     strcat(res_buf, "\r\n");
                     strcat(res_buf, content);
                     write(http_client_fd, res_buf, rsp_buf_sz);
+                } else {
+                    vector<int>::iterator iter;
+                    iter = find(_http_client_fd_list.begin(), _http_client_fd_list.end(), http_client_fd);
+                    if(iter != _http_client_fd_list.end()){
+                        _http_client_fd_list.erase(iter);
+                    }
+                    epoll_ctl(_epfd, EPOLL_CTL_DEL, http_client_fd, NULL);
+                    cout << "HTTP client with fd " << http_client_fd << " and IP " << ip_str << " is disconnected\n";
+                    cout << "Totally " << _http_client_fd_list.size() << " HTTP clients are connected now\n";
+                    close(http_client_fd);
                 }
             }
         }
@@ -188,7 +198,7 @@ int HTTP_Server::socket_parameters_init() {
 }
 
 void request_handler(string &request, string &response) {
-    cout << "HTTP request: " << request << endl;
+    // cout << "HTTP request: " << request << endl;
     response = read_file("index.html");
     return;
 }
@@ -198,8 +208,8 @@ string read_file(const char *file_name) {
     ifstream ifs(file_name);
 
 	if(!ifs.good()) {
-		cout << "File " << file_name << "doesn't exist\n";
-		return "NULL";
+		cout << "File " << file_name << " doesn't exist\n";
+		return "There is no HTML file";
     }
 
     while (!ifs.eof()){
