@@ -12,7 +12,7 @@ Telemetry data to ThingsBoard: [thingsboard_telemetry.cpp](thingsboard_telemetry
 
 Program: [thingsboard_telemetry_suspend_resume_by_internet_status.cpp](thingsboard_telemetry_suspend_resume_by_internet_status.cpp)
 # HTTP server
-
+## Multithread HTTP server 
 **Multithread HTTP server built on TCP API, with OOP structure**
 
 Handle GET request:
@@ -32,3 +32,8 @@ if (post_request_index != string::npos) {
         http_response(http_client_fd, "application/x-www-form-urlencoded", http_post_req.c_str());
 }
 ```
+## IO multiplexing HTTP server
+A single threaded HTTP server handles multiple HTTP client by IO multiplexing with epoll
+* Return an HTML webpage for any route.
+* Has a specific funnction pointer to handle all type of HTTP request and response.
+**Program**: [epoll_http_server.cpp](epoll_http_server.cpp)
