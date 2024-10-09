@@ -47,9 +47,10 @@ private:
 
     int                 socket_parameters_init();
     void                http_client_handler();
+    function<void (string&, string&)> _request_handler;
 };
 
-void request_handler(string &request, string &response);
+void   request_handler(string &request, string &response);
 string read_file(const char *file_name);
 
 int main() {
@@ -65,6 +66,8 @@ HTTP_Server::HTTP_Server(int port, function<void (string&, string&)> request_han
     _response = response;
 
     _max_pending = max_pending;
+    _request_handler = request_handler;
+
     _http_client_length = sizeof(http_client_addr);//Get address size of sender
     _http_server_fd = socket_parameters_init();
 
@@ -132,7 +135,7 @@ void HTTP_Server::http_client_handler() {
                 int bytes_received = read(http_client_fd, req_buf, BUFFSIZE);
                 if (bytes_received > 0) {
                     _request = req_buf;
-                    request_handler(_request, _response);
+                    _request_handler(_request, _response);
 
                     const char *content = _response.c_str();
                     const char *content_type = "text/html";
@@ -195,7 +198,7 @@ string read_file(const char *file_name) {
     ifstream ifs(file_name);
 
 	if(!ifs.good()) {
-		cout << "File" << file_name << "doesn't exist\n";
+		cout << "File " << file_name << "doesn't exist\n";
 		return "NULL";
     }
 
