@@ -1,4 +1,4 @@
-The SHA-256 implementation follows "RFC 6234 - US Secure Hash Algorithms".
+The SHA-256 implementation follows "RFC 6234 - US Secure Hash Algorithms". Output of SHA-256 is 32 bytes.
 
 When a message of any length < 2^64 bits (for SHA-224 and SHA-256) or < 2^128 bits (for SHA-384 and SHA-512) is input to one of these algorithms, the result is an output called a message digest.
 
