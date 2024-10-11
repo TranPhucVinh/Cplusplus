@@ -21,7 +21,7 @@
 #include <functional>
 
 #define MAXPENDING 	    5
-#define BUFFSIZE 	    256
+#define BUFFSIZE 	    500
 #define MAXEVENTS       1       // Maximum numbers of connected HTTP clients to handle/monitor
 #define ELEMENT_NUMBERS 1
 #define TIMEOUT         5000    // miliseconds
