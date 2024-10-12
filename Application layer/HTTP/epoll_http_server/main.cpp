@@ -19,15 +19,17 @@ void request_handler(string &request, string &response) {
     if (get_request_index != string::npos) {
         vector<string> _req_buf_vec = split_string_by_delim(request, " ");
         string uri =  _req_buf_vec[1];
+        string content;
+        response = "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\nContent-Length: ";
 
         if (uri == "/"){
             string file_data = read_file("index.html");
-            if (file_data != "NULL") response = file_data;
-            else response = "There is no index.html file";
+            if (file_data != "NULL") content = file_data;
+            else content = "There is no index.html file";
         } else {
-            // cout << "URI is: " << uri << endl;
-            response = "Unhandle URL " + uri;
+            content = "Unhandle URL " + uri;
         }
+        response += to_string(content.length()) + "\r\n\r\n" + content;
     }
 
     if (post_request_index != string::npos) {
