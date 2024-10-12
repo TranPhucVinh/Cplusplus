@@ -33,7 +33,7 @@ public:
     HTTP_Server(int port, function<void (string&, string&)> request_handler, string &request, string &response, bool reuse_address = true, int max_pending = MAXPENDING);
 private:
     int 				_http_server_fd;
-    int 				_http_client_fd;//fd of the connected HTTP client
+    int 				_http_client_fd;// fd of the connected HTTP client
     vector<int>         _http_client_fd_list;
     int                 _epfd;
     int                 _port;
@@ -44,7 +44,6 @@ private:
     struct              epoll_event http_client_conn_evt;// New HTTP client connected event
     struct              epoll_event happened_events[MAXEVENTS];
     socklen_t 	        _http_client_length;
-    string 		        _httpd_hdr_str = "HTTP/1.1 %s\r\nContent-Type: %s\r\nContent-Length: %d\r\n";
     string              _request, _response;
 
     int                 socket_parameters_init();
