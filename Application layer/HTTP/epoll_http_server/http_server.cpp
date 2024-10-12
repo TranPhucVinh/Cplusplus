@@ -78,17 +78,11 @@ void HTTP_Server::http_client_handler() {
                     _request = req_buf;
                     _request_handler(_request, _response);
 
-                    const char *content = _response.c_str();
-                    const char *content_type = "text/html";
-                    
-                    int rsp_buf_sz = _httpd_hdr_str.length() + strlen("200 OK") + strlen(content_type) + strlen("\r\n") + strlen(content);
-                    char *res_buf = new char[rsp_buf_sz + 1];
-                    bzero(res_buf, rsp_buf_sz);//Delete buffer
+                    // int rsp_buf_sz = _response.length();
+                    // char *res_buf = new char[rsp_buf_sz + 1];
+                    // bzero(res_buf, rsp_buf_sz);//Delete buffer
 
-                    snprintf(res_buf, rsp_buf_sz, _httpd_hdr_str.c_str(), "200 OK", content_type, strlen(content));
-                    strcat(res_buf, "\r\n");
-                    strcat(res_buf, content);
-                    write(http_client_fd, res_buf, rsp_buf_sz);
+                    write(http_client_fd, _response.c_str(), _response.length());
                 } else {
                     vector<int>::iterator iter;
                     iter = find(_http_client_fd_list.begin(), _http_client_fd_list.end(), http_client_fd);
