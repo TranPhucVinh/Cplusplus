@@ -1,0 +1,12 @@
+<html></html>
+    <script>
+        var url = window.location.host;
+        var ws = new WebSocket('ws://' + url + '/ws');
+        console.log("Websocket client is started");
+        ws.onopen = function()
+        {
+            ws.send("Websocket response to HTTP server ESP-IDF");
+        }
+    </script>
+    Hello world
+</html>
