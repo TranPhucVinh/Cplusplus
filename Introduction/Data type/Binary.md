@@ -1,6 +1,7 @@
 # bitset
 CPP supports **bitset library** to implement binary conversion
 ## Create
+Define a bitset from int value
 ```cpp
 #include <bitset>
 #define SZ 3 // Total bits in bit set
@@ -16,6 +17,14 @@ std::bitset<c> val = 2;
 cout << val << endl; //010 (0b010)
 ```
 Note: **std::size_t N** must alwasy be const, std::bitset() **doesn't support variable size**.
+
+Define a bitset from bool values:
+```cpp
+std::bitset<SZ> int_val;
+int_val[0] = 1; int_val[1] = 0; int_val[2] = 0;
+cout << int_val << endl; // 001
+```
+
 ## Read
 ``std::bitset`` is an array which allows access its member by index:
 ```cpp
