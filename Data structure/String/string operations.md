@@ -18,7 +18,11 @@ std::cout << const_str << std::endl;
 **[constexpr](https://github.com/TranPhucVinh/Cplusplus/blob/master/Introduction/README.md#constexpr) can't be used for std::string**.
 
 As **std::string includes an internal dynamically allocated buffer**, there is no need to do any dynamically allocation for it.
-
+## Define string with multiple "
+```cpp
+string displayed_string = "Hello, World !""New string";    
+cout << displayed_string << endl; // Hello, World !New string
+```
 ## Define string with lvalue reference/reference declaration
 
 [const std::string& str = "Hello, World !";](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/lvalue.md#define)
