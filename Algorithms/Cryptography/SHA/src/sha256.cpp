@@ -1,4 +1,4 @@
-#include "sha256.h"
+#include "sha.h"
 
 SHA256::SHA256() {
     uint32_t sha_256_const[] = {0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5,

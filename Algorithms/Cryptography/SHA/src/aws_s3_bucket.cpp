@@ -1,4 +1,4 @@
-#include "sha256.h"
+#include "sha.h"
 #include <time.h>
 #include <sys/time.h>
 #include <string.h>
@@ -23,8 +23,8 @@ string  sha_256_to_string_hex(unique_ptr<uint32_t[]> sha_256_hash);
 string  sha_256_to_string_char(unique_ptr<uint32_t[]> sha_256_hash);
 string  amz_date();
 string  yyyymmdd();
-string  form_canon_req(const char *host, string payload_hash, string amz_date, const char *method,
-                    const char *uri, const char *querystring);
+string  form_canon_req(const char *host, string payload_hash, string amz_date, 
+                const char *method, const char *uri, const char *querystring);
 string  form_string_to_sign(const char *string_to_sign, string amz_date, const char *region, string canon_req);
 string  calculate_signature(string secret_access_key, const char *region);
 

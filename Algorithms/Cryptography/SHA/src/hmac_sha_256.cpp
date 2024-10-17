@@ -1,6 +1,4 @@
-#include "sha256.h"
-
-#include <unistd.h>
+#include "sha.h"
 
 using namespace std;
 

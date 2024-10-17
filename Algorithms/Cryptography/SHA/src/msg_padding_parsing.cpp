@@ -1,4 +1,4 @@
-#include "msg_padding_parsing.h"
+#include "sha.h"
 
 vector<bool> message_padding(string &msg) {
     vector<bool> msg_padding; 

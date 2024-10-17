@@ -1,4 +1,4 @@
-#include "sha256.h"
+#include "sha.h"
 
 using namespace std;
 
