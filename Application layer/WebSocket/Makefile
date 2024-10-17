@@ -1,2 +1,2 @@
-http_server:
-	g++ main.cpp http_server.cpp -lpthread
+websocket_server:
+	g++ main.cpp -L. -lhttp_server -lsha
