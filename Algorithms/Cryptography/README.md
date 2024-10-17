@@ -57,3 +57,6 @@ Binding a public key to a particular entity is typically done by a **Certificati
 Public key certification is used in many popular secure networking protocols, including IPsec and SSL.
 
 X.509 certificates are digital certificates that use the X.509 public key infrastructure standard to associate a public key with the identity contained in a certificate. X.509 certificates are issued by a trusted entity called a certificate authority (CA). The CA maintains one or more special certificates called CA certificates that it uses to issue X.509 certificates. Only the certificate authority has access to CA certificates.
+# Encryption
+
+Base64 is a group of binary-to-text encoding schemes that transforms binary data into a sequence of printable characters, limited to a set of 64 unique characters.
