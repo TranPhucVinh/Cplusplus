@@ -60,3 +60,31 @@ X.509 certificates are digital certificates that use the X.509 public key infras
 # Encryption
 
 Base64 is a group of binary-to-text encoding schemes that transforms binary data into a sequence of printable characters, limited to a set of 64 unique characters.
+
+Base64 uses 6-bit groups to map with its encoding table. When the input string isn't a multiple of 6-bit, there will be padding.
+
+Steps for Base64 encoding:
+
+1. Convert every char of the input string it to their 8-bit binary representation. E.g:
+
+* Input: "Man"
+* Binary: M = 01001101, a = 01100001, n = 01101110
+
+2. As base64 uses 6-bit groups to map with its encoding table, split the input binary into 6-bit groups. If the input length isn't a multiple of 6-bit, pad with 0 bits to complete the last 6-bit group.
+
+3. Map Each 6-bit Group to Base64 Characters
+
+```css
+A-Z => 0-25
+a-z => 26-51
+0-9 => 52-61
++ => 62
+/ => 63
+```
+4. Add Padding (if necessary)
+Padding Rules in Base64:
+* No padding if the input length is a multiple of 3.
+* 1 padding character (=) if the input length leaves 2 bytes (16 bits) at the end.
+* 2 padding characters (==) if the input length leaves 1 byte (8 bits) at the end.
+
+5. Concatenate the Result: Combine the Base64 characters into the final encoded string.
