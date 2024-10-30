@@ -4,14 +4,17 @@ Vectors are the same as dynamic arrays with the ability to resize itself automat
 
 [Create](Create.md): 
 * Multiple ways to define a vector 
+* Set member with **push_back()**
 * const char pointer as member of a vector
 * Class object as a member of a vector
 
-**Read**: 
+[Read](Read.md): 
 * Read all vector member by raw pointer and iterator
 * Get the last member by **back()**
 * Find a member by **std::find()**
 * Comparison operator overloading: Overloading ==, >, <, >= and <= are defined for vectors
+* Find the max number of a 2D array, along with its index
+* Find the difference of two arrays
 
 **Update**: Update vector at specific by index
 
