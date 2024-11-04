@@ -53,6 +53,9 @@ The WebSocket frame format defines how data is transmitted between the client an
 **Masking Key** (32 bits, optional):
 * This is a 4-byte key used to mask the payload data.
 * It’s present only if the MASK bit is 1 (always required from the client to server).
+* To XOR each byte of the payload with the 4-byte masking key, follow those steps:
+    1. Iterate through each byte of the payload.
+    2. For each byte at index ``i`` in the payload, XOR it with the byte at index ``i % 4`` in the masking key. This ensures the 4-byte masking key repeats across the entire payload.
 
 **Payload Data**:
 * This is the actual data being transmitted.
