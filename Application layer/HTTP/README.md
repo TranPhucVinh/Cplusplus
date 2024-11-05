@@ -36,4 +36,6 @@ if (post_request_index != string::npos) {
 A single threaded HTTP server handles multiple HTTP client by IO multiplexing with epoll
 * Return an HTML webpage for any route.
 * Has a specific funnction pointer to handle all type of HTTP request and response.
-**Program**: [epoll_http_server.cpp](epoll_http_server.cpp)
+**Program**: 
+* [epoll_http_server.cpp](epoll_http_server.cpp): This example is intended for comprehensive and easy to understand the character device created operation.
+* Library [epoll_http_server](epoll_http_server): This library is intended for functions inheritance for other programs.

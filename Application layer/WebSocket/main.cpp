@@ -36,13 +36,14 @@ void request_handler(string &request, string &response) {
                 // Size of Sec-WebSocket-Key: <24 bytes of ws key> is 43
                 string sub_str  = request.substr(ws_key, 43);
                 string ws_key = split_string_by_delim(sub_str, " ")[1];
+                cout << ws_key << endl; // debug
                 string ws_magic_string = "258EAFA5-E914-47DA-95CA-C5AB0DC85B11";
                 ws_key += ws_magic_string;
 
                 SHA1 sha1;
                 unique_ptr<uint32_t[]> sha_1_hash = sha1.hex_digest(ws_key);
 
-                string _ws_key_str = "";
+                string _ws_key_str;
 
                 // Convert SHA-1 to string
                 for (int i = 0; i < 5; i++) {

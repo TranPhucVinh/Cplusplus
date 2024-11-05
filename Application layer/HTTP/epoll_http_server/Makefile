@@ -3,5 +3,5 @@ epoll_http_server:
 
 http_server_lib:
 	g++ -c http_server.cpp
-	ar r http_server.a http_server.o
+	ar r libhttp_server.a http_server.o
 	rm http_server.o
