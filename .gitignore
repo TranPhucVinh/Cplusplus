@@ -3,3 +3,4 @@ a.exe
 http_client
 http_server
 unit_test.c
+*.a
