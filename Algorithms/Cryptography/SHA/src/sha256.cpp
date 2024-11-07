@@ -101,7 +101,7 @@ void SHA256::hash_block(vector<bool> msg) {
         if (w_idx < 16) W[w_idx] = words[w_idx].to_ulong();
         else {
             W[w_idx] = (SSIG1(W[w_idx - 2]) + W[w_idx - 7] + SSIG0(W[w_idx-15]) + W[w_idx - 16] ) % 
-                        (long) pow(2, 32);// Must cast to (long) to avoid "Floating point exception"
+                        (uint32_t) pow(2, 32);// Must cast to (long) to avoid "Floating point exception"
         }
     }
 
@@ -110,25 +110,25 @@ void SHA256::hash_block(vector<bool> msg) {
 
     for (int w_idx = 0; w_idx < 64; w_idx++) {
         uint32_t T1 = h + BSIG1(e) + CH(e, f, g) + _sha_256_const[w_idx]+ W[w_idx];
-        T1 = T1 % (long)pow(2, 32);
+        T1 = T1 % (uint32_t)pow(2, 32);
             
-        uint32_t T2 = (BSIG0(a) + MAJ(a, b, c)) % (long)pow(2, 32);
+        uint32_t T2 = (BSIG0(a) + MAJ(a, b, c)) % (uint32_t)pow(2, 32);
         h = g;
         g = f;
         f = e;
-        e = (d + T1) % (long)pow(2, 32);
+        e = (d + T1) % (uint32_t)pow(2, 32);
         d = c;
         c = b;
         b = a;
-        a = (T1+ T2) % (long)pow(2, 32);
+        a = (T1+ T2) % (uint32_t)pow(2, 32);
     }
 
-    _hash[0] = (_hash[0]+ a) % (long)pow(2, 32);
-    _hash[1] = (_hash[1]+ b) % (long)pow(2, 32);
-    _hash[2] = (_hash[2]+ c) % (long)pow(2, 32);
-    _hash[3] = (_hash[3]+ d) % (long)pow(2, 32);
-    _hash[4] = (_hash[4]+ e) % (long)pow(2, 32);
-    _hash[5] = (_hash[5]+ f) % (long)pow(2, 32);
-    _hash[6] = (_hash[6]+ g) % (long)pow(2, 32);
-    _hash[7] = (_hash[7]+ h) % (long)pow(2, 32);
+    _hash[0] = (_hash[0]+ a) % (uint32_t)pow(2, 32);
+    _hash[1] = (_hash[1]+ b) % (uint32_t)pow(2, 32);
+    _hash[2] = (_hash[2]+ c) % (uint32_t)pow(2, 32);
+    _hash[3] = (_hash[3]+ d) % (uint32_t)pow(2, 32);
+    _hash[4] = (_hash[4]+ e) % (uint32_t)pow(2, 32);
+    _hash[5] = (_hash[5]+ f) % (uint32_t)pow(2, 32);
+    _hash[6] = (_hash[6]+ g) % (uint32_t)pow(2, 32);
+    _hash[7] = (_hash[7]+ h) % (uint32_t)pow(2, 32);
 }
