@@ -46,12 +46,12 @@ void SHA1::hash_block(vector<bool> msg) {
     uint32_t e = _hash[4];
 
     for (uint32_t t = 0; t < 80; t++) {
-        uint32_t TEMP = (ROTL(5, a) + sha1_func(t, b, c, d) + e + W[t] + _K[t]) % (long) pow(2, 32);
+        uint32_t TEMP = (ROTL(5, a) + sha1_func(t, b, c, d) + e + W[t] + _K[t]) % (uint32_t) pow(2, 32);
         e = d; d = c; c = ROTL(30, b); b = a; a = TEMP;
     }
-    _hash[0] = (_hash[0] + a) % (long) pow(2, 32);
-    _hash[1] = (_hash[1] + b) % (long) pow(2, 32);
-    _hash[2] = (_hash[2] + c) % (long) pow(2, 32);
-    _hash[3] = (_hash[3] + d) % (long) pow(2, 32);
-    _hash[4] = (_hash[4] + e) % (long) pow(2, 32);
+    _hash[0] = (_hash[0] + a) % (uint32_t) pow(2, 32);
+    _hash[1] = (_hash[1] + b) % (uint32_t) pow(2, 32);
+    _hash[2] = (_hash[2] + c) % (uint32_t) pow(2, 32);
+    _hash[3] = (_hash[3] + d) % (uint32_t) pow(2, 32);
+    _hash[4] = (_hash[4] + e) % (uint32_t) pow(2, 32);
 }

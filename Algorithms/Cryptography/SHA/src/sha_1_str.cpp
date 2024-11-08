@@ -26,11 +26,10 @@ string sha_1_to_string_char(unique_ptr<uint32_t[]> sha_1_hash) {
 }
 
 int main() {
-    // string msg = "mhZ9lUo8LcJYNL9HJ1cQHw==258EAFA5-E914-47DA-95CA-C5AB0DC85B11";
     string msg = "abcxyz";
     SHA1 sha1;
     unique_ptr<uint32_t[]> sha_1_hash = sha1.hex_digest(msg);
-    cout << sha_1_to_string_hex(move(sha_1_hash)) << endl;
+    // cout << sha_1_to_string_hex(move(sha_1_hash)) << endl;
     cout << base64_encoding(sha_1_to_string_char(move(sha_1_hash))) << endl;
     
     return 0;
