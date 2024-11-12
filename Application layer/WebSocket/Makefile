@@ -1,2 +1,2 @@
 websocket_server:
-	g++ main.cpp -L. -lhttp_server -lsha
+	g++ -g main.cpp -L. -lhttp_server -lsha
