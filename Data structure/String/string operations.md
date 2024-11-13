@@ -23,6 +23,14 @@ As **std::string includes an internal dynamically allocated buffer**, there is n
 string displayed_string = "Hello, World !""New string";    
 cout << displayed_string << endl; // Hello, World !New string
 ```
+**Print the ASCII code of every character of a string**:
+
+```cpp
+string str = "Hello, World !";
+for (int i = 0; i < str.size(); i++) {
+    cout << str[i] << ": " << static_cast<int>(str[i]) << std::endl;
+}
+```
 ## Define string with lvalue reference/reference declaration
 
 [const std::string& str = "Hello, World !";](https://github.com/TranPhucVinh/Cplusplus/blob/master/Physical%20layer/Memory/lvalue.md#define)
