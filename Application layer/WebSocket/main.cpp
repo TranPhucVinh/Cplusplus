@@ -6,6 +6,7 @@
 void request_handler(string &request, string &response);
 string read_file(const char *file_name);
 vector<string> split_string_by_delim(string s, string delim);
+string ws_data_parsing(string data);
 
 int main() {
     string request, response;
@@ -14,8 +15,8 @@ int main() {
 }
 
 void request_handler(string &request, string &response) {
-    vector<string> _req_buf_vec = split_string_by_delim(request, " ");
-    if (_req_buf_vec.size() >= 2) {
+    vector<string> _req_buf_vec = split_string_by_delim(request, " ");// Parse for URI
+    if (_req_buf_vec.size() > 2) {
         string uri =  _req_buf_vec[1];
         string content;
 
@@ -59,18 +60,50 @@ void request_handler(string &request, string &response) {
                     response = "HTTP/1.1 101 Switching Protocols\r\nUpgrade: websocket\r\n";
                     response += "Connection: Upgrade\r\nSec-WebSocket-Accept: ";
                     response += _ws_key_str + "\r\n\r\n";
-
-                    cout << response << endl;
                 }
         }
         else {
             content = "Unhandle URL " + uri;
             response += to_string(content.length()) + "\r\n\r\n" + content;
         }
+    } else { // Read WS response from WS client
+        ws_data_parsing(request);
     }
     return;
 }
 
+string ws_data_parsing(string data) {
+    string client_payload;
+    uint8_t fin = data[0] >> 7;
+    uint8_t rsv1 = (data[0] >> 6) & 0b01;
+    uint8_t rsv2 = (data[0] >> 5) & 0b001;
+    uint8_t rsv3 = (data[0] >> 4) & 0b0001;
+    uint8_t opcode = data[0] & 0b1111;
+
+    uint8_t mask = data[1] >> 7;
+    uint8_t payload_length = data[1] & 0b01111111;
+    if (mask == 1 && payload_length != 126 && payload_length != 127) {
+        vector<uint8_t> masking_key, payload;
+        masking_key.push_back(data[2]);
+        masking_key.push_back(data[3]);
+        masking_key.push_back(data[4]);
+        masking_key.push_back(data[5]);
+
+        uint8_t _index = 6;
+        
+        for (uint8_t i = 0; i < payload_length; i++) {
+            payload.push_back(data[_index]);
+            payload[i] ^= masking_key[i % 4];
+            _index += 1;
+            client_payload += string(1, payload[i]);
+        }
+        cout << client_payload << endl;
+            
+    }
+
+    return client_payload;
+}
+ 
 string read_file(const char *file_name) {
     string data;
     ifstream ifs(file_name);
